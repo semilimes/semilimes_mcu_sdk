@@ -13,7 +13,7 @@
     Returns:
         void
 */
-void Header::setAuthorization(char* apikey)
+void Header::setAuthorization(const char* apikey)
 {
     strcpy(*pauth,authType);
     strncat(*pauth,apikey,strlen(apikey));

@@ -28,12 +28,12 @@ public:
         json_data.initJson(*pjson);
     }
 
-// Function: Provisioning.getRegistrationJson
+// Function: Provisioning.setObj
 
-//     create the json needed to Register the device
+//     create the json needed to Register and Claim the device
 
 //     Prototype:
-//         void Provisioning::getRegistrationJson(char* devId, char* provKey);
+//         void Provisioning::setObj(char* devId, char* provKey);
 
 //     Parameters:
 ///@param          devId - the device id, a unique ID that belongs to a specific device
@@ -41,21 +41,7 @@ public:
 
 //     Returns:
 ///@returns         char*
-    void getRegistrationJson(char* devId, char* provKey);
-
-// Function: Provisioning.getClaimJson
-
-//     create the json needed to Claim the device
-
-//     Prototype:
-//         void Provisioning::getClaimJson(char* devId);
-
-//     Parameters:
-///@param          devId - the device id, a unique ID that belongs to a specific device
-
-//     Returns:
-///@returns         char*
-    void getClaimJson(char* devId);
+    void setObj(char* devId, char* provKey);
 
 // Function: Provisioning.getRegisterDeviceURL
 

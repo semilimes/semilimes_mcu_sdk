@@ -62,7 +62,7 @@ public:
 //     Returns:
 ///@returns         void
 
-    void setAuthorization(char* apikey);
+    void setAuthorization(const char* apikey);
 
 // Function: Header.getHttpsUrl
 
