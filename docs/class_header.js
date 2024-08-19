@@ -10,5 +10,5 @@ var class_header =
     [ "getWsHeader", "class_header.html#a63cfe33a1361fbc9e1fe3a2aa8db46ec", null ],
     [ "getWsHost", "class_header.html#a0b4247b81ec5be8762aa32effe53e0d2", null ],
     [ "getWsPort", "class_header.html#a6d3650e7936bd57a59ff9715b1cda05a", null ],
-    [ "setAuthorization", "class_header.html#aadae14fad7fbe9f5f0b7d11b195a018e", null ]
+    [ "setAuthorization", "class_header.html#a55aa6278e186c92efd487c44022fd223", null ]
 ];
