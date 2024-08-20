@@ -1,5 +1,5 @@
 /***************************************************
-The Provisioning firmware is designed to test the provisioning procedure of new Semilimes devices. 
+The Provisioning firmware is designed to test the provisioning procedure of new semilimes devices. 
 This process starts by sending a request to the server containing the DeviceId and ProvisioningKey 
 to register the device.
 

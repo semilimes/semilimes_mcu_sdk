@@ -1,14 +1,14 @@
 /***************************************************
-The Semilimes SDK connects microcontrollers to the Semilimes server, enabling
+The semilimes SDK connects microcontrollers to the semilimes server, enabling
 secure instant messaging with forms and widgets. It supports interaction in
 peer-to-peer chats, channels, and group chats, all while ensuring maximum
-cybersecurity through the Semilimes platform.
+cybersecurity through the semilimes platform.
 
 This project was designed to test the creation of all JSON scripts required by
-the SDKs to enable the use of Semilimes APIs. The scripts are printed via
+the SDKs to enable the use of semilimes APIs. The scripts are printed via
 serial output, and the example does not include a connection to the server.
 The primary goal was to ensure that the generated scripts are correctly
-formatted and ready for future integration with the Semilimes platform.
+formatted and ready for future integration with the semilimes platform.
 
 This project is licensed under the MIT License.
  ****************************************************/
