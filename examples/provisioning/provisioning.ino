@@ -28,9 +28,8 @@ This project is licensed under the MIT License.
 
 Preferences preferences;
 
-char prov[200], auth[400], jheader[400], wsHeader[400];
-Header header(auth,jheader,wsHeader);
-Provisioning provisioning(prov);
+Header header;
+Provisioning provisioning;
 
 WiFiMulti WiFiMulti;
 const uint32_t connectTimeoutMs = 5000;

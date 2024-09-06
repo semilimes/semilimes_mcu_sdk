@@ -16,449 +16,403 @@ This project is licensed under the MIT License.
 #include <Arduino.h>
 #include <semilimes.h>
       
-void setup()
+void smeJsonTest()
 {
-    Serial.begin(115200);
-    while (!Serial);
+    Serial.println("\r************** account ******************");    
+    Serial.println("\rinit GetMyAccount");
+    GetMyAccount getmyaccount;
+    getmyaccount.set(true,false,true,false);
+    Serial.println(getmyaccount.get());
     
-    char json[1000], json_array[400], json_array2[500], json_form_component[500], json_data_component[1000];
-      
-    //*************************** ACCOUNT ***************************
-    //create the header
-    /*char authorization[200], json_header[200], ws_header[200];
-    Header header(authorization, json_header, ws_header);
-    header.setAuthorization("*** ApiKey ***");
-    Serial.println(header.getHttpsUrl());
-    Serial.println(header.getWsEP());
-    Serial.println(header.getWsClientEP());
-    Serial.println(header.getWsHost());
-    Serial.println(header.getWsPort()); 
-    Serial.println(header.getWsHeader()); 
-    Serial.println(header.getContentType());  
-    Serial.println(header.getAuthorization());   
-    Serial.println(header.getAccept());*/   
-
-    //provisioning
-    /*Provisioning provisioning(json);
-    provisioning.setObj("*** Device ID ***","*** Provisioning Key ***");
+    Serial.println("\rinit GetAccountProfile");
+    GetAccountProfile getmyaccountprofile;
+    getmyaccountprofile.set("abscnn11323");
+    Serial.println(getmyaccountprofile.get());
+    
+    Serial.println("\rinit GetAccountFeed");
+    GetAccountFeed getaccountfeed;
+    getaccountfeed.set("abscnn11323",10,255,4987);
+    Serial.println(getaccountfeed.get());
+    
+    Serial.println("\rinit AddAccountFeed");
+    AddAccountFeed addaccountfeed;
+    addaccountfeed.set("accFeed","add account feed", "avatar", true, false, true);
+    addaccountfeed.addDataComponents("{\"dataComponentType\": \"text\",\"text\": \"string\"}");
+    addaccountfeed.addDataComponents("{\"dataComponentType\": \"text\",\"text\": \"string\"}");
+    addaccountfeed.addDataComponents("{\"dataComponentType\": \"text\",\"text\": \"string\"}");
+    addaccountfeed.appendDataComponents();
+    Serial.println(addaccountfeed.get());
+    
+    Serial.println("\rinit Provisioning");
+    Provisioning provisioning;
+    provisioning.set("devId","provKey");
+    Serial.println(provisioning.get());
     Serial.println(provisioning.getRegisterDeviceURL());
     Serial.println(provisioning.getDeviceClaimStatusURL());
-    Serial.println(json);*/
-
-    //get my Account data
-    /*GetMyAccount getmyaccount(json);
-    getmyaccount.setObj(true,false,true,false);
-    Serial.println(json);*/
-
-    //get account profile data
-    /*GetAccountProfile getaccountprofile(json);
-    getaccountprofile.setObj("*** Account ID ***");
-    Serial.println(json);*/
-
-    //get account feeds
-    /*GetAccountFeed getaccountfeed(json);
-    getaccountfeed.setObj("*** Account ID ***",5,2,10);
-    Serial.println(json);*/
-    
-    //add account feed
-    //create a simpleText Data Component
-    /*DcSimpleText dcsimpletxt1(json_data_component);
-    dcsimpletxt1.setObj("hello from semilimes sdk!!!");
-    AddAccountFeed addAccountFeed(json,json_array);
-    addAccountFeed.setObj("feed title","feed descriprion","avatar_fileId",false,true,false);
-    addAccountFeed.addDataComponents(json_data_component);
-    addAccountFeed.addDataComponents(json_data_component);
-    addAccountFeed.appendDataComponents();
-    Serial.println(json);*/
-    
-    //*********************************************************************
-    
-    //*************************** FC COMPONENTS ***************************
-      
-    //create Label Form Component
-    /*FcLabel fclabel(json_form_component);
-    fclabel.setObj("Label","Label Title");
-    Serial.println(json_form_component);*/
         
-    //create switch Form Component
-    /*FcSwitch fcswitch(json_form_component);
-    fcswitch.setObj("switchRef","switch Title",1);
-    Serial.println(json_form_component);
-    fcswitch.setObj("switchRef","switch Title",0);
-    Serial.println(json_form_component);*/
+    Serial.println("\r************** form components ******************");
     
-    //create TextBox Form Components
-    /*FcTextBox textbox2(json_form_component);
-    textbox2.setObj("textbox2","TB Title","content of the textbox2!!",true);
-    Serial.println(json_form_component);
-    textbox2.setObj("textbox2","TB Title","content of the textbox2!!");
-    Serial.println(json_form_component);*/
-
-    //create date picker Form Component
-    /*FcTimePicker fctimepicker(json_form_component);
-    fctimepicker.setObj("mytimePicker","time picker Title",false,"","Select time");
-    Serial.println(json_form_component);*/
+    Serial.println("\rinit FcLabel");
+    FcLabel fclabel;
+    fclabel.set("Label","Example Form on a newly created Channel");
+    Serial.println(fclabel.get());
     
-    //create slider Form Component
-    /*FcSlider fcslider(json_form_component);
-    fcslider.setObj("slider","slider Title",true,20,0,100,5);
-    Serial.println(json_form_component);*/
-
-    //create Location picker Form Component
-    /*FcLocationPicker fclocationpicker(json_form_component);
-    fclocationpicker.setObj("mylocationPicker","location picker Title",false,"","Select Location",false);
-    Serial.println(json_form_component);*/
-
-    //create date picker Form Component
-    /*FcDatePicker fcdatepicker(json_form_component);
-    fcdatepicker.setObj("mydatePicker","date picker Title",false,"","Select Date");
-    Serial.println(json_form_component);*/
-
-    //create contact picker Form Component
-    /*FcContactPicker fccontactpicker(json);
-    fccontactpicker.setObj("mycontactPicker","contact picker Title",false,"","Select Contact",true);
-    Serial.println(json);*/
-    
-    //create hidden value Form Component
-    /*FcHiddenValue fchiddenvalue(json_form_component);
-    fchiddenvalue.setObj("hidden value","hidden");
-    Serial.println(json_form_component);*/
-    
-    //create qr scaner Form Component
-    /*FcQrScanner fcqrscanner(json_form_component);
-    fcqrscanner.setObj("myQrScanner","qr scanner Title",false,"","Scan QR Code");
-    Serial.println(json_form_component);*/
-
-    //create NFC reader Form Component
-    /*FcNfcReader nfcreader(json_form_component);    
-    nfcreader.setObj("myNFCreader","nfc reader Title",false,"","Read NFC");
-    Serial.println(json_form_component);*/
-    
-    //create bucket picker Form Component
-    /*FcBucketPicker fcbucketpicker(json_form_component,json_array);
-    fcbucketpicker.setObj("myBucketPicker","bucket picker Title",false,"","Select Bucket",true);
-    fcbucketpicker.addValue(fcbucketpicker.featureTypes[0]);
+    Serial.println("\rinit FcBucketPicker");
+    FcBucketPicker fcbucketpicker;
+    fcbucketpicker.set("refname","title",true,"profile","actbuttontitle",true);
+    fcbucketpicker.addValue("id1",fcbucketpicker.featureTypes[1]);
+    fcbucketpicker.addValue("id2",fcbucketpicker.featureTypes[2]);
+    fcbucketpicker.addValue("id3",fcbucketpicker.featureTypes[0]);
+    fcbucketpicker.addValue("id4",fcbucketpicker.featureTypes[3]);
     fcbucketpicker.appendValue();
-    Serial.println(json_form_component);
-    fcbucketpicker.setObj("myBucketPicker2","bucket picker Title",true,"","Select Bucket",false);
-    fcbucketpicker.addValue(fcbucketpicker.featureTypes[0]);
-    fcbucketpicker.addValue(fcbucketpicker.featureTypes[2]);
-    fcbucketpicker.appendValue();
-    Serial.println(json_form_component);*/
-
-    //create single choice Form Component
-    /*FcSingleChoice fcsinglechoice(json_form_component,json_array);
-    fcsinglechoice.setObj("single choice1 ref name","single choice title",true,"choice1value");
-    fcsinglechoice.addOptions("button1","choice1"); 
-    fcsinglechoice.addOptions("button2","choice2");
-    fcsinglechoice.appendOptions();
-    Serial.println(json_form_component);
-    fcsinglechoice.setObj("single choice1 ref name","single choice title",true,"choice1value");
-    fcsinglechoice.addOptions("button3","choice3");
-    fcsinglechoice.appendOptions();
-    Serial.println(json_form_component);*/
-
-    //create multiple choice Form Component
-    /*FcMultipleChoice fcmultiplechoice(json_form_component,json_array,json_array2);
-    fcmultiplechoice.setObj("multi choice1 ref name","multi choice title",true);
-    fcmultiplechoice.addValues("choice1");
-    fcmultiplechoice.addValues("choice2");
-    fcmultiplechoice.appendValues();    
-    fcmultiplechoice.addOptions("button1","choice1");   
-    fcmultiplechoice.addOptions("button2","choice2");
-    fcmultiplechoice.appendOptions();
-    Serial.println(json_form_component);
-    fcmultiplechoice.setObj("multi choice1 ref name","multi choice title",false);
-    fcmultiplechoice.addValues("choice3");
-    fcmultiplechoice.appendValues();    
-    fcmultiplechoice.addOptions("button3","choice3");
-    fcmultiplechoice.appendOptions();
-    Serial.println(json_form_component);*/
-
-    //create a button list Form Component
-    /*FcButtonList fcbuttonlist(json_form_component,json_array);
-    fcbuttonlist.setObj("myButtonList","Button List",false,"buttonName",true);
-    fcbuttonlist.addOptions("button1","choice1");   
-    fcbuttonlist.addOptions("button2","choice2");
-    fcbuttonlist.appendOptions();
-    Serial.println(json_form_component);
-    fcbuttonlist.setObj("myButtonList2","Button List2",false,"buttonName2",true);
-    fcbuttonlist.addOptions("button3","choice3");
-    fcbuttonlist.appendOptions();
-    Serial.println(json_form_component);*/
+    String temp = fcbucketpicker.get();
+    Serial.println(temp);
     
-    //*********************************************************************
+    Serial.println("\rinit FcTextBox");
+    FcTextBox fctextbox;
+    fctextbox.set("refname","title","value",true);
+    Serial.println(fctextbox.get());
     
+    Serial.println("\rinit FcSwitch");
+    FcSwitch fcswitch;
+    fcswitch.set("refname","title",true);
+    Serial.println(fcswitch.get());
     
-    //*************************** DC COMPONENTS ***************************
-    //create a simpleText Data Component
-    /*DcSimpleText dcsimpletxt1(json_data_component);
-    dcsimpletxt1.setObj("hello 1 from c++ sme lib!!!");
-    Serial.println(json_data_component);*/
-
-    //create a contact Data Component
-    /*DcContact dccontact(json_data_component,json_array);
-    dccontact.addContactIds("contact id number1");
-    dccontact.addContactIds("contact id number2");
-    dccontact.addContactIds("contact id number3");
-    dccontact.addContactIds("contact id number4");
-    dccontact.appendDataContactIds();
-    Serial.println(json_data_component);
-    dccontact.setObj();
-    dccontact.addContactIds("contact id number5");
-    dccontact.appendDataContactIds();
-    Serial.println(json_data_component);*/
-
-    //create a htmlText Data Component
-    /*DcHtmlText dchtmltext(json_data_component);
-    dchtmltext.setObj("<p> html text </p>");
-    Serial.println(json_data_component);*/
+    Serial.println("\rinit FcTimePicker");
+    FcTimePicker fctimepicker;
+    fctimepicker.set("refname","title",true,"value","actBtnTitle");
+    Serial.println(fctimepicker.get());
     
-    //create a File Data Component
-    /*DcFile dcfile(json_data_component,json_array);
-    dcfile.addFileIds("id number1");
-    dcfile.addFileIds("id number2");
-    dcfile.addFileIds("id number3");
-    dcfile.addFileIds("id number4");
+    Serial.println("\rinit FcSlider");
+    FcSlider fcslider;
+    fcslider.set("refname","title",true,89,1,255,2);
+    Serial.println(fcslider.get());
+    
+    Serial.println("\rinit FcDatePicker");
+    FcDatePicker fcdatepickerlider;
+    fcdatepickerlider.set("refname","title",true,"value","actBtnTitle");
+    Serial.println(fcdatepickerlider.get());
+    
+    Serial.println("\rinit FcLocationPicker");
+    FcLocationPicker fclocationpicker;
+    fclocationpicker.set("refname","title",true,"value","actBtnTitle",true);
+    Serial.println(fclocationpicker.get());
+    
+    Serial.println("\rinit FcContactPicker");
+    FcContactPicker fccontactpicker;
+    fccontactpicker.set("refname","title",true,"value","actBtnTitle",true);
+    Serial.println(fccontactpicker.get());
+    
+    Serial.println("\rinit FcHiddenValue");
+    FcHiddenValue fchiddenvalue;
+    fchiddenvalue.set("refname","value");
+    Serial.println(fchiddenvalue.get());
+    
+    Serial.println("\rinit FcNfcReader");
+    FcNfcReader fcnfcreader;
+    fcnfcreader.set("refname","title",true,"value","actBtnTitle");
+    Serial.println(fcnfcreader.get());
+    
+    Serial.println("\rinit FcQrScanner");
+    FcQrScanner fcqrscanner;
+    fcqrscanner.set("refname","title",true,"value","actBtnTitle");
+    Serial.println(fcqrscanner.get());
+    
+    Serial.println("\rinit FcButtonList");
+    FcButtonList fcbuttonlist;
+    fcbuttonlist.set("myButtonList","Button List",false,"buttonName",true);
+    fcbuttonlist.addOptions("button1","choice1"); //add the first button (name, value)  
+    fcbuttonlist.addOptions("button2","choice2"); //add the first button (name, value)  
+    fcbuttonlist.addOptions("button3","choice3"); //add the first button (name, value)  
+    fcbuttonlist.appendOptions(); //append the buttons to the "fcbuttonlist"
+    Serial.println(fcbuttonlist.get());
+    
+    Serial.println("\rinit FcSingleChoice");
+    FcSingleChoice fcsinglechoice;
+    fcsinglechoice.set("myButtonList","Button List",false,"value");
+    fcsinglechoice.addOptions("button1","choice1"); //add the first button (name, value)  
+    fcsinglechoice.addOptions("button2","choice2"); //add the first button (name, value)  
+    fcsinglechoice.addOptions("button3","choice3"); //add the first button (name, value)  
+    fcsinglechoice.appendOptions(); //append the buttons to the "fcsinglechoice"
+    Serial.println(fcsinglechoice.get());
+    
+    Serial.println("\rinit FcMultipleChoice");
+    FcMultipleChoice fcmultiplechoice;
+    fcmultiplechoice.set("myButtonList","Button List",false);
+    fcmultiplechoice.addOptions("button1","choice1"); //add the first button (name, value)  
+    fcmultiplechoice.addOptions("button2","choice2"); //add the first button (name, value)  
+    fcmultiplechoice.addOptions("button3","choice3"); //add the first button (name, value)  
+    fcmultiplechoice.appendOptions(); //append the buttons to the "fcmultiplechoice" 
+    fcmultiplechoice.addValue("choice1");
+    fcmultiplechoice.addValue("choice2");
+    fcmultiplechoice.addValue("choice3");
+    fcmultiplechoice.appendValues(); //append the buttons to the "fcmultiplechoice" 
+    Serial.println(fcmultiplechoice.get());
+    
+   Serial.println("\r************** data components ******************");
+    
+    Serial.println("\rinit DcSimpleText");
+    DcSimpleText dcsimpletext;
+    dcsimpletext.set("text");
+    Serial.println(dcsimpletext.get());
+    
+    Serial.println("\rinit DcHtmlText");
+    DcHtmlText dchtmltext;
+    dchtmltext.set("html text");
+    Serial.println(dchtmltext.get());
+    
+    Serial.println("\rinit DcContact");
+    DcContact dccontact;
+    dccontact.addContactIds("123");
+    dccontact.addContactIds("456");
+    dccontact.addContactIds("789");
+    dccontact.appendContactIds();
+    Serial.println(dccontact.get());
+    
+    Serial.println("\rinit DcFile");
+    DcFile dcfile;
+    dcfile.addFileId("123");
+    dcfile.addFileId("456");
+    dcfile.addFileId("789");
     dcfile.appendFileIds();
-    Serial.println(json_data_component);*/
+    Serial.println(dcfile.get());
+    
+    Serial.println("\rinit DcTunnelReference");
+    DcTunnelReference dctunnelreference;
+    dctunnelreference.set("tunnelid");
+    Serial.println(dctunnelreference.get());
+    
+    Serial.println("\rinit DcLocation");
+    DcLocation dclocation;
+    dclocation.set("loc name",44.405650,8.946256);
+    Serial.println(dclocation.get());
+    
+    Serial.println("\rinit DcWebview");
+    DcWebview dcwebview;
+    dcwebview.set("dcwebview",true,dcwebview.viewSizeTypes[0]);
+    Serial.println(dcwebview.get()); 
+    
+    Serial.println("\rinit DcChReference");
+    DcChReference dcchreference;
+    dcchreference.set("channelId");
+    Serial.println(dcchreference.get());
+    
+    Serial.println("\rinit DcForm");
+    DcForm dcform;
+    dcform.set("recId",dcform.featureType[0],true,true,"submit","form1");
+    dcform.addFormComponents(fclocationpicker.get());
+    dcform.addFormComponents(fcslider.get());
+    dcform.addFormComponents(fcswitch.get());
+    dcform.appendFormComponents(); //append Form Components
+    Serial.println(dcform.get());
 
-    //create a location Data Component
-    /*DcLocation dclocation(json_data_component);
-    dclocation.setObj("Genova", 44.405650, 8.946256);
-    Serial.println(json_data_component);*/
-    
-    //create a Webview Data Component
-    /*DcWebview dcwebview(json_data_component);
-    dcwebview.setObj("http://www.google.it",true,dcwebview.viewSizeTypes[1]);
-    Serial.println(json_data_component);*/
+   Serial.println("\r************** communication ******************");
 
-    //create a channel reference Data Component
-    /*DcChReference dcchreference(json_data_component);
-    dcchreference.setObj("myChannelId");
-    Serial.println(json_data_component);*/
+    Serial.println("\rinit BucketLike");
+    BucketLike bucketlike;
+    bucketlike.set("bucketID");
+    Serial.println(bucketlike.getEPurl());
+    Serial.println(bucketlike.get());
     
-    //create a tunnel reference Data Component
-    /*DcTunnelReference dctunnelreference(json_data_component);
-    dctunnelreference.setObj("myTunnelId");
-    Serial.println(json_data_component);*/
+    Serial.println("\rinit BucketOpen");
+    BucketOpen bucketopen;
+    bucketopen.set("bucketID");
+    Serial.println(bucketopen.getEPurl());
+    Serial.println(bucketopen.get());
     
-    //create a new Form    
-    /*DcForm form(json_data_component,json_array);  
-    form.setObj(true,true,"submit text","refname");
-    form.addReceiver("*** receiverID ***",form.featureType[2]);
-    form.addFormComponents(json_form_component);
-    form.appendFormComponents();
-    Serial.println(json_data_component);*/
-
-    //*********************************************************************
+    Serial.println("\rinit BucketUnlike");
+    BucketUnlike bucketunlike;
+    bucketunlike.set("bucketID");
+    Serial.println(bucketunlike.getEPurl());
+    Serial.println(bucketunlike.get());
     
-    
-    //*************************** COMMUNICATION ***************************  
-
-    
-    //******* BUCKET *******
-    
-    //bucket open
-    /*BucketOpen bucketopen(json);
-    bucketopen.setObj("*** bucketId ***");
-    Serial.println(json);
-    Serial.println(bucketopen.getEPurl());*/
-    
-    //bucket update
-    /*BucketUpdate bucketupdate(json, json_array);
-    bucketupdate.setObj("*** bucketId ***","bucket Title","description","*** avatarId ***",true,false,true);
-    bucketupdate.addDataComponents(json_data_component);
+    Serial.println("\rinit BucketUpdate");
+    BucketUpdate bucketupdate;
+    bucketupdate.set("bucketID","title","description","avatar",true,false,true);
+    bucketupdate.addDataComponents(dcchreference.get());
+    bucketupdate.addDataComponents(dcchreference.get());
+    bucketupdate.addDataComponents(dcchreference.get());
     bucketupdate.appendDataComponents();
-    Serial.println(json);
-    Serial.println(bucketupdate.getEPurl());*/
+    Serial.println(bucketupdate.getEPurl());
+    Serial.println(bucketupdate.get());
     
-    //bucket like
-    /*BucketLike bucketlike(json);
-    bucketlike.setObj("*** bucketId ***");
-    Serial.println(json);
-    Serial.println(bucketlike.getEPurl());*/
-    
-    //bucket unlike
-    /*BucketUnlike bucketunlike(json);
-    bucketunlike.setObj("*** bucketId ***");
-    Serial.println(json);
-    Serial.println(bucketunlike.getEPurl());*/
-
-     
-    //******* CHANNEL *******
-    
-    //get my Channels
-    /*ChannelsMyGet channelsmyget(json);
-    channelsmyget.setObj(true,false,true);
-    Serial.println(json);
-    Serial.println(channelsmyget.getEPurl());*/
-    
-    //get Channel
-    /*ChannelGet channelget(json);
-    channelget.setObj("*** ownerId ***","*** editorId ***","*** channelId ***","title");
-    Serial.println(json);
-    Serial.println(channelget.getEPurl());*/
-    
-    //get Channel msgs
-    /*ChannelMessageGet channelmessageget(json);
-    channelmessageget.setObj("*** channelId ***","*** messageId ***",4);
-    Serial.println(json);
-    Serial.println(channelmessageget.getEPurl());*/
-    
-    //create channel
-    /*ChannelCreate channelcreate(json,json_array);
-    channelcreate.setObj("*** chTitle ***","*** avatarId ***",false,true);
-    channelcreate.addEditorsIds("*** editorId_1 ***");
-    channelcreate.addEditorsIds("*** editorId_2 ***");
+    Serial.println("\rinit ChannelCreate");
+    ChannelCreate channelcreate;
+    channelcreate.set("title","avatar",true,false);
+    channelcreate.addEditorsId("editorId1");
+    channelcreate.addEditorsId("editorId2");
+    channelcreate.addEditorsId("editorId3");
+    channelcreate.addEditorsId("editorId4");
     channelcreate.appendEditorsIds();
-    Serial.println(json);
-    Serial.println(channelcreate.getEPurl());*/
+    Serial.println(channelcreate.getEPurl());
+    Serial.println(channelcreate.get());
     
-    //send message to channel
-    /*ChannelMessageSend channelmessagesend(json);
-    channelmessagesend.setObj("*** channelId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(channelmessagesend.getEPurl());*/
+    Serial.println("\rinit ChannelGet");
+    ChannelGet channelget;
+    channelget.set("ownerId","editorId","channelId","title");
+    Serial.println(channelget.getEPurl());
+    Serial.println(channelget.get());
     
-    //channel subscribe
-    /*ChannelSubscribe channelsubscribe(json);
-    channelsubscribe.setObj("*** channelId ***");
-    Serial.println(json);
-    Serial.println(channelsubscribe.getEPurl());*/
+    Serial.println("\rinit ChannelMessageGet");
+    ChannelMessageGet channelmessageget;
+    channelmessageget.set("channelId","messageId",10);
+    Serial.println(channelmessageget.getEPurl());
+    Serial.println(channelmessageget.get());
     
-    //channel unsubscribe
-    /*ChannelUnsubscribe channelunsubscribe(json);
-    channelunsubscribe.setObj("*** channelId ***");
-    Serial.println(json);
-    Serial.println(channelunsubscribe.getEPurl());*/
-
+    Serial.println("\rinit ChannelMessageSend");
+    ChannelMessageSend channelmessagesend;
+    channelmessagesend.set("channelId",dcchreference.get());
+    Serial.println(channelmessagesend.getEPurl());
+    Serial.println(channelmessagesend.get());
     
-    //******* GROUPCHAT *******
+    Serial.println("\rinit ChannelMessageUpdate");
+    ChannelMessageUpdate channelmessageupdate;
+    channelmessageupdate.set("channelId",dcchreference.get());
+    Serial.println(channelmessageupdate.getEPurl());
+    Serial.println(channelmessageupdate.get());
     
-    //create groupchat
-    /*GroupchatCreate groupchatcreate(json,json_array);
-    groupchatcreate.setObj("*** groupchat Title ***");
-    groupchatcreate.addRecipientId("*** editorId_1 ***");
-    groupchatcreate.addRecipientId("*** editorId_2 ***");
+    Serial.println("\rinit ChannelSubscribe");
+    ChannelSubscribe channelmessagesubscribe;
+    channelmessagesubscribe.set("channelId");
+    Serial.println(channelmessagesubscribe.getEPurl());
+    Serial.println(channelmessagesubscribe.get());
+    
+    Serial.println("\rinit ChannelUnsubscribe");
+    ChannelUnsubscribe channelmessageunsubscribe;
+    channelmessageunsubscribe.set("channelId");
+    Serial.println(channelmessageunsubscribe.getEPurl());
+    Serial.println(channelmessageunsubscribe.get());
+    
+    Serial.println("\rinit ChannelsMyGet");
+    ChannelsMyGet channelsmyget;
+    channelsmyget.set(true,false,true);
+    Serial.println(channelsmyget.getEPurl());
+    Serial.println(channelsmyget.get());
+    
+    Serial.println("\rinit GroupchatCreate");
+    GroupchatCreate groupchatcreate;
+    groupchatcreate.set("title");
+    groupchatcreate.addRecipientId("RecipientId1");
+    groupchatcreate.addRecipientId("RecipientId2");
+    groupchatcreate.addRecipientId("RecipientId3");
+    groupchatcreate.addRecipientId("RecipientId4");
     groupchatcreate.appendRecipientIds();
-    Serial.println(json);
-    Serial.println(groupchatcreate.getEPurl());*/
-   
-    //get groupchats
-    /*GroupchatsGet groupchatsget(json,json_array);
-    groupchatsget.setObj();
-    Serial.println(json);
-    Serial.println(groupchatsget.getEPurl());*/
+    Serial.println(groupchatcreate.getEPurl());
+    Serial.println(groupchatcreate.get());
     
-    //get groupchat msgs
-    /*GroupchatMessageGet groupchatmessageget(json);
-    groupchatmessageget.setObj("*** groupchatlId ***","*** messageId ***",4);
-    Serial.println(json);
-    Serial.println(groupchatmessageget.getEPurl());*/
-
-    //groupchat invite
-    /*GroupchatInvite groupchatinvite(json,json_array);
-    groupchatinvite.setObj("*** groupchatId ***");
-    Serial.println(json);
-    Serial.println(groupchatinvite.getEPurl());*/
+    Serial.println("\rinit GroupchatInvite");
+    GroupchatInvite groupchatinvite;
+    groupchatinvite.set("groupChatId");
+    groupchatinvite.addRecipientId("RecipientId1");
+    groupchatinvite.addRecipientId("RecipientId2");
+    groupchatinvite.addRecipientId("RecipientId3");
+    groupchatinvite.addRecipientId("RecipientId4");
+    groupchatinvite.appendRecipientIds();
+    Serial.println(groupchatinvite.getEPurl());
+    Serial.println(groupchatinvite.get());
     
-    //send message to groupchat
-    /*GroupchatMessageSend groupchatmessagesend(json);
-    groupchatmessagesend.setObj("*** groupChatId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(groupchatmessagesend.getEPurl());*/
+    Serial.println("\rinit GroupchatMessageGet");
+    GroupchatMessageGet groupchatmessageget;
+    groupchatmessageget.set("groupChatId","messageId",10);
+    Serial.println(groupchatmessageget.getEPurl());
+    Serial.println(groupchatmessageget.get());
     
-    //send groupchat reaction
-    /*GroupchatReactionSend groupchatreactionsend(json);
-    groupchatreactionsend.setObj("*** messageId ***","*** reaction ***");
-    Serial.println(json);
-    Serial.println(groupchatreactionsend.getEPurl());*/
+    Serial.println("\rinit GroupchatMessageReply");
+    GroupchatMessageReply groupchatmessagereply;
+    groupchatmessagereply.set("messageId",dcchreference.get());
+    Serial.println(groupchatmessagereply.getEPurl());
+    Serial.println(groupchatmessagereply.get());
     
-    //remove groupchat reaction
-    /*GroupchatReactionRemove groupchatreactionremove(json);
-    groupchatreactionremove.setObj("*** messageId ***","*** reaction ***");
-    Serial.println(json);
-    Serial.println(groupchatreactionremove.getEPurl());*/
+    Serial.println("\rinit GroupchatMessageSend");
+    GroupchatMessageSend groupchatmessagesend;
+    groupchatmessagesend.set("groupChatId",dcchreference.get());
+    Serial.println(groupchatmessagesend.getEPurl());
+    Serial.println(groupchatmessagesend.get());
     
-    //reply groupchat message
-    /*GroupchatMessageReply groupchatmessagereply(json);
-    groupchatmessagereply.setObj("*** messageId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(groupchatmessagereply.getEPurl());*/
+    Serial.println("\rinit GroupchatMessageUpdate");
+    GroupchatMessageUpdate groupchatmessageupdate;
+    groupchatmessageupdate.set("messageId",dcchreference.get());
+    Serial.println(groupchatmessageupdate.getEPurl());
+    Serial.println(groupchatmessageupdate.get());
     
-    //update groupchat message
-    /*GroupchatMessageUpdate groupchatmessageupdate(json);
-    groupchatmessageupdate.setObj("*** messageId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(groupchatmessageupdate.getEPurl());*/
+    Serial.println("\rinit GroupchatReactionRemove");
+    GroupchatReactionRemove groupchatmessageremove;
+    groupchatmessageremove.set("messageId","reaction");
+    Serial.println(groupchatmessageremove.getEPurl());
+    Serial.println(groupchatmessageremove.get());
     
-
-    //******* PEER TO PEER *******
+    Serial.println("\rinit GroupchatReactionSend");
+    GroupchatReactionSend groupchatreactionsend;
+    groupchatreactionsend.set("messageId","reaction");
+    Serial.println(groupchatreactionsend.getEPurl());
+    Serial.println(groupchatreactionsend.get());
     
-    //get p2p message
-    /*P2pMessageGet p2pmessageget(json);
-    p2pmessageget.setObj("*** recipientId ***","*** messageId ***",4);
-    Serial.println(json);
-    Serial.println(p2pmessageget.getEPurl());*/
+    Serial.println("\rinit GroupchatsGet");
+    GroupchatsGet groupchatget;
+    groupchatget.addRecipientId("RecipientId1");
+    groupchatget.addRecipientId("RecipientId2");
+    groupchatget.addRecipientId("RecipientId3");
+    groupchatget.addRecipientId("RecipientId4");
+    groupchatget.appendRecipientIds();
+    Serial.println(groupchatget.getEPurl());
+    Serial.println(groupchatget.get());
     
-    //reply p2p message
-    /*P2pMessageReply p2pmessagereply(json);
-    p2pmessagereply.setObj("*** messageId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(p2pmessagereply.getEPurl());*/
+    Serial.println("\rinit P2pMessageGet");
+    P2pMessageGet p2pmessageget;
+    p2pmessageget.set("recipientId","messageId", 10);
+    Serial.println(p2pmessageget.getEPurl());
+    Serial.println(p2pmessageget.get());
     
-    //send p2p message
-    /*P2pMessageSend p2pmessagesend(json);
-    p2pmessagesend.setObj("*** recipientId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(p2pmessagesend.getEPurl());*/
+    Serial.println("\rinit P2pMessageSend");
+    P2pMessageSend p2pmessagesend;
+    p2pmessagesend.set("recipientId",dcchreference.get());
+    Serial.println(p2pmessagesend.getEPurl());
+    Serial.println(p2pmessagesend.get());
     
-    //update p2p message
-    /*P2pMessageUpdate p2pmessageupdate(json);
-    p2pmessageupdate.setObj("*** messageId ***",json_data_component);
-    Serial.println(json);
-    Serial.println(p2pmessageupdate.getEPurl());*/
+    Serial.println("\rinit P2pMessageReply");
+    P2pMessageReply p2pmessagereply;
+    p2pmessagereply.set("recipientId",dcchreference.get());
+    Serial.println(p2pmessagereply.getEPurl());
+    Serial.println(p2pmessagereply.get());
     
-    //remove p2p reaction
-    /*P2pReactionRemove p2preactionremove(json);
-    p2preactionremove.setObj("*** messageId ***","*** reaction ***");
-    Serial.println(json);
-    Serial.println(p2preactionremove.getEPurl());*/
+    Serial.println("\rinit P2pMessageUpdate");
+    P2pMessageUpdate p2pmessageupdate;
+    p2pmessageupdate.set("messageId",dcchreference.get());
+    Serial.println(p2pmessageupdate.getEPurl());
+    Serial.println(p2pmessageupdate.get());
     
-    //send p2p reaction
-    /*P2pReactionSend p2preactionsend(json);
-    p2preactionsend.setObj("*** messageId ***","*** reaction ***");
-    Serial.println(json);
-    Serial.println(p2preactionsend.getEPurl());*/
+    Serial.println("\rinit P2pReactionRemove");
+    P2pReactionRemove p2preactionremove;
+    p2preactionremove.set("messageId","reaction");
+    Serial.println(p2preactionremove.getEPurl());
+    Serial.println(p2preactionremove.get());
     
-    //p2p chat retrieves
-    /*P2p p2p;
-    Serial.println(p2p.getEPurl());*/
+    Serial.println("\rinit P2pReactionSend");
+    P2pReactionSend p2preactionsend;
+    p2preactionsend.set("messageId","reaction");
+    Serial.println(p2preactionsend.getEPurl());
+    Serial.println(p2preactionsend.get()); 
     
-    //p2p chat retrieves
-    /*WebsocketHeader websocketheader(json);
-    Serial.println(websocketheader.getRequest("*** requestId ***", "*** requestType ***", "*** body ***"));*/
-
-    
-    //********************************************************************* 
-    
-    //******************************* DEVICE ******************************  
-
-    //create a new device
-    /*char jdevice[500],jpins[500],jfunctions[500];
-    Device device(jdevice,jpins,jfunctions);
-    device.setObj("deviceN1");
-    device.addGPIO("pinA1", device.pinTypes[0], "portA", 14, 0);
-    device.addGPIO("pinB1", device.pinTypes[1], "portB", 1, 0);
-    device.addGPIO("pinB2", device.pinTypes[1], "portB", 2, 0);
+    Serial.println("\rinit Device");
+    Device device;
+    device.set("device1");
+    device.addGPIO("switch",device.pinTypes[1],"portb",1,0);
+    device.addGPIO("bulb",device.pinTypes[0],"portb",2,0);
     device.appendGPIOs();
-    device.addFunction("KitchenTemp", "AcqD0()");
+    device.addFunction("lamp","btn2lamp");
+    device.addFunction("rndlamp","rndlampctrl");
     device.appendFunctions();
-    Serial.println(jdevice);*/
-    
-    //*********************************************************************     
-    
+    Serial.println(device.get());
+    Serial.println("");
+}
+
+void setup() 
+{  
+    Serial.begin(115200);
+    while (!Serial);
+    delay(200);
+
+    smeJsonTest();
 }
 
 void loop() 

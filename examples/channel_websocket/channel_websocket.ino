@@ -40,9 +40,7 @@ bool singletone = false;
 bool wsConnected = false;
 bool WiFiConnected = false;
 
-
-char auth[120],jheader[400],wsHeader[400];
-Header header(auth,jheader,wsHeader);
+Header header;
 
 WiFiMulti WiFiMulti;
 const uint32_t connectTimeoutMs = 5000;
@@ -127,8 +125,7 @@ void loop()
 {
   JsonDocument doc;
   String response;
-  char json[1000], json_array[500], json_array2[500], json_form_component[500], json_data_component[1000],wscall[600];
-  WebsocketHeader websocketheader(wscall);  //create a new "WebsocketHeader" object and feed it with the pointer to the char-array that will contain the json
+  WebsocketHeader websocketheader;  //create a new "WebsocketHeader" object and feed it with the pointer to the char-array that will contain the json
 
   webSocket.loop();
   if(wsConnected==true && WiFiConnected==true)
@@ -140,10 +137,9 @@ void loop()
       //create a new channel
       //**********************************************
       
-      ChannelCreate channelcreate(json,json_array); //create a new "CreateChannel" object and feed it with the pointers to the char-arrays that will contain the json
-      channelcreate.setObj("New Channel","",false,true); //name="New Channel", avatar="", visible=false, locked=true
-      //Serial.println(webSocket.sendTXT(json,strlen(json),true));
-      webSocket.sendTXT(websocketheader.getRequest("reqId_1", communication_channel_create, json)); //embeds the "channelCreate" json into the "websocketheader" and send the message to the sme server (request id: "reqId_1")
+      ChannelCreate channelcreate; //create a new "CreateChannel" object and feed it with the pointers to the char-arrays that will contain the json
+      channelcreate.set("New Channel","",false,true); //name="New Channel", avatar="", visible=false, locked=true
+      webSocket.sendTXT(websocketheader.getRequest("reqId_1", communication_channel_create, channelcreate.get())); //embeds the "channelCreate" json into the "websocketheader" and send the message to the sme server (request id: "reqId_1")
     }
 
     //check if the channel as been created and the new ChannelId received
@@ -158,35 +154,34 @@ void loop()
       //**********************************************
       
       //create a new Form    
-      DcForm form(json_data_component,json_array); //create a new "DcForm" object and feed it with the pointers to the char-arrays that will contain the json 
-      form.setObj(false,false,"","refname"); //(submitEnabled=false, retainStatus=false, "", refName)
-      form.addReceiver(channelId,form.featureType[2]);  //(channelId, featureType="channel")
+      DcForm form; //create a new "DcForm" object and feed it with the pointers to the char-arrays that will contain the json 
+      form.set(channelId,form.featureType[2],false,false,"","refname"); //(channelId, featureType="channel",submitEnabled=false, retainStatus=false, "", refName)
       
       //create Label Form Component
-      FcLabel fclabel(json_form_component); //create a new "FcLabel" object and feed it with the pointers to the char-arrays that will contain the json
-      fclabel.setObj("Label","Example Form on a newly created Channel"); //(refname,title)
-      //Serial.println(json_form_component);
-      form.addFormComponents(json_form_component); //add the "fclabel" to the FormComponents of "form"
+      FcLabel fclabel; //create a new "FcLabel" object and feed it with the pointers to the char-arrays that will contain the json
+      fclabel.set("Label","Example Form on a newly created Channel"); //(refname,title)
+      //Serial.println(fclabel.get());
+      form.addFormComponents(fclabel.get()); //add the "fclabel" to the FormComponents of "form"
       
       //create a button list Form Component
-      FcButtonList fcbuttonlist(json_form_component,json_array2); //create a new "FcButtonList" object and feed it with the pointers to the char-arrays that will contain the json
-      fcbuttonlist.setObj("myButtonList","Button List",false,"buttonName",true); //(refname, title, required selection, value, vertList)
+      FcButtonList fcbuttonlist; //create a new "FcButtonList" object and feed it with the pointers to the char-arrays that will contain the json
+      fcbuttonlist.set("myButtonList","Button List",false,"buttonName",true); //(refname, title, required selection, value, vertList)
       fcbuttonlist.addOptions("button1","choice1"); //add the first button (name, value)  
       fcbuttonlist.addOptions("button2","choice2"); //add the second button (name, value)
       fcbuttonlist.appendOptions(); //append the buttons to the "fcbuttonlist"
-      //Serial.println(json_form_component);
-      form.addFormComponents(json_form_component); //add the "fcbuttonlist" to the FormComponents of "form"
+      //Serial.println(fcbuttonlist.get());
+      form.addFormComponents(fcbuttonlist.get()); //add the "fcbuttonlist" to the FormComponents of "form"
       
       form.appendFormComponents(); //append the "added" Form Components (fclabel and fcbuttonlist) to the "form"
-      //Serial.println(json_data_component);
+      //Serial.println(form.get());
       
       //send message to channel
-      ChannelMessageSend channelmessagesend(json); //create a new "ChannelMessageSend" object and feed it with the pointers to the char-array that will contain the json
-      channelmessagesend.setObj(channelId,json_data_component); //(channelId, dataComponent)
-      //Serial.println(json);
+      ChannelMessageSend channelmessagesend; //create a new "ChannelMessageSend" object and feed it with the pointers to the char-array that will contain the json
+      channelmessagesend.set(channelId,form.get()); //(channelId, dataComponent)
+      //Serial.println(channelmessagesend.get());
       //Serial.println(channelmessagesend.getEPurl());
       
-      webSocket.sendTXT(websocketheader.getRequest("reqId_2", communication_channel_message_send, json)); //embeds the "channelmessagesend" json into the "websocketheader" and send the message to the sme server (request id: "reqId_2")      
+      webSocket.sendTXT(websocketheader.getRequest("reqId_2", communication_channel_message_send, channelmessagesend.get())); //embeds the "channelmessagesend" json into the "websocketheader" and send the message to the sme server (request id: "reqId_2")      
     }
   }
 }
