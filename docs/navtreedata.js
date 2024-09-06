@@ -29,8 +29,9 @@ var NAVTREE =
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -42,7 +43,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "add__account__feed_8h_source.html",
-"class_p2p_reaction_remove.html#a8604a0275d56cb2870a8a28217c60e0d"
+"class_groupchat_message_update.html#ac80869ca3b27e0eb004b15c479612c5c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

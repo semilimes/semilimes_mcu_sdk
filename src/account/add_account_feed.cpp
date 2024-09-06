@@ -1,11 +1,11 @@
 #include "add_account_feed.h"
 
-/* Function: AddAccountFeed.setObj
+/* Function: AddAccountFeed.set
 
     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
     
     Prototype:
-        void AddAccountFeed::setObj(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
+        void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
     
     Parameters:
         title - sets the feed title
@@ -17,16 +17,18 @@
     Returns:
       
 */
-void AddAccountFeed::setObj(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction)
+void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonStr(*pjson,"description",description);
-    json_data.addPair2JsonStr(*pjson,"avatar",avatar);
-	json_data.addPair2JsonBool(*pjson,"visible",visible);
-	json_data.addPair2JsonBool(*pjson,"locked",locked);
-	json_data.addPair2JsonBool(*pjson,"enReactions",enReaction);
+    int size = headerSize+strlen(title)+strlen(description)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+json_data.boolStrSize(enReaction)+1; //add '\0' for null-termination
+    json = new char[size];
 
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonStr(json,"description",description);
+    json_data.addPair2JsonStr(json,"avatar",avatar);
+	json_data.addPair2JsonBool(json,"visible",visible);
+	json_data.addPair2JsonBool(json,"locked",locked);
+	json_data.addPair2JsonBool(json,"enReactions",enReaction);
 }
 
 /* Function: AddAccountFeed.addDataComponents
@@ -43,8 +45,20 @@ void AddAccountFeed::setObj(char* title,char* description,char* avatar,bool visi
         void
 */
 void AddAccountFeed::addDataComponents(char* data)
-{    
-   json_data.add2Json(*pjsonArray,data);
+{       
+    int size = headerArraySize+strlen(data)+1;
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,data);
 }
 
 /* Function: AddAccountFeed.appendDataComponents
@@ -60,6 +74,26 @@ void AddAccountFeed::addDataComponents(char* data)
         void
 */
 void AddAccountFeed::appendDataComponents()
-{
-	json_data.add2JsonArray(*pjson,"dataComponents",*pjsonArray);
+{    
+    int size = strlen(json)+strlen(jsonArray)+19;   //add ',"dataComponents":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"dataComponents",jsonArray);
 }
+
+/* Function: AddAccountFeed.get
+
+    return the json script
+
+    Prototype:
+        void AddAccountFeed::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* AddAccountFeed::get()
+{
+    return json;
+}
+

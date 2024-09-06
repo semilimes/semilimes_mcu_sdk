@@ -1,24 +1,5 @@
 #include "dc_contact.h"
 
-/* Function: DcContact.setObj
-
-   A message that references one or more account Ids to be added as contacts
-
-   Prototype:
-      void DcContact::setObj();
-
-   Parameters:
-
-   Returns:
-      void
-*/
-void DcContact::setObj()
-{
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","contact");
-}
-
 /* Function: DcContact.addContactIds
 
    Add a contact Id to the array
@@ -33,23 +14,54 @@ void DcContact::setObj()
       void
 */
 void DcContact::addContactIds(char* contactIds)
-{    
-   json_data.add2JsonStr(*pjsonArray,contactIds);
+{       
+    int size = headerArraySize+strlen(contactIds)+1;
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size+1];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,contactIds);
 }
 
-/* Function: DcContact.appendDataContactIds
+/* Function: DcContact.appendContactIds
 
    Append the contact Id array to the json message 
 
    Prototype:
-      void DcContact::appendDataContactIds();
+      void DcContact::appendContactIds();
 
    Parameters:
 
    Returns:
       void
 */
-void DcContact::appendDataContactIds()
+void DcContact::appendContactIds()
 {
-	json_data.add2JsonArray(*pjson,"contactIds",*pjsonArray);
+   int size = strlen(json)+strlen(jsonArray)+15;   //add ',"contactIds":' and '\0'
+   json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"contactIds",jsonArray);
+}
+
+/* Function: DcContact.get
+
+    return the json script
+
+    Prototype:
+        void DcContact::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* DcContact::get()
+{
+    return json;
 }

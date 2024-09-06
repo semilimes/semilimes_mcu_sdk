@@ -1,11 +1,11 @@
 #include "p2p_message_update.h"
 
-/* Function: P2pMessageUpdate.setObj
+/* Function: P2pMessageUpdate.set
 
     This endpoint allows to update a specific message published in a p2p chat.
 
     Prototype:
-        void setObj(char* messageId, char* dataComponent);
+        void set(char* messageId, char* dataComponent);
 
     Parameters:
         messageId - is the unique Id to reference an existing p2p chat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void P2pMessageUpdate::setObj(char* messageId, char* dataComponent)
+void P2pMessageUpdate::set(char* messageId, char* dataComponent)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2Json(*pjson,"dataComponent",dataComponent);
+    int size = headerSize+strlen(messageId)+strlen(dataComponent)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2Json(json,"dataComponent",dataComponent);
 }
 
 /* Function: P2pMessageUpdate.getEPurl
@@ -36,4 +39,21 @@ void P2pMessageUpdate::setObj(char* messageId, char* dataComponent)
 char* P2pMessageUpdate::getEPurl()
 {
     return httpsUrl communication_p2p_message_update;
+}
+
+/* Function: P2pMessageUpdate.get
+
+    return the json script
+
+    Prototype:
+        void P2pMessageUpdate::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* P2pMessageUpdate::get()
+{
+    return json;
 }

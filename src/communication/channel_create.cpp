@@ -1,11 +1,11 @@
 #include "channel_create.h"
 
-/* Function: ChannelCreate.setObj
+/* Function: ChannelCreate.set
 
     This endpoint allows to create a new channel and set the initial editors. The role of the current accountId will be automatically set to editor.
 
     Prototype:
-        void setObj(char* title,char* avatar,bool visible,bool locked);
+        void set(char* title,char* avatar,bool visible,bool locked);
 
     Parameters:
         title - sets the channel title
@@ -16,21 +16,24 @@
     Returns:
         void
 */
-void ChannelCreate::setObj(char* title,char* avatar,bool visible,bool locked)
+void ChannelCreate::set(char* title,char* avatar,bool visible,bool locked)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonStr(*pjson,"avatar",avatar);
-	json_data.addPair2JsonBool(*pjson,"visible",visible);
-	json_data.addPair2JsonBool(*pjson,"locked",locked);
+    int size = headerSize+strlen(title)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+1;//add '\0' for null-termination
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonStr(json,"avatar",avatar);
+	json_data.addPair2JsonBool(json,"visible",visible);
+	json_data.addPair2JsonBool(json,"locked",locked);
 }
 
-/* Function: ChannelCreate.addEditorsIds
+/* Function: ChannelCreate.addEditorsId
 
     Append the selected editorId
 
     Prototype:
-        void addEditorsIds(char* data);
+        void addEditorsId(char* data);
 
     Parameters:
         data - the id of the editor to add
@@ -38,9 +41,21 @@ void ChannelCreate::setObj(char* title,char* avatar,bool visible,bool locked)
     Returns:
         void
 */
-void ChannelCreate::addEditorsIds(char* data)
-{    
-   json_data.add2JsonStr(*pjsonArray,data);
+void ChannelCreate::addEditorsId(char* data)
+{  
+    int size = headerArraySize+strlen(data)+3; //add '\0' and \"\" 
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2JsonStr(jsonArray,data);
 }
 
 /* Function: ChannelCreate.appendEditorsIds
@@ -57,7 +72,9 @@ void ChannelCreate::addEditorsIds(char* data)
 */
 void ChannelCreate::appendEditorsIds()
 {
-	json_data.add2JsonArray(*pjson,"editorIds",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+14;   //add ',"editorIds":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"editorIds",jsonArray);
 }
 
 /* Function: ChannelCreate.getEPurl
@@ -76,3 +93,21 @@ char* ChannelCreate::getEPurl()
 {
     return httpsUrl communication_channel_create;
 }
+
+/* Function: ChannelCreate.get
+
+    return the json script
+
+    Prototype:
+        void ChannelCreate::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* ChannelCreate::get()
+{
+    return json;
+}
+

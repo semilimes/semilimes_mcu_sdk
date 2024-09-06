@@ -107,14 +107,16 @@ $(function(){initNavTree('class_dc_location.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a345c0530be41947599cba14f20e3ef86" id="r_a345c0530be41947599cba14f20e3ef86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345c0530be41947599cba14f20e3ef86">DcLocation</a> (char *json)</td></tr>
-<tr class="separator:a345c0530be41947599cba14f20e3ef86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7b7ceb89d95f755ef804a3b5bcd6d70" id="r_aa7b7ceb89d95f755ef804a3b5bcd6d70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7b7ceb89d95f755ef804a3b5bcd6d70">setObj</a> (char *locationName, float latitude, float longitude)</td></tr>
-<tr class="separator:aa7b7ceb89d95f755ef804a3b5bcd6d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1756034db845fed7393ac40292c317a" id="r_aa1756034db845fed7393ac40292c317a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1756034db845fed7393ac40292c317a">~DcLocation</a> ()</td></tr>
+<tr class="separator:aa1756034db845fed7393ac40292c317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84e60555927374a1c786d9b286b0e04c" id="r_a84e60555927374a1c786d9b286b0e04c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84e60555927374a1c786d9b286b0e04c">set</a> (char *locationName, float latitude, float longitude)</td></tr>
+<tr class="separator:a84e60555927374a1c786d9b286b0e04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a5dd6912d747d59e78b64bed8eb4bd" id="r_aa7a5dd6912d747d59e78b64bed8eb4bd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7a5dd6912d747d59e78b64bed8eb4bd">get</a> ()</td></tr>
+<tr class="separator:aa7a5dd6912d747d59e78b64bed8eb4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a345c0530be41947599cba14f20e3ef86" name="a345c0530be41947599cba14f20e3ef86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a345c0530be41947599cba14f20e3ef86">&#9670;&#160;</a></span>DcLocation()</h2>
+<a id="aa1756034db845fed7393ac40292c317a" name="aa1756034db845fed7393ac40292c317a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1756034db845fed7393ac40292c317a">&#9670;&#160;</a></span>~DcLocation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,9 +125,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">DcLocation::DcLocation </td>
+          <td class="memname">DcLocation::~DcLocation </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -135,25 +137,37 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>- it is the char array that will contain the whole json script</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa7b7ceb89d95f755ef804a3b5bcd6d70" name="aa7b7ceb89d95f755ef804a3b5bcd6d70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7b7ceb89d95f755ef804a3b5bcd6d70">&#9670;&#160;</a></span>setObj()</h2>
+<a id="aa7a5dd6912d747d59e78b64bed8eb4bd" name="aa7a5dd6912d747d59e78b64bed8eb4bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7a5dd6912d747d59e78b64bed8eb4bd">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DcLocation::setObj </td>
+          <td class="memname">char * DcLocation::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
+<a id="a84e60555927374a1c786d9b286b0e04c" name="a84e60555927374a1c786d9b286b0e04c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84e60555927374a1c786d9b286b0e04c">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DcLocation::set </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>locationName</em></span>, </td>
         </tr>

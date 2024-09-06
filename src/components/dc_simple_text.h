@@ -6,41 +6,54 @@
 class DcSimpleText
 {
 private:
+    #define headerSize 38
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: DcSimpleText
+// Function: ~DcSimpleText
 
-//     A simple text message
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcSimpleText(char* json);
+//         ~DcSimpleText()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcSimpleText(char* json)
+    ~DcSimpleText()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: DcSimpleText.setObj
+// Function: DcSimpleText.set
 
 //     A simple text message
 
 //     Prototype:
-//         void DcSimpleText::setObj(char* text);
+//         void DcSimpleText::set(char* text);
 
 //     Parameters:
 ///@param         text - the content of the text message
 
 //     Returns:
 ///@return         void
-    void setObj(char* text);
+    void set(char* text);
+    
+// Function: DcSimpleText.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcSimpleText::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

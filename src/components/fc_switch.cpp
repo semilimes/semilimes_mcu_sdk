@@ -1,11 +1,11 @@
 #include "fc_switch.h"
 
-/* Function: FcSwitch.setObj
+/* Function: FcSwitch.set
 
     An on/off switch
 
     Prototype:
-        void FcSwitch::setObj(char* refname,char* title,bool value);
+        void FcSwitch::set(char* refname,char* title,bool value);
 
     Parameters:
         refname - it is the reference name of the object
@@ -15,11 +15,31 @@
     Returns:
         void
 */
-void FcSwitch::setObj(char* refname,char* title,bool value)
+void FcSwitch::set(char* refname,char* title,bool value)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson, "formComponentType","switch");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"value",value);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(value)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json, "formComponentType","switch");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"value",value);
+}
+
+/* Function: FcSwitch.get
+
+    return the json script
+
+    Prototype:
+        void FcSwitch::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcSwitch::get()
+{
+    return json;
 }

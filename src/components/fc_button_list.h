@@ -6,39 +6,38 @@
 class FcButtonList
 {
 private:
+    #define headerSize 106
+    #define headerArraySize 24
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
-// Function: FcSingleChoice
+// Function: ~FcButtonList
 
-//     A group of user-clickable buttons with a label
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcMultipleChoice(char* json, char* jsonArray);
+//         ~FcButtonList()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the Options 
 
 //     Returns:
 ///@return         void
-    FcButtonList(char* json, char* jsonArray)
+    ~FcButtonList()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"formComponentType","buttonlist");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
 
-// Function: FcButtonList.setObj
+// Function: FcButtonList.set
 
 //     Initialize a group of user-clickable buttons with a label
 
 //     Prototype:
-//         void FcButtonList::setObj(char* refname,char* title,bool reqSel,char* value,bool vertList);
+//         void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList);
 
 //     Parameters:
 ///@param         refname - is the reference name of the button list
@@ -49,7 +48,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel,char* value,bool vertList);
+    void set(char* refname,char* title,bool reqSel,char* value,bool vertList);
 
 // Function: FcButtonList.addOptions
 
@@ -78,6 +77,19 @@ public:
 //     Returns:
 ///@return         void
     void appendOptions();
+    
+// Function: FcButtonList.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcButtonList::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -6,40 +6,43 @@
 class FcBucketPicker
 {
 private:
+    #define headerSize 134
+    #define headerArraySize 28
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
-// Function: FcBucketPicker
+// variable: FcBucketPicker.featureTypes
 
-//     A picker allowing to select and reference buckets
+//     describes the type of the feature
+///@param        char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"};
+    char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"};
+// Function: ~FcBucketPicker
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcBucketPicker(char* json);
+//         ~FcBucketPicker()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the Values 
 
 //     Returns:
 ///@return         void
-    FcBucketPicker(char* json, char* jsonArray)
+    ~FcBucketPicker()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"formComponentType","bucketpicker");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
-    char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"};
 
-// Function: FcBucketPicker.setObj
+// Function: FcBucketPicker.set
 
 //     A picker allowing to select and reference buckets
 
 //     Prototype:
-//         void FcBucketPicker::setObj(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
+//         void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -51,7 +54,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
+    void set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
 
 // Function: FcBucketPicker.addValue
 
@@ -61,11 +64,12 @@ public:
 //         void FcBucketPicker::addValue(char* value);
 
 //     Parameters:
-///@param         value - It can be of the following types: char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"}; 
+///@param         id - it is the id of the bucket
+///@param         featuretype - It can be of the following types: char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"}; 
 
 //     Returns:
 ///@return         void
-    void addValue(char* value);
+    void addValue(char* id, char* featuretype);
 
 // Function: FcBucketPicker.appendValue
 
@@ -79,6 +83,20 @@ public:
 //     Returns:
 ///@return         void
     void appendValue();
+    
+
+// Function: FcBucketPicker.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcBucketPicker::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -6,34 +6,34 @@
 class P2pMessageReply
 {
 private:
+    #define headerSize 33
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: P2pMessageReply
+// Function: ~P2pMessageReply
 
-//     This endpoint allows the account to reply to a specific message with a simple text.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void P2pMessageReply(char* json);
+//         ~P2pMessageReply()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    P2pMessageReply(char* json)
+    ~P2pMessageReply()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: P2pMessageReply.setObj
+// Function: P2pMessageReply.set
 
 //     This endpoint allows the account to reply to a specific message with a simple text.
 
 //     Prototype:
-//         void setObj(char* messageId, char* dataComponent);
+//         void set(char* messageId, char* dataComponent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing p2p chat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* messageId, char* dataComponent);
+    void set(char* messageId, char* dataComponent);
 
 // Function: P2pMessageReply.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pMessageReply.get
+
+//     return the json script
+
+//     Prototype:
+//         void P2pMessageReply::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

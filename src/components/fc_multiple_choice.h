@@ -6,42 +6,42 @@
 class FcMultipleChoice
 {
 private:
+    #define headerSize 80
+    #define headerArraySize 24
+    #define headerArray2Size 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
-    char** pjsonArray2;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
+    char* jsonArray2 = nullptr;
     
 public:
-// Function: FcMultipleChoice
+// Function: ~FcMultipleChoice
 
-//     A component displaying a list of options and allowing multiple choice
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcMultipleChoice(char* json, char* jsonArray, char* jsonArray2);
+//         ~FcMultipleChoice()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the Options 
-///@param         jsonArray2 - it is a temporary char array that will contain the Values
 
 //     Returns:
 ///@return         void
-    FcMultipleChoice(char* json, char* jsonArray, char* jsonArray2)
+    ~FcMultipleChoice()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        pjsonArray2 = &jsonArray2;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.initJsonArray(*pjsonArray2);
+        delete[] json;
+        delete[] jsonArray;
+        delete[] jsonArray2;
+        json = nullptr;
+        jsonArray = nullptr;
+        jsonArray2 = nullptr;
     }
 
-// Function: FcMultipleChoice.setObj
+// Function: FcMultipleChoice.set
 
 //     Init the component that display a list of options and allowing multiple choice
 
 //     Prototype:
-//         void FcMultipleChoice::setObj(char* refname,char* title,bool reqSel);
+//         void FcMultipleChoice::set(char* refname,char* title,bool reqSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -50,7 +50,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel);
+    void set(char* refname,char* title,bool reqSel);
 
 // Function: FcMultipleChoice.addOptions
 
@@ -80,19 +80,19 @@ public:
 ///@return         void
     void appendOptions();
 
-// Function: FcMultipleChoice.addValues
+// Function: FcMultipleChoice.addValue
 
 //     add an array of the names of the choices 
 
 //     Prototype:
-//         void FcMultipleChoice::addValues(char* value);
+//         void FcMultipleChoice::addValue(char* value);
 
 //     Parameters:
 ///@param         value - is an array containing the names of the choices that are selected on submission: {"name" : "choice1","value": "Choice 1"}
 
 //     Returns:
 ///@return         void
-    void addValues(char* value);
+    void addValue(char* value);
 
 
 // Function: FcMultipleChoice.appendValues
@@ -107,6 +107,20 @@ public:
 //     Returns:
 ///@return         void
     void appendValues();
+    
+
+// Function: FcMultipleChoice.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcMultipleChoice::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

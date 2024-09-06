@@ -1,11 +1,11 @@
 #include "fc_label.h"
 
-/* Function: FcLabel.setObj
+/* Function: FcLabel.set
 
     A simple read-only label
 
     Prototype:
-        void FcLabel::setObj(char* refname,char* title);
+        void FcLabel::set(char* refname,char* title);
 
     Parameters:
         refname - it is the reference name of the object
@@ -14,10 +14,29 @@
     Returns:
         void
 */
-void FcLabel::setObj(char* refname,char* title)
+void FcLabel::set(char* refname,char* title)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","label");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
+    int size = headerSize+strlen(refname)+strlen(title)+1;
+    json = new char[size];
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","label");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+}
+
+/* Function: FcLabel.get
+
+    return the json script
+    
+    Prototype:
+        void FcLabel::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcLabel::get()
+{
+    return json;
 }

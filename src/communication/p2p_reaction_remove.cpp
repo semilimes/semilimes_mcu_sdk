@@ -1,11 +1,11 @@
 #include "p2p_reaction_remove.h"
 
-/* Function: P2pReactionRemove.setObj
+/* Function: P2pReactionRemove.set
 
     This endpoint allows the account to remove a reaction from a specific message in a p2p Chat.
 
     Prototype:
-        void setObj(char* messageId, char* reaction);
+        void set(char* messageId, char* reaction);
 
     Parameters:
         messageId - is the unique Id to reference an existing p2p chat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void P2pReactionRemove::setObj(char* messageId, char* reaction)
+void P2pReactionRemove::set(char* messageId, char* reaction)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2Json(*pjson,"reaction",reaction);
+    int size = headerSize+strlen(messageId)+strlen(reaction)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2JsonStr(json,"reaction",reaction);
 }
 
 /* Function: P2pReactionRemove.getEPurl
@@ -36,4 +39,21 @@ void P2pReactionRemove::setObj(char* messageId, char* reaction)
 char* P2pReactionRemove::getEPurl()
 {
     return httpsUrl communication_p2p_message_reaction_remove;
+}
+
+/* Function: P2pReactionRemove.get
+
+    return the json script
+
+    Prototype:
+        void P2pReactionRemove::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* P2pReactionRemove::get()
+{
+    return json;
 }

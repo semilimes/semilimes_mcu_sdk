@@ -107,18 +107,20 @@ $(function(){initNavTree('class_fc_button_list.html',''); initResizable(true); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3e9d84b222e9fb4144b366525ba8dbfa" id="r_a3e9d84b222e9fb4144b366525ba8dbfa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e9d84b222e9fb4144b366525ba8dbfa">FcButtonList</a> (char *json, char *jsonArray)</td></tr>
-<tr class="separator:a3e9d84b222e9fb4144b366525ba8dbfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cbcdb8f874f117aa658c29e5d97a20e" id="r_a2cbcdb8f874f117aa658c29e5d97a20e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cbcdb8f874f117aa658c29e5d97a20e">setObj</a> (char *refname, char *title, bool reqSel, char *value, bool vertList)</td></tr>
-<tr class="separator:a2cbcdb8f874f117aa658c29e5d97a20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae82ca5422fc3bfa607b7912906c023a6" id="r_ae82ca5422fc3bfa607b7912906c023a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae82ca5422fc3bfa607b7912906c023a6">~FcButtonList</a> ()</td></tr>
+<tr class="separator:ae82ca5422fc3bfa607b7912906c023a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53c15fd0b63c00c49f598e8e7153f01a" id="r_a53c15fd0b63c00c49f598e8e7153f01a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53c15fd0b63c00c49f598e8e7153f01a">set</a> (char *refname, char *title, bool reqSel, char *value, bool vertList)</td></tr>
+<tr class="separator:a53c15fd0b63c00c49f598e8e7153f01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6981602898a5fc9931700c8dbd65fa1" id="r_aa6981602898a5fc9931700c8dbd65fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6981602898a5fc9931700c8dbd65fa1">addOptions</a> (char *name, char *value)</td></tr>
 <tr class="separator:aa6981602898a5fc9931700c8dbd65fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a032ac9301b502f07639715dde86c91af" id="r_a032ac9301b502f07639715dde86c91af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a032ac9301b502f07639715dde86c91af">appendOptions</a> ()</td></tr>
 <tr class="separator:a032ac9301b502f07639715dde86c91af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa2c49ec759814235672cc4d76205b61" id="r_afa2c49ec759814235672cc4d76205b61"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa2c49ec759814235672cc4d76205b61">get</a> ()</td></tr>
+<tr class="separator:afa2c49ec759814235672cc4d76205b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3e9d84b222e9fb4144b366525ba8dbfa" name="a3e9d84b222e9fb4144b366525ba8dbfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e9d84b222e9fb4144b366525ba8dbfa">&#9670;&#160;</a></span>FcButtonList()</h2>
+<a id="ae82ca5422fc3bfa607b7912906c023a6" name="ae82ca5422fc3bfa607b7912906c023a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae82ca5422fc3bfa607b7912906c023a6">&#9670;&#160;</a></span>~FcButtonList()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,14 +129,10 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FcButtonList::FcButtonList </td>
+          <td class="memname">FcButtonList::~FcButtonList </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>json</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>jsonArray</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -143,14 +141,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>- it is the char array that will contain the whole json script <br  />
-</td></tr>
-    <tr><td class="paramname">jsonArray</td><td>- it is a temporary char array that will contain the Options</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -203,14 +193,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2cbcdb8f874f117aa658c29e5d97a20e" name="a2cbcdb8f874f117aa658c29e5d97a20e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cbcdb8f874f117aa658c29e5d97a20e">&#9670;&#160;</a></span>setObj()</h2>
+<a id="afa2c49ec759814235672cc4d76205b61" name="afa2c49ec759814235672cc4d76205b61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa2c49ec759814235672cc4d76205b61">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void FcButtonList::setObj </td>
+          <td class="memname">char * FcButtonList::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
+<a id="a53c15fd0b63c00c49f598e8e7153f01a" name="a53c15fd0b63c00c49f598e8e7153f01a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53c15fd0b63c00c49f598e8e7153f01a">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FcButtonList::set </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refname</em></span>, </td>
         </tr>

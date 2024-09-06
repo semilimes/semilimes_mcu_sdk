@@ -1,11 +1,11 @@
 #include "channel_message_update.h"
 
-/* Function: ChannelMessageUpdate.setObj
+/* Function: ChannelMessageUpdate.set
 
     This endpoint allows to update a specific message published in a channel.
 
     Prototype:
-        void setObj(char* messageId, char* dataComponent);
+        void set(char* messageId, char* dataComponent);
 
     Parameters:
         messageId - is the unique Id to reference an existing groupChat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void ChannelMessageUpdate::setObj(char* messageId, char* dataComponent)
+void ChannelMessageUpdate::set(char* messageId, char* dataComponent)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2Json(*pjson,"dataComponent",dataComponent);
+    int size = headerSize+strlen(messageId)+strlen(dataComponent)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2Json(json,"dataComponent",dataComponent);
 }
 
 /* Function: ChannelMessageUpdate.getEPurl
@@ -36,4 +39,21 @@ void ChannelMessageUpdate::setObj(char* messageId, char* dataComponent)
 char* ChannelMessageUpdate::getEPurl()
 {
     return httpsUrl communication_channel_update;
+}
+
+/* Function: ChannelMessageUpdate.get
+
+    return the json script
+
+    Prototype:
+        void ChannelMessageUpdate::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* ChannelMessageUpdate::get()
+{
+    return json;
 }

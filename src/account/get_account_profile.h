@@ -6,34 +6,34 @@
 class GetAccountProfile
 {
 private:
+    #define headerSize 16
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: GetAccountProfile
+// Function: ~GetAccountProfile
 
-//     Gets the account profile's configuration and content.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GetAccountProfile(char* json);
+//         ~GetAccountProfile()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GetAccountProfile(char* json)
+    ~GetAccountProfile()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GetMyAccount.setObj
+// Function: GetAccountProfile.set
 
 //     Gets the account profile's configuration and content.
 
 //     Prototype:
-//         void GetAccountProfile::setObj(char* accountId);
+//         void GetAccountProfile::set(char* accountId);
 
 //     Parameters:
 ///@param         accountId - the account id of which show configuration and content
@@ -42,7 +42,20 @@ public:
 ///@returns         void
       
 
-    void setObj(char* accountId);
+    void set(char* accountId);
+
+// Function: GetAccountProfile.get
+
+//     return the json script
+
+//     Prototype:
+//         void GetAccountProfile::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -1,6 +1,5 @@
 var class_header =
 [
-    [ "Header", "class_header.html#add0fd5b2f821900adcac612c41d99aad", null ],
     [ "getAccept", "class_header.html#a8434d42dddd898f1ebfd7d41049a2665", null ],
     [ "getAuthorization", "class_header.html#a0cbf1d8b3935f51f73f1c7e9130b4538", null ],
     [ "getContentType", "class_header.html#a15270f1b7fe6f72765434cbf1f17b8bd", null ],

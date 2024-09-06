@@ -6,34 +6,34 @@
 class FcLocationPicker
 {
 private:
+    #define headerSize 140
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcLocationPicker
+// Function: ~FcLocationPicker
 
-//     A picker showing a map where to choose a location or address
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcLocationPicker(char* json);
+//         ~FcLocationPicker()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcLocationPicker(char* json)
+    ~FcLocationPicker()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcLocationPicker.setObj
+// Function: FcLocationPicker.set
 
 //     A picker showing a map where to choose a location or address
 
 //     Prototype:
-//         void FcLocationPicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+//         void FcLocationPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -45,7 +45,19 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+// Function: FcLocationPicker.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcLocationPicker::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

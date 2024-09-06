@@ -1,11 +1,11 @@
 #include "channel_message_send.h"
 
-/* Function: ChannelMessageSend.setObj
+/* Function: ChannelMessageSend.set
 
     This endpoint allows to send a data component to a Channel as a new message.
 
     Prototype:
-        void setObj(char* messageId, char* dataComponent);
+        void set(char* messageId, char* dataComponent);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void ChannelMessageSend::setObj(char* channelId, char* dataComponent)
+void ChannelMessageSend::set(char* channelId, char* dataComponent)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"channelId",channelId);
-    json_data.addPair2Json(*pjson,"dataComponent",dataComponent);
+    int size = headerSize+strlen(channelId)+strlen(dataComponent)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"channelId",channelId);
+    json_data.addPair2Json(json,"dataComponent",dataComponent);
 }
 
 /* Function: ChannelMessageSend.getEPurl
@@ -36,4 +39,21 @@ void ChannelMessageSend::setObj(char* channelId, char* dataComponent)
 char* ChannelMessageSend::getEPurl()
 {
     return httpsUrl communication_channel_message_send;
+}
+
+/* Function: ChannelMessageSend.get
+
+    return the json script
+
+    Prototype:
+        void ChannelMessageSend::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* ChannelMessageSend::get()
+{
+    return json;
 }

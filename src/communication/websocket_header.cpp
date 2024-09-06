@@ -17,10 +17,13 @@
 */
 char* WebsocketHeader::getRequest(char* requestId, char* requestType, char* body)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"requestId",requestId);
-    json_data.addPair2JsonStr(*pjson,"requestType",requestType);
-    json_data.addPair2JsonStr(*pjson,"version","2");
-    json_data.addPair2Json(*pjson,"body",body);
-    return *pjson;
+    int size = headerSize+strlen(requestId)+strlen(requestType)+strlen(body)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"requestId",requestId);
+    json_data.addPair2JsonStr(json,"requestType",requestType);
+    json_data.addPair2JsonStr(json,"version","2");
+    json_data.addPair2Json(json,"body",body);
+    return json;
 }

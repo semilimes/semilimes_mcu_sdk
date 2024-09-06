@@ -6,34 +6,34 @@
 class GroupchatMessageReply
 {
 private:
+    #define headerSize 33
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: GroupchatMessageReply
+// Function: ~GroupchatMessageReply
 
-//     This endpoint allows the account to reply to a specific message with a simple text.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GroupchatMessageReply(char* json);
+//         ~GroupchatMessageReply()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GroupchatMessageReply(char* json)
+    ~GroupchatMessageReply()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GroupchatMessageReply.setObj
+// Function: GroupchatMessageReply.set
 
 //     This endpoint allows the account to reply to a specific message with a simple text.
 
 //     Prototype:
-//         void setObj(char* messageId, char* dataComponent);
+//         void set(char* messageId, char* dataComponent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing groupChat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* messageId, char* dataComponent);
+    void set(char* messageId, char* dataComponent);
 
 // Function: GroupchatMessageReply.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageReply.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatMessageReply::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

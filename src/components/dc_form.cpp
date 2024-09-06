@@ -1,13 +1,15 @@
 #include "dc_form.h"
 
-/* Function: DcForm.setObj
+/* Function: DcForm.set
 
    A form message is a complex data component which can be arbitrarily structured using available form components
 
    Prototype:
-      void DcForm::setObj(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
+      void DcForm::set(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
 
    Parameters:
+        id - the receiver Id to add
+        featureType - the type of the receiver: char* featureType[3][10] = {"contact","groupchat","channel"}
         submitEnabled - enables the Submit button to be pressed before the form is actually submitted. Otherwise, the form will be submitted each time a user fills in/change values of a form component.
         retainStatus - enables the form to maintain the last submitted values when the use case requires many users to operate the same form
         submitText - is the text to be displayed in the Submit button of the form
@@ -15,35 +17,25 @@
    Returns:
       void
 */
-void DcForm::setObj(bool submitEnabled, bool retainStatus, char* submitText, char* refName)
+void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"dataComponentType","form");
-    json_data.addPair2JsonBool(*pjson,"submitEnabled",submitEnabled);
-    json_data.addPair2JsonBool(*pjson,"retainStatus",retainStatus);
-    json_data.addPair2JsonStr(*pjson,"submitText",submitText);
-    json_data.addPair2JsonStr(*pjson,"refName",refName);
-}
+   int size = 27+strlen(recId)+strlen(recFeatureType)+1;//add '{"id":"","featureType":""}\0' with null-termination
+   char* recjson = new char[size]; 
 
-/* Function: DcForm.addReceiver
+   json_data.initJson(recjson);
+   json_data.addPair2JsonStr(recjson,"id",recId);
+   json_data.addPair2JsonStr(recjson,"featureType",recFeatureType);
 
-   Add a receiver Id to the array
+   size += headerSize+json_data.boolStrSize(submitEnabled)+json_data.boolStrSize(retainStatus)+strlen(submitText)+strlen(refName)+13; //add ',"receiver":' and '\0' for null-termination
+   json = new char[size]; 
 
-   Prototype:
-      void DcForm::addReceiver(char* id, char* featureType);
-
-   Parameters:
-        id - the receiver Id to add
-        featureType - the type of the receiver: char* featureType[3][10] = {"contact","groupchat","channel"}
-   Returns:
-      void
-*/
-void DcForm::addReceiver(char* id, char* featureType)
-{  
-    char temp[200]="{}\0";
-    json_data.addPair2JsonStr(temp,"id",id);
-    json_data.addPair2JsonStr(temp,"featureType",featureType);
-    json_data.addPair2Json(*pjson,"receiver",temp);
+   json_data.initJson(json);
+   json_data.addPair2JsonStr(json,"dataComponentType","form");
+   json_data.addPair2JsonBool(json,"submitEnabled",submitEnabled);
+   json_data.addPair2JsonBool(json,"retainStatus",retainStatus);
+   json_data.addPair2JsonStr(json,"submitText",submitText);
+   json_data.addPair2Json(json,"receiver",recjson);
+   json_data.addPair2JsonStr(json,"refName",refName);    
 }
 
 /* Function: DcForm.addFormComponents
@@ -61,7 +53,19 @@ void DcForm::addReceiver(char* id, char* featureType)
 */
 void DcForm::addFormComponents(char* component)
 {    
-    json_data.add2Json(*pjsonArray,component);
+    int size = headerArraySize+strlen(component)+1;
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,component);
 }
 
 /* Function: DcForm.appendFormComponents
@@ -78,5 +82,24 @@ void DcForm::addFormComponents(char* component)
 */
 void DcForm::appendFormComponents()
 {
-	json_data.add2JsonArray(*pjson,"formComponents",*pjsonArray);
+   int size = strlen(json)+strlen(jsonArray)+19;   //add ',"formComponents":' and '\0'
+   json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"formComponents",jsonArray);
+}
+
+/* Function: DcForm.get
+
+    return the json script
+
+    Prototype:
+        void DcForm::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* DcForm::get()
+{
+    return json;
 }

@@ -1,5 +1,6 @@
 var class_dc_html_text =
 [
-    [ "DcHtmlText", "class_dc_html_text.html#a39f2cf0487cddd1c869e70af955eaa47", null ],
-    [ "setObj", "class_dc_html_text.html#a3f6f2a5d4c60e9edfc021a7d63e46ff8", null ]
+    [ "~DcHtmlText", "class_dc_html_text.html#af568cb1c7a367a6cea1fb4900397744f", null ],
+    [ "get", "class_dc_html_text.html#a61b824123ff10b1d827d3a9b30a4dde6", null ],
+    [ "set", "class_dc_html_text.html#a4740f8cb9c7d6186943caa3c6c4a5824", null ]
 ];

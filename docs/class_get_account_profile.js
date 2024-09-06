@@ -1,5 +1,6 @@
 var class_get_account_profile =
 [
-    [ "GetAccountProfile", "class_get_account_profile.html#ace8ab7986956f663d3966d2284f46f0b", null ],
-    [ "setObj", "class_get_account_profile.html#aef52030db3772fe347e7fe54d2ac424f", null ]
+    [ "~GetAccountProfile", "class_get_account_profile.html#a7b905d7cffd2a11c73a5715be63b9d45", null ],
+    [ "get", "class_get_account_profile.html#a4229abb697c2a3478fbb97184be651c9", null ],
+    [ "set", "class_get_account_profile.html#abff7993f264d51bfb10807271b6329b5", null ]
 ];

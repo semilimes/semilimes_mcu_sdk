@@ -1,6 +1,7 @@
 var class_groupchat_message_send =
 [
-    [ "GroupchatMessageSend", "class_groupchat_message_send.html#a4164e2a2540d5165bf37d58082be0e7d", null ],
+    [ "~GroupchatMessageSend", "class_groupchat_message_send.html#a9813ec82dc0ebd6c0192144ef1da024f", null ],
+    [ "get", "class_groupchat_message_send.html#a7794484ee4f9212862a66fb941595a00", null ],
     [ "getEPurl", "class_groupchat_message_send.html#aedd66aba193ebc9b155b4062b51fcd37", null ],
-    [ "setObj", "class_groupchat_message_send.html#aba6c149c9ac6d47ef350e93430d631f2", null ]
+    [ "set", "class_groupchat_message_send.html#afe4a9eb973565181f878f4c469353d60", null ]
 ];

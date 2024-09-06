@@ -1,5 +1,6 @@
 var class_fc_location_picker =
 [
-    [ "FcLocationPicker", "class_fc_location_picker.html#a4038d2a4c55472232d6f12303f000565", null ],
-    [ "setObj", "class_fc_location_picker.html#ace3f79ed01e2e400fea4a68751e70519", null ]
+    [ "~FcLocationPicker", "class_fc_location_picker.html#a01ebeddd0ca2df332d264b6e2ebdc8a9", null ],
+    [ "get", "class_fc_location_picker.html#a97ecc4bc90b5fc5503193f08499dfb18", null ],
+    [ "set", "class_fc_location_picker.html#a617f2ffef7a22c59dafca27d3cf67ad2", null ]
 ];

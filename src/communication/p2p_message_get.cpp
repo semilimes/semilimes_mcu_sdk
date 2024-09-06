@@ -1,11 +1,11 @@
 #include "p2p_message_get.h"
 
-/* Function: P2pMessageGet.setObj
+/* Function: P2pMessageGet.set
 
     This endpoint returns a list of messages in the specified P2P chat
 
     Prototype:
-        void setObj(bool owner,bool editor,bool subscriber);
+        void set(bool owner,bool editor,bool subscriber);
 
     Parameters:
         recipientId - Filters the p2p chats list by showing only the one occurring with the specified account id.
@@ -15,12 +15,15 @@
     Returns:
         void
 */
-void P2pMessageGet::setObj(char* recipientId,char* messageId,int limit)
+void P2pMessageGet::set(char* recipientId,char* messageId,int limit)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"recipientId",recipientId);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2JsonInt(*pjson,"limit",limit);
+    int size = headerSize+strlen(recipientId)+strlen(messageId)+json_data.intStrSize(limit)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"recipientId",recipientId);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2JsonInt(json,"limit",limit);
 }
 
 /* Function: P2pMessageGet.getEPurl
@@ -38,4 +41,21 @@ void P2pMessageGet::setObj(char* recipientId,char* messageId,int limit)
 char* P2pMessageGet::getEPurl()
 {
     return httpsUrl communication_p2p_message;
+}
+
+/* Function: P2pMessageGet.get
+
+    return the json script
+
+    Prototype:
+        void P2pMessageGet::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* P2pMessageGet::get()
+{
+    return json;
 }

@@ -6,39 +6,38 @@
 class BucketUpdate
 {
 private:
+    #define headerSize 120
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
 
 public:
-// Function: BucketUpdate
+// Function: ~BucketUpdate
 
-//     This endpoint allows the user to update the content of a specific bucket.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void BucketUpdate(char* json);
+//         ~BucketUpdate()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the data components 
 
 //     Returns:
 ///@return         void
-    BucketUpdate(char* json, char* jsonArray)
+    ~BucketUpdate()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","bucket");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
 
-// Function: BucketUpdate.setObj
+// Function: BucketUpdate.set
 
 //     This endpoint allows the user to update the content of a specific bucket.
 
 //     Prototype:
-//         void setObj(char* bucketId);
+//         void set(char* bucketId);
 
 //     Parameters:
 ///@param         bucketId -  is the unique Id to reference an existing bucket
@@ -51,7 +50,7 @@ public:
 
 //     Returns:
 ///@returns        void
-    void setObj(char* bucketId, char* title, char* description, char* avatar, bool visible, bool locked, bool enReactions);
+    void set(char* bucketId, char* title, char* description, char* avatar, bool visible, bool locked, bool enReactions);
 
 // Function: BucketUpdate.addDataComponents
 
@@ -92,6 +91,19 @@ public:
 //     Returns:
 ///@returns        char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: BucketUpdate.get
+
+//     return the json script
+
+//     Prototype:
+//         void BucketUpdate::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -6,37 +6,38 @@
 class AddAccountFeed
 {
 private:
+    #define headerSize 77
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
-// Function: AddAccountFeed
+// Function: ~AddAccountFeed
 
-//     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void AddAccountFeed(char* json);
+//         ~AddAccountFeed()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    AddAccountFeed(char* json, char* jsonArray)
+    ~AddAccountFeed()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
 
-// Function: AddAccountFeed.setObj
+// Function: AddAccountFeed.set
 
 //     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
     
 //     Prototype:
-//         void AddAccountFeed::setObj(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
+//         void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
     
 //     Parameters:
 ///@param          title - sets the feed title
@@ -49,7 +50,7 @@ public:
 ///@returns         void      
       
 
-    void setObj(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
+    void set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
 
 // Function: AddAccountFeed.addDataComponents
 
@@ -79,6 +80,20 @@ public:
 ///@returns         void  
 
     void appendDataComponents();
+    
+
+// Function: AddAccountFeed.get
+
+//     return the json script
+
+//     Prototype:
+//         void AddAccountFeed::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

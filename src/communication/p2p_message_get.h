@@ -6,34 +6,34 @@
 class P2pMessageGet
 {
 private:
+    #define headerSize 42
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: P2pMessageGet
+// Function: ~P2pMessageGet
 
-//     This endpoint returns a list of messages in the specified P2P chat
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void P2pMessageGet(char* json);
+//         ~P2pMessageGet()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    P2pMessageGet(char* json)
+    ~P2pMessageGet()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: P2pMessageGet.setObj
+// Function: P2pMessageGet.set
 
 //     This endpoint returns a list of messages in the specified P2P chat
 
 //     Prototype:
-//         void setObj(bool owner,bool editor,bool subscriber);
+//         void set(bool owner,bool editor,bool subscriber);
 
 //     Parameters:
 ///@param         recipientId - Filters the p2p chats list by showing only the one occurring with the specified account id.
@@ -42,7 +42,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* recipientId,char* messageId,int limit);
+    void set(char* recipientId,char* messageId,int limit);
 
 // Function: P2pMessageGet.getEPurl
 
@@ -56,6 +56,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pMessageGet.get
+
+//     return the json script
+
+//     Prototype:
+//         void P2pMessageGet::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

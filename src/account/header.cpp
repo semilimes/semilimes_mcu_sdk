@@ -15,8 +15,8 @@
 */
 void Header::setAuthorization(const char* apikey)
 {
-    strcpy(*pauth,authType);
-    strncat(*pauth,apikey,strlen(apikey));
+    strcpy(auth,authType);
+    strncat(auth,apikey,strlen(apikey));
 }
 
 /* Function: Header.getHttpsUrl
@@ -104,25 +104,6 @@ int Header::getWsPort()
     return wsPort;
 }
 
-/* Function: Header.setAuthorization
-
-    create the Autorization json 
-
-    Prototype:
-        void Header::setJSON();
-
-    Parameters:
-
-    Returns:
-        void
-*/
-void Header::setJSON()
-{	
-	json_data.addPair2JsonStr(*pjson, "accept", accept);
-    json_data.addPair2JsonStr(*pjson, "Content-Type", contentType);
-    json_data.addPair2JsonStr(*pjson, "Authorization", *pauth);
-}
-
 /* Function: Header.getWsHeader
 
     return the formatted websocket header 
@@ -137,12 +118,12 @@ void Header::setJSON()
 */
 char* Header::getWsHeader()
 {	
-	strncpy(*pwsheader, "Authorization: " , 16);
-	strncat(*pwsheader, *pauth, strlen(*pauth));
-	strncat(*pwsheader, " \r\n accept: " accept, 12+sizeof(accept));
-	strncat(*pwsheader, " \r\n Content-Type: " contentType, 19+sizeof(contentType));	
-	strncat(*pwsheader, " \r\n", 3);
-    return *pwsheader;
+	strncpy(wsheader, "Authorization: " , 16);
+	strncat(wsheader, auth, strlen(auth));
+	strncat(wsheader, " \r\n accept: " accept, 12+sizeof(accept));
+	strncat(wsheader, " \r\n Content-Type: " contentType, 19+sizeof(contentType));	
+	strncat(wsheader, " \r\n", 3);
+    return wsheader;
 }
 
 /* Function: Header.getContentType
@@ -176,7 +157,7 @@ char* Header::getContentType()
 */
 char* Header::getAuthorization()
 {
-    return *pauth;
+    return auth;
 }
 
 /* Function: Header.getAuthorization

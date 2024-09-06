@@ -6,34 +6,34 @@
 class GroupchatMessageSend
 {
 private:
+    #define headerSize 35
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: GroupchatMessageSend
+// Function: ~GroupchatMessageSend
 
-//     This endpoint allows to send a data component to a groupChat as a new message.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GroupchatMessageSend(char* json);
+//         ~GroupchatMessageSend()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GroupchatMessageSend(char* json)
+    ~GroupchatMessageSend()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GroupchatMessageSend.setObj
+// Function: GroupchatMessageSend.set
 
 //     This endpoint allows to send a data component to a groupChat as a new message.
 
 //     Prototype:
-//         void setObj(char* groupChatId, char* dataComponent);
+//         void set(char* groupChatId, char* dataComponent);
 
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* groupChatId, char* dataComponent);
+    void set(char* groupChatId, char* dataComponent);
 
 // Function: GroupchatMessageSend.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageSend.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatMessageSend::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

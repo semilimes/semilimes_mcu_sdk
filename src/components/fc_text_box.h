@@ -6,34 +6,34 @@
 class FcTextBox
 {
 private:
+    #define headerSize 87
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcTextBox
+// Function: ~FcTextBox
 
-//     A text field with a title and a user-editable text field.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcTextBox(char* json);
+//         ~FcTextBox()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcTextBox(char* json)
+    ~FcTextBox()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcTextBox.setObj
+// Function: FcTextBox.set
 
 //     A text field with a title and a user-editable text field.
 
 //     Prototype:
-//         void FcTextBox::setObj(char* refname,char* title,char* value,bool reqSel);
+//         void FcTextBox::set(char* refname,char* title,char* value,bool reqSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -43,7 +43,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,char* value,bool reqSel=false);
+    void set(char* refname,char* title,char* value,bool reqSel=false);
+
+// Function: FcTextBox.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcTextBox::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -1,7 +1,7 @@
 var class_dc_contact =
 [
-    [ "DcContact", "class_dc_contact.html#aa5f0a9474cf0af97535c89d095a31649", null ],
+    [ "~DcContact", "class_dc_contact.html#a5151499944a10573c7d71f96e4321129", null ],
     [ "addContactIds", "class_dc_contact.html#a74553848ed1aa013dd5979114bac8db2", null ],
-    [ "appendDataContactIds", "class_dc_contact.html#a6405c63e3c34562c80d5f9bca6e71e12", null ],
-    [ "setObj", "class_dc_contact.html#a5c79c8db0ff083127e96c8902a6b60ea", null ]
+    [ "appendContactIds", "class_dc_contact.html#a816e9fc72f2a972ecb696436abac3dd7", null ],
+    [ "get", "class_dc_contact.html#a0f8b67aff74e446d5cabe3abf92e114d", null ]
 ];

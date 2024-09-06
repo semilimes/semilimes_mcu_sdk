@@ -6,41 +6,42 @@
 class ChannelUnsubscribe
 {
 private:
+    #define headerSize 16
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: ChannelUnsubscribe
 
-//     This endpoint makes the calling account to unsubscribe from an existing channel.
+// Function: ~ChannelUnsubscribe
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelUnsubscribe(char* json);
+//         ~ChannelUnsubscribe()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    ChannelUnsubscribe(char* json)
+    ~ChannelUnsubscribe()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelUnsubscribe.setObj
+// Function: ChannelUnsubscribe.set
 
 //     This endpoint makes the calling account to unsubscribe from an existing channel.
 
 //     Prototype:
-//         void setObj(char* channelId);
+//         void set(char* channelId);
 
 //     Parameters:
 ///@param          channelId - is the unique Id to reference an existing channel
 
 //     Returns:
 ///@returns         void
-    void setObj(char* channelId);
+    void set(char* channelId);
 
 // Function: ChannelUnsubscribe.getEPurl
 
@@ -54,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelUnsubscribe.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelUnsubscribe::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

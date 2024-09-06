@@ -1,6 +1,7 @@
 var class_bucket_open =
 [
-    [ "BucketOpen", "class_bucket_open.html#af020298c4c166310526caa81e2032aae", null ],
+    [ "~BucketOpen", "class_bucket_open.html#a8c567a3c6d0018a2288fbe9e9320fee8", null ],
+    [ "get", "class_bucket_open.html#a8d6cd3341a35de06d1c5d3f93ed21477", null ],
     [ "getEPurl", "class_bucket_open.html#a5be0c2c775da5b1ea553a3ed6439cc90", null ],
-    [ "setObj", "class_bucket_open.html#ac4fe3c211f8ad1af63ea2d1ba497fb2a", null ]
+    [ "set", "class_bucket_open.html#a08c8f528909cd318c30e587c1a008a07", null ]
 ];

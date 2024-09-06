@@ -107,16 +107,18 @@ $(function(){initNavTree('class_channel_subscribe.html',''); initResizable(true)
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a33aee503ba5d6df7c91691859050b597" id="r_a33aee503ba5d6df7c91691859050b597"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33aee503ba5d6df7c91691859050b597">ChannelSubscribe</a> (char *json)</td></tr>
-<tr class="separator:a33aee503ba5d6df7c91691859050b597"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c1bc483fc54b5453f2fe7c7022e6507" id="r_a4c1bc483fc54b5453f2fe7c7022e6507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c1bc483fc54b5453f2fe7c7022e6507">setObj</a> (char *channelId)</td></tr>
-<tr class="separator:a4c1bc483fc54b5453f2fe7c7022e6507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b6041b78d87ae7785fc1cdadf248ede" id="r_a6b6041b78d87ae7785fc1cdadf248ede"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b6041b78d87ae7785fc1cdadf248ede">~ChannelSubscribe</a> ()</td></tr>
+<tr class="separator:a6b6041b78d87ae7785fc1cdadf248ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2927777081e546cb09c0d7355572c53c" id="r_a2927777081e546cb09c0d7355572c53c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2927777081e546cb09c0d7355572c53c">set</a> (char *channelId)</td></tr>
+<tr class="separator:a2927777081e546cb09c0d7355572c53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3263b0eacf64e7369019cbaad496797" id="r_ab3263b0eacf64e7369019cbaad496797"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3263b0eacf64e7369019cbaad496797">getEPurl</a> ()</td></tr>
 <tr class="separator:ab3263b0eacf64e7369019cbaad496797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6813df98240e852c91ed72b891a26174" id="r_a6813df98240e852c91ed72b891a26174"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6813df98240e852c91ed72b891a26174">get</a> ()</td></tr>
+<tr class="separator:a6813df98240e852c91ed72b891a26174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a33aee503ba5d6df7c91691859050b597" name="a33aee503ba5d6df7c91691859050b597"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33aee503ba5d6df7c91691859050b597">&#9670;&#160;</a></span>ChannelSubscribe()</h2>
+<a id="a6b6041b78d87ae7785fc1cdadf248ede" name="a6b6041b78d87ae7785fc1cdadf248ede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b6041b78d87ae7785fc1cdadf248ede">&#9670;&#160;</a></span>~ChannelSubscribe()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,9 +127,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ChannelSubscribe::ChannelSubscribe </td>
+          <td class="memname">ChannelSubscribe::~ChannelSubscribe </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -137,17 +139,29 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>- it is the char array that will contain the whole json script</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6813df98240e852c91ed72b891a26174" name="a6813df98240e852c91ed72b891a26174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6813df98240e852c91ed72b891a26174">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ChannelSubscribe::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
 <a id="ab3263b0eacf64e7369019cbaad496797" name="ab3263b0eacf64e7369019cbaad496797"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3263b0eacf64e7369019cbaad496797">&#9670;&#160;</a></span>getEPurl()</h2>
 
@@ -166,14 +180,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4c1bc483fc54b5453f2fe7c7022e6507" name="a4c1bc483fc54b5453f2fe7c7022e6507"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c1bc483fc54b5453f2fe7c7022e6507">&#9670;&#160;</a></span>setObj()</h2>
+<a id="a2927777081e546cb09c0d7355572c53c" name="a2927777081e546cb09c0d7355572c53c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2927777081e546cb09c0d7355572c53c">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ChannelSubscribe::setObj </td>
+          <td class="memname">void ChannelSubscribe::set </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>channelId</em></span></td><td>)</td>
           <td></td>

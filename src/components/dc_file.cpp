@@ -1,24 +1,5 @@
 #include "dc_file.h"
 
-/* Function: DcFile.setObj
-
-   A file object containing one or more files to open or download
-
-   Prototype:
-      void DcFile::setObj();
-
-   Parameters:
-
-   Returns:
-      void
-*/
-void DcFile::setObj()
-{
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","file");
-}
-
 /* Function: DcFile.addFileIds
 
    Add a File Id to the array
@@ -33,9 +14,21 @@ void DcFile::setObj()
    Returns:
       void
 */
-void DcFile::addFileIds(char* fileIds)
+void DcFile::addFileId(char* fileIds)
 {    
-   json_data.add2JsonStr(*pjsonArray,fileIds);
+   int size = headerArraySize+strlen(fileIds)+1;
+   
+   if(!jsonArray)
+   {
+      jsonArray = new char[size+1];
+      json_data.initJsonArray(jsonArray);
+   }
+   else
+   {
+      size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+      json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+   }
+   json_data.add2Json(jsonArray,fileIds);
 }
 
 /* Function: DcFile.appendFileIds
@@ -52,5 +45,24 @@ void DcFile::addFileIds(char* fileIds)
 */
 void DcFile::appendFileIds()
 {
-	json_data.add2JsonArray(*pjson,"fileIds",*pjsonArray);
+   int size = strlen(json)+strlen(jsonArray)+12;   //add ',"fileIds":' and '\0'
+   json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"fileIds",jsonArray);
+}
+
+/* Function: DcFile.get
+
+    return the json script
+
+    Prototype:
+        void DcFile::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* DcFile::get()
+{
+    return json;
 }

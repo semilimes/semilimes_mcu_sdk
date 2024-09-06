@@ -6,37 +6,34 @@
 class Device
 {
 private:
+    #define headerSize 11
+    #define headerPinSize 64
+    #define headerFunctionSize 27
     SmeJson json_data;
-    char** pjson;
-    char** pjsonPins;
-    char** pjsonFunctions;
+    char* json = nullptr; 
+    char* jsonPins = nullptr;
+    char* jsonFunctions = nullptr;
 
 public:
-    Device(char* json, char* jsonPins, char* jsonFunctions)
-    {
-        pjson = &json;
-        pjsonPins = &jsonPins;
-        pjsonFunctions = &jsonFunctions;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonPins);
-        json_data.initJsonArray(*pjsonFunctions);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","device");
-    }
+// variable: Device.pinTypes
+
+//     describes the type of the pin
+///@param        char pinTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"};
     char pinTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"};
-    
-// Function: Device.setObj
+
+// Function: Device.set
 
 //     an object that describes the device from the hw perspective
 
 //     Prototype:
-//         void Device::setObj(char* name);
+//         void Device::set(char* name);
 
 //     Parameters:
 ///@param         name - it is the name of the device
 
 //     Returns:
 ///@return         void
-    void setObj(char* name);
+    void set(char* name);
     
 // Function: Device.addGPIO
 
@@ -47,7 +44,7 @@ public:
 
 //     Parameters:
 ///@param         name - the name of the device
-///@param         GPIOType - the type of the pin: char GPIOTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"};
+///@param         GPIOType - the type of the pin: char pinTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"};
 ///@param         portName - the name of the Port
 ///@param         pinNumber - the pin number
 ///@param         value - the status of the pin
@@ -97,6 +94,19 @@ public:
 ///@return         void
 
     void appendFunctions();
+    
+// Function: Device.get
+
+//     return the json script
+
+//     Prototype:
+//         void Device::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

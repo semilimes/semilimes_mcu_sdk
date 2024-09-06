@@ -6,63 +6,55 @@
 class DcForm
 {
 private:
+    #define headerSize 102
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
 
 public:
-// Function: DcForm
+// variable: DcForm.featureType
 
-//     A form message is a complex data component which can be arbitrarily structured using available form components
+//     describes the types of the feature
+///@param        char featureType[3][10] = {"contact","groupchat","channel"};
+    char featureType[3][10] = {"contact","groupchat","channel"};
+
+// Function: ~DcForm
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcForm(char* json, char* jsonArray);
+//         ~DcForm()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the Form Components 
 
 //     Returns:
 ///@return         void
-    DcForm(char* json, char* jsonArray)
+    ~DcForm()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","form");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
-    char featureType[3][10] = {"contact","groupchat","channel"};
 
-// Function: DcForm.setObj
+// Function: DcForm.set
 
 //    A form message is a complex data component which can be arbitrarily structured using available form components
 
 //    Prototype:
-//       void DcForm::setObj(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
+//       void DcForm::set(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
 
 //    Parameters:
+///@param         recId - the receiver Id
+///@param         recFeatureType - the type of the receiver: char* featureType[3][10] = {"contact","groupchat","channel"}
 ///@param         submitEnabled - enables the Submit button to be pressed before the form is actually submitted. Otherwise, the form will be submitted each time a user fills in/change values of a form component.
 ///@param         retainStatus - enables the form to maintain the last submitted values when the use case requires many users to operate the same form
 ///@param         submitText - is the text to be displayed in the Submit button of the form
 ///@param         refName - is a friendly name given to the form for later reference when filtering form submissions from clients.
 //    Returns:
 ///@return       void
-    void setObj(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
-
-// Function: DcForm.addReceiver
-
-//    Add a receiver Id to the array
-
-//    Prototype:
-//       void DcForm::addReceiver(char* id, char* featureType);
-
-//    Parameters:
-///@param         id - the receiver Id to add
-///@param         featureType - the type of the receiver: char* featureType[3][10] = {"contact","groupchat","channel"}
-//    Returns:
-///@return       void
-    void addReceiver(char* id, char* featureType);
+    void set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName);
 
 // Function: DcForm.addFormComponents
 
@@ -90,6 +82,20 @@ public:
 //    Returns:
 ///@return       void
     void appendFormComponents();
+    
+
+// Function: DcForm.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcForm::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

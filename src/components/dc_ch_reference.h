@@ -6,34 +6,34 @@
 class DcChReference
 {
 private:
+    #define headerSize 46
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: DcChReference
+// Function: ~DcChReference
 
-//     A message referencing an existing Channel
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcChReference(char* json);
+//         ~DcChReference()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcChReference(char* json)
+    ~DcChReference()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: DcChReference.setObj
+// Function: DcChReference.set
 
 //     A message referencing an existing Channel
 
 //     Prototype:
-//         void DcChReference::setObj(char* channelId);
+//         void DcChReference::set(char* channelId);
 
 //     Parameters:
 ///@param         channelId - the id of the referenced channel
@@ -41,7 +41,20 @@ public:
 //     Returns:
 ///@return         void
 
-    void setObj(char* channelId);
+    void set(char* channelId);
+    
+// Function: DcChReference.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcChReference::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

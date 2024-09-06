@@ -6,34 +6,35 @@
 class ChannelGet
 {
 private:
+    #define headerSize 54
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: ChannelGet
 
-//     This endpoint finds channels based on specified parameters
+// Function: ~ChannelGet
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelGet(char* json);
+//         ~ChannelGet()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    ChannelGet(char* json)
+    ~ChannelGet()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelGet.setObj
+// Function: ChannelGet.set
 
 //     This endpoint finds channels based on specified parameters
 
 //     Prototype:
-//         void setObj(char* ownerId,char* editorId,char* channelId,char* title);
+//         void set(char* ownerId,char* editorId,char* channelId,char* title);
 
 //     Parameters:
 ///@param     ownerId - Returns channels owned by the specified account Id
@@ -44,7 +45,7 @@ public:
 
 //     Returns:
 ///@returns        void
-    void setObj(char* ownerId,char* editorId,char* channelId,char* title);
+    void set(char* ownerId,char* editorId,char* channelId,char* title);
 
 // Function: ChannelGet.getEPurl
 
@@ -58,6 +59,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelGet.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelGet::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

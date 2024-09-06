@@ -1,11 +1,11 @@
 #include "fc_slider.h"
 
-/* Function: FcSlider.setObj
+/* Function: FcSlider.set
 
     A slider to let the user select a value by dragging its handle
 
     Prototype:
-        void FcSlider::setObj(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+        void FcSlider::set(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
 
     Parameters:
         refname - it is the reference name of the object
@@ -19,15 +19,35 @@
     Returns:
         void
 */
-void FcSlider::setObj(char* refname,char* title,bool reqSel,int value,int min,int max,int step)
+void FcSlider::set(char* refname,char* title,bool reqSel,int value,int min,int max,int step)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","slider");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonInt(*pjson,"value",value);
-    json_data.addPair2JsonInt(*pjson,"min",min);
-    json_data.addPair2JsonInt(*pjson,"max",max);
-    json_data.addPair2JsonInt(*pjson,"step",step);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+json_data.intStrSize(value)+json_data.intStrSize(min)+json_data.intStrSize(max)+json_data.intStrSize(step)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","slider");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonInt(json,"value",value);
+    json_data.addPair2JsonInt(json,"min",min);
+    json_data.addPair2JsonInt(json,"max",max);
+    json_data.addPair2JsonInt(json,"step",step);
+}
+
+/* Function: FcSlider.get
+
+    return the json script
+
+    Prototype:
+        void FcSlider::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcSlider::get()
+{
+    return json;
 }

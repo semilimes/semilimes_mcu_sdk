@@ -6,34 +6,34 @@
 class FcLabel
 {
 private:
+    #define headerSize 53
     SmeJson json_data;
-    char** pjson;
-    
-public:
-// Function: FcLabel
+    char* json = nullptr; 
 
-//     A simple read-only label
+public:
+// Function: ~FcLabel
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcLabel(char* json);
+//         ~FcLabel()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcLabel(char* json)
+    ~FcLabel()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcLabel.setObj
+// Function: FcLabel.set
 
 //     A simple read-only label
 
 //     Prototype:
-//         void FcLabel::setObj(char* refname,char* title);
+//         void FcLabel::set(char* refname,char* title);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -41,7 +41,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title);
+    void set(char* refname,char* title);
+
+// Function: FcLabel.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcLabel::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

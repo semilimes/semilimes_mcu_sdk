@@ -6,34 +6,34 @@
 class ChannelsMyGet
 {
 private:
+    #define headerSize 34
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: ChannelsMyGet
+// Function: ~ChannelsMyGet
 
-//     This endpoint retrieves the channels the calling user account is owner, editor or subscriber of.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelsMyGet(char* json);
+//         ~ChannelsMyGet()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
-///@return         void    
-    ChannelsMyGet(char* json)
+///@return         void
+    ~ChannelsMyGet()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelsMyGet.setObj
+// Function: ChannelsMyGet.set
 
 //     This endpoint retrieves the channels the calling user account is owner, editor or subscriber of.
 
 //     Prototype:
-//         void setObj(bool owner,bool editor,bool subscriber);
+//         void set(bool owner,bool editor,bool subscriber);
 
 //     Parameters:
 ///@param         ownerId - Returns channels owned by the specified account Id
@@ -42,7 +42,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(bool owner,bool editor,bool subscriber);
+    void set(bool owner,bool editor,bool subscriber);
 
 // Function: ChannelsMyGet.getEPurl
 
@@ -56,6 +56,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelsMyGet.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelsMyGet::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

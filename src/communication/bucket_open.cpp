@@ -1,11 +1,11 @@
 #include "bucket_open.h"
 
-/* Function: BucketOpen.setObj
+/* Function: BucketOpen.set
 
     This endpoint let the user access the bucket content by its bucketId.
 
     Prototype:
-        void setObj(char* bucketId);
+        void set(char* bucketId);
 
     Parameters:
         bucketId -  is the unique Id to reference an existing bucket
@@ -13,10 +13,13 @@
     Returns:
         void
 */
-void BucketOpen::setObj(char* bucketId)
+void BucketOpen::set(char* bucketId)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"bucketId",bucketId);
+    int size = headerSize+strlen(bucketId)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"bucketId",bucketId);
 }
 
 /* Function: BucketOpen.getEPurl
@@ -34,4 +37,21 @@ void BucketOpen::setObj(char* bucketId)
 char* BucketOpen::getEPurl()
 {
     return httpsUrl communication_bucket;        
+}
+
+/* Function: BucketOpen.get
+
+    return the json script
+
+    Prototype:
+        void BucketOpen::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* BucketOpen::get()
+{
+    return json;
 }

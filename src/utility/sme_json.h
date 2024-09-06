@@ -20,6 +20,10 @@ public:
 	void addPair2JsonFloat(char* json, char* property, float data, int ndec=2);
 	void addPair2JsonBool(char* json, char* property, bool data);
 	void substr(int pos, int len, char* strIn, char* strOut);
+	int boolStrSize(bool data);
+	int intStrSize(int data);
+	int floatStrSize(float data, int ndigits);
+	void arrayResize(char*& json, int size);
 };
 
 #endif

@@ -1,11 +1,11 @@
 #include "bucket_update.h"
 
-/* Function: BucketUpdate.setObj
+/* Function: BucketUpdate.set
 
     This endpoint allows the user to update the content of a specific bucket.
 
     Prototype:
-        void setObj(char* bucketId);
+        void set(char* bucketId);
 
     Parameters:
         bucketId -  is the unique Id to reference an existing bucket
@@ -19,17 +19,20 @@
     Returns:
         void
 */
-void BucketUpdate::setObj(char* bucketId, char* title, char* description, char* avatar, bool visible, bool locked, bool enReactions)
+void BucketUpdate::set(char* bucketId, char* title, char* description, char* avatar, bool visible, bool locked, bool enReactions)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"bucketId",bucketId);
-    json_data.addPair2JsonStr(*pjson,"dataComponentType","bucket");
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonStr(*pjson,"description",description);
-    json_data.addPair2JsonStr(*pjson,"avatar",avatar);
-    json_data.addPair2JsonBool(*pjson,"visible",visible);
-    json_data.addPair2JsonBool(*pjson,"locked",locked);
-    json_data.addPair2JsonBool(*pjson,"enReactions",enReactions);
+    int size = headerSize+strlen(bucketId)+strlen(title)+strlen(description)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+json_data.boolStrSize(enReactions)+1;//add '\0' for null-termination
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"dataComponentType","bucket");
+    json_data.addPair2JsonStr(json,"bucketId",bucketId);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonStr(json,"description",description);
+    json_data.addPair2JsonStr(json,"avatar",avatar);
+    json_data.addPair2JsonBool(json,"visible",visible);
+    json_data.addPair2JsonBool(json,"locked",locked);
+    json_data.addPair2JsonBool(json,"enReactions",enReactions);
 }
 
 /* Function: BucketUpdate.addDataComponents
@@ -46,8 +49,20 @@ void BucketUpdate::setObj(char* bucketId, char* title, char* description, char* 
         void
 */
 void BucketUpdate::addDataComponents(char* component)
-{    
-    json_data.add2Json(*pjsonArray,component);
+{        
+    int size = headerArraySize+strlen(component)+1;
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,component);
 }
 
 /* Function: BucketUpdate.appendDataComponents
@@ -64,7 +79,9 @@ void BucketUpdate::addDataComponents(char* component)
 */
 void BucketUpdate::appendDataComponents()
 {
-	json_data.add2JsonArray(*pjson,"dataComponents",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+19;   //add ',"dataComponents":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"dataComponents",jsonArray);
 }
 
 /* Function: BucketUpdate.getEPurl
@@ -82,4 +99,21 @@ void BucketUpdate::appendDataComponents()
 char* BucketUpdate::getEPurl()
 {
     return httpsUrl communication_bucket_update;
+}
+
+/* Function: BucketUpdate.get
+
+    return the json script
+
+    Prototype:
+        void BucketUpdate::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* BucketUpdate::get()
+{
+    return json;
 }

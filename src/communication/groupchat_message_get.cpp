@@ -1,11 +1,11 @@
 #include "groupchat_message_get.h"
 
-/* Function: GroupchatMessageGet.setObj
+/* Function: GroupchatMessageGet.set
 
     This endpoint returns a list of messages in the specified Group chat.
 
     Prototype:
-        void setObj(char* groupChatId,char* messageId,int limit);
+        void set(char* groupChatId,char* messageId,int limit);
 
     Parameters:
         groupChatId - is the unique Id to reference an existing groupChat
@@ -15,12 +15,15 @@
     Returns:
         void
 */
-void GroupchatMessageGet::setObj(char* groupChatId,char* messageId,int limit)
+void GroupchatMessageGet::set(char* groupChatId,char* messageId,int limit)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"groupChatId",groupChatId);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2JsonInt(*pjson,"limit",limit);
+    int size = headerSize+strlen(groupChatId)+strlen(messageId)+json_data.intStrSize(limit)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"groupChatId",groupChatId);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2JsonInt(json,"limit",limit);
 }
 
 /* Function: GroupchatMessageGet.getEPurl
@@ -38,4 +41,21 @@ void GroupchatMessageGet::setObj(char* groupChatId,char* messageId,int limit)
 char* GroupchatMessageGet::getEPurl()
 {
     return httpsUrl communication_groupchat_message;
+}
+
+/* Function: GroupchatMessageGet.get
+
+    return the json script
+
+    Prototype:
+        void GroupchatMessageGet::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* GroupchatMessageGet::get()
+{
+    return json;
 }

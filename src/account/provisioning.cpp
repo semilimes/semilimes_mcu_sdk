@@ -1,11 +1,11 @@
 #include "provisioning.h"
 
-/* Function: Provisioning.setObj
+/* Function: Provisioning.set
 
     create the json needed to Register and Claim the device
 
     Prototype:
-        void Provisioning::setObj(char* devId, char* provKey);
+        void Provisioning::set(char* devId, char* provKey);
 
     Parameters:
         devId - the device id, a unique ID that belongs to a specific device
@@ -14,11 +14,30 @@
     Returns:
         void
 */
-void Provisioning::setObj(char* devId, char* provKey)
+void Provisioning::set(char* devId, char* provKey)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson, "deviceId", devId);
-    json_data.addPair2JsonStr(*pjson, "provisioningKey",provKey);
+    int size = headerSize+strlen(devId)+strlen(provKey)+1;
+    json = new char[size];
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json, "deviceId", devId);
+    json_data.addPair2JsonStr(json, "provisioningKey",provKey);
+}
+
+/* Function: Provisioning.get
+
+    return the json script
+    
+    Prototype:
+        void Provisioning::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* Provisioning::get()
+{
+    return json;
 }
 
 /* Function: Provisioning.getRegisterDeviceURL

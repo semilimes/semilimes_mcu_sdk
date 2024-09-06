@@ -6,34 +6,34 @@
 class FcContactPicker
 {
 private:
+    #define headerSize 134
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcContactPicker
+// Function: ~FcContactPicker
 
-//     A picker allowing to select and reference contacts
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcContactPicker(char* json);
+//         ~FcContactPicker()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcContactPicker(char* json)
+    ~FcContactPicker()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcContactPicker.setObj
+// Function: FcContactPicker.set
 
 //     A picker allowing to select and reference contacts
 
 //     Prototype:
-//         void FcContactPicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+//         void FcContactPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -45,7 +45,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+
+// Function: FcContactPicker.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcContactPicker::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

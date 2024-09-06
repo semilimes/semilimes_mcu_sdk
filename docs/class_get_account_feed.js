@@ -1,5 +1,6 @@
 var class_get_account_feed =
 [
-    [ "GetAccountFeed", "class_get_account_feed.html#ad140535ae13f05f469667730da10d79b", null ],
-    [ "setObj", "class_get_account_feed.html#a8fc638f7d3a36416c8897ca105605134", null ]
+    [ "~GetAccountFeed", "class_get_account_feed.html#acec2e620c8c66f5a0e072fa2678d3920", null ],
+    [ "get", "class_get_account_feed.html#a8b84cde41355a16408bfa4c8203dc61a", null ],
+    [ "set", "class_get_account_feed.html#a7fce493e935553ee6675b38213395870", null ]
 ];

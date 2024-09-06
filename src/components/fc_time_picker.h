@@ -6,34 +6,34 @@
 class FcTimePicker
 {
 private:
+    #define headerSize 113
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcTimePicker
+// Function: ~FcTimePicker
 
-//     A graphical time-picker to select a date from a calendar
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcTimePicker(char* json);
+//         ~FcTimePicker()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcTimePicker(char* json)
+    ~FcTimePicker()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcTimePicker.setObj
+// Function: FcTimePicker.set
 
 //     A graphical time-picker to select a date from a calendar
 
 //     Prototype:
-//         void FcTimePicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+//         void FcTimePicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -44,7 +44,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+
+// Function: FcTimePicker.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcTimePicker::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

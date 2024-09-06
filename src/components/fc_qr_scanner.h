@@ -6,34 +6,34 @@
 class FcQrScanner
 {
 private:
+    #define headerSize 116
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcQrScanner
+// Function: ~FcQrScanner
 
-//     A scanner button allowing to scan and read QR Codes
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcQrScanner(char* json);
+//         ~FcQrScanner()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcQrScanner(char* json)
+    ~FcQrScanner()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcQrScanner.setObj
+// Function: FcQrScanner.set
 
 //     A scanner button allowing to scan and read QR Codes
 
 //     Prototype:
-//         void FcQrScanner::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+//         void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -44,7 +44,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+
+// Function: FcQrScanner.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcQrScanner::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

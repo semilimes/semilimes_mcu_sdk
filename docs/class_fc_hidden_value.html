@@ -107,14 +107,16 @@ $(function(){initNavTree('class_fc_hidden_value.html',''); initResizable(true); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2702719e8729037c985957dda5d759da" id="r_a2702719e8729037c985957dda5d759da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2702719e8729037c985957dda5d759da">FcHiddenValue</a> (char *json)</td></tr>
-<tr class="separator:a2702719e8729037c985957dda5d759da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad54d4f7621a8c2a0917d7455901b3b99" id="r_ad54d4f7621a8c2a0917d7455901b3b99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad54d4f7621a8c2a0917d7455901b3b99">setObj</a> (char *refname, char *value)</td></tr>
-<tr class="separator:ad54d4f7621a8c2a0917d7455901b3b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752b4009a4eeda3ae83ced823e4190c4" id="r_a752b4009a4eeda3ae83ced823e4190c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752b4009a4eeda3ae83ced823e4190c4">~FcHiddenValue</a> ()</td></tr>
+<tr class="separator:a752b4009a4eeda3ae83ced823e4190c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3751fa0ae23dae58061ae30d19e2467" id="r_aa3751fa0ae23dae58061ae30d19e2467"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3751fa0ae23dae58061ae30d19e2467">set</a> (char *refname, char *value)</td></tr>
+<tr class="separator:aa3751fa0ae23dae58061ae30d19e2467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb48815bef982a0e81ab978ff1d5bb62" id="r_afb48815bef982a0e81ab978ff1d5bb62"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb48815bef982a0e81ab978ff1d5bb62">get</a> ()</td></tr>
+<tr class="separator:afb48815bef982a0e81ab978ff1d5bb62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2702719e8729037c985957dda5d759da" name="a2702719e8729037c985957dda5d759da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2702719e8729037c985957dda5d759da">&#9670;&#160;</a></span>FcHiddenValue()</h2>
+<a id="a752b4009a4eeda3ae83ced823e4190c4" name="a752b4009a4eeda3ae83ced823e4190c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752b4009a4eeda3ae83ced823e4190c4">&#9670;&#160;</a></span>~FcHiddenValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,9 +125,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FcHiddenValue::FcHiddenValue </td>
+          <td class="memname">FcHiddenValue::~FcHiddenValue </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -135,25 +137,37 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>- it is the char array that will contain the whole json script</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad54d4f7621a8c2a0917d7455901b3b99" name="ad54d4f7621a8c2a0917d7455901b3b99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad54d4f7621a8c2a0917d7455901b3b99">&#9670;&#160;</a></span>setObj()</h2>
+<a id="afb48815bef982a0e81ab978ff1d5bb62" name="afb48815bef982a0e81ab978ff1d5bb62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb48815bef982a0e81ab978ff1d5bb62">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void FcHiddenValue::setObj </td>
+          <td class="memname">char * FcHiddenValue::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
+<a id="aa3751fa0ae23dae58061ae30d19e2467" name="aa3751fa0ae23dae58061ae30d19e2467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3751fa0ae23dae58061ae30d19e2467">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FcHiddenValue::set </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refname</em></span>, </td>
         </tr>

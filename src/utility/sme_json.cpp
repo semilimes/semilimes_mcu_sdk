@@ -175,3 +175,69 @@ void SmeJson::addPair2JsonBool(char* json,char* property,bool data)
 		strncat(json,&lastCh,1);
 	}
 }
+
+int SmeJson::boolStrSize(bool data)
+{
+	if(data) return 4;
+	else return 5;
+}
+
+int SmeJson::intStrSize(int data)
+{
+    // Base case
+    if (data == 0)
+        return 1;
+  
+    int count = 0;
+    // Iterate till n has digits remaining
+    while (data != 0) {
+        // Remove rightmost digit
+        data = data / 10;
+          // Increment digit count by 1
+        ++count;
+    }
+    return count;
+}
+
+int SmeJson::floatStrSize(float data, int ndigits)
+{
+    // Base case
+    if ((int)data == 0)
+        return 1+ndigits;
+  
+    int count = 0;
+    // Iterate till n has digits remaining
+    while ((int)data != 0) {
+        // Remove rightmost digit
+        data = data / 10;
+          // Increment digit count by 1
+        ++count;
+    }
+    return count+1+ndigits;
+}
+
+void SmeJson::arrayResize(char*& json, int size)
+{
+    if (size <= 0) return; // Check for invalid size
+
+    // Allocate a new array with the required size
+    char* temp = new char[size];
+
+    // Safely copy the data from the old array to the new one
+    if (json != nullptr) {
+        // Calculate the length of the existing string
+        int json_len = strlen(json);
+        // Ensure we copy only the necessary amount of data
+        int copy_size = (json_len < size - 1) ? json_len : size - 1;
+        strncpy(temp, json, copy_size);
+        temp[copy_size] = '\0'; // Ensure the new string is null-terminated
+        // Deallocate the memory pointed to by json
+        delete[] json;
+    } else {
+        // If json is null, just initialize the new array
+        temp[0] = '\0';
+    }
+
+    // Reassign the json pointer to the new array
+    json = temp;
+}

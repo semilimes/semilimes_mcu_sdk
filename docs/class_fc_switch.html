@@ -107,14 +107,16 @@ $(function(){initNavTree('class_fc_switch.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af6b791292646c680e4bc6f4898452166" id="r_af6b791292646c680e4bc6f4898452166"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6b791292646c680e4bc6f4898452166">FcSwitch</a> (char *json)</td></tr>
-<tr class="separator:af6b791292646c680e4bc6f4898452166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fc84b2e4047874d0b9d2c9d6cf64a4c" id="r_a3fc84b2e4047874d0b9d2c9d6cf64a4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fc84b2e4047874d0b9d2c9d6cf64a4c">setObj</a> (char *refname, char *title, bool value)</td></tr>
-<tr class="separator:a3fc84b2e4047874d0b9d2c9d6cf64a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1279d663bcca66740e373c8920fdadf0" id="r_a1279d663bcca66740e373c8920fdadf0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1279d663bcca66740e373c8920fdadf0">~FcSwitch</a> ()</td></tr>
+<tr class="separator:a1279d663bcca66740e373c8920fdadf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a4b2d4c21ff8e460e08156c9284474" id="r_a39a4b2d4c21ff8e460e08156c9284474"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39a4b2d4c21ff8e460e08156c9284474">set</a> (char *refname, char *title, bool value)</td></tr>
+<tr class="separator:a39a4b2d4c21ff8e460e08156c9284474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc38ed231926558c88204e7033efaa0" id="r_aefc38ed231926558c88204e7033efaa0"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefc38ed231926558c88204e7033efaa0">get</a> ()</td></tr>
+<tr class="separator:aefc38ed231926558c88204e7033efaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af6b791292646c680e4bc6f4898452166" name="af6b791292646c680e4bc6f4898452166"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6b791292646c680e4bc6f4898452166">&#9670;&#160;</a></span>FcSwitch()</h2>
+<a id="a1279d663bcca66740e373c8920fdadf0" name="a1279d663bcca66740e373c8920fdadf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1279d663bcca66740e373c8920fdadf0">&#9670;&#160;</a></span>~FcSwitch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,9 +125,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FcSwitch::FcSwitch </td>
+          <td class="memname">FcSwitch::~FcSwitch </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -135,25 +137,37 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>- it is the char array that will contain the whole json script</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3fc84b2e4047874d0b9d2c9d6cf64a4c" name="a3fc84b2e4047874d0b9d2c9d6cf64a4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fc84b2e4047874d0b9d2c9d6cf64a4c">&#9670;&#160;</a></span>setObj()</h2>
+<a id="aefc38ed231926558c88204e7033efaa0" name="aefc38ed231926558c88204e7033efaa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc38ed231926558c88204e7033efaa0">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void FcSwitch::setObj </td>
+          <td class="memname">char * FcSwitch::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
+<a id="a39a4b2d4c21ff8e460e08156c9284474" name="a39a4b2d4c21ff8e460e08156c9284474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39a4b2d4c21ff8e460e08156c9284474">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FcSwitch::set </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refname</em></span>, </td>
         </tr>

@@ -1,6 +1,7 @@
 var class_p2p_reaction_send =
 [
-    [ "P2pReactionSend", "class_p2p_reaction_send.html#a7d936954f0caeee8ec559444b9cfd5e6", null ],
+    [ "~P2pReactionSend", "class_p2p_reaction_send.html#a83afc0c62af90cddf9938a1e213a4fd9", null ],
+    [ "get", "class_p2p_reaction_send.html#a0b249b540704c06c14a8bee34e5f4965", null ],
     [ "getEPurl", "class_p2p_reaction_send.html#a5ff98b0b7fe4c3428a78d091f80ad7dd", null ],
-    [ "setObj", "class_p2p_reaction_send.html#a98ed20a308262193d02be2f17b1f3635", null ]
+    [ "set", "class_p2p_reaction_send.html#a06ae0e59e9a6b61bfe5d97c07d1847e6", null ]
 ];

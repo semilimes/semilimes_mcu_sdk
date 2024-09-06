@@ -6,34 +6,34 @@
 class FcSwitch
 {
 private:
+    #define headerSize 63
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcSwitch
+// Function: ~FcSwitch
 
-//     An on/off switch
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcSwitch(char* json);
+//         ~FcSwitch()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcSwitch(char* json)
+    ~FcSwitch()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcSwitch.setObj
+// Function: FcSwitch.set
 
 //     An on/off switch
 
 //     Prototype:
-//         void FcSwitch::setObj(char* refname,char* title,bool value);
+//         void FcSwitch::set(char* refname,char* title,bool value);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -43,7 +43,20 @@ public:
 //     Returns:
 ///@return         void
 
-    void setObj(char* refname,char* title,bool value);
+    void set(char* refname,char* title,bool value);
+
+// Function: FcSwitch.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcSwitch::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

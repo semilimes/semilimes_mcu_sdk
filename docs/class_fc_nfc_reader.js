@@ -1,5 +1,6 @@
 var class_fc_nfc_reader =
 [
-    [ "FcNfcReader", "class_fc_nfc_reader.html#a69c4e165cab7ae8c89dde2945b29e21f", null ],
-    [ "setObj", "class_fc_nfc_reader.html#a7d5a7c87c7fbc980846d9945584657cf", null ]
+    [ "~FcNfcReader", "class_fc_nfc_reader.html#a8aee3b776c2988999d3918cedd900359", null ],
+    [ "get", "class_fc_nfc_reader.html#a2b3e826d5ec35a2404bcd164302063a5", null ],
+    [ "set", "class_fc_nfc_reader.html#abc6e7ac761c4404c75dc8b0b9d8781da", null ]
 ];

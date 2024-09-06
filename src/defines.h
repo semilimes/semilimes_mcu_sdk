@@ -2,6 +2,7 @@
 #define _include_h_
 
 #include "utility/SME_JSON.h"
+//#include <Arduino.h>
 
 #define accept "application/json"
 #define contentType "application/json"

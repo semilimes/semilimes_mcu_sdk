@@ -6,41 +6,42 @@
 class BucketLike
 {
 private:
+    #define headerSize 15
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: BucketLike
 
-//     This endpoint sets a like by the current account to any referenced bucket that allows likes.
+// Function: ~BucketLike
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void BucketLike(char* json);
+//         ~BucketLike()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    BucketLike(char* json)
+    ~BucketLike()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: BucketLike.setObj
+// Function: BucketLike.set
 
 //     This endpoint sets a like by the current account to any referenced bucket that allows likes.
 
 //     Prototype:
-//         void setObj(char* bucketId);
+//         void set(char* bucketId);
 
 //     Parameters:
 ///@param         bucketId -  is the unique Id to reference an existing bucket
 
 //     Returns:
 ///@returns         void
-    void setObj(char* bucketId);
+    void set(char* bucketId);
 
 // Function: BucketLike.getEPurl
 
@@ -54,6 +55,20 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+
+// Function: BucketLike.get
+
+//     return the json script
+
+//     Prototype:
+//         void BucketLike::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

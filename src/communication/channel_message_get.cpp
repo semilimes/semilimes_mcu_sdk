@@ -1,11 +1,11 @@
 #include "channel_message_get.h"
 
-/* Function: ChannelMessageGet.setObj
+/* Function: ChannelMessageGet.set
 
     This endpoint returns a list of messages in the specified Channel.
 
     Prototype:
-        void setObj(char* channelId,char* messageId,int limit);
+        void set(char* channelId,char* messageId,int limit);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -15,12 +15,15 @@
     Returns:
         void
 */
-void ChannelMessageGet::setObj(char* channelId,char* messageId,int limit)
+void ChannelMessageGet::set(char* channelId,char* messageId,int limit)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"channelId",channelId);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2JsonInt(*pjson,"limit",limit);
+    int size = headerSize+strlen(channelId)+strlen(messageId)+json_data.intStrSize(limit)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"channelId",channelId);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2JsonInt(json,"limit",limit);
 }
 
 /* Function: ChannelMessageGet.getEPurl
@@ -38,4 +41,21 @@ void ChannelMessageGet::setObj(char* channelId,char* messageId,int limit)
 char* ChannelMessageGet::getEPurl()
 {
     return httpsUrl communication_channel_message;
+}
+
+/* Function: ChannelMessageGet.get
+
+    return the json script
+
+    Prototype:
+        void ChannelMessageGet::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* ChannelMessageGet::get()
+{
+    return json;
 }

@@ -6,44 +6,52 @@
 class DcFile
 {
 private:
+    #define headerSize 28
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
 
 public:
-// Function: DcFile
+/* Function: DcFile.set
 
-//    A file object containing one or more files to open or download
+   A file object containing one or more files to open or download
+
+   Prototype:
+      void DcFile::set();
+
+   Parameters:
+
+   Returns:
+      void
+*/
+    DcFile()
+    {
+        int size = headerSize+1;//add '\0' for null-termination
+        json = new char[size]; 
+
+        json_data.initJson(json);
+        json_data.addPair2JsonStr(json,"dataComponentType","file");
+    }
+
+// Function: ~DcFile
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcFile(char* json);
+//         ~DcFile()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcFile(char* json, char* jsonArray)
+    ~DcFile()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","file");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
-
-// Function: DcFile.setObj
-
-//    A file object containing one or more files to open or download
-
-//    Prototype:
-//       void DcFile::setObj();
-
-//    Parameters:
-
-//    Returns:
-///@return       void
-    void setObj();
 
 // Function: DcFile.addFileIds
 
@@ -58,7 +66,7 @@ public:
 
 //    Returns:
 ///@return       void
-    void addFileIds(char* fileIds);
+    void addFileId(char* fileIds);
 
 // Function: DcFile.appendFileIds
 
@@ -72,6 +80,19 @@ public:
 //    Returns:
 ///@return       void
     void appendFileIds();
+
+// Function: DcFile.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcFile::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

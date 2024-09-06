@@ -1,11 +1,11 @@
 #include "fc_button_list.h"
 
-/* Function: FcButtonList.setObj
+/* Function: FcButtonList.set
 
     A group of user-clickable buttons with a label
 
     Prototype:
-        void FcButtonList::setObj(char* refname,char* title,bool reqSel,char* value,bool vertList);
+        void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList);
 
     Parameters:
         refname - is the reference name of the button list
@@ -17,16 +17,18 @@
     Returns:
         void
 */
-void FcButtonList::setObj(char* refname,char* title,bool reqSel,char* value,bool vertList)
+void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","buttonlist");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"value",value);
-    json_data.addPair2JsonBool(*pjson,"verticalList", vertList);
-    json_data.initJsonArray(*pjsonArray);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+json_data.boolStrSize(vertList)+1;//add '\0' for null-termination
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","buttonlist");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"value",value);
+    json_data.addPair2JsonBool(json,"verticalList", vertList);
 }
 
 /* Function: FcButtonList.addOptions
@@ -45,10 +47,23 @@ void FcButtonList::setObj(char* refname,char* title,bool reqSel,char* value,bool
 */
 void FcButtonList::addOptions(char* name,char* value)
 {
-    char optTemp[100]="{}";
+    int size = headerArraySize+strlen(name)+strlen(value)+1;
+    char* optTemp = new char[size];
+    json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "name", name);
     json_data.addPair2JsonStr(optTemp, "value", value);
-    json_data.add2Json(*pjsonArray,optTemp);
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size+1];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,optTemp);
 }
 
 /* Function: FcButtonList.appendOptions
@@ -65,5 +80,24 @@ void FcButtonList::addOptions(char* name,char* value)
 */
 void FcButtonList::appendOptions()
 {    
-	json_data.add2JsonArray(*pjson,"options",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"options",jsonArray);
+}
+
+/* Function: FcButtonList.get
+
+    return the json script
+
+    Prototype:
+        void FcButtonList::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcButtonList::get()
+{
+    return json;
 }

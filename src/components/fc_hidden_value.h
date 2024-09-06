@@ -5,35 +5,35 @@
 
 class FcHiddenValue
 {
-private:   
+private:
+    #define headerSize 59
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: FcHiddenValue
+// Function: ~FcHiddenValue
 
-//     A value into the form which is not visible to the use
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcHiddenValue(char* json);
+//         ~FcHiddenValue()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcHiddenValue(char* json)
+    ~FcHiddenValue()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcHiddenValue.setObj
+// Function: FcHiddenValue.set
 
 //     A value into the form which is not visible to the use
 
 //     Prototype:
-//         void FcHiddenValue::setObj(char* refname,char* value);
+//         void FcHiddenValue::set(char* refname,char* value);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -41,7 +41,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* value);
+    void set(char* refname,char* value);
+
+// Function: FcHiddenValue.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcHiddenValue::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

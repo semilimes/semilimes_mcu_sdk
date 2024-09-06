@@ -1,11 +1,11 @@
 #include "channel_subscribe.h"
 
-/* Function: ChannelSubscribe.setObj
+/* Function: ChannelSubscribe.set
 
     This endpoint makes the calling account to subscribe to an existing channel.
 
     Prototype:
-        void setObj(char* channelId);
+        void set(char* channelId);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -13,10 +13,13 @@
     Returns:
         void
 */
-void ChannelSubscribe::setObj(char* channelId)
+void ChannelSubscribe::set(char* channelId)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"channelId",channelId);
+    int size = headerSize+strlen(channelId)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"channelId",channelId);
 }
 
 /* Function: ChannelSubscribe.getEPurl
@@ -34,4 +37,21 @@ void ChannelSubscribe::setObj(char* channelId)
 char* ChannelSubscribe::getEPurl()
 {
     return httpsUrl communication_channel_subscribe;
+}
+
+/* Function: ChannelSubscribe.get
+
+    return the json script
+
+    Prototype:
+        void ChannelSubscribe::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* ChannelSubscribe::get()
+{
+    return json;
 }

@@ -1,11 +1,11 @@
 #include "dc_webview.h"
 
-/* Function: DcWebview.setObj
+/* Function: DcWebview.set
 
     A message referencing a webpage, to be viewed as a web frame
 
     Prototype:
-        void DcWebview::setObj(char* url, bool enableFullScreenView, char* viewSize);
+        void DcWebview::set(char* url, bool enableFullScreenView, char* viewSize);
 
     Parameters:
         url - is the address to be rendered in the webview
@@ -14,11 +14,31 @@
     Returns:
         void
 */
-void DcWebview::setObj(char* url, bool enableFullScreenView, char* viewSize)
+void DcWebview::set(char* url, bool enableFullScreenView, char* viewSize)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"dataComponentType","webview");
-    json_data.addPair2JsonStr(*pjson,"url",url);
-    json_data.addPair2JsonBool(*pjson,"enableFullScreenView",enableFullScreenView);
-    json_data.addPair2JsonStr(*pjson,"viewSize",viewSize);
+    int size = headerSize+strlen(url)+json_data.boolStrSize(enableFullScreenView)+strlen(viewSize)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"dataComponentType","webview");
+    json_data.addPair2JsonStr(json,"url",url);
+    json_data.addPair2JsonBool(json,"enableFullScreenView",enableFullScreenView);
+    json_data.addPair2JsonStr(json,"viewSize",viewSize);
+}
+
+/* Function: DcWebview.get
+
+    return the json script
+
+    Prototype:
+        void DcWebview::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* DcWebview::get()
+{
+    return json;
 }

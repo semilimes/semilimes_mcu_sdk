@@ -6,41 +6,54 @@
 class DcHtmlText
 {
 private:
+    #define headerSize 38
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: DcHtmlText
+// Function: ~DcHtmlText
 
-//     An html message
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcHtmlText(char* json);
+//         ~DcHtmlText()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcHtmlText(char* json)
+    ~DcHtmlText()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: DcHtmlText.setObj
+// Function: DcHtmlText.set
 
 //     An html message
 
 //     Prototype:
-//         void DcHtmlText::setObj(char* html);
+//         void DcHtmlText::set(char* html);
 
 //     Parameters:
 ///@param         html - the html script 
 
 //     Returns:
 ///@return         void
-    void setObj(char* html);
+    void set(char* html);
+    
+// Function: DcHtmlText.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcHtmlText::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

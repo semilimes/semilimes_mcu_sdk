@@ -6,34 +6,35 @@
 class ChannelMessageUpdate
 {
 private:
+    #define headerSize 33
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: ChannelMessageUpdate
 
-//     This endpoint allows to update a specific message published in a channel.
+// Function: ~ChannelMessageUpdate
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelMessageUpdate(char* json);
+//         ~ChannelMessageUpdate()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    ChannelMessageUpdate(char* json)
+    ~ChannelMessageUpdate()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelMessageUpdate.setObj
+// Function: ChannelMessageUpdate.set
 
 //     This endpoint allows to update a specific message published in a channel.
 
 //     Prototype:
-//         void setObj(char* messageId, char* dataComponent);
+//         void set(char* messageId, char* dataComponent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing groupChat
@@ -41,7 +42,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* messageId, char* dataComponent);
+    void set(char* messageId, char* dataComponent);
 
 // Function: ChannelMessageUpdate.getEPurl
 
@@ -55,6 +56,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelMessageUpdate.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelMessageUpdate::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

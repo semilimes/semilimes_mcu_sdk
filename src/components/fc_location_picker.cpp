@@ -1,11 +1,11 @@
 #include "fc_location_picker.h"
 
-/* Function: FcLocationPicker.setObj
+/* Function: FcLocationPicker.set
 
     A picker showing a map where to choose a location or address
 
     Prototype:
-        void FcLocationPicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+        void FcLocationPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,14 +18,34 @@
     Returns:
         void
 */
-void FcLocationPicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly)
+void FcLocationPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","locationpicker");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"value",value);
-    json_data.addPair2JsonStr(*pjson,"actionButtonTitle",actBtnTitle);
-    json_data.addPair2JsonBool(*pjson,"currentLocationOnly",currLocOnly);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+json_data.boolStrSize(currLocOnly)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","locationpicker");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"value",value);
+    json_data.addPair2JsonStr(json,"actionButtonTitle",actBtnTitle);
+    json_data.addPair2JsonBool(json,"currentLocationOnly",currLocOnly);
+}
+
+/* Function: FcLocationPicker.get
+
+    return the json script
+
+    Prototype:
+        void FcLocationPicker::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcLocationPicker::get()
+{
+    return json;
 }

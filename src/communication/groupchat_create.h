@@ -6,45 +6,45 @@
 class GroupchatCreate
 {
 private:
+    #define headerSize 28
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
-// Function: GroupchatCreate
+// Function: ~GroupchatCreate
 
-//     This endpoint creates a new group chat with a specified name. It's also possible to directly invite other accounts to the chat upon creation by specifying their accountIds in the recipientIds array.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GroupchatCreate(char* json);
+//         ~GroupchatCreate()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the RecipentIds 
 
 //     Returns:
 ///@return         void
-    GroupchatCreate(char* json, char* jsonArray)
+    ~GroupchatCreate()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
     
-// Function: GroupchatCreate.setObj
+// Function: GroupchatCreate.set
 
 //     This endpoint creates a new group chat with a specified name. It's also possible to directly invite other accounts to the chat upon creation by specifying their accountIds in the recipientIds array.
 
 //     Prototype:
-//         void setObj(char* title);
+//         void set(char* title);
 
 //     Parameters:
 ///@param         title - sets the group chat title
 
 //     Returns:
 ///@returns         void
-    void setObj(char* title);
+    void set(char* title);
 
 // Function: GroupchatCreate.addRecipientIds
 
@@ -85,6 +85,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatCreate.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatCreate::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

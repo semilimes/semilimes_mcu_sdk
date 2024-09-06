@@ -1,11 +1,11 @@
 #include "channel_get.h"
 
-/* Function: ChannelGet.setObj
+/* Function: ChannelGet.set
 
     This endpoint finds channels based on specified parameters
 
     Prototype:
-        void setObj(char* ownerId,char* editorId,char* channelId,char* title);
+        void set(char* ownerId,char* editorId,char* channelId,char* title);
 
     Parameters:
     ownerId - Returns channels owned by the specified account Id
@@ -17,13 +17,16 @@
     Returns:
         void
 */
-void ChannelGet::setObj(char* ownerId,char* editorId,char* channelId,char* title)
+void ChannelGet::set(char* ownerId,char* editorId,char* channelId,char* title)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"ownerId",ownerId);
-    json_data.addPair2JsonStr(*pjson,"editorId",editorId);
-    json_data.addPair2JsonStr(*pjson,"channelId",channelId);
-    json_data.addPair2JsonStr(*pjson,"title",title);
+    int size = headerSize+strlen(ownerId)+strlen(editorId)+strlen(channelId)+strlen(title)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"ownerId",ownerId);
+    json_data.addPair2JsonStr(json,"editorId",editorId);
+    json_data.addPair2JsonStr(json,"channelId",channelId);
+    json_data.addPair2JsonStr(json,"title",title);
 }
 
 /* Function: ChannelGet.getEPurl
@@ -41,4 +44,21 @@ void ChannelGet::setObj(char* ownerId,char* editorId,char* channelId,char* title
 char* ChannelGet::getEPurl()
 {
     return httpsUrl communication_channel;
+}
+
+/* Function: ChannelGet.get
+
+    return the json script
+
+    Prototype:
+        void ChannelGet::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* ChannelGet::get()
+{
+    return json;
 }

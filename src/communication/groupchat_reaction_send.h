@@ -6,34 +6,34 @@
 class GroupchatReactionSend
 {
 private:
+    #define headerSize 30
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: GroupchatReactionSend
+// Function: ~GroupchatReactionSend
 
-//     This endpoint allows the account to add a reaction from a specific message in a Group Chat.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GroupchatReactionSend(char* json);
+//         ~GroupchatReactionSend()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GroupchatReactionSend(char* json)
+    ~GroupchatReactionSend()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GroupchatReactionSend.setObj
+// Function: GroupchatReactionSend.set
 
 //     This endpoint allows the account to add a reaction from a specific message in a Group Chat.
 
 //     Prototype:
-//         void setObj(char* messageId, char* reaction);
+//         void set(char* messageId, char* reaction);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing groupChat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* messageId, char* reaction);
+    void set(char* messageId, char* reaction);
 
 // Function: GroupchatReactionSend.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatReactionSend.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatReactionSend::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -1,5 +1,6 @@
 var class_fc_hidden_value =
 [
-    [ "FcHiddenValue", "class_fc_hidden_value.html#a2702719e8729037c985957dda5d759da", null ],
-    [ "setObj", "class_fc_hidden_value.html#ad54d4f7621a8c2a0917d7455901b3b99", null ]
+    [ "~FcHiddenValue", "class_fc_hidden_value.html#a752b4009a4eeda3ae83ced823e4190c4", null ],
+    [ "get", "class_fc_hidden_value.html#afb48815bef982a0e81ab978ff1d5bb62", null ],
+    [ "set", "class_fc_hidden_value.html#aa3751fa0ae23dae58061ae30d19e2467", null ]
 ];

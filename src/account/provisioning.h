@@ -6,34 +6,34 @@
 class Provisioning
 {
 private:
+    #define headerSize 36
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
 
 public:
-// Function: Provisioning
+// Function: ~Provisioning
 
-//     acquire the keys needed to provision the device
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void Provisioning(char* json);
+//         ~Provisioning()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    Provisioning(char* json)
+    ~Provisioning()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: Provisioning.setObj
+// Function: Provisioning.set
 
 //     create the json needed to Register and Claim the device
 
 //     Prototype:
-//         void Provisioning::setObj(char* devId, char* provKey);
+//         void Provisioning::set(char* devId, char* provKey);
 
 //     Parameters:
 ///@param          devId - the device id, a unique ID that belongs to a specific device
@@ -41,7 +41,20 @@ public:
 
 //     Returns:
 ///@returns         char*
-    void setObj(char* devId, char* provKey);
+    void set(char* devId, char* provKey);
+
+// Function: Provisioning.get
+
+//     return the json script
+
+//     Prototype:
+//         void Provisioning::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 
 // Function: Provisioning.getRegisterDeviceURL
 

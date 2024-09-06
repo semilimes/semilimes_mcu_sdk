@@ -1,6 +1,7 @@
 var class_channel_unsubscribe =
 [
-    [ "ChannelUnsubscribe", "class_channel_unsubscribe.html#aee43d9262a1b60cdd40466daa0c2a0c8", null ],
+    [ "~ChannelUnsubscribe", "class_channel_unsubscribe.html#a9b7e4d03fd201fd2514a3f78156e745b", null ],
+    [ "get", "class_channel_unsubscribe.html#ad439fe7dd3d21d21abac64f04aa0f15a", null ],
     [ "getEPurl", "class_channel_unsubscribe.html#a76939f3b49021428d85db45790dd53e0", null ],
-    [ "setObj", "class_channel_unsubscribe.html#a2208e76c97339fb9a8beec3755a5d0d3", null ]
+    [ "set", "class_channel_unsubscribe.html#aca89de0396920fef80a4ffafa789f221", null ]
 ];

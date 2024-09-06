@@ -108,11 +108,8 @@ $(function(){initNavTree('class_device.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a595199f1c07b6a75b7e84119c92947ba" id="r_a595199f1c07b6a75b7e84119c92947ba"><td class="memItemLeft" align="right" valign="top"><a id="a595199f1c07b6a75b7e84119c92947ba" name="a595199f1c07b6a75b7e84119c92947ba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Device</b> (char *json, char *jsonPins, char *jsonFunctions)</td></tr>
-<tr class="separator:a595199f1c07b6a75b7e84119c92947ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f2ba96f425e8d417023440802799189" id="r_a8f2ba96f425e8d417023440802799189"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f2ba96f425e8d417023440802799189">setObj</a> (char *name)</td></tr>
-<tr class="separator:a8f2ba96f425e8d417023440802799189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa00a0f9a5fab5ee40a35f2ee62d992" id="r_a8fa00a0f9a5fab5ee40a35f2ee62d992"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fa00a0f9a5fab5ee40a35f2ee62d992">set</a> (char *name)</td></tr>
+<tr class="separator:a8fa00a0f9a5fab5ee40a35f2ee62d992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9e85ce22ea1313b68f16332f2868a61" id="r_ac9e85ce22ea1313b68f16332f2868a61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9e85ce22ea1313b68f16332f2868a61">addGPIO</a> (char *name, char *GPIOType, char *portName, int pinNumber, int value)</td></tr>
 <tr class="separator:ac9e85ce22ea1313b68f16332f2868a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef4439bb70cca6d3e6fb0a21b724f9f7" id="r_aef4439bb70cca6d3e6fb0a21b724f9f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef4439bb70cca6d3e6fb0a21b724f9f7">appendGPIOs</a> ()</td></tr>
@@ -121,11 +118,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9d160eda4e8418a7d6e1497ffd96b6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a019b935d15c94a234aff16fc3c16bcf6" id="r_a019b935d15c94a234aff16fc3c16bcf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a019b935d15c94a234aff16fc3c16bcf6">appendFunctions</a> ()</td></tr>
 <tr class="separator:a019b935d15c94a234aff16fc3c16bcf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04ea7f5a407ee217703eae481b42dff8" id="r_a04ea7f5a407ee217703eae481b42dff8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04ea7f5a407ee217703eae481b42dff8">get</a> ()</td></tr>
+<tr class="separator:a04ea7f5a407ee217703eae481b42dff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac45d8b68f925e9e11438b5a33226d073" id="r_ac45d8b68f925e9e11438b5a33226d073"><td class="memItemLeft" align="right" valign="top"><a id="ac45d8b68f925e9e11438b5a33226d073" name="ac45d8b68f925e9e11438b5a33226d073"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>pinTypes</b> [5][10] = {&quot;out&quot;, &quot;in&quot;, &quot;analogIn&quot;, &quot;analogOut&quot;, &quot;pwm&quot;}</td></tr>
+<tr class="memitem:ac45d8b68f925e9e11438b5a33226d073" id="r_ac45d8b68f925e9e11438b5a33226d073"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac45d8b68f925e9e11438b5a33226d073">pinTypes</a> [5][10] = {&quot;out&quot;, &quot;in&quot;, &quot;analogIn&quot;, &quot;analogOut&quot;, &quot;pwm&quot;}</td></tr>
 <tr class="separator:ac45d8b68f925e9e11438b5a33226d073"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -194,7 +192,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>pinTypes</b> [5][10] 
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>- the name of the device </td></tr>
-    <tr><td class="paramname">GPIOType</td><td>- the type of the pin: char GPIOTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"}; </td></tr>
+    <tr><td class="paramname">GPIOType</td><td>- the type of the pin: char pinTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"}; </td></tr>
     <tr><td class="paramname">portName</td><td>- the name of the Port </td></tr>
     <tr><td class="paramname">pinNumber</td><td>- the pin number</td></tr>
     <tr><td class="paramname">value</td><td>- the status of the pin</td></tr>
@@ -241,14 +239,32 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>pinTypes</b> [5][10] 
 
 </div>
 </div>
-<a id="a8f2ba96f425e8d417023440802799189" name="a8f2ba96f425e8d417023440802799189"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f2ba96f425e8d417023440802799189">&#9670;&#160;</a></span>setObj()</h2>
+<a id="a04ea7f5a407ee217703eae481b42dff8" name="a04ea7f5a407ee217703eae481b42dff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04ea7f5a407ee217703eae481b42dff8">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Device::setObj </td>
+          <td class="memname">char * Device::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
+<a id="a8fa00a0f9a5fab5ee40a35f2ee62d992" name="a8fa00a0f9a5fab5ee40a35f2ee62d992"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fa00a0f9a5fab5ee40a35f2ee62d992">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Device::set </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
@@ -262,6 +278,27 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>pinTypes</b> [5][10] 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac45d8b68f925e9e11438b5a33226d073" name="ac45d8b68f925e9e11438b5a33226d073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45d8b68f925e9e11438b5a33226d073">&#9670;&#160;</a></span>pinTypes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Device::pinTypes[5][10] = {&quot;out&quot;, &quot;in&quot;, &quot;analogIn&quot;, &quot;analogOut&quot;, &quot;pwm&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>pinTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"}; </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

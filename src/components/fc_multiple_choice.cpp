@@ -1,11 +1,11 @@
 #include "fc_multiple_choice.h"
 
-/* Function: FcMultipleChoice.setObj
+/* Function: FcMultipleChoice.set
 
     A component displaying a list of options and allowing multiple choice
 
     Prototype:
-        void FcMultipleChoice::setObj(char* refname,char* title,bool reqSel);
+        void FcMultipleChoice::set(char* refname,char* title,bool reqSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -15,15 +15,16 @@
     Returns:
         void
 */
-void FcMultipleChoice::setObj(char* refname,char* title,bool reqSel)
+void FcMultipleChoice::set(char* refname,char* title,bool reqSel)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","multichoice");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.initJsonArray(*pjsonArray);
-    json_data.initJsonArray(*pjsonArray2);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+1;//add '\0' for null-termination
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","multichoice");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
 }
 
 /* Function: FcMultipleChoice.addOptions
@@ -42,10 +43,23 @@ void FcMultipleChoice::setObj(char* refname,char* title,bool reqSel)
 */
 void FcMultipleChoice::addOptions(char* name,char* value)
 {
-    char optTemp[100]="{}";
+    int size = headerArraySize+strlen(name)+strlen(value)+1;
+    char* optTemp = new char[size];
+    json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "name", name);
     json_data.addPair2JsonStr(optTemp, "value", value);
-    json_data.add2Json(*pjsonArray,optTemp);
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size+1];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,optTemp);
 }
 
 /* Function: FcMultipleChoice.appendOptions
@@ -62,15 +76,17 @@ void FcMultipleChoice::addOptions(char* name,char* value)
 */
 void FcMultipleChoice::appendOptions()
 {    
-	json_data.add2JsonArray(*pjson,"options",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"options",jsonArray);
 }
 
-/* Function: FcMultipleChoice.addValues
+/* Function: FcMultipleChoice.addValue
 
     add an array of the names of the choices 
 
     Prototype:
-        void FcMultipleChoice::addValues(char* value);
+        void FcMultipleChoice::addValue(char* value);
 
     Parameters:
         value - is an array containing the names of the choices that are selected on submission
@@ -82,9 +98,21 @@ void FcMultipleChoice::appendOptions()
     Returns:
         void
 */
-void FcMultipleChoice::addValues(char* value)
+void FcMultipleChoice::addValue(char* value)
 {    
-    json_data.add2JsonStr(*pjsonArray2,value);
+    int size = headerArray2Size+strlen(value)+3; //add '\0' and \"\" 
+    
+    if(!jsonArray2)
+    {
+        jsonArray2 = new char[size+1];
+        json_data.initJsonArray(jsonArray2);
+    }
+    else
+    {
+        size += strlen(jsonArray2)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray2,size+1); //add '\0' for null-termination
+    }
+    json_data.add2JsonStr(jsonArray2,value);
 }
 
 /* Function: FcMultipleChoice.appendValues
@@ -101,5 +129,24 @@ void FcMultipleChoice::addValues(char* value)
 */
 void FcMultipleChoice::appendValues()
 {    
-	json_data.add2JsonArray(*pjson,"value",*pjsonArray2);
+    int size = strlen(json)+strlen(jsonArray2)+10;   //add bytes for ',"value":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"value",jsonArray2);
+}
+
+/* Function: FcMultipleChoice.get
+
+    return the json script
+
+    Prototype:
+        void FcMultipleChoice::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcMultipleChoice::get()
+{
+    return json;
 }

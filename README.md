@@ -10,7 +10,7 @@ To enable a device to connect to the Semilimes server and start interacting, it 
 With Semilimes, you can interact with devices using standard text messages or through specialized forms and widgets, such as switch buttons, sliders, map pickers, and more. Devices, like other users, can join channels, participate in group chats, engage in peer-to-peer conversations, and can be shared with other users, groups, or even made public. Semilimes offers endless possibilities for connecting your devices or software, creating a mixed network of people and devices. Semilimes is a social network for both humans and machines.
 
 ## ✨ What this sdk is about
-The Semilimes SDK is a C++ library designed to connect a variety of microcontrollers to the Semilimes advanced messaging service. This SDK is optimized for use with the Arduino IDE but, due to its lack of external dependencies, it can also be used in other environments. The SDK is particularly notable for not utilizing dynamic memory allocation, which means character arrays must be predefined by the user, and the SDK accesses them through pointers.
+The Semilimes SDK is a C++ library designed to connect a variety of microcontrollers to the Semilimes advanced messaging service. This SDK is optimized for use with the Arduino IDE but, due to its lack of external dependencies, it can also be used in other environments. 
 
 The SDK allows developers to create JSON messages that conform to the OpenAPI structure used by Semilimes APIs. 
 All relevant information about the Semilimes APIs can be found at the following link​ : https://www.semilimes.com/developers/
@@ -24,7 +24,6 @@ These messages can be sent via HTTPS or WebSocket, although the necessary librar
 - Arduino IDE Compatibility: The library is designed to work seamlessly with the Arduino IDE.
 - No External Dependencies: Can be used with other microcontrollers not compatible with the Arduino IDE due to its lack of external dependencies.
 - Low Memory Usage: The library has a small footprint in both flash memory and RAM.
-- Static Memory Allocation: Utilizes static memory allocation, which is referenced by the user's code, enhancing performance and predictability.
 - Dynamic JSON Configuration: Supports the dynamic configuration and combination of JSON scripts, providing flexibility.
 - Compatibility with HTTPS and WebSocket: Compatible with synchronous HTTPS calls and asynchronous WebSocket connections.
 - Device Provisioning: Enables a secure device provisioning procedure on the Semilimes platform without requiring public API keys to be defined in the firmware.

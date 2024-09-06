@@ -6,48 +6,10 @@
 class Header
 {
 private:
-    char** pauth;
-    char** pjson;
-    char** pwsheader;
-    SmeJson json_data;
-
-// Function: Header.setJSON
-
-//     create the Autorization json 
-
-//     Prototype:
-//         void Header::setJSON();
-
-//     Parameters:
-
-//     Returns:
-///@returns         void
-
-    void  setJSON();
+    char auth[89]; // - the array to contain the authorization script 
+    char wsheader[180]; // - the array to contain the websocket header       
 
 public:
-
-// Function: Header
-
-//     set the api-key, and provide the pointers to json and websocket header array
-
-//     Prototype:
-//         Header(char* auth, char* json, char* wsheader);
-
-//     Parameters:
-///@param          auth - the pointer to the predefined array to contain the authorization script 
-///@param          json - the pointer to the predefined array to contain the json script 
-///@param          wsheader - the pointer to the predefined array to contain the websocket header  
-
-//     Returns:
-///@returns         void
-    Header(char* auth, char* json, char* wsheader)
-    {
-        pauth = &auth;
-        pjson = &json;
-        pwsheader = &wsheader;
-        json_data.initJson(*pjson);
-    }
 
 // Function: Header.setAuthorization
 

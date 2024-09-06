@@ -6,59 +6,59 @@
 class GroupchatInvite
 {
 private:
+    #define headerSize 34
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
-// Function: GroupchatInvite
+// Function: ~GroupchatInvite
 
-//    This endpoint allows to invite other recipients to the specified group chat.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GroupchatInvite(char* json);
+//         ~GroupchatInvite()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the data recipientsIds 
 
 //     Returns:
 ///@return         void
-    GroupchatInvite(char* json, char* jsonArray)
+    ~GroupchatInvite()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
 
-// Function: GroupchatInvite.setObj
+// Function: GroupchatInvite.set
 
 //    This endpoint allows to invite other recipients to the specified group chat.
 
 //     Prototype:
-//         void setObj(char* groupChatIds)
+//         void set(char* groupChatIds)
 
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
 
 //     Returns:
 ///@returns         void
-    void setObj(char* groupChatIds);
+    void set(char* groupChatId);
 
-// Function: GroupchatInvite.addRecipientIds
+// Function: GroupchatInvite.addRecipientId
 
 //     Add the recipientId 
 
 //     Prototype:
-//         void addRecipientIds(char* recipientIds);
+//         void addRecipientId(char* recipientId);
 
 //     Parameters:
-///@param         recipientIds - the json script of the dataComponent to invite
+///@param         recipientId - the json script of the dataComponent to invite
 
 //     Returns:
 ///@returns         void
-    void addRecipientIds(char* recipientIds);
+    void addRecipientId(char* recipientId);
 
 // Function: GroupchatInvite.appendRecipientIds
 
@@ -85,6 +85,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatInvite.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatInvite::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

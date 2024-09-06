@@ -6,34 +6,34 @@
 class DcLocation
 {
 private:
+    #define headerSize 75
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: DcLocation
+// Function: ~DcLocation
 
-//    A location message containing coordinates
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcLocation(char* json);
+//         ~DcLocation()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcLocation(char* json)
+    ~DcLocation()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: DcLocation.setObj
+// Function: DcLocation.set
 
 //    A location message containing coordinates
 
 //    Prototype:
-//        void DcLocation::setObj(char* locationName,float latitude, float longitude);
+//        void DcLocation::set(char* locationName,float latitude, float longitude);
 
 //    Parameters:
 ///@param        locationName - the name of the location 
@@ -42,7 +42,20 @@ public:
 
 //    Returns:
 ///@return         void
-    void setObj(char* locationName,float latitude, float longitude);
+    void set(char* locationName,float latitude, float longitude);
+
+// Function: DcLocation.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcLocation::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -1,5 +1,7 @@
 var class_dc_webview =
 [
-    [ "DcWebview", "class_dc_webview.html#ac8de76c7fc85d3a17752c9ba601a3d30", null ],
-    [ "setObj", "class_dc_webview.html#a177b97d4011cfd66dd80af35ab726581", null ]
+    [ "~DcWebview", "class_dc_webview.html#ae65a9271f4c65d4ff5639738e18e3f4e", null ],
+    [ "get", "class_dc_webview.html#ae4af5f0ef10c298c0600161fac344968", null ],
+    [ "set", "class_dc_webview.html#a6ba9c9e63194cd639b112f59f03568a3", null ],
+    [ "viewSizeTypes", "class_dc_webview.html#a3606024c07575701c7c78c3564f2b662", null ]
 ];

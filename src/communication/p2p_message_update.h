@@ -6,34 +6,34 @@
 class P2pMessageUpdate
 {
 private:
+    #define headerSize 33
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: P2pMessageUpdate
+// Function: ~P2pMessageUpdate
 
-//     This endpoint allows to update a specific message published in a p2p chat.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void P2pMessageUpdate(char* json);
+//         ~P2pMessageUpdate()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    P2pMessageUpdate(char* json)
+    ~P2pMessageUpdate()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: P2pMessageUpdate.setObj
+// Function: P2pMessageUpdate.set
 
 //     This endpoint allows to update a specific message published in a p2p chat.
 
 //     Prototype:
-//         void setObj(char* messageId, char* dataComponent);
+//         void set(char* messageId, char* dataComponent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing p2p chat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* messageId, char* dataComponent);
+    void set(char* messageId, char* dataComponent);
 
 // Function: P2pMessageUpdate.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pMessageUpdate.get
+
+//     return the json script
+
+//     Prototype:
+//         void P2pMessageUpdate::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -6,34 +6,34 @@
 class GroupchatMessageGet
 {
 private:
+    #define headerSize 42
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: GroupchatMessageGet
+// Function: ~GroupchatMessageGet
 
-//     This endpoint returns a list of messages in the specified Group chat.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GroupchatMessageGet(char* json);
+//         ~GroupchatMessageGet()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GroupchatMessageGet(char* json)
+    ~GroupchatMessageGet()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GroupchatMessageGet.setObj
+// Function: GroupchatMessageGet.set
 
 //     This endpoint returns a list of messages in the specified Group chat.
 
 //     Prototype:
-//         void setObj(char* groupChatId,char* messageId,int limit);
+//         void set(char* groupChatId,char* messageId,int limit);
 
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
@@ -42,7 +42,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* groupChatId,char* messageId,int limit);
+    void set(char* groupChatId,char* messageId,int limit);
 
 // Function: GroupchatMessageGet.getEPurl
 
@@ -56,6 +56,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageGet.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatMessageGet::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

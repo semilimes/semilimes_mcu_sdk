@@ -1,10 +1,10 @@
 #include "groupchat_invite.h"
 
-/* Function: GroupchatInvite.setObj
+/* Function: GroupchatInvite.set
 
    This endpoint allows to invite other recipients to the specified group chat.
     Prototype:
-        void setObj(char* groupChatIds)
+        void set(char* groupChatIds)
 
     Parameters:
         groupChatId - is the unique Id to reference an existing groupChat
@@ -12,10 +12,13 @@
     Returns:
         void
 */
-void GroupchatInvite::setObj(char* groupChatIds)
+void GroupchatInvite::set(char* groupChatId)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"groupChatIds",groupChatIds);
+    int size = headerSize+strlen(groupChatId)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"groupChatId",groupChatId);
 }
 
 /* Function: GroupchatInvite.addRecipientIds
@@ -23,17 +26,29 @@ void GroupchatInvite::setObj(char* groupChatIds)
     Add the recipientId 
 
     Prototype:
-        void addRecipientIds(char* recipientIds);
+        void addRecipientId(char* recipientId);
 
     Parameters:
-        recipientIds - the json script of the dataComponent to invite
+        recipientId - the json script of the dataComponent to invite
 
     Returns:
         void
 */
-void GroupchatInvite::addRecipientIds(char* recipientIds)
+void GroupchatInvite::addRecipientId(char* recipientId)
 {    
-    json_data.add2JsonStr(*pjsonArray,recipientIds);
+    int size = headerArraySize+strlen(recipientId)+3; //add '\0' and \"\" 
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2JsonStr(jsonArray,recipientId);
 }
 
 /* Function: GroupchatInvite.appendRecipientIds
@@ -50,10 +65,12 @@ void GroupchatInvite::addRecipientIds(char* recipientIds)
 */
 void GroupchatInvite::appendRecipientIds()
 {
-	json_data.add2JsonArray(*pjson,"recipientIds",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+17;   //add ',"recipientIds":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"recipientIds",jsonArray);
 }
 
-/* Function: GetGroupchatMessage.getEPurl
+/* Function: GroupchatInvite.getEPurl
 
     provides the full url for this endpoint
 
@@ -68,4 +85,21 @@ void GroupchatInvite::appendRecipientIds()
 char* GroupchatInvite::getEPurl()
 {
     return httpsUrl communication_groupchat_invite;
+}
+
+/* Function: GroupchatInvite.get
+
+    return the json script
+
+    Prototype:
+        void GroupchatInvite::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* GroupchatInvite::get()
+{
+    return json;
 }

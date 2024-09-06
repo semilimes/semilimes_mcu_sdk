@@ -6,34 +6,35 @@
 class ChannelMessageGet
 {
 private:
+    #define headerSize 40
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: ChannelMessageGet
 
-//     This endpoint returns a list of messages in the specified Channel.
+// Function: ~ChannelMessageGet
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelMessageGet(char* json);
+//         ~ChannelMessageGet()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    ChannelMessageGet(char* json)
+    ~ChannelMessageGet()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelMessageGet.setObj
+// Function: ChannelMessageGet.set
 
 //     This endpoint returns a list of messages in the specified Channel.
 
 //     Prototype:
-//         void setObj(char* channelId,char* messageId,int limit);
+//         void set(char* channelId,char* messageId,int limit);
 
 //     Parameters:
 ///@param         channelId - is the unique Id to reference an existing channel
@@ -42,7 +43,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* channelId,char* messageId,int limit);
+    void set(char* channelId,char* messageId,int limit);
 
 // Function: ChannelMessageGet.getEPurl
 
@@ -56,6 +57,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelMessageGet.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelMessageGet::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

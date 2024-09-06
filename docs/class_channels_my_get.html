@@ -107,16 +107,18 @@ $(function(){initNavTree('class_channels_my_get.html',''); initResizable(true); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac85f12327f22a63f6113c5f45ceca6b6" id="r_ac85f12327f22a63f6113c5f45ceca6b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac85f12327f22a63f6113c5f45ceca6b6">ChannelsMyGet</a> (char *json)</td></tr>
-<tr class="separator:ac85f12327f22a63f6113c5f45ceca6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ad7c54dccdf4dd353c172a0de1931af" id="r_a5ad7c54dccdf4dd353c172a0de1931af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ad7c54dccdf4dd353c172a0de1931af">setObj</a> (bool owner, bool editor, bool subscriber)</td></tr>
-<tr class="separator:a5ad7c54dccdf4dd353c172a0de1931af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b17ae4aca3e67efabcfc83ecd1f14f" id="r_a20b17ae4aca3e67efabcfc83ecd1f14f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20b17ae4aca3e67efabcfc83ecd1f14f">~ChannelsMyGet</a> ()</td></tr>
+<tr class="separator:a20b17ae4aca3e67efabcfc83ecd1f14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac22abee8f3cac49ae3083feff88486a0" id="r_ac22abee8f3cac49ae3083feff88486a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac22abee8f3cac49ae3083feff88486a0">set</a> (bool owner, bool editor, bool subscriber)</td></tr>
+<tr class="separator:ac22abee8f3cac49ae3083feff88486a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a894d3b378a40e20b768e938695c78a18" id="r_a894d3b378a40e20b768e938695c78a18"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a894d3b378a40e20b768e938695c78a18">getEPurl</a> ()</td></tr>
 <tr class="separator:a894d3b378a40e20b768e938695c78a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56357dc9260f90335514c2a25c50b461" id="r_a56357dc9260f90335514c2a25c50b461"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56357dc9260f90335514c2a25c50b461">get</a> ()</td></tr>
+<tr class="separator:a56357dc9260f90335514c2a25c50b461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac85f12327f22a63f6113c5f45ceca6b6" name="ac85f12327f22a63f6113c5f45ceca6b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac85f12327f22a63f6113c5f45ceca6b6">&#9670;&#160;</a></span>ChannelsMyGet()</h2>
+<a id="a20b17ae4aca3e67efabcfc83ecd1f14f" name="a20b17ae4aca3e67efabcfc83ecd1f14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b17ae4aca3e67efabcfc83ecd1f14f">&#9670;&#160;</a></span>~ChannelsMyGet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,9 +127,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ChannelsMyGet::ChannelsMyGet </td>
+          <td class="memname">ChannelsMyGet::~ChannelsMyGet </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -137,18 +139,29 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>- it is the char array that will contain the whole json script</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void <br  />
- </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a56357dc9260f90335514c2a25c50b461" name="a56357dc9260f90335514c2a25c50b461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56357dc9260f90335514c2a25c50b461">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ChannelsMyGet::get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
 <a id="a894d3b378a40e20b768e938695c78a18" name="a894d3b378a40e20b768e938695c78a18"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a894d3b378a40e20b768e938695c78a18">&#9670;&#160;</a></span>getEPurl()</h2>
 
@@ -167,14 +180,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5ad7c54dccdf4dd353c172a0de1931af" name="a5ad7c54dccdf4dd353c172a0de1931af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ad7c54dccdf4dd353c172a0de1931af">&#9670;&#160;</a></span>setObj()</h2>
+<a id="ac22abee8f3cac49ae3083feff88486a0" name="ac22abee8f3cac49ae3083feff88486a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac22abee8f3cac49ae3083feff88486a0">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ChannelsMyGet::setObj </td>
+          <td class="memname">void ChannelsMyGet::set </td>
           <td>(</td>
           <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>owner</em></span>, </td>
         </tr>

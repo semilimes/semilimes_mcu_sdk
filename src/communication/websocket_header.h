@@ -6,26 +6,26 @@
 class WebsocketHeader
 {
 private:
+    #define headerSize 100
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: WebsocketHeader
+// Function: ~WebsocketHeader
 
-//     This endpoint create the websocket header json message on which the api call is to be embedded
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void WebsocketHeader(char* json);
+//         ~WebsocketHeader()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    WebsocketHeader(char* json)
+    ~WebsocketHeader()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
 // Function: WebsocketHeader.setObj

@@ -1,6 +1,7 @@
 var class_channels_my_get =
 [
-    [ "ChannelsMyGet", "class_channels_my_get.html#ac85f12327f22a63f6113c5f45ceca6b6", null ],
+    [ "~ChannelsMyGet", "class_channels_my_get.html#a20b17ae4aca3e67efabcfc83ecd1f14f", null ],
+    [ "get", "class_channels_my_get.html#a56357dc9260f90335514c2a25c50b461", null ],
     [ "getEPurl", "class_channels_my_get.html#a894d3b378a40e20b768e938695c78a18", null ],
-    [ "setObj", "class_channels_my_get.html#a5ad7c54dccdf4dd353c172a0de1931af", null ]
+    [ "set", "class_channels_my_get.html#ac22abee8f3cac49ae3083feff88486a0", null ]
 ];

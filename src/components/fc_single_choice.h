@@ -6,39 +6,38 @@
 class FcSingleChoice
 {
 private:
+    #define headerSize 92
+    #define headerArraySize 24
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
-// Function: FcSingleChoice
+// Function: ~FcSingleChoice
 
-//     A component displaying a list of options and allowing only one choice
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcMultipleChoice(char* json, char* jsonArray);
+//         ~FcSingleChoice()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the Options 
 
 //     Returns:
 ///@return         void
-    FcSingleChoice(char* json, char* jsonArray)
+    ~FcSingleChoice()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"formComponentType","singlechoice");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
 
-// Function: FcSingleChoice.setObj
+// Function: FcSingleChoice.set
 
 //     Initialize the component that display a list of options and allowing only one choice
 
 //     Prototype:
-//         void FcSingleChoice::setObj(char* refname,char* title,bool reqSel, char* value);
+//         void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* value);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -48,7 +47,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel, char* value);
+    void set(char* refname,char* title,bool reqSel, char* value);
 
 // Function: FcSingleChoice.addOptions
 
@@ -78,6 +77,19 @@ public:
 //     Returns:
 ///@return         void
     void appendOptions();
+
+// Function: FcSingleChoice.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcSingleChoice::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -6,44 +6,52 @@
 class DcContact
 {
 private:
+    #define headerSize 31
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
 
 public:
-// Function: DcContact
+/* Function: DcContact
 
-//    A message that references one or more account Ids to be added as contacts
+   A message that references one or more account Ids to be added as contacts
+
+   Prototype:
+      void DcContact::set();
+
+   Parameters:
+
+   Returns:
+      void
+*/
+    DcContact()
+    {        
+        int size = headerSize+1;//add '\0' for null-termination
+        json = new char[size]; 
+
+        json_data.initJson(json);
+        json_data.addPair2JsonStr(json,"dataComponentType","contact");
+    }
+
+// Function: ~DcContact
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcContact(char* json);
+//         ~DcContact()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcContact(char* json, char* jsonArray)
+    ~DcContact()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
-        json_data.addPair2JsonStr(*pjson,"dataComponentType","contact");
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
     }
-
-// Function: DcContact.setObj
-
-//    A message that references one or more account Ids to be added as contacts
-
-//    Prototype:
-//       void DcContact::setObj();
-
-//    Parameters:
-
-//    Returns:
-///@return       void
-    void setObj();
 
 // Function: DcContact.addContactIds
 
@@ -59,18 +67,31 @@ public:
 ///@return       void
     void addContactIds(char* data);
 
-// Function: DcContact.appendDataContactIds
+// Function: DcContact.appendContactIds
 
 //    Append the contact Id array to the json message 
 
 //    Prototype:
-//       void DcContact::appendDataContactIds();
+//       void DcContact::appendContactIds();
 
 //    Parameters:
 
 //    Returns:
 ///@return       void
-    void appendDataContactIds();
+    void appendContactIds();
+    
+// Function: DcContact.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcContact::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

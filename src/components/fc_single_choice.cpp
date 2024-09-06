@@ -1,11 +1,11 @@
 #include "fc_single_choice.h"
 
-/* Function: FcSingleChoice.setObj
+/* Function: FcSingleChoice.set
 
     A component displaying a list of options and allowing only one choice
 
     Prototype:
-        void FcSingleChoice::setObj(char* refname,char* title,bool reqSel, char* value);
+        void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* value);
 
     Parameters:
         refname - it is the reference name of the object
@@ -16,15 +16,17 @@
     Returns:
         void
 */
-void FcSingleChoice::setObj(char* refname,char* title,bool reqSel, char* value)
+void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* value)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","singlechoice");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"value",value);
-    json_data.initJsonArray(*pjsonArray);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+1;//add '\0' for null-termination
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","singlechoice");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"value",value);
 }
 
 /* Function: FcSingleChoice.addOptions
@@ -43,10 +45,23 @@ void FcSingleChoice::setObj(char* refname,char* title,bool reqSel, char* value)
 */
 void FcSingleChoice::addOptions(char* name,char* value)
 {
-    char optTemp[100]="{}";
+    int size = headerArraySize+strlen(name)+strlen(value)+1;
+    char* optTemp = new char[size];
+    json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "name", name);
     json_data.addPair2JsonStr(optTemp, "value", value);
-    json_data.add2Json(*pjsonArray,optTemp);
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size+1];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,optTemp);
 }
 
 /* Function: FcSingleChoice.appendOptions
@@ -63,5 +78,24 @@ void FcSingleChoice::addOptions(char* name,char* value)
 */
 void FcSingleChoice::appendOptions()
 {    
-	json_data.add2JsonArray(*pjson,"options",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"options",jsonArray);
+}
+
+/* Function: FcSingleChoice.get
+
+    return the json script
+
+    Prototype:
+        void FcSingleChoice::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcSingleChoice::get()
+{
+    return json;
 }

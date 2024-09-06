@@ -6,58 +6,62 @@
 class GroupchatsGet
 {
 private:
+    #define headerSize 17
+    #define headerArraySize 2
     SmeJson json_data;
-    char** pjson;
-    char** pjsonArray;
+    char* json = nullptr; 
+    char* jsonArray = nullptr;
     
 public:
 // Function: GroupchatsGet
 
-//     This endpoint retrieves the group chats of the calling user account.
+//     constructor of the class, init the json
 
 //     Prototype:
-//         void GroupchatsGet(char* json);
+//         GroupchatsGet()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
-///@param         jsonArray - it is a temporary char array that will contain the data recipientsIds 
 
 //     Returns:
 ///@return         void
-    GroupchatsGet(char* json, char* jsonArray)
+    GroupchatsGet()
     {
-        pjson = &json;
-        pjsonArray = &jsonArray;
-        json_data.initJson(*pjson);
-        json_data.initJsonArray(*pjsonArray);
+        json = new char[3];
+        json_data.initJson(json);
     }
 
-// Function: GroupchatsGet.setObj
+// Function: ~GroupchatsGet
 
-//     This endpoint retrieves the group chats of the calling user account.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void setObj();
+//         ~GroupchatsGet()
 
 //     Parameters:
 
 //     Returns:
-///@returns         void
-    void setObj();
+///@return         void
+    ~GroupchatsGet()
+    {
+        delete[] json;
+        delete[] jsonArray;
+        json = nullptr;
+        jsonArray = nullptr;
+    }
 
-// Function: GroupchatsGet.addRecipientIds
+// Function: GroupchatsGet.addRecipientId
 
 //     Add the recipientId 
 
 //     Prototype:
-//         void addRecipientIds(char* recipientIds);
+//         void addRecipientId(char* recipientIds);
 
 //     Parameters:
-///@param         recipientIds - the json script of the dataComponent to add
+///@param         recipientId - the json script of the dataComponent to add
 
 //     Returns:
 ///@returns         void
-    void addRecipientIds(char* recipientIds);
+    void addRecipientId(char* recipientId);
 
 // Function: GroupchatsGet.appendRecipientIds
 
@@ -84,6 +88,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatsGet.get
+
+//     return the json script
+
+//     Prototype:
+//         void GroupchatsGet::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

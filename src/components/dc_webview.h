@@ -6,35 +6,39 @@
 class DcWebview
 {
 private:
+    #define headerSize 78
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: DcWebview
+// variable: DcWebview.viewSizeTypes
 
-//     A message referencing a webpage, to be viewed as a web frame
+//     describes the types of viewSize
+///@param        char viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
+char viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
+// Function: ~DcWebview
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void DcWebview(char* json);
+//         ~DcWebview()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    DcWebview(char* json)
+    ~DcWebview()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
-    char viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
 
-// Function: DcWebview.setObj
+// Function: DcWebview.set
 
 //     A message referencing a webpage, to be viewed as a web frame
 
 //     Prototype:
-//         void DcWebview::setObj(char* url, bool enableFullScreenView, char* viewSize);
+//         void DcWebview::set(char* url, bool enableFullScreenView, char* viewSize);
 
 //     Parameters:
 ///@param         url - is the address to be rendered in the webview
@@ -42,7 +46,20 @@ public:
 ///@param         viewSize - determines the view proportions. Allowed values are: har viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
 //     Returns:
 ///@return         void
-    void setObj(char* url, bool enableFullScreenView, char* viewSize);
+    void set(char* url, bool enableFullScreenView, char* viewSize);
+    
+// Function: DcWebview.get
+
+//     return the json script
+
+//     Prototype:
+//         void DcWebview::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -6,34 +6,36 @@
 class ChannelMessageSend
 {
 private:
+    #define headerSize 33
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
 // Function: ChannelMessageSend
 
-//     This endpoint allows to send a data component to a Channel as a new message.
+// Function: ~ChannelMessageSend
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelMessageSend(char* json);
+//         ~ChannelMessageSend()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    ChannelMessageSend(char* json)
+    ~ChannelMessageSend()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelMessageSend.setObj
+// Function: ChannelMessageSend.set
 
 //     This endpoint allows to send a data component to a Channel as a new message.
 
 //     Prototype:
-//         void setObj(char* messageId, char* dataComponent);
+//         void set(char* messageId, char* dataComponent);
 
 //     Parameters:
 ///@param         channelId - is the unique Id to reference an existing channel
@@ -41,7 +43,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* channelId, char* dataComponent);
+    void set(char* channelId, char* dataComponent);
 
 // Function: ChannelMessageSend.getEPurl
 
@@ -55,6 +57,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelMessageSend.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelMessageSend::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

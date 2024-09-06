@@ -6,34 +6,34 @@
 class FcSlider
 {
 private:
+    #define headerSize 106
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: FcSlider
+// Function: ~FcSlider
 
-//     A slider to let the user select a value by dragging its handle
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void FcSlider(char* json);
+//         ~FcSlider()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    FcSlider(char* json)
+    ~FcSlider()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: FcSlider.setObj
+// Function: FcSlider.set
 
 //     A slider to let the user select a value by dragging its handle
 
 //     Prototype:
-//         void FcSlider::setObj(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+//         void FcSlider::set(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -46,7 +46,20 @@ public:
 
 //     Returns:
 ///@return         void
-    void setObj(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+    void set(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+
+// Function: FcSlider.get
+
+//     return the json script
+
+//     Prototype:
+//         void FcSlider::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -1,11 +1,11 @@
 #include "groupchat_message_send.h"
 
-/* Function: GroupchatMessageSend.setObj
+/* Function: GroupchatMessageSend.set
 
     This endpoint allows to send a data component to a groupChat as a new message.
 
     Prototype:
-        void setObj(char* groupChatId, char* dataComponent);
+        void set(char* groupChatId, char* dataComponent);
 
     Parameters:
         groupChatId - is the unique Id to reference an existing groupChat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void GroupchatMessageSend::setObj(char* groupChatId, char* dataComponent)
+void GroupchatMessageSend::set(char* groupChatId, char* dataComponent)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"groupChatId",groupChatId);
-    json_data.addPair2Json(*pjson,"dataComponent",dataComponent);
+    int size = headerSize+strlen(groupChatId)+strlen(dataComponent)+1;
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"groupChatId",groupChatId);
+    json_data.addPair2Json(json,"dataComponent",dataComponent);
 }
 
 /* Function: GroupchatMessageSend.getEPurl
@@ -37,3 +40,21 @@ char* GroupchatMessageSend::getEPurl()
 {
     return httpsUrl communication_groupchat_message_send;
 }
+
+/* Function: GroupchatMessageSend.get
+
+    return the json script
+
+    Prototype:
+        void GroupchatMessageSend::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* GroupchatMessageSend::get()
+{
+    return json;
+}
+

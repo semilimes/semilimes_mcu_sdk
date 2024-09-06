@@ -1,11 +1,11 @@
 #include "fc_text_box.h"
 
-/* Function: FcTextBox.setObj
+/* Function: FcTextBox.set
 
     A text field with a title and a user-editable text field.
 
     Prototype:
-        void FcTextBox::setObj(char* refname,char* title,char* value,bool reqSel);
+        void FcTextBox::set(char* refname,char* title,char* value,bool reqSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -16,12 +16,32 @@
     Returns:
         void
 */
-void FcTextBox::setObj(char* refname,char* title,char* value,bool reqSel)
+void FcTextBox::set(char* refname,char* title,char* value,bool reqSel)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson, "formComponentType","textbox");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"value",value);
+    int size = headerSize+strlen(refname)+strlen(title)+strlen(value)+json_data.boolStrSize(reqSel)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json, "formComponentType","textbox");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"value",value);
+}
+
+/* Function: FcTextBox.get
+
+    return the json script
+
+    Prototype:
+        void FcTextBox::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcTextBox::get()
+{
+    return json;
 }

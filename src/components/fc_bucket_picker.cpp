@@ -1,11 +1,11 @@
 #include "fc_bucket_picker.h"
 
-/* Function: FcBucketPicker.setObj
+/* Function: FcBucketPicker.set
 
     A picker allowing to select and reference buckets
 
     Prototype:
-        void FcBucketPicker::setObj(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
+        void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,16 +18,19 @@
     Returns:
         void
 */
-void FcBucketPicker::setObj(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel)
+void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","bucketpicker");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"filter",filter);
-    json_data.addPair2JsonStr(*pjson,"actionButtonTitle",actBtnTitle);
-    json_data.addPair2JsonBool(*pjson,"multiSelection",multiSel);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(filter)+strlen(actBtnTitle)+json_data.boolStrSize(multiSel)+1;//add '\0' for null-termination
+    json = new char[size]; 
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","bucketpicker");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"filter",filter);
+    json_data.addPair2JsonStr(json,"actionButtonTitle",actBtnTitle);
+    json_data.addPair2JsonBool(json,"multiSelection",multiSel);
 }
 
 /* Function: FcBucketPicker.addValue
@@ -43,9 +46,25 @@ void FcBucketPicker::setObj(char* refname,char* title,bool reqSel, char* filter,
     Returns:
         void
 */
-void FcBucketPicker::addValue(char* value)
+void FcBucketPicker::addValue(char* id, char* featuretype)
 {
-    json_data.add2JsonStr(*pjsonArray,value);
+    int size = headerArraySize+strlen(id)+strlen(featuretype)+1;
+    char* optTemp = new char[size];
+    json_data.initJson(optTemp);
+    json_data.addPair2JsonStr(optTemp, "id", id);
+    json_data.addPair2JsonStr(optTemp, "featureType", featuretype);
+    
+    if(!jsonArray)
+    {
+        jsonArray = new char[size+1];
+        json_data.initJsonArray(jsonArray);
+    }
+    else
+    {
+        size += strlen(jsonArray)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonArray,size+1); //add '\0' for null-termination
+    }
+    json_data.add2Json(jsonArray,optTemp);
 }
 
 /* Function: FcBucketPicker.appendValue
@@ -62,5 +81,24 @@ void FcBucketPicker::addValue(char* value)
 */
 void FcBucketPicker::appendValue()
 {
-	json_data.add2JsonArray(*pjson,"value",*pjsonArray);
+    int size = strlen(json)+strlen(jsonArray)+10;   //add ',"value":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"value",jsonArray);
+}
+
+/* Function: FcBucketPicker.get
+
+    return the json script
+
+    Prototype:
+        void FcBucketPicker::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcBucketPicker::get()
+{
+    return json;
 }

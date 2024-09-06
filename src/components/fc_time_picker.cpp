@@ -1,11 +1,11 @@
 #include "fc_time_picker.h"
 
-/* Function: FcTimePicker.setObj
+/* Function: FcTimePicker.set
 
     A graphical time-picker to select a date from a calendar
 
     Prototype:
-        void FcTimePicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+        void FcTimePicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
 
     Parameters:
         refname - it is the reference name of the object
@@ -17,13 +17,33 @@
     Returns:
         void
 */
-void FcTimePicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle)
+void FcTimePicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","timepicker");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"value",value);
-    json_data.addPair2JsonStr(*pjson,"actionButtonTitle",actBtnTitle);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","timepicker");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"value",value);
+    json_data.addPair2JsonStr(json,"actionButtonTitle",actBtnTitle);
+}
+
+/* Function: FcTimePicker.get
+
+    return the json script
+
+    Prototype:
+        void FcTimePicker::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcTimePicker::get()
+{
+    return json;
 }

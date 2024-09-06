@@ -6,41 +6,42 @@
 class ChannelSubscribe
 {
 private:
+    #define headerSize 16
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: ChannelSubscribe
 
-//     This endpoint makes the calling account to subscribe to an existing channel.
+// Function: ~ChannelSubscribe
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void ChannelSubscribe(char* json);
+//         ~ChannelSubscribe()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    ChannelSubscribe(char* json)
+    ~ChannelSubscribe()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: ChannelSubscribe.setObj
+// Function: ChannelSubscribe.set
 
 //     This endpoint makes the calling account to subscribe to an existing channel.
 
 //     Prototype:
-//         void setObj(char* channelId);
+//         void set(char* channelId);
 
 //     Parameters:
 ///@param          channelId - is the unique Id to reference an existing channel
 
 //     Returns:
 ///@returns         void
-    void setObj(char* channelId);
+    void set(char* channelId);
 
 // Function: ChannelSubscribe.getEPurl
 
@@ -54,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelSubscribe.get
+
+//     return the json script
+
+//     Prototype:
+//         void ChannelSubscribe::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

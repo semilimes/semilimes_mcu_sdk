@@ -6,34 +6,34 @@
 class P2pReactionRemove
 {
 private:
+    #define headerSize 30
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
 
 public:
-// Function: P2pReactionRemove
+// Function: ~P2pReactionRemove
 
-//     This endpoint allows the account to remove a reaction from a specific message in a p2p Chat.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void P2pReactionRemove(char* json);
+//         ~P2pReactionRemove()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    P2pReactionRemove(char* json)
+    ~P2pReactionRemove()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: P2pReactionRemove.setObj
+// Function: P2pReactionRemove.set
 
 //     This endpoint allows the account to remove a reaction from a specific message in a p2p Chat.
 
 //     Prototype:
-//         void setObj(char* messageId, char* reaction);
+//         void set(char* messageId, char* reaction);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing p2p chat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void setObj(char* messageId, char* reaction);
+    void set(char* messageId, char* reaction);
 
 // Function: P2pReactionRemove.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pReactionRemove.get
+
+//     return the json script
+
+//     Prototype:
+//         void P2pReactionRemove::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

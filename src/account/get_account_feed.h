@@ -6,34 +6,34 @@
 class GetAccountFeed
 {
 private:
+    #define headerSize 44
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: GetAccountFeed
+// Function: ~GetAccountFeed
 
-//     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GetAccountFeed(char* json);
+//         ~GetAccountFeed()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GetAccountFeed(char* json)
+    ~GetAccountFeed()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GetAccountFeed.setObj
+// Function: GetAccountFeed.set
 
 //     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
 
 //     Prototype:
-//         void GetAccountFeed::setObj(char* accountId,int before,int after,int limit);
+//         void GetAccountFeed::set(char* accountId,int before,int after,int limit);
 
 //     Parameters:
 ///@param         accountId - the account id of which show the feeds configuration and content
@@ -44,7 +44,20 @@ public:
 //     Returns:
 ///@returns         void      
 
-    void setObj(char* accountId,int before,int after,int limit);
+    void set(char* accountId,int before,int after,int limit);
+
+// Function: GetAccountFeed.get
+
+//     return the json script
+
+//     Prototype:
+//         void GetAccountFeed::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

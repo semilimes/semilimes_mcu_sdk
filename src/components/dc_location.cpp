@@ -1,11 +1,11 @@
 #include "dc_location.h"
 
-// Function: DcLocation.setObj
+// Function: DcLocation.set
 
 //     A location message containing coordinates
 
 //     Prototype:
-//         void DcLocation::setObj(char* locationName,float latitude, float longitude);
+//         void DcLocation::set(char* locationName,float latitude, float longitude);
 
 //     Parameters:
 ///@param         locationName - the name of the location 
@@ -14,11 +14,32 @@
 
 //     Returns:
 ///@return         void
-void DcLocation::setObj(char* locationName,float latitude, float longitude)
+void DcLocation::set(char* locationName,float latitude, float longitude)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"dataComponentType","location");
-    json_data.addPair2JsonStr(*pjson,"locationName",locationName);
-    json_data.addPair2JsonFloat(*pjson,"latitude",latitude,6);
-    json_data.addPair2JsonFloat(*pjson,"longitude",longitude,6);
+    int ndigits = 6;
+    int size = headerSize+strlen(locationName)+json_data.floatStrSize(longitude, ndigits)+json_data.floatStrSize(latitude, ndigits)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"dataComponentType","location");
+    json_data.addPair2JsonStr(json,"locationName",locationName);
+    json_data.addPair2JsonFloat(json,"latitude",latitude,ndigits);
+    json_data.addPair2JsonFloat(json,"longitude",longitude,ndigits);
+}
+
+/* Function: DcLocation.get
+
+    return the json script
+
+    Prototype:
+        void DcLocation::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* DcLocation::get()
+{
+    return json;
 }

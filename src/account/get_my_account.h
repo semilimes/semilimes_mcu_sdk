@@ -6,34 +6,34 @@
 class GetMyAccount
 {
 private:
+    #define headerSize 37
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr; 
     
 public:
-// Function: GetMyAccount
+// Function: ~GetMyAccount
 
-//     This endpoint lists all the user accounts somehow linked to the calling user, including owned subaccounts and shared accounts.
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void GetMyAccount(char* json);
+//         ~GetMyAccount()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    GetMyAccount(char* json)
+    ~GetMyAccount()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: GetMyAccount.setObj
+// Function: GetMyAccount.set
 
 //     This endpoint lists all the user accounts somehow linked to the calling user, including owned subaccounts and shared accounts.
 
 //     Prototype:
-//         void GetMyAccount::setObj(bool main,bool sub,bool shared,bool details);
+//         void GetMyAccount::set(bool main,bool sub,bool shared,bool details);
 
 //     Parameters:
 ///@param          main - include main account
@@ -45,7 +45,20 @@ public:
 ///@returns         void
       
 
-    void setObj(bool main,bool sub,bool shared,bool details);
+    void set(bool main,bool sub,bool shared,bool details);
+
+// Function: GetMyAccount.get
+
+//     return the json script
+
+//     Prototype:
+//         void GetMyAccount::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

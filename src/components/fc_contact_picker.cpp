@@ -1,11 +1,11 @@
 #include "fc_contact_picker.h"
 
-/* Function: FcContactPicker.setObj
+/* Function: FcContactPicker.set
 
     A picker allowing to select and reference contacts
 
     Prototype:
-        void FcContactPicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+        void FcContactPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,14 +18,34 @@
     Returns:
         void
 */
-void FcContactPicker::setObj(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel)
+void FcContactPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"formComponentType","contactpicker");
-    json_data.addPair2JsonStr(*pjson,"refName",refname);
-    json_data.addPair2JsonStr(*pjson,"title",title);
-    json_data.addPair2JsonBool(*pjson,"requiredSelection",reqSel);
-    json_data.addPair2JsonStr(*pjson,"value",value);
-    json_data.addPair2JsonStr(*pjson,"actionButtonTitle",actBtnTitle);
-    json_data.addPair2JsonBool(*pjson,"multiSelection",multiSel);
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+json_data.boolStrSize(multiSel)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"formComponentType","contactpicker");
+    json_data.addPair2JsonStr(json,"refName",refname);
+    json_data.addPair2JsonStr(json,"title",title);
+    json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"value",value);
+    json_data.addPair2JsonStr(json,"actionButtonTitle",actBtnTitle);
+    json_data.addPair2JsonBool(json,"multiSelection",multiSel);
+}
+
+/* Function: FcContactPicker.get
+
+    return the json script
+
+    Prototype:
+        void FcContactPicker::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* FcContactPicker::get()
+{
+    return json;
 }

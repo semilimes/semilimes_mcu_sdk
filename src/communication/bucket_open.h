@@ -6,41 +6,42 @@
 class BucketOpen
 {
 private:
+    #define headerSize 15
     SmeJson json_data;
-    char** pjson;
+    char* json = nullptr;
     
 public:
-// Function: BucketOpen
 
-//     This endpoint let the user access the bucket content by its bucketId.
+// Function: ~BucketOpen
+
+//     distructor of the class, frees up the memory occupied by the array/s
 
 //     Prototype:
-//         void BucketOpen(char* json);
+//         ~BucketOpen()
 
 //     Parameters:
-///@param         json - it is the char array that will contain the whole json script 
 
 //     Returns:
 ///@return         void
-    BucketOpen(char* json)
+    ~BucketOpen()
     {
-        pjson = &json;
-        json_data.initJson(*pjson);
+        delete[] json;
+        json = nullptr;
     }
 
-// Function: BucketOpen.setObj
+// Function: BucketOpen.set
 
 //     This endpoint let the user access the bucket content by its bucketId.
 
 //     Prototype:
-///@param         void setObj(char* bucketId);
+///@param         void set(char* bucketId);
 
 //     Parameters:
 //         bucketId -  is the unique Id to reference an existing bucket
 
 //     Returns:
 ///@returns        void
-    void setObj(char* bucketId);
+    void set(char* bucketId);
 
 // Function: BucketOpen.getEPurl
 
@@ -55,6 +56,19 @@ public:
 ///@returns         char* httpsUrl + endpoint
 
     char* getEPurl();
+    
+// Function: BucketOpen.get
+
+//     return the json script
+
+//     Prototype:
+//         void BucketOpen::get();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* get();
 };
 
 #endif

@@ -1,11 +1,11 @@
 #include "groupchat_reaction_remove.h"
 
-/* Function: GroupchatReactionRemove.setObj
+/* Function: GroupchatReactionRemove.set
 
     This endpoint allows the account to remove a reaction from a specific message in a Group Chat.
 
     Prototype:
-        void setObj(char* messageId, char* reaction);
+        void set(char* messageId, char* reaction);
 
     Parameters:
         messageId - is the unique Id to reference an existing groupChat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void GroupchatReactionRemove::setObj(char* messageId, char* reaction)
+void GroupchatReactionRemove::set(char* messageId, char* reaction)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2Json(*pjson,"reaction",reaction);
+    int size = headerSize+strlen(messageId)+strlen(reaction)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2JsonStr(json,"reaction",reaction);
 }
 
 /* Function: GroupchatReactionRemove.getEPurl
@@ -36,4 +39,21 @@ void GroupchatReactionRemove::setObj(char* messageId, char* reaction)
 char* GroupchatReactionRemove::getEPurl()
 {
     return httpsUrl communication_groupchat_message_reaction_remove;
+}
+
+/* Function: GroupchatReactionRemove.get
+
+    return the json script
+
+    Prototype:
+        void GroupchatReactionRemove::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* GroupchatReactionRemove::get()
+{
+    return json;
 }

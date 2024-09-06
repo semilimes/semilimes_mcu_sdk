@@ -1,11 +1,11 @@
 #include "p2p_message_send.h"
 
-/* Function: P2pMessageSend.setObj
+/* Function: P2pMessageSend.set
 
     This endpoint allows to send a data component to a Channel as a new message.
 
     Prototype:
-        void setObj(char* recipientId, char* dataComponent);
+        void set(char* recipientId, char* dataComponent);
 
     Parameters:
         recipientId - is the unique Id to reference an existing p2p chat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void P2pMessageSend::setObj(char* recipientId, char* dataComponent)
+void P2pMessageSend::set(char* recipientId, char* dataComponent)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"recipientId",recipientId);
-    json_data.addPair2Json(*pjson,"dataComponent",dataComponent);
+    int size = headerSize+strlen(recipientId)+strlen(dataComponent)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"recipientId",recipientId);
+    json_data.addPair2Json(json,"dataComponent",dataComponent);
 }
 
 /* Function: P2pMessageSend.getEPurl
@@ -36,4 +39,21 @@ void P2pMessageSend::setObj(char* recipientId, char* dataComponent)
 char* P2pMessageSend::getEPurl()
 {
     return httpsUrl communication_p2p_message_send;
+}
+
+/* Function: P2pMessageSend.get
+
+    return the json script
+
+    Prototype:
+        void P2pMessageSend::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* P2pMessageSend::get()
+{
+    return json;
 }

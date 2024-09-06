@@ -1,11 +1,11 @@
 #include "p2p_message_reply.h"
 
-/* Function: P2pMessageReply.setObj
+/* Function: P2pMessageReply.set
 
     This endpoint allows the account to reply to a specific message with a simple text.
 
     Prototype:
-        void setObj(char* messageId, char* dataComponent);
+        void set(char* messageId, char* dataComponent);
 
     Parameters:
         messageId - is the unique Id to reference an existing p2p chat
@@ -14,11 +14,14 @@
     Returns:
         void
 */
-void P2pMessageReply::setObj(char* messageId, char* dataComponent)
+void P2pMessageReply::set(char* messageId, char* dataComponent)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"messageId",messageId);
-    json_data.addPair2Json(*pjson,"dataComponent",dataComponent);
+    int size = headerSize+strlen(messageId)+strlen(dataComponent)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"messageId",messageId);
+    json_data.addPair2Json(json,"dataComponent",dataComponent);
 }
 
 /* Function: P2pMessageReply.getEPurl
@@ -36,4 +39,21 @@ void P2pMessageReply::setObj(char* messageId, char* dataComponent)
 char* P2pMessageReply::getEPurl()
 {
     return httpsUrl communication_p2p_message_reply;
+}
+
+/* Function: P2pMessageReply.get
+
+    return the json script
+
+    Prototype:
+        void P2pMessageReply::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* P2pMessageReply::get()
+{
+    return json;
 }

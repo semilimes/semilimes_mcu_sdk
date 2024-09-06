@@ -1,11 +1,11 @@
 #include "device.h"
 
-/* Function: Device.setObj
+/* Function: Device.set
 
     an object that describes the device from the hw perspective
 
     Prototype:
-        void Device::setObj(char* name);
+        void Device::set(char* name);
 
     Parameters:
         name - the name of the object
@@ -13,10 +13,13 @@
     Returns:
         void
 */
-void Device::setObj(char* name)
+void Device::set(char* name)
 {
-    json_data.initJson(*pjson);
-    json_data.addPair2JsonStr(*pjson,"name",name);
+    int size = headerSize+strlen(name)+1;
+    json = new char[size];
+
+    json_data.initJson(json);
+    json_data.addPair2JsonStr(json,"name",name);
 }
 
 
@@ -29,7 +32,7 @@ void Device::setObj(char* name)
 
     Parameters:
         name - the name of the object
-        GPIOType - defines the type of the pin, can be one of the following: char GPIOTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"};
+        GPIOType - defines the type of the pin, can be one of the following: char pinTypes[5][10] = {"out", "in", "analogIn", "analogOut", "pwm"};
         portName - the name of the hw port
         pinNumber - the pin number
         value - the value of the pin
@@ -39,13 +42,28 @@ void Device::setObj(char* name)
 */
 void Device::addGPIO(char* name, char* GPIOType, char* portName, int pinNumber, int value)
 {  
-    char temp[200]="{}\0";
-    json_data.addPair2JsonStr(temp,"name",name);
-    json_data.addPair2JsonStr(temp,"pinType",GPIOType);
-    json_data.addPair2JsonStr(temp,"portName",portName);
-    json_data.addPair2JsonInt(temp,"pinNumber",pinNumber);
-    json_data.addPair2JsonInt(temp,"value",value);
-    json_data.add2Json(*pjsonPins,temp);
+    int size = headerPinSize+strlen(name)+strlen(GPIOType)+strlen(portName)+json_data.intStrSize(pinNumber)+json_data.intStrSize(value)+1;
+    char* pinTmp = new char[size];
+    json_data.initJson(pinTmp);
+    json_data.addPair2JsonStr(pinTmp,"name",name);
+    json_data.addPair2JsonStr(pinTmp,"pinType",GPIOType);
+    json_data.addPair2JsonStr(pinTmp,"portName",portName);
+    json_data.addPair2JsonInt(pinTmp,"pinNumber",pinNumber);
+    json_data.addPair2JsonInt(pinTmp,"value",value);
+
+    size += 2;//add "[]"  
+    if(!jsonPins)
+    {
+        jsonPins = new char[size];
+        json_data.initJsonArray(jsonPins);
+    }
+    else
+    {
+        size = strlen(jsonPins)+strlen(pinTmp)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonPins,size+1); 
+    }
+    json_data.add2Json(jsonPins,pinTmp);
+    delete[] pinTmp;
 }
 
 /* Function: Device.addFunction
@@ -64,10 +82,25 @@ void Device::addGPIO(char* name, char* GPIOType, char* portName, int pinNumber, 
 */
 void Device::addFunction(char* name, char* methodName)
 {  
-    char temp[200]="{}\0";
-    json_data.addPair2JsonStr(temp,"name",name);
-    json_data.addPair2JsonStr(temp,"methodName",methodName);
-    json_data.add2Json(*pjsonFunctions,temp);
+    int size = headerPinSize+strlen(name)+strlen(methodName)+1;
+    char* fncTmp = new char[size];
+    json_data.initJson(fncTmp);
+    json_data.addPair2JsonStr(fncTmp,"name",name);
+    json_data.addPair2JsonStr(fncTmp,"methodName",methodName);
+
+    size += 2;//add "[]"  
+    if(!jsonFunctions)
+    {
+        jsonFunctions = new char[size];
+        json_data.initJsonArray(jsonFunctions);
+    }
+    else
+    {
+        size = strlen(jsonFunctions)+strlen(fncTmp)-1; //in the count we have to subtract bytes for '[]' and add ',' -> -1
+        json_data.arrayResize(jsonFunctions,size+1); 
+    }
+    json_data.add2Json(jsonFunctions,fncTmp);
+    delete[] fncTmp;
 }
 
 /* Function: Device.appendGPIOs
@@ -84,7 +117,9 @@ void Device::addFunction(char* name, char* methodName)
 */
 void Device::appendGPIOs()
 {
-	json_data.add2JsonArray(*pjson,"pins",*pjsonPins);
+    int size = strlen(json)+strlen(jsonPins)+9;   //add ',"pins":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"pins",jsonPins);
 }
 
 /* Function: Device.appendFunctions
@@ -101,5 +136,24 @@ void Device::appendGPIOs()
 */
 void Device::appendFunctions()
 {
-	json_data.add2JsonArray(*pjson,"functions",*pjsonFunctions);
+    int size = strlen(json)+strlen(jsonFunctions)+14;   //add ',"functions":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"functions",jsonFunctions);
+}
+
+/* Function: Device.get
+
+    return the json script
+
+    Prototype:
+        void Device::get();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* Device::get()
+{
+    return json;
 }
