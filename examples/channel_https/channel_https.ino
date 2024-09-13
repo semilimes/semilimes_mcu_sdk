@@ -1,18 +1,14 @@
 /***************************************************
 The channel_websocket firmware is designed to demonstrate the implementation 
-of the semilimes SDK and establish communication with a server via WebSocket. 
+of the semilimes SDK and establish communication with a server via https. 
 
 This example firmware, once connected to a Wi-Fi network and thereby to the 
-internet, establishes a WebSocket connection to a server, utilizing callback functions. 
+internet, establishes an https connection to a server. 
 
 Upon establishing the connection, the firmware creates a new channel in the 
 subaccount associated with the provided API key. 
-Once the channel is successfully created, it sends a form containing two form components:
-a label and a button list. 
-
-Through the use of callbacks, it is possible to print messages sent to the channel 
-via the app, including those related to interactions with the newly created form, 
-directly to the serial output.
+Once the channel is successfully created, it sends a form containing two form 
+components: a label and a button list. 
 
 Unlike the example firmware called "provisioning," where the API key is sent from the 
 server after scanning a QR code, in the channel_websocket firmware, the API key is
@@ -29,22 +25,34 @@ This project is licensed under the MIT License.
 #include <WiFi.h>
 #include <WiFiMulti.h>
 #include <WiFiClientSecure.h>
-#include <WebSocketsClient.h>
+#include <HTTPClient.h>
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include <semilimes.h>
     
-bool singletone = false;
-bool wsConnected = false;
 bool WiFiConnected = false;
 
 Header header;
 
 WiFiMulti WiFiMulti;
 const uint32_t connectTimeoutMs = 5000;
-WebSocketsClient webSocket;
-#define _WEBSOCKETS_LOGLEVEL_     2
+HTTPClient http;
+
+char channelId[37];
+bool msgReceivedChId = false;
+void JSON_decode(String payload)
+{
+  //Serial.println(payload);  
+  JsonDocument doc;
+  deserializeJson(doc, payload);
+  //check if is the "createdChannel" response 
+  if(doc["data"]["createdChannel"]["channelId"])
+  {
+    msgReceivedChId = true;
+    strcpy(channelId,doc["data"]["createdChannel"]["channelId"]);
+  }
+}
 
 void setup()
 {
@@ -52,6 +60,7 @@ void setup()
     while (!Serial);
     delay(200);
       
+    //devWiFiConnected = wifiProvisioning(rebootPin, led);  
     WiFi.mode(WIFI_STA);   
     WiFiMulti.addAP("ssid", "password");
     if (WiFiMulti.run(connectTimeoutMs) == WL_CONNECTED) 
@@ -69,77 +78,23 @@ void setup()
     if(WiFiConnected==true)
     {      
       header.setAuthorization("********** ApiKey **********");
-      webSocket.beginSSL(header.getWsHost(),header.getWsPort(),header.getWsEP()); //init the websocket
-      webSocket.setExtraHeaders(header.getWsHeader());  //feed the ws_client with the authorization header, needed to connect to the semilimes server 
-      webSocket.onEvent(webSocketEvent);  //initialize the websocket client callback event manager
-    }  
-}
-
-char channelId[37];
-bool msgReceivedChId = false;
-void JSON_decode(char* payload)
-{
-  //Serial.println(payload);  
-  JsonDocument doc;
-  deserializeJson(doc, payload);
-  
-  //check if is the "createdChannel" response 
-  if(doc["eventBody"]["data"]["createdChannel"]["channelId"])
-  {
-    msgReceivedChId = true;
-    strcpy(channelId,doc["eventBody"]["data"]["createdChannel"]["channelId"]);
-  }
-}
-
-void webSocketEvent(const WStype_t& type, uint8_t * payload, const size_t& length)
-{
-  switch (type)
-  {
-    case WStype_DISCONNECTED:
-      Serial.printf("[WSc] Disconnected!\n");
-      break;
-    case WStype_CONNECTED:
-      Serial.printf("[WSc] Connected to url: %s\n", payload);
-      wsConnected = true;
-      break;
-    case WStype_TEXT:
-      Serial.printf("[WSc] message received: %s\n", payload);
-      JSON_decode((char*)payload);
-      break;
-    case WStype_BIN:
-      break;
-    case WStype_ERROR:
-    case WStype_FRAGMENT_TEXT_START:
-    case WStype_FRAGMENT_BIN_START:
-    case WStype_FRAGMENT:
-    case WStype_FRAGMENT_FIN:
-      break;
-    default:
-      break;
-  }
-}
-
-void loop() 
-{
-  JsonDocument doc;
-  String response;
-  WebsocketHeader websocketheader;  //create a new "WebsocketHeader" object and feed it with the pointer to the char-array that will contain the json
-
-  webSocket.loop();
-  if(wsConnected==true && WiFiConnected==true)
-  {
-    if(singletone==false)
-    {
-      singletone=true;
-      //**********************************************
-      //create a new channel
-      //**********************************************
-      
-      ChannelCreate channelcreate; //create a new "CreateChannel" object and feed it with the pointers to the char-arrays that will contain the json
-      channelcreate.set("New Channel","",false,true); //name="New Channel", avatar="", visible=false, locked=true
-      webSocket.sendTXT(websocketheader.getRequest("reqId_1", communication_channel_create, channelcreate.get())); //embeds the "channelCreate" json into the "websocketheader" and send the message to the sme server (request id: "reqId_1")
     }
-
+        
+    //create a new channel
+    ChannelCreate channelcreate; //create a new "CreateChannel" 
+    channelcreate.set("New Channel from https","",false,true); //name="New Channel", avatar="", visible=false, locked=true
+    http.begin(channelcreate.getEPurl());
+    http.addHeader("accept",header.getAccept());
+    http.addHeader("Content-Type",header.getContentType());
+    http.addHeader("Authorization",header.getAuthorization());
+    http.POST(channelcreate.get());  
+    String response = http.getString();
+    //Serial.print(response);
+    JSON_decode(response);
+    Serial.print("channelID: ");
+    Serial.println(channelId);
+    http.end();
+    
     //check if the channel as been created and the new ChannelId received
     if(msgReceivedChId==true)
     {
@@ -178,8 +133,17 @@ void loop()
       channelmessagesend.set(channelId,form.get()); //(channelId, dataComponent)
       //Serial.println(channelmessagesend.get());
       //Serial.println(channelmessagesend.getEPurl());
-      
-      webSocket.sendTXT(websocketheader.getRequest("reqId_2", communication_channel_message_send, channelmessagesend.get())); //embeds the "channelmessagesend" json into the "websocketheader" and send the message to the sme server (request id: "reqId_2")      
+          
+      http.begin(channelmessagesend.getEPurl());
+      http.addHeader("accept",header.getAccept());
+      http.addHeader("Content-Type",header.getContentType());
+      http.addHeader("Authorization",header.getAuthorization());
+      http.POST(channelmessagesend.get());  
+      Serial.println(http.getString()); 
+      http.end();
     }
-  }
+}
+
+void loop() 
+{
 }
