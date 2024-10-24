@@ -6,11 +6,15 @@
 class FcQrScanner
 {
 private:
-    #define headerSize 116
+    #define headerSize 126
     SmeJson json_data;
     char* json = nullptr; 
     
 public:
+//      selects the type of code to support. Allowed values
+///@param        char mode[3][8] = {"auto","qrcode","barcode"};
+    char mode[3][8] = {"auto","qrcode","barcode"};
+
 // Function: ~FcQrScanner
 
 //     distructor of the class, frees up the memory occupied by the array/s
@@ -41,10 +45,11 @@ public:
 ///@param         reqSel - indicates if the selection is required to submit the form
 ///@param         value - is the decoded value of the NFC scan upon form submission
 ///@param         actBtnTitle -  is the label of the scan button
+///@param         mode -  selects the type of code to support. Allowed values: auto, qrcode, barcode. char mode[3][8] = {"auto","qrcode","barcode"};
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle, char* mode);
 
 // Function: FcQrScanner.get
 

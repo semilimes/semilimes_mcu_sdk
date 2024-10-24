@@ -6,7 +6,7 @@
 class DcWebview
 {
 private:
-    #define headerSize 78
+    #define headerSize 116
     SmeJson json_data;
     char* json = nullptr;
 
@@ -16,6 +16,13 @@ public:
 //     describes the types of viewSize
 ///@param        char viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
 char viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
+
+// variable: DcWebview.displayMode  
+
+//      gives the choice to display the destination url in multiple modes (the default behaviour is link):
+///@param        char displayMode  [3][10] = {"link", "thumbnail", "liveweb"};
+char displayMode[3][10] = {"link", "thumbnail", "liveweb"};
+
 // Function: ~DcWebview
 
 //     distructor of the class, frees up the memory occupied by the array/s
@@ -43,10 +50,12 @@ char viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
 //     Parameters:
 ///@param         url - is the address to be rendered in the webview
 ///@param         enableFullScreenView - to enable the fullscreen 
-///@param         viewSize - determines the view proportions. Allowed values are: har viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};
+///@param         viewSize - determines the view proportions. Allowed values are: har viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"}; 
+///@param         displayMode -  gives the choice to display the destination url in multiple modes (the default behaviour is link): char displayMode  [3][10] = {"link", "thumbnail", "liveweb"};
+///@param         linkDisplayName - is used when displayMode is set to link, and it sets a custom name for the displaying URL
 //     Returns:
 ///@return         void
-    void set(char* url, bool enableFullScreenView, char* viewSize);
+    void set(char* url, bool enableFullScreenView, char* viewSize, char* displayMode, char* linkDisplayName);
     
 // Function: DcWebview.get
 

@@ -43,10 +43,13 @@ void DcContact::addContactIds(char* contactIds)
       void
 */
 void DcContact::appendContactIds()
-{
-   int size = strlen(json)+strlen(jsonArray)+15;   //add ',"contactIds":' and '\0'
-   json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"contactIds",jsonArray);
+{    
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+15;   //add ',"contactIds":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"contactIds",jsonArray);
+    }
 }
 
 /* Function: DcContact.get

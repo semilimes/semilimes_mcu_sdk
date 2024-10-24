@@ -10,11 +10,12 @@
     Parameters:
         recipientId - is the unique Id to reference an existing p2p chat
         dataComponent - the json description of the data component
+        silent - is a boolean to allow sending the message without any in-app notification
 
     Returns:
         void
 */
-void P2pMessageSend::set(char* recipientId, char* dataComponent)
+void P2pMessageSend::set(char* recipientId, char* dataComponent, bool silent)
 {
     int size = headerSize+strlen(recipientId)+strlen(dataComponent)+1;
     json = new char[size];
@@ -22,6 +23,31 @@ void P2pMessageSend::set(char* recipientId, char* dataComponent)
     json_data.initJson(json);
     json_data.addPair2JsonStr(json,"recipientId",recipientId);
     json_data.addPair2Json(json,"dataComponent",dataComponent);
+    this->addOptions(silent);
+}
+
+/* Function: P2pMessageSend.addOptions
+
+    add a list of options 
+
+    Prototype:
+        void P2pMessageSend::addOptions(char* name,char* value);
+
+    Parameters:
+        silent - is a boolean to allow sending the message without any in-app notification
+
+    Returns:
+        void
+*/
+void P2pMessageSend::addOptions(bool silent)
+{
+    int size = optionsHeaderSize+json_data.boolStrSize(silent)+1;
+    char* optTemp = new char[size];
+    json_data.initJson(optTemp);
+    json_data.addPair2JsonBool(optTemp, "silent", silent);
+    size += strlen(json)+12;   //add bytes for ',"options":' and '\0'
+    json_data.arrayResize(json,size);
+	json_data.add2JsonArray(json,"options",optTemp);
 }
 
 /* Function: P2pMessageSend.getEPurl

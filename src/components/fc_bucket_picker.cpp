@@ -80,10 +80,13 @@ void FcBucketPicker::addValue(char* id, char* featuretype)
         void
 */
 void FcBucketPicker::appendValue()
-{
-    int size = strlen(json)+strlen(jsonArray)+10;   //add ',"value":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"value",jsonArray);
+{    
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+10;   //add ',"value":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"value",jsonArray);
+    }
 }
 
 /* Function: FcBucketPicker.get

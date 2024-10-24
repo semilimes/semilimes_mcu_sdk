@@ -44,10 +44,13 @@ void DcFile::addFileId(char* fileIds)
       void
 */
 void DcFile::appendFileIds()
-{
-   int size = strlen(json)+strlen(jsonArray)+12;   //add ',"fileIds":' and '\0'
-   json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"fileIds",jsonArray);
+{    
+   if(jsonArray!=nullptr)
+   {
+      int size = strlen(json)+strlen(jsonArray)+12;   //add ',"fileIds":' and '\0'
+      json_data.arrayResize(json,size);
+      json_data.add2JsonArray(json,"fileIds",jsonArray);
+   }
 }
 
 /* Function: DcFile.get

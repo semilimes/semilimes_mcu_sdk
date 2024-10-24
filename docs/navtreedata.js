@@ -43,7 +43,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "add__account__feed_8h_source.html",
-"class_groupchat_message_update.html#ac80869ca3b27e0eb004b15c479612c5c"
+"class_groupchat_create.html#a7ff0f5dd6104e95db165c7380839b33f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -100,6 +100,7 @@ $(function(){initNavTree('class_fc_button_list.html',''); initResizable(true); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_fc_button_list-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">FcButtonList Class Reference</div></div>
 </div><!--header-->
@@ -109,14 +110,19 @@ $(function(){initNavTree('class_fc_button_list.html',''); initResizable(true); }
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae82ca5422fc3bfa607b7912906c023a6" id="r_ae82ca5422fc3bfa607b7912906c023a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae82ca5422fc3bfa607b7912906c023a6">~FcButtonList</a> ()</td></tr>
 <tr class="separator:ae82ca5422fc3bfa607b7912906c023a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53c15fd0b63c00c49f598e8e7153f01a" id="r_a53c15fd0b63c00c49f598e8e7153f01a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53c15fd0b63c00c49f598e8e7153f01a">set</a> (char *refname, char *title, bool reqSel, char *value, bool vertList)</td></tr>
-<tr class="separator:a53c15fd0b63c00c49f598e8e7153f01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6981602898a5fc9931700c8dbd65fa1" id="r_aa6981602898a5fc9931700c8dbd65fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6981602898a5fc9931700c8dbd65fa1">addOptions</a> (char *name, char *value)</td></tr>
-<tr class="separator:aa6981602898a5fc9931700c8dbd65fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac38412724b8389756626c162dadd4a34" id="r_ac38412724b8389756626c162dadd4a34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac38412724b8389756626c162dadd4a34">set</a> (char *refname, char *title, bool reqSel, char *value, bool vertList, char *linesize)</td></tr>
+<tr class="separator:ac38412724b8389756626c162dadd4a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a6769b8480c8140605a6df4e5190ec1" id="r_a6a6769b8480c8140605a6df4e5190ec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a6769b8480c8140605a6df4e5190ec1">addOptions</a> (char *name, char *value, char *iconName)</td></tr>
+<tr class="separator:a6a6769b8480c8140605a6df4e5190ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a032ac9301b502f07639715dde86c91af" id="r_a032ac9301b502f07639715dde86c91af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a032ac9301b502f07639715dde86c91af">appendOptions</a> ()</td></tr>
 <tr class="separator:a032ac9301b502f07639715dde86c91af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2c49ec759814235672cc4d76205b61" id="r_afa2c49ec759814235672cc4d76205b61"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa2c49ec759814235672cc4d76205b61">get</a> ()</td></tr>
 <tr class="separator:afa2c49ec759814235672cc4d76205b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aad289f77c8f4fb5550de0e277f7c57c3" id="r_aad289f77c8f4fb5550de0e277f7c57c3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad289f77c8f4fb5550de0e277f7c57c3">lineSize</a> [7][9] = {&quot;flexible&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;}</td></tr>
+<tr class="separator:aad289f77c8f4fb5550de0e277f7c57c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae82ca5422fc3bfa607b7912906c023a6" name="ae82ca5422fc3bfa607b7912906c023a6"></a>
@@ -146,8 +152,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa6981602898a5fc9931700c8dbd65fa1" name="aa6981602898a5fc9931700c8dbd65fa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6981602898a5fc9931700c8dbd65fa1">&#9670;&#160;</a></span>addOptions()</h2>
+<a id="a6a6769b8480c8140605a6df4e5190ec1" name="a6a6769b8480c8140605a6df4e5190ec1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a6769b8480c8140605a6df4e5190ec1">&#9670;&#160;</a></span>addOptions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,14 +166,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>iconName</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>- is the option identifier</td></tr>
+    <tr><td class="paramname">name</td><td>- is the option identifier </td></tr>
     <tr><td class="paramname">value</td><td>- text displayed to the user</td></tr>
+    <tr><td class="paramname">iconName</td><td>- within options specifies an object with a name for that icon. You can find the icon names reference at the official Google Fonts page</td></tr>
   </table>
   </dd>
 </dl>
@@ -211,8 +223,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a53c15fd0b63c00c49f598e8e7153f01a" name="a53c15fd0b63c00c49f598e8e7153f01a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53c15fd0b63c00c49f598e8e7153f01a">&#9670;&#160;</a></span>set()</h2>
+<a id="ac38412724b8389756626c162dadd4a34" name="ac38412724b8389756626c162dadd4a34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac38412724b8389756626c162dadd4a34">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +252,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>vertList</em></span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>vertList</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>linesize</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -249,12 +266,35 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">refname</td><td>- is the reference name of the button list </td></tr>
     <tr><td class="paramname">title</td><td>- is the global label displayed at the beginning of the component </td></tr>
     <tr><td class="paramname">reqSel</td><td>- sets this component interaction as required before submitting the parent form </td></tr>
-    <tr><td class="paramname">value</td><td>- will be populated with a button name when a user submits a form with a button selection</td></tr>
-    <tr><td class="paramname">vertList</td><td>- is a preference to tell a client app to display the buttons vertically</td></tr>
+    <tr><td class="paramname">value</td><td>- will be populated with a button name when a user submits a form with a button selection </td></tr>
+    <tr><td class="paramname">vertList</td><td>- is a preference to tell a client app to display the buttons vertically </td></tr>
+    <tr><td class="paramname">lineSize</td><td>- defines how the buttons should be spread on multiple lines (row/columns). Allowed values are: char lineSize[7][9] = {"flexible", "1", "2", "3", "4", "5", "6"};</td></tr>
+    <tr><td class="paramname">iconName</td><td>- within options specifies an object with a name for that icon. You can find the icon names reference at the official Google Fonts page</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aad289f77c8f4fb5550de0e277f7c57c3" name="aad289f77c8f4fb5550de0e277f7c57c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad289f77c8f4fb5550de0e277f7c57c3">&#9670;&#160;</a></span>lineSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char FcButtonList::lineSize[7][9] = {&quot;flexible&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>lineSize[7][9] = {"flexible", "1", "2", "3", "4", "5", "6"}; </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

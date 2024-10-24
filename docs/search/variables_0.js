@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['featuretype_0',['featureType',['../class_dc_form.html#a4faeaaa55ca1a538510f739e714d2ce8',1,'DcForm']]],
-  ['featuretypes_1',['featureTypes',['../class_fc_bucket_picker.html#abfdbfdbc993e1f66068d6b321dab602d',1,'FcBucketPicker']]]
+  ['align_0',['align',['../class_dc_form.html#a02c99eeec2ca8d9816ee6a9ad0c6dfba',1,'DcForm']]]
 ];

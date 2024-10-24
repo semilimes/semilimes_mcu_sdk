@@ -14,10 +14,13 @@
         retainStatus - enables the form to maintain the last submitted values when the use case requires many users to operate the same form
         submitText - is the text to be displayed in the Submit button of the form
         refName - is a friendly name given to the form for later reference when filtering form submissions from clients.
+        align - allows to align all the children form components to a direction. Allowed values: align[3][7] = {"left","center","right"};
+        authorizeSubmit - allows to protect the in-app submission of the form by a pin code or biometrics, whatever is set in the messenger app.
+        hideSubmissionMsg - is a boolean to suppress in-app submission messages sent to receiver, while the API will still receive a submission for further processing
    Returns:
       void
 */
-void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName)
+void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName, char* align, bool authorizeSubmit, bool hideSubmissionMsg)
 {
    int size = 27+strlen(recId)+strlen(recFeatureType)+1;//add '{"id":"","featureType":""}\0' with null-termination
    char* recjson = new char[size]; 
@@ -26,15 +29,18 @@ void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool ret
    json_data.addPair2JsonStr(recjson,"id",recId);
    json_data.addPair2JsonStr(recjson,"featureType",recFeatureType);
 
-   size += headerSize+json_data.boolStrSize(submitEnabled)+json_data.boolStrSize(retainStatus)+strlen(submitText)+strlen(refName)+13; //add ',"receiver":' and '\0' for null-termination
+   size += headerSize+json_data.boolStrSize(submitEnabled)+strlen(align)+json_data.boolStrSize(authorizeSubmit)+json_data.boolStrSize(retainStatus)+strlen(submitText)+json_data.boolStrSize(hideSubmissionMsg)+strlen(refName)+13; //add ',"receiver":' and '\0' for null-termination
    json = new char[size]; 
 
    json_data.initJson(json);
    json_data.addPair2JsonStr(json,"dataComponentType","form");
    json_data.addPair2JsonBool(json,"submitEnabled",submitEnabled);
+   json_data.addPair2JsonStr(json,"align",align);
+   json_data.addPair2JsonBool(json,"authorizeSubmit",authorizeSubmit);
    json_data.addPair2JsonBool(json,"retainStatus",retainStatus);
    json_data.addPair2JsonStr(json,"submitText",submitText);
    json_data.addPair2Json(json,"receiver",recjson);
+   json_data.addPair2JsonBool(json,"hideSubmissionMsg",hideSubmissionMsg);
    json_data.addPair2JsonStr(json,"refName",refName);    
 }
 
@@ -82,9 +88,12 @@ void DcForm::addFormComponents(char* component)
 */
 void DcForm::appendFormComponents()
 {
-   int size = strlen(json)+strlen(jsonArray)+19;   //add ',"formComponents":' and '\0'
-   json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"formComponents",jsonArray);
+   if(jsonArray!=nullptr)
+   {
+      int size = strlen(json)+strlen(jsonArray)+19;   //add ',"formComponents":' and '\0'
+      json_data.arrayResize(json,size);
+      json_data.add2JsonArray(json,"formComponents",jsonArray);
+   }
 }
 
 /* Function: DcForm.get

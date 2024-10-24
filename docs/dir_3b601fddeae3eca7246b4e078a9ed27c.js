@@ -1,9 +1,11 @@
 var dir_3b601fddeae3eca7246b4e078a9ed27c =
 [
+    [ "dc_appointment.h", "dc__appointment_8h_source.html", null ],
     [ "dc_ch_reference.h", "dc__ch__reference_8h_source.html", null ],
     [ "dc_contact.h", "dc__contact_8h_source.html", null ],
     [ "dc_file.h", "dc__file_8h_source.html", null ],
     [ "dc_form.h", "dc__form_8h_source.html", null ],
+    [ "dc_gauge.h", "dc__gauge_8h_source.html", null ],
     [ "dc_html_text.h", "dc__html__text_8h_source.html", null ],
     [ "dc_location.h", "dc__location_8h_source.html", null ],
     [ "dc_simple_text.h", "dc__simple__text_8h_source.html", null ],
@@ -11,8 +13,11 @@ var dir_3b601fddeae3eca7246b4e078a9ed27c =
     [ "dc_webview.h", "dc__webview_8h_source.html", null ],
     [ "fc_bucket_picker.h", "fc__bucket__picker_8h_source.html", null ],
     [ "fc_button_list.h", "fc__button__list_8h_source.html", null ],
+    [ "fc_color_picker.h", "fc__color__picker_8h_source.html", null ],
     [ "fc_contact_picker.h", "fc__contact__picker_8h_source.html", null ],
     [ "fc_date_picker.h", "fc__date__picker_8h_source.html", null ],
+    [ "fc_event_picker.h", "fc__event__picker_8h_source.html", null ],
+    [ "fc_gauge.h", "fc__gauge_8h_source.html", null ],
     [ "fc_hidden_value.h", "fc__hidden__value_8h_source.html", null ],
     [ "fc_label.h", "fc__label_8h_source.html", null ],
     [ "fc_location_picker.h", "fc__location__picker_8h_source.html", null ],

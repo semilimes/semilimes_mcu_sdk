@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -109,8 +109,8 @@ $(function(){initNavTree('class_channel_message_send.html',''); initResizable(tr
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3866de23920de3e71de6c694aa81a2a" id="r_ad3866de23920de3e71de6c694aa81a2a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3866de23920de3e71de6c694aa81a2a">~ChannelMessageSend</a> ()</td></tr>
 <tr class="separator:ad3866de23920de3e71de6c694aa81a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dd900016097aca4543a989c53fd8da6" id="r_a5dd900016097aca4543a989c53fd8da6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dd900016097aca4543a989c53fd8da6">set</a> (char *channelId, char *dataComponent)</td></tr>
-<tr class="separator:a5dd900016097aca4543a989c53fd8da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae385ac825a4eb3c21886760af1740d7" id="r_aae385ac825a4eb3c21886760af1740d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae385ac825a4eb3c21886760af1740d7">set</a> (char *channelId, char *dataComponent, bool silent)</td></tr>
+<tr class="separator:aae385ac825a4eb3c21886760af1740d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d0062658da72a2b49faf523984e5a9e" id="r_a6d0062658da72a2b49faf523984e5a9e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d0062658da72a2b49faf523984e5a9e">getEPurl</a> ()</td></tr>
 <tr class="separator:a6d0062658da72a2b49faf523984e5a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bed45bb2bdfd63a2893dbcc65268f50" id="r_a1bed45bb2bdfd63a2893dbcc65268f50"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bed45bb2bdfd63a2893dbcc65268f50">get</a> ()</td></tr>
@@ -180,8 +180,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dd900016097aca4543a989c53fd8da6" name="a5dd900016097aca4543a989c53fd8da6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dd900016097aca4543a989c53fd8da6">&#9670;&#160;</a></span>set()</h2>
+<a id="aae385ac825a4eb3c21886760af1740d7" name="aae385ac825a4eb3c21886760af1740d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae385ac825a4eb3c21886760af1740d7">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,14 +194,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>dataComponent</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>dataComponent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>silent</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">channelId</td><td>- is the unique Id to reference an existing channel</td></tr>
+    <tr><td class="paramname">channelId</td><td>- is the unique Id to reference an existing channel </td></tr>
     <tr><td class="paramname">dataComponent</td><td>- the json description of the data component</td></tr>
+    <tr><td class="paramname">silent</td><td>- is a boolean to allow sending the message without any in-app notification</td></tr>
   </table>
   </dd>
 </dl>

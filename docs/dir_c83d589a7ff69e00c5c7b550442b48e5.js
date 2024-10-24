@@ -20,6 +20,7 @@ var dir_c83d589a7ff69e00c5c7b550442b48e5 =
     [ "groupchat_message_update.h", "groupchat__message__update_8h_source.html", null ],
     [ "groupchat_reaction_remove.h", "groupchat__reaction__remove_8h_source.html", null ],
     [ "groupchat_reaction_send.h", "groupchat__reaction__send_8h_source.html", null ],
+    [ "groupchat_signal_typing.h", "groupchat__signal__typing_8h_source.html", null ],
     [ "groupchats_get.h", "groupchats__get_8h_source.html", null ],
     [ "p2p.h", "p2p_8h_source.html", null ],
     [ "p2p_message_get.h", "p2p__message__get_8h_source.html", null ],
@@ -28,5 +29,6 @@ var dir_c83d589a7ff69e00c5c7b550442b48e5 =
     [ "p2p_message_update.h", "p2p__message__update_8h_source.html", null ],
     [ "p2p_reaction_remove.h", "p2p__reaction__remove_8h_source.html", null ],
     [ "p2p_reaction_send.h", "p2p__reaction__send_8h_source.html", null ],
+    [ "p2p_signal_typing.h", "p2p__signal__typing_8h_source.html", null ],
     [ "websocket_header.h", "websocket__header_8h_source.html", null ]
 ];

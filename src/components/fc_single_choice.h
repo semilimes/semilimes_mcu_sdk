@@ -6,13 +6,17 @@
 class FcSingleChoice
 {
 private:
-    #define headerSize 92
+    #define headerSize 102
     #define headerArraySize 24
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
     
 public:
+//      indicates if the choice should be displayed as a radio list or a dropdown control.
+///@param        char mode[2][9] = {"list", "dropdown"};
+    char mode[2][9] = {"list", "dropdown"};
+
 // Function: ~FcSingleChoice
 
 //     distructor of the class, frees up the memory occupied by the array/s
@@ -43,11 +47,12 @@ public:
 ///@param         refname - it is the reference name of the object
 ///@param         title - is the global label displayed at the beginning of the component
 ///@param         reqSel - indicates if the selection is required to submit the form
+///@param         mode - indicates if the choice should be displayed as a radio list or a dropdown control. char mode[2][9] = {"list", "dropdown"};
 ///@param         value - points to one of the choices name and determines which option is selected on submission
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value);
+    void set(char* refname,char* title,bool reqSel,char* mode,char* value);
 
 // Function: FcSingleChoice.addOptions
 

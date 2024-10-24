@@ -11,14 +11,15 @@
         refname - it is the reference name of the object
         title - is the global label displayed at the beginning of the component
         reqSel - indicates if the selection is required to submit the form
+        mode - indicates if the choice should be displayed as a radio list or a dropdown control. char mode[2][9] = {"list", "dropdown"};
         value - points to one of the choices name and determines which option is selected on submission
 
     Returns:
         void
 */
-void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* value)
+void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* mode, char* value)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+1;//add '\0' for null-termination
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(mode)+strlen(value)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -26,6 +27,7 @@ void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* value)
     json_data.addPair2JsonStr(json,"refName",refname);
     json_data.addPair2JsonStr(json,"title",title);
     json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"mode",mode);
     json_data.addPair2JsonStr(json,"value",value);
 }
 
@@ -77,10 +79,13 @@ void FcSingleChoice::addOptions(char* name,char* value)
         void
 */
 void FcSingleChoice::appendOptions()
-{    
-    int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"options",jsonArray);
+{ 
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"options",jsonArray);
+    }
 }
 
 /* Function: FcSingleChoice.get

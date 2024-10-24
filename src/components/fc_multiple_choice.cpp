@@ -75,10 +75,13 @@ void FcMultipleChoice::addOptions(char* name,char* value)
         void
 */
 void FcMultipleChoice::appendOptions()
-{    
-    int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"options",jsonArray);
+{
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"options",jsonArray);
+    }
 }
 
 /* Function: FcMultipleChoice.addValue
@@ -128,10 +131,13 @@ void FcMultipleChoice::addValue(char* value)
         void
 */
 void FcMultipleChoice::appendValues()
-{    
-    int size = strlen(json)+strlen(jsonArray2)+10;   //add bytes for ',"value":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"value",jsonArray2);
+{ 
+    if(jsonArray2!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray2)+10;   //add bytes for ',"value":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"value",jsonArray2);
+    }
 }
 
 /* Function: FcMultipleChoice.get

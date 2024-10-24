@@ -13,13 +13,14 @@
         reqSel - indicates if the selection is required to submit the form
         value - is the decoded value of the NFC scan upon form submission
         actBtnTitle -  is the label of the scan button
+        mode -  selects the type of code to support. Allowed values: auto, qrcode, barcode. char mode[3][8] = {"auto","qrcode","barcode"};
 
     Returns:
         void
 */
-void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle)
+void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle, char* mode)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+1;
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+strlen(mode)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -27,6 +28,7 @@ void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* a
     json_data.addPair2JsonStr(json,"refName",refname);
     json_data.addPair2JsonStr(json,"title",title);
     json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
+    json_data.addPair2JsonStr(json,"mode",mode);
     json_data.addPair2JsonStr(json,"value",value);
     json_data.addPair2JsonStr(json,"actionButtonTitle",actBtnTitle);
 }

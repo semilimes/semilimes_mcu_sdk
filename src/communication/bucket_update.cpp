@@ -78,10 +78,13 @@ void BucketUpdate::addDataComponents(char* component)
         void
 */
 void BucketUpdate::appendDataComponents()
-{
-    int size = strlen(json)+strlen(jsonArray)+19;   //add ',"dataComponents":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"dataComponents",jsonArray);
+{    
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+19;   //add ',"dataComponents":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"dataComponents",jsonArray);
+    }
 }
 
 /* Function: BucketUpdate.getEPurl

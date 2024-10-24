@@ -64,10 +64,13 @@ void GroupchatInvite::addRecipientId(char* recipientId)
         void
 */
 void GroupchatInvite::appendRecipientIds()
-{
-    int size = strlen(json)+strlen(jsonArray)+17;   //add ',"recipientIds":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"recipientIds",jsonArray);
+{    
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+17;   //add ',"recipientIds":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"recipientIds",jsonArray);
+    }
 }
 
 /* Function: GroupchatInvite.getEPurl

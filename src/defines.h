@@ -35,6 +35,7 @@
 #define communication_p2p_message_reaction_send "/communication/p2p/message/reaction/send"
 #define communication_p2p_message_reaction_remove "/communication/p2p/message/reaction/remove"
 #define communication_p2p_message_reply "/communication/p2p/message/reply"
+#define communication_p2p_signal_typing "/communication/p2p/signal/typing"
 #define communication_groupchat "/communication/groupchat"
 #define communication_groupchat_create "/communication/groupchat/create"
 #define communication_groupchat_message "/communication/groupchat/message"
@@ -44,5 +45,6 @@
 #define communication_groupchat_message_reaction_send "/communication/groupchat/message/reaction/send"
 #define communication_groupchat_message_reaction_remove "/communication/groupchat/message/reaction/remove"
 #define communication_groupchat_message_reply "/communication/groupchat/message/reply"
+#define communication_groupchat_signal_typing "/communication/groupchat/signal/typing"
 
 #endif;

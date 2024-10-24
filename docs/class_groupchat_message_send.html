@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -109,8 +109,8 @@ $(function(){initNavTree('class_groupchat_message_send.html',''); initResizable(
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9813ec82dc0ebd6c0192144ef1da024f" id="r_a9813ec82dc0ebd6c0192144ef1da024f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9813ec82dc0ebd6c0192144ef1da024f">~GroupchatMessageSend</a> ()</td></tr>
 <tr class="separator:a9813ec82dc0ebd6c0192144ef1da024f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe4a9eb973565181f878f4c469353d60" id="r_afe4a9eb973565181f878f4c469353d60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe4a9eb973565181f878f4c469353d60">set</a> (char *groupChatId, char *dataComponent)</td></tr>
-<tr class="separator:afe4a9eb973565181f878f4c469353d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af875a574af5f22e21941b73bc00f163a" id="r_af875a574af5f22e21941b73bc00f163a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af875a574af5f22e21941b73bc00f163a">set</a> (char *groupChatId, char *dataComponent, bool silent)</td></tr>
+<tr class="separator:af875a574af5f22e21941b73bc00f163a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedd66aba193ebc9b155b4062b51fcd37" id="r_aedd66aba193ebc9b155b4062b51fcd37"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedd66aba193ebc9b155b4062b51fcd37">getEPurl</a> ()</td></tr>
 <tr class="separator:aedd66aba193ebc9b155b4062b51fcd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7794484ee4f9212862a66fb941595a00" id="r_a7794484ee4f9212862a66fb941595a00"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7794484ee4f9212862a66fb941595a00">get</a> ()</td></tr>
@@ -180,8 +180,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afe4a9eb973565181f878f4c469353d60" name="afe4a9eb973565181f878f4c469353d60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe4a9eb973565181f878f4c469353d60">&#9670;&#160;</a></span>set()</h2>
+<a id="af875a574af5f22e21941b73bc00f163a" name="af875a574af5f22e21941b73bc00f163a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af875a574af5f22e21941b73bc00f163a">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,14 +194,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>dataComponent</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>dataComponent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>silent</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">groupChatId</td><td>- is the unique Id to reference an existing groupChat</td></tr>
+    <tr><td class="paramname">groupChatId</td><td>- is the unique Id to reference an existing groupChat </td></tr>
     <tr><td class="paramname">dataComponent</td><td>- the json description of the data component</td></tr>
+    <tr><td class="paramname">silent</td><td>- is a boolean to allow sending the message without any in-app notification</td></tr>
   </table>
   </dd>
 </dl>

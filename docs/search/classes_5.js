@@ -11,5 +11,6 @@ var searchData=
   ['groupchatmessageupdate_8',['GroupchatMessageUpdate',['../class_groupchat_message_update.html',1,'']]],
   ['groupchatreactionremove_9',['GroupchatReactionRemove',['../class_groupchat_reaction_remove.html',1,'']]],
   ['groupchatreactionsend_10',['GroupchatReactionSend',['../class_groupchat_reaction_send.html',1,'']]],
-  ['groupchatsget_11',['GroupchatsGet',['../class_groupchats_get.html',1,'']]]
+  ['groupchatsget_11',['GroupchatsGet',['../class_groupchats_get.html',1,'']]],
+  ['groupchatsignaltyping_12',['GroupchatSignalTyping',['../class_groupchat_signal_typing.html',1,'']]]
 ];

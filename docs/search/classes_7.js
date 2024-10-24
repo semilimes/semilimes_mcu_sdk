@@ -7,5 +7,6 @@ var searchData=
   ['p2pmessageupdate_4',['P2pMessageUpdate',['../class_p2p_message_update.html',1,'']]],
   ['p2preactionremove_5',['P2pReactionRemove',['../class_p2p_reaction_remove.html',1,'']]],
   ['p2preactionsend_6',['P2pReactionSend',['../class_p2p_reaction_send.html',1,'']]],
-  ['provisioning_7',['Provisioning',['../class_provisioning.html',1,'']]]
+  ['p2psignaltyping_7',['P2pSignalTyping',['../class_p2p_signal_typing.html',1,'']]],
+  ['provisioning_8',['Provisioning',['../class_provisioning.html',1,'']]]
 ];

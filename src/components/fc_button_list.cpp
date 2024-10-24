@@ -13,13 +13,14 @@
         reqSel - sets this component interaction as required before submitting the parent form
         value - will be populated with a button name when a user submits a form with a button selection
         vertList -  is a preference to tell a client app to display the buttons vertically
+        lineSize  -  defines how the buttons should be spread on multiple lines (row/columns). Allowed values are: char lineSize[7][9] = {"flexible", "1", "2", "3", "4", "5", "6"};
 
     Returns:
         void
 */
-void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList)
+void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList,char* linesize)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+json_data.boolStrSize(vertList)+1;//add '\0' for null-termination
+    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+json_data.boolStrSize(vertList)+strlen(linesize)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -29,6 +30,34 @@ void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool ve
     json_data.addPair2JsonBool(json,"requiredSelection",reqSel);
     json_data.addPair2JsonStr(json,"value",value);
     json_data.addPair2JsonBool(json,"verticalList", vertList);
+    json_data.addPair2JsonStr(json,"linesize", linesize);
+}
+
+/* Function: FcButtonList.addIconOptions
+
+    add a list of options 
+
+    Prototype:
+        void FcButtonList::addOptions(char* name,char* value);
+
+    Parameters:
+        optTemp - options json
+        optSize - options json size
+        iconName - specifies an object with a name for that icon. You can find the icon names reference at the official Google Fonts page
+
+    Returns:
+        void
+*/
+int FcButtonList::addIconOptions(char*& optTemp, int optSize, char* iconName)
+{
+    int size = optionsHeaderSize+strlen(iconName)+1;
+    char* iconOptTemp = new char[size];
+    json_data.initJson(iconOptTemp);
+    json_data.addPair2JsonStr(iconOptTemp, "name", iconName);
+    size += optSize+9;   //add bytes for ',"icon":' and '\0'
+    json_data.arrayResize(optTemp,size);
+	json_data.addPair2Json(optTemp,"icon",iconOptTemp);
+    return size;
 }
 
 /* Function: FcButtonList.addOptions
@@ -41,17 +70,19 @@ void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool ve
     Parameters:
         name - is the option identifier
         value - text displayed to the user
+        iconName -   within options specifies an object with a name for that icon. You can find the icon names reference at the official Google Fonts page
 
     Returns:
         void
 */
-void FcButtonList::addOptions(char* name,char* value)
+void FcButtonList::addOptions(char* name,char* value, char* iconName)
 {
     int size = headerArraySize+strlen(name)+strlen(value)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "name", name);
     json_data.addPair2JsonStr(optTemp, "value", value);
+    size = this->addIconOptions(optTemp,size,iconName);
     
     if(!jsonArray)
     {
@@ -80,9 +111,12 @@ void FcButtonList::addOptions(char* name,char* value)
 */
 void FcButtonList::appendOptions()
 {    
-    int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"options",jsonArray);
+    if(jsonArray!=nullptr) 
+    {    
+        int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"options",jsonArray);
+    }
 }
 
 /* Function: FcButtonList.get

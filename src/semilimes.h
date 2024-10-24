@@ -30,6 +30,7 @@
 #include "communication/groupchat_reaction_remove.h"
 #include "communication/groupchat_reaction_send.h"
 #include "communication/groupchats_get.h"
+#include "communication/groupchat_signal_typing.h"
 
 #include "communication/p2p_message_get.h"
 #include "communication/p2p_message_reply.h"
@@ -37,6 +38,7 @@
 #include "communication/p2p_messagE_update.h"
 #include "communication/p2p_reaction_remove.h"
 #include "communication/p2p_reaction_send.h"
+#include "communication/p2p_signal_typing.h"
 #include "communication/p2p.h"
 #include "communication/websocket_header.h"
 
@@ -49,6 +51,8 @@
 #include "components/dc_ch_reference.h"
 #include "components/dc_tunnel_reference.h"
 #include "components/dc_form.h"
+#include "components/dc_appointment.h"
+#include "components/dc_gauge.h"
 
 #include "components/fc_label.h"
 #include "components/fc_text_box.h"
@@ -65,7 +69,8 @@
 #include "components/fc_single_choice.h"
 #include "components/fc_multiple_choice.h"
 #include "components/fc_button_list.h"
-
-#include "device/device.h"
+#include "components/fc_event_picker.h"
+#include "components/fc_color_picker.h"
+#include "components/fc_gauge.h"
 
 #endif;

@@ -7,8 +7,24 @@ class ChannelMessageSend
 {
 private:
     #define headerSize 33
+    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
+
+// Function: ChannelMessageSend.addOptions
+
+//     add an list of options
+
+//     Prototype:
+//         void ChannelMessageSend::addOptions(bool silent);
+
+//     Parameters:
+///@param         silent - is a boolean to allow sending the message without any in-app notification
+        
+//    Returns:
+///@return       void
+    void addOptions(bool silent);
+
 
 public:
 // Function: ChannelMessageSend
@@ -40,10 +56,11 @@ public:
 //     Parameters:
 ///@param         channelId - is the unique Id to reference an existing channel
 ///@param         dataComponent - the json description of the data component
+///@param         silent - is a boolean to allow sending the message without any in-app notification
 
 //     Returns:
 ///@returns         void
-    void set(char* channelId, char* dataComponent);
+    void set(char* channelId, char* dataComponent, bool silent);
 
 // Function: ChannelMessageSend.getEPurl
 

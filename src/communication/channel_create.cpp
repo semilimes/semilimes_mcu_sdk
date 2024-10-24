@@ -71,10 +71,13 @@ void ChannelCreate::addEditorsId(char* data)
         void
 */
 void ChannelCreate::appendEditorsIds()
-{
-    int size = strlen(json)+strlen(jsonArray)+14;   //add ',"editorIds":' and '\0'
-    json_data.arrayResize(json,size);
-	json_data.add2JsonArray(json,"editorIds",jsonArray);
+{    
+    if(jsonArray!=nullptr)
+    {
+        int size = strlen(json)+strlen(jsonArray)+14;   //add ',"editorIds":' and '\0'
+        json_data.arrayResize(json,size);
+        json_data.add2JsonArray(json,"editorIds",jsonArray);
+    }
 }
 
 /* Function: ChannelCreate.getEPurl

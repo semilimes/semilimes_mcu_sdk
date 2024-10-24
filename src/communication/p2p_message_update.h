@@ -7,8 +7,23 @@ class P2pMessageUpdate
 {
 private:
     #define headerSize 33
+    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
+
+// Function: P2pMessageUpdate.addOptions
+
+//     add an list of options
+
+//     Prototype:
+//         void P2pMessageUpdate::addOptions(bool silent);
+
+//     Parameters:
+///@param         silent - is a boolean to allow sending the message without any in-app notification
+        
+//    Returns:
+///@return       void
+    void addOptions(bool silent);
 
 public:
 // Function: ~P2pMessageUpdate
@@ -38,10 +53,11 @@ public:
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing p2p chat
 ///@param         dataComponent - the json description of the data component
+///@param         silent - is a boolean to allow sending the message without any in-app notification
 
 //     Returns:
 ///@returns         void
-    void set(char* messageId, char* dataComponent);
+    void set(char* messageId, char* dataComponent, bool silent);
 
 // Function: P2pMessageUpdate.getEPurl
 

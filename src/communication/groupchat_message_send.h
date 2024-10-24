@@ -7,8 +7,23 @@ class GroupchatMessageSend
 {
 private:
     #define headerSize 35
+    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
+
+// Function: GroupchatMessageSend.addOptions
+
+//     add an list of options
+
+//     Prototype:
+//         void GroupchatMessageSend::addOptions(bool silent);
+
+//     Parameters:
+///@param         silent - is a boolean to allow sending the message without any in-app notification
+        
+//    Returns:
+///@return       void
+    void addOptions(bool silent);
 
 public:
 // Function: ~GroupchatMessageSend
@@ -38,10 +53,11 @@ public:
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
 ///@param         dataComponent - the json description of the data component
+///@param         silent - is a boolean to allow sending the message without any in-app notification
 
 //     Returns:
 ///@returns         void
-    void set(char* groupChatId, char* dataComponent);
+    void set(char* groupChatId, char* dataComponent, bool silent);
 
 // Function: GroupchatMessageSend.getEPurl
 

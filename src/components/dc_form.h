@@ -6,7 +6,7 @@
 class DcForm
 {
 private:
-    #define headerSize 102
+    #define headerSize 151
     #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
@@ -14,10 +14,14 @@ private:
 
 public:
 // variable: DcForm.featureType
-
 //     describes the types of the feature
 ///@param        char featureType[3][10] = {"contact","groupchat","channel"};
     char featureType[3][10] = {"contact","groupchat","channel"};
+
+// variable: DcForm.align
+//     allows to align all the children form components to a direction
+///@param        char align[3][7] = {"left","center","right"};
+    char align[3][7] = {"left","center","right"};
 
 // Function: ~DcForm
 
@@ -52,9 +56,12 @@ public:
 ///@param         retainStatus - enables the form to maintain the last submitted values when the use case requires many users to operate the same form
 ///@param         submitText - is the text to be displayed in the Submit button of the form
 ///@param         refName - is a friendly name given to the form for later reference when filtering form submissions from clients.
+///@param         align - allows to align all the children form components to a direction. Allowed values: align[3][7] = {"left","center","right"};
+///@param         authorizeSubmit - allows to protect the in-app submission of the form by a pin code or biometrics, whatever is set in the messenger app.
+///@param         hideSubmissionMsg - is a boolean to suppress in-app submission messages sent to receiver, while the API will still receive a submission for further processing
 //    Returns:
 ///@return       void
-    void set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName);
+    void set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName, char* align, bool authorizeSubmit, bool hideSubmissionMsg);
 
 // Function: DcForm.addFormComponents
 

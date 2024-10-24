@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -110,8 +110,8 @@ $(function(){initNavTree('class_dc_form.html',''); initResizable(true); });
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3f37ac999e856906c5d879d225305fe8" id="r_a3f37ac999e856906c5d879d225305fe8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f37ac999e856906c5d879d225305fe8">~DcForm</a> ()</td></tr>
 <tr class="separator:a3f37ac999e856906c5d879d225305fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5afd68be5a31cb75f5ccdc68e861afee" id="r_a5afd68be5a31cb75f5ccdc68e861afee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5afd68be5a31cb75f5ccdc68e861afee">set</a> (char *recId, char *recFeatureType, bool submitEnabled, bool retainStatus, char *submitText, char *refName)</td></tr>
-<tr class="separator:a5afd68be5a31cb75f5ccdc68e861afee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34179c1cb47879cbd23ff39332f9497a" id="r_a34179c1cb47879cbd23ff39332f9497a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34179c1cb47879cbd23ff39332f9497a">set</a> (char *recId, char *recFeatureType, bool submitEnabled, bool retainStatus, char *submitText, char *refName, char *<a class="el" href="#a02c99eeec2ca8d9816ee6a9ad0c6dfba">align</a>, bool authorizeSubmit, bool hideSubmissionMsg)</td></tr>
+<tr class="separator:a34179c1cb47879cbd23ff39332f9497a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81625165ce8c66c859d7a79e31d225ed" id="r_a81625165ce8c66c859d7a79e31d225ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81625165ce8c66c859d7a79e31d225ed">addFormComponents</a> (char *component)</td></tr>
 <tr class="separator:a81625165ce8c66c859d7a79e31d225ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a730937f8b737f386fe0556d239dc1800" id="r_a730937f8b737f386fe0556d239dc1800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a730937f8b737f386fe0556d239dc1800">appendFormComponents</a> ()</td></tr>
@@ -123,6 +123,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a4faeaaa55ca1a538510f739e714d2ce8" id="r_a4faeaaa55ca1a538510f739e714d2ce8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4faeaaa55ca1a538510f739e714d2ce8">featureType</a> [3][10] = {&quot;contact&quot;,&quot;groupchat&quot;,&quot;channel&quot;}</td></tr>
 <tr class="separator:a4faeaaa55ca1a538510f739e714d2ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c99eeec2ca8d9816ee6a9ad0c6dfba" id="r_a02c99eeec2ca8d9816ee6a9ad0c6dfba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02c99eeec2ca8d9816ee6a9ad0c6dfba">align</a> [3][7] = {&quot;left&quot;,&quot;center&quot;,&quot;right&quot;}</td></tr>
+<tr class="separator:a02c99eeec2ca8d9816ee6a9ad0c6dfba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3f37ac999e856906c5d879d225305fe8" name="a3f37ac999e856906c5d879d225305fe8"></a>
@@ -212,8 +214,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5afd68be5a31cb75f5ccdc68e861afee" name="a5afd68be5a31cb75f5ccdc68e861afee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5afd68be5a31cb75f5ccdc68e861afee">&#9670;&#160;</a></span>set()</h2>
+<a id="a34179c1cb47879cbd23ff39332f9497a" name="a34179c1cb47879cbd23ff39332f9497a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34179c1cb47879cbd23ff39332f9497a">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +248,22 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refName</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>align</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>authorizeSubmit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>hideSubmissionMsg</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -256,8 +273,11 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">recFeatureType</td><td>- the type of the receiver: char* featureType[3][10] = {"contact","groupchat","channel"} </td></tr>
     <tr><td class="paramname">submitEnabled</td><td>- enables the Submit button to be pressed before the form is actually submitted. Otherwise, the form will be submitted each time a user fills in/change values of a form component. </td></tr>
     <tr><td class="paramname">retainStatus</td><td>- enables the form to maintain the last submitted values when the use case requires many users to operate the same form </td></tr>
-    <tr><td class="paramname">submitText</td><td>- is the text to be displayed in the Submit button of the form</td></tr>
-    <tr><td class="paramname">refName</td><td>- is a friendly name given to the form for later reference when filtering form submissions from clients.</td></tr>
+    <tr><td class="paramname">submitText</td><td>- is the text to be displayed in the Submit button of the form </td></tr>
+    <tr><td class="paramname">refName</td><td>- is a friendly name given to the form for later reference when filtering form submissions from clients. </td></tr>
+    <tr><td class="paramname">align</td><td>- allows to align all the children form components to a direction. Allowed values: align[3][7] = {"left","center","right"}; </td></tr>
+    <tr><td class="paramname">authorizeSubmit</td><td>- allows to protect the in-app submission of the form by a pin code or biometrics, whatever is set in the messenger app.</td></tr>
+    <tr><td class="paramname">hideSubmissionMsg</td><td>- is a boolean to suppress in-app submission messages sent to receiver, while the API will still receive a submission for further processing</td></tr>
   </table>
   </dd>
 </dl>
@@ -266,6 +286,26 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a02c99eeec2ca8d9816ee6a9ad0c6dfba" name="a02c99eeec2ca8d9816ee6a9ad0c6dfba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02c99eeec2ca8d9816ee6a9ad0c6dfba">&#9670;&#160;</a></span>align</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char DcForm::align[3][7] = {&quot;left&quot;,&quot;center&quot;,&quot;right&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>align[3][7] = {"left","center","right"}; </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a4faeaaa55ca1a538510f739e714d2ce8" name="a4faeaaa55ca1a538510f739e714d2ce8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4faeaaa55ca1a538510f739e714d2ce8">&#9670;&#160;</a></span>featureType</h2>
 

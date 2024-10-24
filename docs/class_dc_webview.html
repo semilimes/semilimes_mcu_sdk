@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -110,8 +110,8 @@ $(function(){initNavTree('class_dc_webview.html',''); initResizable(true); });
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae65a9271f4c65d4ff5639738e18e3f4e" id="r_ae65a9271f4c65d4ff5639738e18e3f4e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae65a9271f4c65d4ff5639738e18e3f4e">~DcWebview</a> ()</td></tr>
 <tr class="separator:ae65a9271f4c65d4ff5639738e18e3f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ba9c9e63194cd639b112f59f03568a3" id="r_a6ba9c9e63194cd639b112f59f03568a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ba9c9e63194cd639b112f59f03568a3">set</a> (char *url, bool enableFullScreenView, char *viewSize)</td></tr>
-<tr class="separator:a6ba9c9e63194cd639b112f59f03568a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a3c840a709564c2d8dd66832912666a" id="r_a7a3c840a709564c2d8dd66832912666a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a3c840a709564c2d8dd66832912666a">set</a> (char *url, bool enableFullScreenView, char *viewSize, char *<a class="el" href="#aa3f12b2dc5bfe32b99fe0c86604117a6">displayMode</a>, char *linkDisplayName)</td></tr>
+<tr class="separator:a7a3c840a709564c2d8dd66832912666a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4af5f0ef10c298c0600161fac344968" id="r_ae4af5f0ef10c298c0600161fac344968"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4af5f0ef10c298c0600161fac344968">get</a> ()</td></tr>
 <tr class="separator:ae4af5f0ef10c298c0600161fac344968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -119,6 +119,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3606024c07575701c7c78c3564f2b662" id="r_a3606024c07575701c7c78c3564f2b662"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3606024c07575701c7c78c3564f2b662">viewSizeTypes</a> [4][4] = {&quot;1:1&quot;, &quot;1:2&quot;, &quot;3:2&quot;, &quot;2:1&quot;}</td></tr>
 <tr class="separator:a3606024c07575701c7c78c3564f2b662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3f12b2dc5bfe32b99fe0c86604117a6" id="r_aa3f12b2dc5bfe32b99fe0c86604117a6"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3f12b2dc5bfe32b99fe0c86604117a6">displayMode</a> [3][10] = {&quot;link&quot;, &quot;thumbnail&quot;, &quot;liveweb&quot;}</td></tr>
+<tr class="separator:aa3f12b2dc5bfe32b99fe0c86604117a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae65a9271f4c65d4ff5639738e18e3f4e" name="ae65a9271f4c65d4ff5639738e18e3f4e"></a>
@@ -166,8 +168,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ba9c9e63194cd639b112f59f03568a3" name="a6ba9c9e63194cd639b112f59f03568a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ba9c9e63194cd639b112f59f03568a3">&#9670;&#160;</a></span>set()</h2>
+<a id="a7a3c840a709564c2d8dd66832912666a" name="a7a3c840a709564c2d8dd66832912666a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a3c840a709564c2d8dd66832912666a">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,7 +187,17 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>viewSize</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>viewSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>displayMode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>linkDisplayName</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -193,8 +205,11 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">url</td><td>- is the address to be rendered in the webview </td></tr>
     <tr><td class="paramname">enableFullScreenView</td><td>- to enable the fullscreen <br  />
-</td></tr>
-    <tr><td class="paramname">viewSize</td><td>- determines the view proportions. Allowed values are: har viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"};</td></tr>
+ </td></tr>
+    <tr><td class="paramname">viewSize</td><td>- determines the view proportions. Allowed values are: har viewSizeTypes[4][4] = {"1:1", "1:2", "3:2", "2:1"}; <br  />
+ </td></tr>
+    <tr><td class="paramname">displayMode</td><td>- gives the choice to display the destination url in multiple modes (the default behaviour is link): char displayMode [3][10] = {"link", "thumbnail", "liveweb"};</td></tr>
+    <tr><td class="paramname">linkDisplayName</td><td>- is used when displayMode is set to link, and it sets a custom name for the displaying URL</td></tr>
   </table>
   </dd>
 </dl>
@@ -203,6 +218,26 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa3f12b2dc5bfe32b99fe0c86604117a6" name="aa3f12b2dc5bfe32b99fe0c86604117a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3f12b2dc5bfe32b99fe0c86604117a6">&#9670;&#160;</a></span>displayMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char DcWebview::displayMode[3][10] = {&quot;link&quot;, &quot;thumbnail&quot;, &quot;liveweb&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>displayMode [3][10] = {"link", "thumbnail", "liveweb"}; </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3606024c07575701c7c78c3564f2b662" name="a3606024c07575701c7c78c3564f2b662"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3606024c07575701c7c78c3564f2b662">&#9670;&#160;</a></span>viewSizeTypes</h2>
 

@@ -30,8 +30,12 @@ var menudata={children:[
 {text:"Class Members",url:"functions.html",children:[
 {text:"All",url:"functions.html",children:[
 {text:"a",url:"functions.html#index_a"},
+{text:"d",url:"functions_d.html#index_d"},
+{text:"e",url:"functions_e.html#index_e"},
 {text:"f",url:"functions_f.html#index_f"},
 {text:"g",url:"functions_g.html#index_g"},
+{text:"l",url:"functions_l.html#index_l"},
+{text:"m",url:"functions_m.html#index_m"},
 {text:"p",url:"functions_p.html#index_p"},
 {text:"s",url:"functions_s.html#index_s"},
 {text:"v",url:"functions_v.html#index_v"},
