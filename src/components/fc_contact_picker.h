@@ -6,7 +6,6 @@
 class FcContactPicker
 {
 private:
-    #define headerSize 134
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     A picker allowing to select and reference contacts
 
 //     Prototype:
-//         void FcContactPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+//         void FcContactPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool multiSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -45,7 +44,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+    void set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool multiSel);
 
 // Function: FcContactPicker.get
 

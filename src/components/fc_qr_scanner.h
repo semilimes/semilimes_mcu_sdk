@@ -6,7 +6,6 @@
 class FcQrScanner
 {
 private:
-    #define headerSize 126
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -37,7 +36,7 @@ public:
 //     A scanner button allowing to scan and read QR Codes
 
 //     Prototype:
-//         void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+//         void FcQrScanner::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle, const char* mode);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -49,7 +48,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle, char* mode);
+    void set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle, const char* mode);
 
 // Function: FcQrScanner.get
 

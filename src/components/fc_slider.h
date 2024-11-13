@@ -6,7 +6,6 @@
 class FcSlider
 {
 private:
-    #define headerSize 106
     SmeJson json_data;
     char* json = nullptr;
     
@@ -33,7 +32,7 @@ public:
 //     A slider to let the user select a value by dragging its handle
 
 //     Prototype:
-//         void FcSlider::set(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+//         void FcSlider::set(const char* refname,const char* title,bool reqSel,int value,int min,int max,int step);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -46,7 +45,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+    void set(const char* refname,const char* title,bool reqSel,int value,int min,int max,int step);
 
 // Function: FcSlider.get
 

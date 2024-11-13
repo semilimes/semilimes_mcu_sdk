@@ -5,7 +5,7 @@
     This endpoint returns a list of messages in the specified Group chat.
 
     Prototype:
-        void set(char* groupChatId,char* messageId,int limit);
+        void set(const char* groupChatId,const char* messageId,int limit);
 
     Parameters:
         groupChatId - is the unique Id to reference an existing groupChat
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void GroupchatMessageGet::set(char* groupChatId,char* messageId,int limit)
+void GroupchatMessageGet::set(const char* groupChatId,const char* messageId,int limit)
 {
-    int size = headerSize+strlen(groupChatId)+strlen(messageId)+json_data.intStrSize(limit)+1;
+    int size = strlen("{\"groupChatId\":\"\",\"messageId\":\"\",\"limit\":}")+strlen(groupChatId)+strlen(messageId)+json_data.intStrSize(limit)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -41,6 +41,23 @@ void GroupchatMessageGet::set(char* groupChatId,char* messageId,int limit)
 char* GroupchatMessageGet::getEPurl()
 {
     return httpsUrl communication_groupchat_message;
+}
+
+/* Function: GroupchatMessageGet.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatMessageGet::getWSEPurl()
+{
+    return communication_groupchat_message;        
 }
 
 /* Function: GroupchatMessageGet.get

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linesize_0',['lineSize',['../class_fc_button_list.html#aad289f77c8f4fb5550de0e277f7c57c3',1,'FcButtonList']]]
+  ['gpiotype_0',['GPIOType',['../class_device.html#a211d9d6bababefe2d3c7b610f3c7c0b9',1,'Device']]]
 ];

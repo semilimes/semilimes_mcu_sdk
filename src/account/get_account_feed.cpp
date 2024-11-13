@@ -5,7 +5,7 @@
     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
 
     Prototype:
-        void GetAccountFeed::set(char* accountId,int before,int after,int limit);
+        void GetAccountFeed::set(const char* accountId,int before,int after,int limit);
 
     Parameters:
         accountId - the account id of which show the feeds configuration and content
@@ -16,9 +16,9 @@
     Returns:
       
 */
-void GetAccountFeed::set(char* accountId,int before,int after,int limit)
+void GetAccountFeed::set(const char* accountId,int before,int after,int limit)
 {
-    int size = headerSize+strlen(accountId)+json_data.intStrSize(before)+json_data.intStrSize(after)+json_data.intStrSize(limit)+1;
+    int size = strlen("{\"accountId\":\"\",\"before\":\"\",\"after\":\"\",\"limit\":\"\"}")+strlen(accountId)+json_data.intStrSize(before)+json_data.intStrSize(after)+json_data.intStrSize(limit)+1;
     json = new char[size];
     json_data.initJson(json);
     json_data.addPair2JsonStr(json, "accountId",accountId);

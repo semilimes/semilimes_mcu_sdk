@@ -5,7 +5,7 @@
     A scanner button allowing to read NFC tags
 
     Prototype:
-        void FcNfcReader::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+        void FcNfcReader::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle);
 
     Parameters:
         refname - it is the reference name of the object
@@ -17,9 +17,9 @@
     Returns:
         void
 */
-void FcNfcReader::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle)
+void FcNfcReader::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+1;
+    int size = strlen("{\"formComponentType\":\"nfcreader\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":\"\",\"actionButtonTitle\":\"\"}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+1;
     json = new char[size];
 
     json_data.initJson(json);

@@ -6,7 +6,6 @@
 class DcLocation
 {
 private:
-    #define headerSize 75
     SmeJson json_data;
     char* json = nullptr;
 
@@ -33,7 +32,7 @@ public:
 //    A location message containing coordinates
 
 //    Prototype:
-//        void DcLocation::set(char* locationName,float latitude, float longitude);
+//        void DcLocation::set(const char* locationName,float latitude, float longitude);
 
 //    Parameters:
 ///@param        locationName - the name of the location 
@@ -42,7 +41,7 @@ public:
 
 //    Returns:
 ///@return         void
-    void set(char* locationName,float latitude, float longitude);
+    void set(const char* locationName,float latitude, float longitude);
 
 // Function: DcLocation.get
 

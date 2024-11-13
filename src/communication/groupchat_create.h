@@ -6,8 +6,6 @@
 class GroupchatCreate
 {
 private:
-    #define headerSize 28
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -37,28 +35,28 @@ public:
 //     This endpoint creates a new group chat with a specified name. It's also possible to directly invite other accounts to the chat upon creation by specifying their accountIds in the recipientIds array.
 
 //     Prototype:
-//         void set(char* title);
+//         void set(const char* title);
 
 //     Parameters:
 ///@param         title - sets the group chat title
 
 //     Returns:
 ///@returns         void
-    void set(char* title);
+    void set(const char* title);
 
 // Function: GroupchatCreate.addRecipientIds
 
 //     Add the recipientId (the account Id to be added in the groupchat)
 
 //     Prototype:
-//         void addRecipientIds(char* recipientIds);
+//         void addRecipientIds(const char* recipientIds);
 
 //     Parameters:
 ///@param         recipientIds - the json script of the dataComponent to add
 
 //     Returns:
 ///@returns         void
-    void addRecipientId(char* recipientIds);
+    void addRecipientId(const char* recipientIds);
 
 // Function: GroupchatCreate.appendRecipientIds
 
@@ -85,6 +83,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatCreate.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatCreate.get
 

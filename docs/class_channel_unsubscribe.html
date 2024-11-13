@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -109,10 +109,12 @@ $(function(){initNavTree('class_channel_unsubscribe.html',''); initResizable(tru
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b7e4d03fd201fd2514a3f78156e745b" id="r_a9b7e4d03fd201fd2514a3f78156e745b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b7e4d03fd201fd2514a3f78156e745b">~ChannelUnsubscribe</a> ()</td></tr>
 <tr class="separator:a9b7e4d03fd201fd2514a3f78156e745b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca89de0396920fef80a4ffafa789f221" id="r_aca89de0396920fef80a4ffafa789f221"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca89de0396920fef80a4ffafa789f221">set</a> (char *channelId)</td></tr>
-<tr class="separator:aca89de0396920fef80a4ffafa789f221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23fa139a4f0980a28a6ce171cb65df68" id="r_a23fa139a4f0980a28a6ce171cb65df68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23fa139a4f0980a28a6ce171cb65df68">set</a> (const char *channelId)</td></tr>
+<tr class="separator:a23fa139a4f0980a28a6ce171cb65df68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76939f3b49021428d85db45790dd53e0" id="r_a76939f3b49021428d85db45790dd53e0"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76939f3b49021428d85db45790dd53e0">getEPurl</a> ()</td></tr>
 <tr class="separator:a76939f3b49021428d85db45790dd53e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6382cd20dfd8ab82050e2c8e42e4f77" id="r_ac6382cd20dfd8ab82050e2c8e42e4f77"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6382cd20dfd8ab82050e2c8e42e4f77">getWSEPurl</a> ()</td></tr>
+<tr class="separator:ac6382cd20dfd8ab82050e2c8e42e4f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad439fe7dd3d21d21abac64f04aa0f15a" id="r_ad439fe7dd3d21d21abac64f04aa0f15a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad439fe7dd3d21d21abac64f04aa0f15a">get</a> ()</td></tr>
 <tr class="separator:ad439fe7dd3d21d21abac64f04aa0f15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -180,8 +182,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aca89de0396920fef80a4ffafa789f221" name="aca89de0396920fef80a4ffafa789f221"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca89de0396920fef80a4ffafa789f221">&#9670;&#160;</a></span>set()</h2>
+<a id="ac6382cd20dfd8ab82050e2c8e42e4f77" name="ac6382cd20dfd8ab82050e2c8e42e4f77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6382cd20dfd8ab82050e2c8e42e4f77">&#9670;&#160;</a></span>getWSEPurl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ChannelUnsubscribe::getWSEPurl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* endpoint </dd></dl>
+
+</div>
+</div>
+<a id="a23fa139a4f0980a28a6ce171cb65df68" name="a23fa139a4f0980a28a6ce171cb65df68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23fa139a4f0980a28a6ce171cb65df68">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +209,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void ChannelUnsubscribe::set </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>channelId</em></span></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>channelId</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

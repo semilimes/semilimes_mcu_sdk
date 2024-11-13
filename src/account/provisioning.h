@@ -6,7 +6,6 @@
 class Provisioning
 {
 private:
-    #define headerSize 36
     SmeJson json_data;
     char* json = nullptr; 
 
@@ -33,7 +32,7 @@ public:
 //     create the json needed to Register and Claim the device
 
 //     Prototype:
-//         void Provisioning::set(char* devId, char* provKey);
+//         void Provisioning::set(const char* devId, const char* provKey);
 
 //     Parameters:
 ///@param          devId - the device id, a unique ID that belongs to a specific device
@@ -41,7 +40,7 @@ public:
 
 //     Returns:
 ///@returns         char*
-    void set(char* devId, char* provKey);
+    void set(const char* devId, const char* provKey);
 
 // Function: Provisioning.get
 

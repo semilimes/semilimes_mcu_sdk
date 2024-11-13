@@ -6,8 +6,6 @@
 class FcSingleChoice
 {
 private:
-    #define headerSize 102
-    #define headerArraySize 24
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -41,7 +39,7 @@ public:
 //     Initialize the component that display a list of options and allowing only one choice
 
 //     Prototype:
-//         void FcSingleChoice::set(char* refname,char* title,bool reqSel, char* value);
+//         void FcSingleChoice::set(const char* refname,const char* title,bool reqSel, const char* mode, const char* value);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -52,14 +50,14 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel,char* mode,char* value);
+    void set(const char* refname,const char* title,bool reqSel, const char* mode, const char* value);
 
 // Function: FcSingleChoice.addOptions
 
 //    add an array of options where name is the option identifier and value is the text displayed to the user
 
 //     Prototype:
-//         void FcSingleChoice::addOptions(char* name,char* value);
+//         void FcSingleChoice::ddOptions(const char* name,const char* value);
 
 //    Parameters:
 ///@param         name - is the option identifier
@@ -68,7 +66,7 @@ public:
 //    Returns:
 ///@return       void
 
-    void addOptions(char* name,char* value);
+    void addOptions(const char* name,const char* value);
 
 // Function: FcSingleChoice.appendOptions
 

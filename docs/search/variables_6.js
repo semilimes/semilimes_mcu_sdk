@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pointer_0',['pointer',['../class_dc_gauge.html#ae47557a51d4ea230fdad6a332aa9ae96',1,'DcGauge::pointer'],['../class_fc_gauge.html#a9e70234545c9115c718770861d9de915',1,'FcGauge::pointer']]],
-  ['progressbar_1',['progressBar',['../class_dc_gauge.html#aed1fb72c7edc40db57efd83b815b7bb7',1,'DcGauge::progressBar'],['../class_fc_gauge.html#a6a50c8b11d19982236301498e0f119fa',1,'FcGauge::progressBar']]]
+  ['mode_0',['mode',['../class_fc_qr_scanner.html#aaae85feb1cdc0324bfcb41b815caeb71',1,'FcQrScanner::mode'],['../class_fc_single_choice.html#a05a8e1c617b05a464239fe67aa599442',1,'FcSingleChoice::mode']]]
 ];

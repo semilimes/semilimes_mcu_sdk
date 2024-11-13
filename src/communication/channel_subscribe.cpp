@@ -5,7 +5,7 @@
     This endpoint makes the calling account to subscribe to an existing channel.
 
     Prototype:
-        void set(char* channelId);
+        void set(const char* channelId);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void ChannelSubscribe::set(char* channelId)
+void ChannelSubscribe::set(const char* channelId)
 {
-    int size = headerSize+strlen(channelId)+1;
+    int size = strlen("{\"channelId\":\"\"}")+strlen(channelId)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -37,6 +37,23 @@ void ChannelSubscribe::set(char* channelId)
 char* ChannelSubscribe::getEPurl()
 {
     return httpsUrl communication_channel_subscribe;
+}
+
+/* Function: ChannelSubscribe.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelSubscribe::getWSEPurl()
+{
+    return communication_channel_subscribe;        
 }
 
 /* Function: ChannelSubscribe.get

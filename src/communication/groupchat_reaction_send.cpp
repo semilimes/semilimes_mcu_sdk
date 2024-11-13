@@ -5,7 +5,7 @@
     This endpoint allows the account to add a reaction from a specific message in a Group Chat.
 
     Prototype:
-        void set(char* messageId, char* reaction);
+        void set(const char* messageId, const char* reaction);
 
     Parameters:
         messageId - is the unique Id to reference an existing groupChat
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void GroupchatReactionSend::set(char* messageId, char* reaction)
+void GroupchatReactionSend::set(const char* messageId, const char* reaction)
 {
-    int size = headerSize+strlen(messageId)+strlen(reaction)+1;
+    int size = strlen("{\"messageId\":\"\",\"reaction\":\"\"}")+strlen(messageId)+strlen(reaction)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -39,6 +39,23 @@ void GroupchatReactionSend::set(char* messageId, char* reaction)
 char* GroupchatReactionSend::getEPurl()
 {
     return httpsUrl communication_groupchat_message_reaction_send;
+}
+
+/* Function: GroupchatReactionSend.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatReactionSend::getWSEPurl()
+{
+    return communication_groupchat_message_reaction_send;        
 }
 
 /* Function: GroupchatReactionSend.get

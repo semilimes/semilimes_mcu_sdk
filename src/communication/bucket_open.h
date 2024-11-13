@@ -6,7 +6,6 @@
 class BucketOpen
 {
 private:
-    #define headerSize 15
     SmeJson json_data;
     char* json = nullptr;
     
@@ -34,14 +33,14 @@ public:
 //     This endpoint let the user access the bucket content by its bucketId.
 
 //     Prototype:
-///@param         void set(char* bucketId);
+///@param         void set(const char* bucketId);
 
 //     Parameters:
 //         bucketId -  is the unique Id to reference an existing bucket
 
 //     Returns:
 ///@returns        void
-    void set(char* bucketId);
+    void set(const char* bucketId);
 
 // Function: BucketOpen.getEPurl
 
@@ -56,6 +55,20 @@ public:
 ///@returns         char* httpsUrl + endpoint
 
     char* getEPurl();
+
+// Function: BucketOpen.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+///@param         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+
+    char* getWSEPurl();
     
 // Function: BucketOpen.get
 

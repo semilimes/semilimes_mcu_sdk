@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -109,10 +109,12 @@ $(function(){initNavTree('class_groupchat_message_reply.html',''); initResizable
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a30a6bfaeeea2dc3490e4e89fec721445" id="r_a30a6bfaeeea2dc3490e4e89fec721445"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30a6bfaeeea2dc3490e4e89fec721445">~GroupchatMessageReply</a> ()</td></tr>
 <tr class="separator:a30a6bfaeeea2dc3490e4e89fec721445"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e14e4d4fb9dd66f64c8c7f0855c007" id="r_a08e14e4d4fb9dd66f64c8c7f0855c007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08e14e4d4fb9dd66f64c8c7f0855c007">set</a> (char *messageId, char *dataComponent)</td></tr>
-<tr class="separator:a08e14e4d4fb9dd66f64c8c7f0855c007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d150d8becd3d8e2a0a9b62ba3f684a" id="r_a85d150d8becd3d8e2a0a9b62ba3f684a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d150d8becd3d8e2a0a9b62ba3f684a">set</a> (const char *messageId, const char *dataComponent)</td></tr>
+<tr class="separator:a85d150d8becd3d8e2a0a9b62ba3f684a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e2fe0ac58a604714cf4b79144142f8e" id="r_a9e2fe0ac58a604714cf4b79144142f8e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e2fe0ac58a604714cf4b79144142f8e">getEPurl</a> ()</td></tr>
 <tr class="separator:a9e2fe0ac58a604714cf4b79144142f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402f453599d1383540c248ac043754d9" id="r_a402f453599d1383540c248ac043754d9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a402f453599d1383540c248ac043754d9">getWSEPurl</a> ()</td></tr>
+<tr class="separator:a402f453599d1383540c248ac043754d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4045ddcc8550b95528a8c029770ff77e" id="r_a4045ddcc8550b95528a8c029770ff77e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4045ddcc8550b95528a8c029770ff77e">get</a> ()</td></tr>
 <tr class="separator:a4045ddcc8550b95528a8c029770ff77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -180,8 +182,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a08e14e4d4fb9dd66f64c8c7f0855c007" name="a08e14e4d4fb9dd66f64c8c7f0855c007"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08e14e4d4fb9dd66f64c8c7f0855c007">&#9670;&#160;</a></span>set()</h2>
+<a id="a402f453599d1383540c248ac043754d9" name="a402f453599d1383540c248ac043754d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402f453599d1383540c248ac043754d9">&#9670;&#160;</a></span>getWSEPurl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * GroupchatMessageReply::getWSEPurl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* endpoint </dd></dl>
+
+</div>
+</div>
+<a id="a85d150d8becd3d8e2a0a9b62ba3f684a" name="a85d150d8becd3d8e2a0a9b62ba3f684a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d150d8becd3d8e2a0a9b62ba3f684a">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,12 +209,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void GroupchatMessageReply::set </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>messageId</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>messageId</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>dataComponent</em></span>&#160;)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>dataComponent</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

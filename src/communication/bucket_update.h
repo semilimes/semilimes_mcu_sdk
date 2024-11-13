@@ -6,8 +6,6 @@
 class BucketUpdate
 {
 private:
-    #define headerSize 120
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -37,7 +35,7 @@ public:
 //     This endpoint allows the user to update the content of a specific bucket.
 
 //     Prototype:
-//         void set(char* bucketId);
+//         void set(const char* bucketId, const char* title, const char* description, const char* avatar, bool visible, bool locked, bool enReactions);
 
 //     Parameters:
 ///@param         bucketId -  is the unique Id to reference an existing bucket
@@ -50,12 +48,12 @@ public:
 
 //     Returns:
 ///@returns        void
-    void set(char* bucketId, char* title, char* description, char* avatar, bool visible, bool locked, bool enReactions);
+    void set(const char* bucketId, const char* title, const char* description, const char* avatar, bool visible, bool locked, bool enReactions);
 
 // Function: BucketUpdate.addDataComponents
 
 //     Prototype:
-//         void addDataComponents(char* component);
+//         void addDataComponents(const char* component);
 
 //     Append the selected components
 
@@ -64,7 +62,7 @@ public:
 
 //     Returns:
 ///@returns        void
-    void addDataComponents(char* component);
+    void addDataComponents(const char* component);
 
 // Function: BucketUpdate.appendDataComponents
 
@@ -91,6 +89,19 @@ public:
 //     Returns:
 ///@returns        char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: BucketUpdate.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: BucketUpdate.get
 

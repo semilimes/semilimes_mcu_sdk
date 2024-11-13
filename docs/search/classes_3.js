@@ -9,6 +9,8 @@ var searchData=
   ['dchtmltext_6',['DcHtmlText',['../class_dc_html_text.html',1,'']]],
   ['dclocation_7',['DcLocation',['../class_dc_location.html',1,'']]],
   ['dcsimpletext_8',['DcSimpleText',['../class_dc_simple_text.html',1,'']]],
-  ['dctunnelreference_9',['DcTunnelReference',['../class_dc_tunnel_reference.html',1,'']]],
-  ['dcwebview_10',['DcWebview',['../class_dc_webview.html',1,'']]]
+  ['dctileview_9',['DcTileView',['../class_dc_tile_view.html',1,'']]],
+  ['dctunnelreference_10',['DcTunnelReference',['../class_dc_tunnel_reference.html',1,'']]],
+  ['dcwebview_11',['DcWebview',['../class_dc_webview.html',1,'']]],
+  ['device_12',['Device',['../class_device.html',1,'']]]
 ];

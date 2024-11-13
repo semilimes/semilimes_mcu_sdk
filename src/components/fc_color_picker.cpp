@@ -5,7 +5,7 @@
     A graphical color-picker to select a color from a palette and return its RGB value
 
     Prototype:
-        void FcColorPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+        void FcColorPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle);
 
     Parameters:
         refname - it is the reference name of the object
@@ -17,9 +17,9 @@
     Returns:
         void
 */
-void FcColorPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle)
+void FcColorPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+1;
+    int size = strlen("{\"formComponentType\":\"colorpicker\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":\"\",\"actionButtonTitle\":\"\"}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+1;
     json = new char[size];
 
     json_data.initJson(json);

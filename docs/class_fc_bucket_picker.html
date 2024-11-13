@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -110,10 +110,10 @@ $(function(){initNavTree('class_fc_bucket_picker.html',''); initResizable(true);
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abafe6a9ba74bf5146dd2014eff3eb002" id="r_abafe6a9ba74bf5146dd2014eff3eb002"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abafe6a9ba74bf5146dd2014eff3eb002">~FcBucketPicker</a> ()</td></tr>
 <tr class="separator:abafe6a9ba74bf5146dd2014eff3eb002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad14d43cd1219309b64a94a82ef689f9e" id="r_ad14d43cd1219309b64a94a82ef689f9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad14d43cd1219309b64a94a82ef689f9e">set</a> (char *refname, char *title, bool reqSel, char *filter, char *actBtnTitle, bool multiSel)</td></tr>
-<tr class="separator:ad14d43cd1219309b64a94a82ef689f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63ab908b3b41ff998db91d9dbaba1c5e" id="r_a63ab908b3b41ff998db91d9dbaba1c5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63ab908b3b41ff998db91d9dbaba1c5e">addValue</a> (char *id, char *featuretype)</td></tr>
-<tr class="separator:a63ab908b3b41ff998db91d9dbaba1c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae61e8f1cabeca27f1db9834aff173304" id="r_ae61e8f1cabeca27f1db9834aff173304"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae61e8f1cabeca27f1db9834aff173304">set</a> (const char *refname, const char *title, bool reqSel, const char *filter, const char *actBtnTitle, bool multiSel)</td></tr>
+<tr class="separator:ae61e8f1cabeca27f1db9834aff173304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a119af3f9dedf5c49340d3512b9ae9840" id="r_a119af3f9dedf5c49340d3512b9ae9840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a119af3f9dedf5c49340d3512b9ae9840">addValue</a> (const char *id, const char *featuretype)</td></tr>
+<tr class="separator:a119af3f9dedf5c49340d3512b9ae9840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6504b48c1a2797085bc24c6ece8bee4d" id="r_a6504b48c1a2797085bc24c6ece8bee4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6504b48c1a2797085bc24c6ece8bee4d">appendValue</a> ()</td></tr>
 <tr class="separator:a6504b48c1a2797085bc24c6ece8bee4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d55a624e4aeb3d54e3c1ab0ea63c388" id="r_a7d55a624e4aeb3d54e3c1ab0ea63c388"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d55a624e4aeb3d54e3c1ab0ea63c388">get</a> ()</td></tr>
@@ -152,8 +152,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a63ab908b3b41ff998db91d9dbaba1c5e" name="a63ab908b3b41ff998db91d9dbaba1c5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63ab908b3b41ff998db91d9dbaba1c5e">&#9670;&#160;</a></span>addValue()</h2>
+<a id="a119af3f9dedf5c49340d3512b9ae9840" name="a119af3f9dedf5c49340d3512b9ae9840"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119af3f9dedf5c49340d3512b9ae9840">&#9670;&#160;</a></span>addValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,12 +161,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void FcBucketPicker::addValue </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>featuretype</em></span>&#160;)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>featuretype</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -217,8 +217,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad14d43cd1219309b64a94a82ef689f9e" name="ad14d43cd1219309b64a94a82ef689f9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad14d43cd1219309b64a94a82ef689f9e">&#9670;&#160;</a></span>set()</h2>
+<a id="ae61e8f1cabeca27f1db9834aff173304" name="ae61e8f1cabeca27f1db9834aff173304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae61e8f1cabeca27f1db9834aff173304">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,12 +226,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void FcBucketPicker::set </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refname</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>refname</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -241,12 +241,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filter</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filter</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>actBtnTitle</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>actBtnTitle</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

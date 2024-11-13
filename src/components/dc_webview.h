@@ -6,7 +6,6 @@
 class DcWebview
 {
 private:
-    #define headerSize 116
     SmeJson json_data;
     char* json = nullptr;
 
@@ -45,7 +44,7 @@ char displayMode[3][10] = {"link", "thumbnail", "liveweb"};
 //     A message referencing a webpage, to be viewed as a web frame
 
 //     Prototype:
-//         void DcWebview::set(char* url, bool enableFullScreenView, char* viewSize);
+//         void DcWebview::set(const char* url, bool enableFullScreenView, const char* viewSize);
 
 //     Parameters:
 ///@param         url - is the address to be rendered in the webview
@@ -55,7 +54,7 @@ char displayMode[3][10] = {"link", "thumbnail", "liveweb"};
 ///@param         linkDisplayName - is used when displayMode is set to link, and it sets a custom name for the displaying URL
 //     Returns:
 ///@return         void
-    void set(char* url, bool enableFullScreenView, char* viewSize, char* displayMode, char* linkDisplayName);
+    void set(const char* url, bool enableFullScreenView, const char* viewSize, const char* displayMode, const char* linkDisplayName);
     
 // Function: DcWebview.get
 

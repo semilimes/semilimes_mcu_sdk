@@ -5,7 +5,7 @@
     A group of user-clickable buttons with a label
 
     Prototype:
-        void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList);
+        void FcButtonList::set(const char* refname,const char* title,bool reqSel,const char* value,bool vertList,const char* linesize);
 
     Parameters:
         refname - is the reference name of the button list
@@ -13,14 +13,14 @@
         reqSel - sets this component interaction as required before submitting the parent form
         value - will be populated with a button name when a user submits a form with a button selection
         vertList -  is a preference to tell a client app to display the buttons vertically
-        lineSize  -  defines how the buttons should be spread on multiple lines (row/columns). Allowed values are: char lineSize[7][9] = {"flexible", "1", "2", "3", "4", "5", "6"};
+        lineSize  -  defines how the buttons should be spread on multiple lines (row/columns). Allowed values are: char lineSize[7][8] = {"1", "2", "3", "4", "5", "6"};
 
     Returns:
         void
 */
-void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool vertList,char* linesize)
+void FcButtonList::set(const char* refname,const char* title,bool reqSel,const char* value,bool vertList,const char* linesize)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+json_data.boolStrSize(vertList)+strlen(linesize)+1;//add '\0' for null-termination
+    int size = strlen("{\"formComponentType\":\"buttonlist\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":\"\",\"verticalList\":,\"linesize\":\"\"}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+json_data.boolStrSize(vertList)+strlen(linesize)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -48,13 +48,13 @@ void FcButtonList::set(char* refname,char* title,bool reqSel,char* value,bool ve
     Returns:
         void
 */
-int FcButtonList::addIconOptions(char*& optTemp, int optSize, char* iconName)
+int FcButtonList::addIconOptions(char*& optTemp, int optSize, const char* iconName)
 {
-    int size = optionsHeaderSize+strlen(iconName)+1;
+    int size = strlen("{\"name\":\"\"}")+strlen(iconName)+1;
     char* iconOptTemp = new char[size];
     json_data.initJson(iconOptTemp);
     json_data.addPair2JsonStr(iconOptTemp, "name", iconName);
-    size += optSize+9;   //add bytes for ',"icon":' and '\0'
+    size += optSize+strlen(",\"icon\":")+1;   //add '\0'
     json_data.arrayResize(optTemp,size);
 	json_data.addPair2Json(optTemp,"icon",iconOptTemp);
     return size;
@@ -65,7 +65,7 @@ int FcButtonList::addIconOptions(char*& optTemp, int optSize, char* iconName)
     add an array of options where name is the option identifier and value is the text displayed to the user
 
     Prototype:
-        void FcButtonList::addOptions(char* name,char* value);
+        void FcButtonList::addOptions(const char* name,const char* value, const char* iconName);
 
     Parameters:
         name - is the option identifier
@@ -75,9 +75,9 @@ int FcButtonList::addIconOptions(char*& optTemp, int optSize, char* iconName)
     Returns:
         void
 */
-void FcButtonList::addOptions(char* name,char* value, char* iconName)
+void FcButtonList::addOptions(const char* name,const char* value, const char* iconName)
 {
-    int size = headerArraySize+strlen(name)+strlen(value)+1;
+    int size = strlen("{\"name\":\"\",\"value\":\"\"}")+strlen(name)+strlen(value)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "name", name);
@@ -113,7 +113,7 @@ void FcButtonList::appendOptions()
 {    
     if(jsonArray!=nullptr) 
     {    
-        int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+        int size = strlen(",\"options\":")+strlen(json)+strlen(jsonArray)+1;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"options",jsonArray);
     }

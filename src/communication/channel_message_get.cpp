@@ -5,7 +5,7 @@
     This endpoint returns a list of messages in the specified Channel.
 
     Prototype:
-        void set(char* channelId,char* messageId,int limit);
+        void set(const char* channelId,const char* messageId,int limit);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void ChannelMessageGet::set(char* channelId,char* messageId,int limit)
+void ChannelMessageGet::set(const char* channelId,const char* messageId,int limit)
 {
-    int size = headerSize+strlen(channelId)+strlen(messageId)+json_data.intStrSize(limit)+1;
+    int size = strlen("{\"channelId\":\"\",\"messageId\":\"\",\"limit\":}")+strlen(channelId)+strlen(messageId)+json_data.intStrSize(limit)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -41,6 +41,23 @@ void ChannelMessageGet::set(char* channelId,char* messageId,int limit)
 char* ChannelMessageGet::getEPurl()
 {
     return httpsUrl communication_channel_message;
+}
+
+/* Function: ChannelMessageGet.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelMessageGet::getWSEPurl()
+{
+    return communication_channel_message;        
 }
 
 /* Function: ChannelMessageGet.get

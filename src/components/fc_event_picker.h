@@ -6,9 +6,6 @@
 class FcEventPicker
 {
 private:
-    #define headerSize 121
-    #define headerArraySize 92
-    #define headerArray2Size 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -45,7 +42,7 @@ char eventsDisplayMode[2][8] = {"list", "buttons"};
 //     A calendar-shaped form component which allows the user to navigate through events and pick one or more for sending it out in a form submission
 
 //     Prototype:
-//         void FcEventPicker::set(char* refname, char* title, bool requiredSelection, bool multiSelection, char* eventsDisplayMode);
+//         void FcEventPicker::set(const char* refname, const char* title, bool reqSel, bool multiSelection, const char* eventsDisplayMode);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -57,7 +54,7 @@ char eventsDisplayMode[2][8] = {"list", "buttons"};
 
 //     Returns:
 ///@return         void
-    void set(char* refname, char* title, bool reqSel, bool multiSelection, char* eventsDisplayMode);
+    void set(const char* refname, const char* title, bool reqSel, bool multiSelection, const char* eventsDisplayMode);
 
 
 // Function: FcEventPicker.addValue
@@ -65,14 +62,14 @@ char eventsDisplayMode[2][8] = {"list", "buttons"};
 //     is an array that contains one or more selected events when the form is submitted
 
 //     Prototype:
-//         void FcEventPicker::addValue(char* value);
+//         void FcEventPicker::addValue(const char* value);
 
 //     Parameters:
 ///@param         value - the events when the form is submitted
         
 //    Returns:
 ///@return       void
-    void addValue(char* value);
+    void addValue(const char* value);
 
 
 // Function: FcEventPicker.appendValues
@@ -94,7 +91,7 @@ char eventsDisplayMode[2][8] = {"list", "buttons"};
 //     is an array of predetermined events that populate the calendar widget displayed in the semilimes app
 
 //     Prototype:
-//         void FcEventPicker::addEvent(char* id, int start, char* title, char* description, char* referenceBucketId, char* additionalInfo);
+//         void FcEventPicker::addEvent(const char* id, int start, const char* title, const char* description, const char* referenceBucketId, const char* additionalInfo);
 
 //     Parameters:
 ///@param         id -  Arbitrary Unique Id assigned by client
@@ -106,7 +103,7 @@ char eventsDisplayMode[2][8] = {"list", "buttons"};
 
 //     Returns:
 ///@return         void
-    void addEvent(char* id, int start, char* title, char* description, char* referenceBucketId, char* additionalInfo);
+    void addEvent(const char* id, int start, const char* title, const char* description, const char* referenceBucketId, const char* additionalInfo);
 
 
 // Function: FcEventPicker.appendValues

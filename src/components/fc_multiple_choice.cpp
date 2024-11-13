@@ -5,7 +5,7 @@
     A component displaying a list of options and allowing multiple choice
 
     Prototype:
-        void FcMultipleChoice::set(char* refname,char* title,bool reqSel);
+        void FcMultipleChoice::set(const char* refname,const char* title,bool reqSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void FcMultipleChoice::set(char* refname,char* title,bool reqSel)
+void FcMultipleChoice::set(const char* refname,const char* title,bool reqSel)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+1;//add '\0' for null-termination
+    int size = strlen("{\"formComponentType\":\"multichoice\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -41,9 +41,9 @@ void FcMultipleChoice::set(char* refname,char* title,bool reqSel)
    Returns:
       void
 */
-void FcMultipleChoice::addOptions(char* name,char* value)
+void FcMultipleChoice::addOptions(const char* name,const char* value)
 {
-    int size = headerArraySize+strlen(name)+strlen(value)+1;
+    int size = strlen("[{\"name\":\"\",\"value\":\"\"}]")+strlen(name)+strlen(value)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "name", name);
@@ -78,7 +78,7 @@ void FcMultipleChoice::appendOptions()
 {
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+12;   //add bytes for ',"options":' and '\0'
+        int size = strlen(",\"options\":")+strlen(json)+strlen(jsonArray)+1;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"options",jsonArray);
     }
@@ -103,7 +103,7 @@ void FcMultipleChoice::appendOptions()
 */
 void FcMultipleChoice::addValue(char* value)
 {    
-    int size = headerArray2Size+strlen(value)+3; //add '\0' and \"\" 
+    int size =  strlen("[\"\"]")+strlen(value)+1; //add '\0'
     
     if(!jsonArray2)
     {
@@ -134,7 +134,7 @@ void FcMultipleChoice::appendValues()
 { 
     if(jsonArray2!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray2)+10;   //add bytes for ',"value":' and '\0'
+        int size = strlen("\"value\":")+strlen(json)+strlen(jsonArray2)+10;   //add bytes for ',"value":' and '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"value",jsonArray2);
     }

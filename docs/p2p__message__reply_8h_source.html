@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -138,12 +138,12 @@ $(function(){initNavTree('p2p__message__reply_8h_source.html',''); initResizable
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">//     This endpoint allows the account to reply to a specific message with a simple text.</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">//     Prototype:</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//         void set(char* messageId, char* dataComponent);</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//         void set(const char* messageId, const char* dataComponent);</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//     Parameters:</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">//     Returns:</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p2p_message_reply.html#a9bcf7a0ebb43e965d1f0fd3efe2f7616">set</a>(<span class="keywordtype">char</span>* messageId, <span class="keywordtype">char</span>* dataComponent);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p2p_message_reply.html#a964a4d30f1e217d1dea6162e39edbaa6">set</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* messageId, <span class="keyword">const</span> <span class="keywordtype">char</span>* dataComponent);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// Function: P2pMessageReply.getEPurl</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
@@ -157,25 +157,38 @@ $(function(){initNavTree('p2p__message__reply_8h_source.html',''); initResizable
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">//     Returns:</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="class_p2p_message_reply.html#ad9adbe72557e91665304c21e32b7e7b4">getEPurl</a>();</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// Function: P2pMessageReply.get</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// Function: P2pMessageReply.getWSEPurl</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">//     return the json script</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">//     provides this endpoint</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">//     Prototype:</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">//         void P2pMessageReply::get();</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">//         char* getWSEPurl();</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">//     Parameters:</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>       </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">//     Returns:</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="class_p2p_message_reply.html#ac9974b07674376267711106ff351fc56">get</a>();</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="class_p2p_message_reply.html#ad851fe163e6b667a29b66dfde76c2e54">getWSEPurl</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">// Function: P2pMessageReply.get</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">//     return the json script</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">//     Prototype:</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">//         void P2pMessageReply::get();</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">//     Parameters:</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">//     Returns:</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="class_p2p_message_reply.html#ac9974b07674376267711106ff351fc56">get</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_p2p_message_reply_html"><div class="ttname"><a href="class_p2p_message_reply.html">P2pMessageReply</a></div><div class="ttdef"><b>Definition</b> p2p_message_reply.h:7</div></div>
 <div class="ttc" id="aclass_p2p_message_reply_html_a18b1faa1843f4d0557d49bef406ee89b"><div class="ttname"><a href="class_p2p_message_reply.html#a18b1faa1843f4d0557d49bef406ee89b">P2pMessageReply::~P2pMessageReply</a></div><div class="ttdeci">~P2pMessageReply()</div><div class="ttdef"><b>Definition</b> p2p_message_reply.h:25</div></div>
-<div class="ttc" id="aclass_p2p_message_reply_html_a9bcf7a0ebb43e965d1f0fd3efe2f7616"><div class="ttname"><a href="class_p2p_message_reply.html#a9bcf7a0ebb43e965d1f0fd3efe2f7616">P2pMessageReply::set</a></div><div class="ttdeci">void set(char *messageId, char *dataComponent)</div><div class="ttdef"><b>Definition</b> p2p_message_reply.cpp:17</div></div>
-<div class="ttc" id="aclass_p2p_message_reply_html_ac9974b07674376267711106ff351fc56"><div class="ttname"><a href="class_p2p_message_reply.html#ac9974b07674376267711106ff351fc56">P2pMessageReply::get</a></div><div class="ttdeci">char * get()</div><div class="ttdef"><b>Definition</b> p2p_message_reply.cpp:56</div></div>
+<div class="ttc" id="aclass_p2p_message_reply_html_a964a4d30f1e217d1dea6162e39edbaa6"><div class="ttname"><a href="class_p2p_message_reply.html#a964a4d30f1e217d1dea6162e39edbaa6">P2pMessageReply::set</a></div><div class="ttdeci">void set(const char *messageId, const char *dataComponent)</div><div class="ttdef"><b>Definition</b> p2p_message_reply.cpp:17</div></div>
+<div class="ttc" id="aclass_p2p_message_reply_html_ac9974b07674376267711106ff351fc56"><div class="ttname"><a href="class_p2p_message_reply.html#ac9974b07674376267711106ff351fc56">P2pMessageReply::get</a></div><div class="ttdeci">char * get()</div><div class="ttdef"><b>Definition</b> p2p_message_reply.cpp:73</div></div>
+<div class="ttc" id="aclass_p2p_message_reply_html_ad851fe163e6b667a29b66dfde76c2e54"><div class="ttname"><a href="class_p2p_message_reply.html#ad851fe163e6b667a29b66dfde76c2e54">P2pMessageReply::getWSEPurl</a></div><div class="ttdeci">char * getWSEPurl()</div><div class="ttdef"><b>Definition</b> p2p_message_reply.cpp:56</div></div>
 <div class="ttc" id="aclass_p2p_message_reply_html_ad9adbe72557e91665304c21e32b7e7b4"><div class="ttname"><a href="class_p2p_message_reply.html#ad9adbe72557e91665304c21e32b7e7b4">P2pMessageReply::getEPurl</a></div><div class="ttdeci">char * getEPurl()</div><div class="ttdef"><b>Definition</b> p2p_message_reply.cpp:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

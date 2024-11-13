@@ -5,7 +5,7 @@
     This endpoint finds channels based on specified parameters
 
     Prototype:
-        void set(char* ownerId,char* editorId,char* channelId,char* title);
+        void set(const char* ownerId,const char* editorId,const char* channelId,const char* title);
 
     Parameters:
     ownerId - Returns channels owned by the specified account Id
@@ -17,9 +17,9 @@
     Returns:
         void
 */
-void ChannelGet::set(char* ownerId,char* editorId,char* channelId,char* title)
+void ChannelGet::set(const char* ownerId,const char* editorId,const char* channelId,const char* title)
 {
-    int size = headerSize+strlen(ownerId)+strlen(editorId)+strlen(channelId)+strlen(title)+1;
+    int size = strlen("{\"ownerId\":\"\",\"editorId\":\"\",\"channelId\":\"\",\"title\":\"\"}")+strlen(ownerId)+strlen(editorId)+strlen(channelId)+strlen(title)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -44,6 +44,23 @@ void ChannelGet::set(char* ownerId,char* editorId,char* channelId,char* title)
 char* ChannelGet::getEPurl()
 {
     return httpsUrl communication_channel;
+}
+
+/* Function: ChannelGet.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelGet::getWSEPurl()
+{
+    return communication_channel;        
 }
 
 /* Function: ChannelGet.get

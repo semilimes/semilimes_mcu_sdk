@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -109,10 +109,12 @@ $(function(){initNavTree('class_p2p_reaction_remove.html',''); initResizable(tru
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a87582cbebfd38f621f00dbefb286f82d" id="r_a87582cbebfd38f621f00dbefb286f82d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87582cbebfd38f621f00dbefb286f82d">~P2pReactionRemove</a> ()</td></tr>
 <tr class="separator:a87582cbebfd38f621f00dbefb286f82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64ca31841d6832ae5cdaa04d2418e4cc" id="r_a64ca31841d6832ae5cdaa04d2418e4cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64ca31841d6832ae5cdaa04d2418e4cc">set</a> (char *messageId, char *reaction)</td></tr>
-<tr class="separator:a64ca31841d6832ae5cdaa04d2418e4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07467d7c8566f037838025a1bc1f98f2" id="r_a07467d7c8566f037838025a1bc1f98f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07467d7c8566f037838025a1bc1f98f2">set</a> (const char *messageId, const char *reaction)</td></tr>
+<tr class="separator:a07467d7c8566f037838025a1bc1f98f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a037eae174f9bc0c0aeebddf206687b54" id="r_a037eae174f9bc0c0aeebddf206687b54"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a037eae174f9bc0c0aeebddf206687b54">getEPurl</a> ()</td></tr>
 <tr class="separator:a037eae174f9bc0c0aeebddf206687b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81088836b4f666d7601e586d27386ea1" id="r_a81088836b4f666d7601e586d27386ea1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81088836b4f666d7601e586d27386ea1">getWSEPurl</a> ()</td></tr>
+<tr class="separator:a81088836b4f666d7601e586d27386ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af994760338ed99760b63736b8494b8ee" id="r_af994760338ed99760b63736b8494b8ee"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af994760338ed99760b63736b8494b8ee">get</a> ()</td></tr>
 <tr class="separator:af994760338ed99760b63736b8494b8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -180,8 +182,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a64ca31841d6832ae5cdaa04d2418e4cc" name="a64ca31841d6832ae5cdaa04d2418e4cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64ca31841d6832ae5cdaa04d2418e4cc">&#9670;&#160;</a></span>set()</h2>
+<a id="a81088836b4f666d7601e586d27386ea1" name="a81088836b4f666d7601e586d27386ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81088836b4f666d7601e586d27386ea1">&#9670;&#160;</a></span>getWSEPurl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * P2pReactionRemove::getWSEPurl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* endpoint </dd></dl>
+
+</div>
+</div>
+<a id="a07467d7c8566f037838025a1bc1f98f2" name="a07467d7c8566f037838025a1bc1f98f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07467d7c8566f037838025a1bc1f98f2">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,12 +209,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void P2pReactionRemove::set </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>messageId</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>messageId</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>reaction</em></span>&#160;)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>reaction</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

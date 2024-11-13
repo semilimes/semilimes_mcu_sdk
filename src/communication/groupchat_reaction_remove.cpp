@@ -5,7 +5,7 @@
     This endpoint allows the account to remove a reaction from a specific message in a Group Chat.
 
     Prototype:
-        void set(char* messageId, char* reaction);
+        void set(const char* messageId, const char* reaction);
 
     Parameters:
         messageId - is the unique Id to reference an existing groupChat
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void GroupchatReactionRemove::set(char* messageId, char* reaction)
+void GroupchatReactionRemove::set(const char* messageId, const char* reaction)
 {
-    int size = headerSize+strlen(messageId)+strlen(reaction)+1;
+    int size = strlen("{\"messageId\":\"\",\"reaction\":\"\"}")+strlen(messageId)+strlen(reaction)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -39,6 +39,23 @@ void GroupchatReactionRemove::set(char* messageId, char* reaction)
 char* GroupchatReactionRemove::getEPurl()
 {
     return httpsUrl communication_groupchat_message_reaction_remove;
+}
+
+/* Function: GroupchatReactionRemove.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatReactionRemove::getWSEPurl()
+{
+    return communication_groupchat_message_reaction_remove;        
 }
 
 /* Function: GroupchatReactionRemove.get

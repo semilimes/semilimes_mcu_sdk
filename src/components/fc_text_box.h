@@ -6,7 +6,6 @@
 class FcTextBox
 {
 private:
-    #define headerSize 87
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     A text field with a title and a user-editable text field.
 
 //     Prototype:
-//         void FcTextBox::set(char* refname,char* title,char* value,bool reqSel);
+//         void FcTextBox::set(const char* refname,const char* title,const char* value,bool reqSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -43,7 +42,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,char* value,bool reqSel=false);
+    void set(const char* refname,const char* title,const char* value,bool reqSel=false);
 
 // Function: FcTextBox.get
 

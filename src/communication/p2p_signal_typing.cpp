@@ -6,7 +6,7 @@
     This is particularly useful when having automated bots which need some time to elaborate the message to be sent.
 
     Prototype:
-        void set(char* recipientId);
+        void set(const char* recipientId);
 
     Parameters:
         recipientId -  is the unique Id to reference an existing p2p chat
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void P2pSignalTyping::set(char* recipientId)
+void P2pSignalTyping::set(const char* recipientId)
 {
-    int size = headerSize+strlen(recipientId)+1;
+    int size = strlen("{\"recipientId\":\"\"}")+strlen(recipientId)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -38,6 +38,23 @@ void P2pSignalTyping::set(char* recipientId)
 char* P2pSignalTyping::getEPurl()
 {
     return httpsUrl communication_p2p_signal_typing;        
+}
+
+/* Function: P2pSignalTyping.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* P2pSignalTyping::getWSEPurl()
+{
+    return communication_p2p_signal_typing;        
 }
 
 /* Function: P2pSignalTyping.get

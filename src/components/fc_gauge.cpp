@@ -5,7 +5,7 @@
     A gauge to show numerical data with a configurable ranges and colors
 
     Prototype:
-        void FcGauge::set(char* refname,char* title,bool reqSel, char* value);
+        void FcGauge::set(const char* refname,const char* title,int thickness,int degrees,int spacing,int fontSize,int value,const char* displayValue,const char* pointer,const char* pointerColor,const char* progressBar,const char* progressBarColor);
 
     Parameters:
         refname - it is the reference name of the object
@@ -24,9 +24,9 @@
     Returns:
         void
 */
-void FcGauge::set(char* refname,char* title,int thickness,int degrees,int spacing,int fontSize,int value,char* displayValue,char* pointer,char* pointerColor,char* progressBar,char* progressBarColor)
+void FcGauge::set(const char* refname,const char* title,int thickness,int degrees,int spacing,int fontSize,int value,const char* displayValue,const char* pointer,const char* pointerColor,const char* progressBar,const char* progressBarColor)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.intStrSize(thickness)+json_data.intStrSize(degrees)+json_data.intStrSize(spacing)+json_data.intStrSize(fontSize)+json_data.intStrSize(value)+strlen(displayValue)+strlen(pointer)+strlen(pointerColor)+strlen(progressBar)+strlen(progressBarColor)+1;//add '\0' for null-termination
+    int size = strlen("{\"formComponentType\":\"gauge\",\"refName\":\"\",\"title\":\"\",\"thickness\":,\"degrees\":,\"spacing\":,\"fontSize\":,\"value\":,\"displayValue\":\"\",\"pointer\":\"\",\"pointerColor\":\"\",\"progressBar\":\"\",\"progressBarColor\":\"\"}")+strlen(refname)+strlen(title)+json_data.intStrSize(thickness)+json_data.intStrSize(degrees)+json_data.intStrSize(spacing)+json_data.intStrSize(fontSize)+json_data.intStrSize(value)+strlen(displayValue)+strlen(pointer)+strlen(pointerColor)+strlen(progressBar)+strlen(progressBarColor)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -50,7 +50,7 @@ void FcGauge::set(char* refname,char* title,int thickness,int degrees,int spacin
     is an array of the graphical segments composing the gauge
 
     Prototype:
-        void FcGauge::addSegment(char* data);
+        void FcGauge::addSegment(int from,int to,const char* color);
 
    Parameters:
         from - between the 0-99 range
@@ -60,9 +60,9 @@ void FcGauge::set(char* refname,char* title,int thickness,int degrees,int spacin
    Returns:
       void
 */
-void FcGauge::addSegment(int from,int to,char* color)
+void FcGauge::addSegment(int from,int to,const char* color)
 {
-    int size = headerArraySize+json_data.intStrSize(from)+json_data.intStrSize(to)+strlen(color)+1;
+    int size = strlen("[{\"from\":,\"to\":,\"color\":\"\"}]")+json_data.intStrSize(from)+json_data.intStrSize(to)+strlen(color)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonInt(optTemp, "from", from);
@@ -98,7 +98,7 @@ void FcGauge::appendSegments()
 { 
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+13;   //add bytes for ',"segments":' and '\0'
+        int size = strlen(",\"segments\":")+strlen(json)+strlen(jsonArray)+1;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"segments",jsonArray);
     }

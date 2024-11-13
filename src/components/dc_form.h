@@ -6,8 +6,6 @@
 class DcForm
 {
 private:
-    #define headerSize 151
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -47,7 +45,7 @@ public:
 //    A form message is a complex data component which can be arbitrarily structured using available form components
 
 //    Prototype:
-//       void DcForm::set(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
+//       void DcForm::set(const char* recId, const char* recFeatureType, bool submitEnabled, bool retainStatus, const char* submitText, const char* refName, const char* align, bool authorizeSubmit, bool hideSubmissionMsg);
 
 //    Parameters:
 ///@param         recId - the receiver Id
@@ -61,21 +59,21 @@ public:
 ///@param         hideSubmissionMsg - is a boolean to suppress in-app submission messages sent to receiver, while the API will still receive a submission for further processing
 //    Returns:
 ///@return       void
-    void set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName, char* align, bool authorizeSubmit, bool hideSubmissionMsg);
+    void set(const char* recId, const char* recFeatureType, bool submitEnabled, bool retainStatus, const char* submitText, const char* refName, const char* align, bool authorizeSubmit, bool hideSubmissionMsg);
 
 // Function: DcForm.addFormComponents
 
 //    Add a Form Component to the array
 
 //    Prototype:
-//       void DcForm::addFormComponents(char* component);
+//       void DcForm::addFormComponents(const char* component);
 
 //    Parameters:
 ///@param         component - the json of the form component
         
 //    Returns:
 ///@return       void
-    void addFormComponents(char* component);
+    void addFormComponents(const char* component);
 
 // Function: DcForm.appendFormComponents
 

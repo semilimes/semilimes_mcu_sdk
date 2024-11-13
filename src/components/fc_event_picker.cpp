@@ -5,7 +5,7 @@
    A calendar-shaped form component which allows the user to navigate through events and pick one or more for sending it out in a form submission
 
     Prototype:
-        void FcEventPicker::set(char* refname, char* title, bool requiredSelection, bool multiSelection, char* eventsDisplayMode);
+        void FcEventPicker::set(const char* refname, const char* title, bool reqSel, bool multiSelection, const char* eventsDisplayMode);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,9 +18,9 @@
     Returns:
         void
 */
-void FcEventPicker::set(char* refname, char* title, bool reqSel, bool multiSelection, char* eventsDisplayMode)
+void FcEventPicker::set(const char* refname, const char* title, bool reqSel, bool multiSelection, const char* eventsDisplayMode)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+json_data.boolStrSize(multiSelection)+strlen(eventsDisplayMode)+1;//add '\0' for null-termination
+    int size = strlen("{\"formComponentType\":\"eventpicker\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"multiSelection\":,\"eventsDisplayMode\":\"\"}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+json_data.boolStrSize(multiSelection)+strlen(eventsDisplayMode)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -37,7 +37,7 @@ void FcEventPicker::set(char* refname, char* title, bool reqSel, bool multiSelec
     is an array that contains one or more selected events when the form is submitted
 
     Prototype:
-        void FcEventPicker::addValue(char* value);
+        void FcEventPicker::addValue(const char* value);
 
     Parameters:
         value - the events when the form is submitted
@@ -45,9 +45,9 @@ void FcEventPicker::set(char* refname, char* title, bool reqSel, bool multiSelec
    Returns:
       void
 */
-void FcEventPicker::addValue(char* value)
+void FcEventPicker::addValue(const char* value)
 {
-    int size = headerArray2Size+strlen(value)+3; //add '\0' and \"\" 
+    int size = strlen("[{}]")+strlen(value)+1; //add '\0' 
     
     if(!jsonArray2)
     {
@@ -77,7 +77,7 @@ void FcEventPicker::appendValues()
 {
     if(jsonArray2!=nullptr)
     {    
-        int size = strlen(json)+strlen(jsonArray2)+10;   //add bytes for ',"value":' and '\0'
+        int size =  strlen(",\"value\":[]")+strlen(json)+strlen(jsonArray2)+1;   //add  '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"value",jsonArray2);
     }
@@ -88,7 +88,7 @@ void FcEventPicker::appendValues()
     add an array of the names of the choices 
 
     Prototype:
-        void FcEventPicker::addEvent(char* value);
+        void FcEventPicker::addEvent(const char* id, int start, const char* title, const char* description, const char* referenceBucketId, const char* additionalInfo);
 
     Parameters:
         id -  Arbitrary Unique Id assigned by client
@@ -101,9 +101,9 @@ void FcEventPicker::appendValues()
     Returns:
         void
 */
-void FcEventPicker::addEvent(char* id, int start, char* title, char* description, char* referenceBucketId, char* additionalInfo)
+void FcEventPicker::addEvent(const char* id, int start, const char* title, const char* description, const char* referenceBucketId, const char* additionalInfo)
 {
-    int size = headerArraySize+strlen(id)+json_data.intStrSize(start)+strlen(title)+strlen(description)+strlen(referenceBucketId)+strlen(additionalInfo)+1;
+    int size = strlen("[{\"id\":\"\",\"start\":,\"title\":\"\",\"description\":\"\",\"referenceBucketId\":\"\",\"additionalInfo\":}]")+strlen(id)+json_data.intStrSize(start)+strlen(title)+strlen(description)+strlen(referenceBucketId)+strlen(additionalInfo)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "id", id);
@@ -111,7 +111,7 @@ void FcEventPicker::addEvent(char* id, int start, char* title, char* description
     json_data.addPair2JsonStr(optTemp, "title", title);
     json_data.addPair2JsonStr(optTemp, "description", description);
     json_data.addPair2JsonStr(optTemp, "referenceBucketId", referenceBucketId);
-    json_data.addPair2JsonStr(optTemp, "additionalInfo", additionalInfo);
+    json_data.addPair2Json(optTemp, "additionalInfo", additionalInfo);
     
     if(!jsonArray)
     {
@@ -142,7 +142,7 @@ void FcEventPicker::appendEvents()
 { 
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+11;   //add bytes for ',"events":' and '\0'
+        int size = strlen(",\"events\":[]")+strlen(json)+strlen(jsonArray)+1;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"events",jsonArray);
     }

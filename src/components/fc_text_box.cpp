@@ -5,7 +5,7 @@
     A text field with a title and a user-editable text field.
 
     Prototype:
-        void FcTextBox::set(char* refname,char* title,char* value,bool reqSel);
+        void FcTextBox::set(const char* refname,const char* title,const char* value,bool reqSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -16,9 +16,9 @@
     Returns:
         void
 */
-void FcTextBox::set(char* refname,char* title,char* value,bool reqSel)
+void FcTextBox::set(const char* refname,const char* title,const char* value,bool reqSel)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+strlen(value)+json_data.boolStrSize(reqSel)+1;
+    int size = strlen("{\"formComponentType\":\"textbox\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":\"\"}")+strlen(refname)+strlen(title)+strlen(value)+json_data.boolStrSize(reqSel)+1;
     json = new char[size];
 
     json_data.initJson(json);

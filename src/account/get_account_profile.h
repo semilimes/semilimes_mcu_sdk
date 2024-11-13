@@ -6,7 +6,6 @@
 class GetAccountProfile
 {
 private:
-    #define headerSize 16
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     Gets the account profile's configuration and content.
 
 //     Prototype:
-//         void GetAccountProfile::set(char* accountId);
+//         void GetAccountProfile::set(const char* accountId);
 
 //     Parameters:
 ///@param         accountId - the account id of which show configuration and content
@@ -42,7 +41,7 @@ public:
 ///@returns         void
       
 
-    void set(char* accountId);
+    void set(const char* accountId);
 
 // Function: GetAccountProfile.get
 

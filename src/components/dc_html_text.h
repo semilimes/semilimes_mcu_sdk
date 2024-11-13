@@ -6,7 +6,6 @@
 class DcHtmlText
 {
 private:
-    #define headerSize 38
     SmeJson json_data;
     char* json = nullptr;
 
@@ -33,14 +32,14 @@ public:
 //     An html message
 
 //     Prototype:
-//         void DcHtmlText::set(char* html);
+//         void DcHtmlText::set(const char* html);
 
 //     Parameters:
 ///@param         html - the html script 
 
 //     Returns:
 ///@return         void
-    void set(char* html);
+    void set(const char* html);
     
 // Function: DcHtmlText.get
 

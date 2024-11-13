@@ -5,7 +5,7 @@
     An on/off switch
 
     Prototype:
-        void FcSwitch::set(char* refname,char* title,bool value);
+        void FcSwitch::set(const char* refname,const char* title,bool value);
 
     Parameters:
         refname - it is the reference name of the object
@@ -15,13 +15,13 @@
     Returns:
         void
 */
-void FcSwitch::set(char* refname,char* title,bool value)
+void FcSwitch::set(const char* refname,const char* title,bool value)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(value)+1;
+    int size = strlen("{\"formComponentType\":\"switch\",\"refName\":\"\",\"title\":\"\",\"value\":}")+strlen(refname)+strlen(title)+json_data.boolStrSize(value)+1;
     json = new char[size];
 
     json_data.initJson(json);
-    json_data.addPair2JsonStr(json, "formComponentType","switch");
+    json_data.addPair2JsonStr(json,"formComponentType","switch");
     json_data.addPair2JsonStr(json,"refName",refname);
     json_data.addPair2JsonStr(json,"title",title);
     json_data.addPair2JsonBool(json,"value",value);

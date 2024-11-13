@@ -6,7 +6,6 @@
 class P2pReactionSend
 {
 private:
-    #define headerSize 30
     SmeJson json_data;
     char* json = nullptr;
 
@@ -33,7 +32,7 @@ public:
 //     This endpoint allows the account to remove a reaction from a specific message in a p2p Chat.
 
 //     Prototype:
-//         void set(char* messageId, char* reaction);
+//         void set(const char* messageId, const char* reaction);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing p2p Chat
@@ -41,7 +40,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* messageId, char* reaction);
+    void set(const char* messageId, const char* reaction);
 
 // Function: P2pReactionSend.getEPurl
 
@@ -55,6 +54,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pReactionSend.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: P2pReactionSend.get
 

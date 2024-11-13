@@ -6,7 +6,6 @@
 class P2pSignalTyping
 {
 private:
-    #define headerSize 18
     SmeJson json_data;
     char* json = nullptr;
     
@@ -35,14 +34,14 @@ public:
 //     This is particularly useful when having automated bots which need some time to elaborate the message to be sent.
 
 //     Prototype:
-//         void set(char* recipientId);
+//         void set(const char* recipientId);
 
 //     Parameters:
 ///@param         recipientId -  is the unique Id to reference an existing p2p chat
 
 //     Returns:
 ///@returns         void
-    void set(char* recipientId);
+    void set(const char* recipientId);
 
 // Function: P2pSignalTyping.getEPurl
 
@@ -57,6 +56,18 @@ public:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
     
+// Function: P2pSignalTyping.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
 
 // Function: P2pSignalTyping.get
 

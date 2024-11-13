@@ -5,7 +5,7 @@
     Add the recipientId 
 
     Prototype:
-        void addRecipientId(char* recipientIds);
+        void addRecipientId(const char* recipientIds);
 
     Parameters:
         recipientIds - the json script of the dataComponent to add
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void GroupchatsGet::addRecipientId(char* recipientId)
+void GroupchatsGet::addRecipientId(const char* recipientId)
 {    
-    int size = headerArraySize+strlen(recipientId)+3; //add '\0' and \"\" 
+    int size = strlen("[]")+strlen(recipientId)+3; //add '\0' and \"\" 
     
     if(!jsonArray)
     {
@@ -67,6 +67,23 @@ void GroupchatsGet::appendRecipientIds()
 char* GroupchatsGet::getEPurl()
 {
     return httpsUrl communication_groupchat;
+}
+
+/* Function: GroupchatsGet.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatsGet::getWSEPurl()
+{
+    return communication_groupchat;        
 }
 
 /* Function: GroupchatsGet.get

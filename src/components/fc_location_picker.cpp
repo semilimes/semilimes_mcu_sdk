@@ -5,7 +5,7 @@
     A picker showing a map where to choose a location or address
 
     Prototype:
-        void FcLocationPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+        void FcLocationPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool currLocOnly);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,9 +18,9 @@
     Returns:
         void
 */
-void FcLocationPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly)
+void FcLocationPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool currLocOnly)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+json_data.boolStrSize(currLocOnly)+1;
+    int size = strlen("{\"formComponentType\":\"locationpicker\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":\"\",\"actionButtonTitle\":\"\",\"currentLocationOnly\":}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+json_data.boolStrSize(currLocOnly)+1;
     json = new char[size];
 
     json_data.initJson(json);

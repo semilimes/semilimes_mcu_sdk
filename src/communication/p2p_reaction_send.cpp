@@ -5,7 +5,7 @@
     This endpoint allows the account to remove a reaction from a specific message in a p2p Chat.
 
     Prototype:
-        void set(char* messageId, char* reaction);
+        void set(const char* messageId, const char* reaction);
 
     Parameters:
         messageId - is the unique Id to reference an existing p2p Chat
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void P2pReactionSend::set(char* messageId, char* reaction)
+void P2pReactionSend::set(const char* messageId, const char* reaction)
 {
-    int size = headerSize+strlen(messageId)+strlen(reaction)+1;
+    int size = strlen("{\"messageId\":\"\",\"reaction\":\"\"}")+strlen(messageId)+strlen(reaction)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -39,6 +39,23 @@ void P2pReactionSend::set(char* messageId, char* reaction)
 char* P2pReactionSend::getEPurl()
 {
     return httpsUrl communication_p2p_message_reaction_send;
+}
+
+/* Function: P2pReactionSend.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* P2pReactionSend::getWSEPurl()
+{
+    return communication_p2p_message_reaction_send;        
 }
 
 /* Function: P2pReactionSend.get

@@ -5,7 +5,7 @@
     This endpoint makes the calling account to unsubscribe from an existing channel.
 
     Prototype:
-        void set(char* channelId);
+        void set(const char* channelId);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void ChannelUnsubscribe::set(char* channelId)
+void ChannelUnsubscribe::set(const char* channelId)
 {
-    int size = headerSize+strlen(channelId)+1;
+    int size = strlen("{\"channelId\":\"\"}")+strlen(channelId)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -37,6 +37,23 @@ void ChannelUnsubscribe::set(char* channelId)
 char* ChannelUnsubscribe::getEPurl()
 {
     return httpsUrl communication_channel_unsubscribe;
+}
+
+/* Function: ChannelUnsubscribe.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelUnsubscribe::getWSEPurl()
+{
+    return communication_channel_unsubscribe;        
 }
 
 /* Function: ChannelUnsubscribe.get

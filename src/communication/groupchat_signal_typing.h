@@ -57,6 +57,18 @@ public:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
     
+// Function: GroupchatSignalTyping.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
 
 // Function: GroupchatSignalTyping.get
 

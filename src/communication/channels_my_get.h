@@ -6,7 +6,6 @@
 class ChannelsMyGet
 {
 private:
-    #define headerSize 34
     SmeJson json_data;
     char* json = nullptr;
     
@@ -57,6 +56,19 @@ public:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
     
+// Function: ChannelsMyGet.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
+
 // Function: ChannelsMyGet.get
 
 //     return the json script

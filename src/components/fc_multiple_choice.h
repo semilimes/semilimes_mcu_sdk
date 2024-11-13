@@ -6,9 +6,6 @@
 class FcMultipleChoice
 {
 private:
-    #define headerSize 80
-    #define headerArraySize 24
-    #define headerArray2Size 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -41,7 +38,7 @@ public:
 //     Init the component that display a list of options and allowing multiple choice
 
 //     Prototype:
-//         void FcMultipleChoice::set(char* refname,char* title,bool reqSel);
+//         void FcMultipleChoice::set(const char* refname,const char* title,bool reqSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -50,14 +47,14 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel);
+    void set(const char* refname,const char* title,bool reqSel);
 
 // Function: FcMultipleChoice.addOptions
 
 //     add an array of options where name is the option identifier and value is the text displayed to the user
 
 //     Prototype:
-//         void FcMultipleChoice::addOptions(char* data);
+//         void FcMultipleChoice::ddOptions(const char* name,const char* value);
 
 //     Parameters:
 ///@param         name - is the option identifier
@@ -65,7 +62,7 @@ public:
         
 //    Returns:
 ///@return       void
-    void addOptions(char* name,char* value);
+    void addOptions(const char* name,const char* value);
 
 // Function: FcMultipleChoice.appendOptions
 

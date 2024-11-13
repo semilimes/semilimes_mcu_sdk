@@ -5,7 +5,7 @@
     A message referencing a webpage, to be viewed as a web frame
 
     Prototype:
-        void DcWebview::set(char* url, bool enableFullScreenView, char* viewSize);
+        void DcWebview::set(const char* url, bool enableFullScreenView, const char* viewSize, const char* displayMode, const char* linkDisplayName);
 
     Parameters:
         url - is the address to be rendered in the webview
@@ -16,9 +16,9 @@
     Returns:
         void
 */
-void DcWebview::set(char* url, bool enableFullScreenView, char* viewSize, char* displayMode, char* linkDisplayName)
+void DcWebview::set(const char* url, bool enableFullScreenView, const char* viewSize, const char* displayMode, const char* linkDisplayName)
 {
-    int size = headerSize+strlen(url)+json_data.boolStrSize(enableFullScreenView)+strlen(viewSize)+strlen(displayMode)+strlen(linkDisplayName)+1;
+    int size = strlen("{\"dataComponentType\":\"webview\",\"url\":\"\",\"displayMode\":\"\",\"linkDisplayName\":\"\",\"enableFullScreenView\":,\"viewSize\":\"\"}")+strlen(url)+json_data.boolStrSize(enableFullScreenView)+strlen(viewSize)+strlen(displayMode)+strlen(linkDisplayName)+1;
     json = new char[size];
 
     json_data.initJson(json);

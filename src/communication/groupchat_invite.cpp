@@ -4,7 +4,7 @@
 
    This endpoint allows to invite other recipients to the specified group chat.
     Prototype:
-        void set(char* groupChatIds)
+        void set(const char* groupChatIds)
 
     Parameters:
         groupChatId - is the unique Id to reference an existing groupChat
@@ -12,9 +12,9 @@
     Returns:
         void
 */
-void GroupchatInvite::set(char* groupChatId)
+void GroupchatInvite::set(const char* groupChatId)
 {
-    int size = headerSize+strlen(groupChatId)+1;
+    int size = strlen("{\"groupChatId\":\"\"}")+strlen(groupChatId)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -26,7 +26,7 @@ void GroupchatInvite::set(char* groupChatId)
     Add the recipientId 
 
     Prototype:
-        void addRecipientId(char* recipientId);
+        void addRecipientId(const char* recipientId);
 
     Parameters:
         recipientId - the json script of the dataComponent to invite
@@ -34,9 +34,9 @@ void GroupchatInvite::set(char* groupChatId)
     Returns:
         void
 */
-void GroupchatInvite::addRecipientId(char* recipientId)
+void GroupchatInvite::addRecipientId(const char* recipientId)
 {    
-    int size = headerArraySize+strlen(recipientId)+3; //add '\0' and \"\" 
+    int size = strlen("[]")+strlen(recipientId)+3; //add '\0' and \"\" 
     
     if(!jsonArray)
     {
@@ -67,7 +67,7 @@ void GroupchatInvite::appendRecipientIds()
 {    
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+17;   //add ',"recipientIds":' and '\0'
+        int size = strlen(",\"recipientIds\":")+strlen(json)+strlen(jsonArray)+1;   //add  '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"recipientIds",jsonArray);
     }
@@ -88,6 +88,23 @@ void GroupchatInvite::appendRecipientIds()
 char* GroupchatInvite::getEPurl()
 {
     return httpsUrl communication_groupchat_invite;
+}
+
+/* Function: GroupchatInvite.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatInvite::getWSEPurl()
+{
+    return communication_groupchat_invite;        
 }
 
 /* Function: GroupchatInvite.get

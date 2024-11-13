@@ -49,7 +49,7 @@ public:
 //     This endpoint allows to update a specific message published in a channel.
 
 //     Prototype:
-//         void set(char* messageId, char* dataComponent);
+//         void set(const char* channelId, const char* dataComponent, bool silent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing groupChat
@@ -58,7 +58,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* channelId, char* dataComponent, bool silent);
+    void set(const char* channelId, const char* dataComponent, bool silent);
 
 // Function: ChannelMessageUpdate.getEPurl
 
@@ -72,6 +72,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelMessageUpdate.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: ChannelMessageUpdate.get
 

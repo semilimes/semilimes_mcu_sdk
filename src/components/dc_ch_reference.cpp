@@ -5,7 +5,7 @@
     A message referencing an existing channel
 
     Prototype:
-        void DcChReference::set(char* channelId)
+        void DcChReference::set(const char* channelId)
 
     Parameters:
         channelId - the Id of the channel
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void DcChReference::set(char* channelId)
+void DcChReference::set(const char* channelId)
 {
-    int size = headerSize+strlen(channelId)+1;
+    int size = strlen("{\"dataComponentType\":\"channel\",\"channelId\":\"\"}")+strlen(channelId)+1;
     json = new char[size];
 
     json_data.initJson(json);

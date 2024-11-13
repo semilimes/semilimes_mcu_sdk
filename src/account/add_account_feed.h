@@ -6,8 +6,6 @@
 class AddAccountFeed
 {
 private:
-    #define headerSize 77
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -37,7 +35,7 @@ public:
 //     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
     
 //     Prototype:
-//         void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
+//         void AddAccountFeed::set(const char* title,const char* description,const char* avatar,bool visible,bool locked,bool enReaction);
     
 //     Parameters:
 ///@param          title - sets the feed title
@@ -50,7 +48,7 @@ public:
 ///@returns         void      
       
 
-    void set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
+    void set(const char* title,const char* description,const char* avatar,bool visible,bool locked,bool enReaction);
 
 // Function: AddAccountFeed.addDataComponents
 

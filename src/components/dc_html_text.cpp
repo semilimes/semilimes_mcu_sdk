@@ -5,7 +5,7 @@
     An html message
 
     Prototype:
-        void DcHtmlText::set(char* html);
+        void DcHtmlText::set(const char* html);
 
     Parameters:
         html - the html script 
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void DcHtmlText::set(char* html)
+void DcHtmlText::set(const char* html)
 {
-    int size = headerSize+strlen(html)+1;
+    int size = strlen("{\"dataComponentType\":\"html\",\"html\":\"\"}")+strlen(html)+1;
     json = new char[size];
 
     json_data.initJson(json);

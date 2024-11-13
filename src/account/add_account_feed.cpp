@@ -5,7 +5,7 @@
     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
     
     Prototype:
-        void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction);
+        void AddAccountFeed::set(const char* title,const char* description,const char* avatar,bool visible,bool locked,bool enReaction);
     
     Parameters:
         title - sets the feed title
@@ -17,9 +17,9 @@
     Returns:
       
 */
-void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible,bool locked,bool enReaction)
+void AddAccountFeed::set(const char* title,const char* description,const char* avatar,bool visible,bool locked,bool enReaction)
 {
-    int size = headerSize+strlen(title)+strlen(description)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+json_data.boolStrSize(enReaction)+1; //add '\0' for null-termination
+    int size = strlen("{\"title\":\"\",\"description\":\"\",\"avatar\":\"\",\"visible\":,\"locked\":,\"enReactions\":}")+strlen(title)+strlen(description)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+json_data.boolStrSize(enReaction)+1; //add '\0' for null-termination
     json = new char[size];
 
     json_data.initJson(json);
@@ -46,7 +46,7 @@ void AddAccountFeed::set(char* title,char* description,char* avatar,bool visible
 */
 void AddAccountFeed::addDataComponents(char* data)
 {       
-    int size = headerArraySize+strlen(data)+1;
+    int size = strlen("{}")+strlen(data)+1;
     
     if(!jsonArray)
     {
@@ -77,7 +77,7 @@ void AddAccountFeed::appendDataComponents()
 {     
     if(jsonArray!=nullptr)
     {   
-        int size = strlen(json)+strlen(jsonArray)+19;   //add ',"dataComponents":' and '\0'
+        int size = strlen(",\"dataComponents\":")+strlen(json)+strlen(jsonArray)+19;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"dataComponents",jsonArray);
     }

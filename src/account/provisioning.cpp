@@ -5,7 +5,7 @@
     create the json needed to Register and Claim the device
 
     Prototype:
-        void Provisioning::set(char* devId, char* provKey);
+        void Provisioning::set(const char* devId, const char* provKey);
 
     Parameters:
         devId - the device id, a unique ID that belongs to a specific device
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void Provisioning::set(char* devId, char* provKey)
+void Provisioning::set(const char* devId, const char* provKey)
 {
-    int size = headerSize+strlen(devId)+strlen(provKey)+1;
+    int size = strlen("{\"deviceId\":\"\",\"provisioningKey\":\"\"}")+strlen(devId)+strlen(provKey)+1;
     json = new char[size];
     json_data.initJson(json);
     json_data.addPair2JsonStr(json, "deviceId", devId);

@@ -3,10 +3,9 @@
 /* Function: DcFile.addFileIds
 
    Add a File Id to the array
-      void DcFile::addFileIds(char* fileIds);
 
    Prototype:
-      void DcFile::addFileIds(char* fileIds);
+      void DcFile::addFileIds(const char* fileIds);
 
    Parameters:
       fileIds - the File Id to add
@@ -14,9 +13,9 @@
    Returns:
       void
 */
-void DcFile::addFileId(char* fileIds)
+void DcFile::addFileId(const char* fileIds)
 {    
-   int size = headerArraySize+strlen(fileIds)+1;
+   int size = strlen("[]")+strlen(fileIds)+1;
    
    if(!jsonArray)
    {

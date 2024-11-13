@@ -6,8 +6,6 @@
 class GroupchatInvite
 {
 private:
-    #define headerSize 34
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -37,28 +35,28 @@ public:
 //    This endpoint allows to invite other recipients to the specified group chat.
 
 //     Prototype:
-//         void set(char* groupChatIds)
+//         void set(const char* groupChatIds)
 
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
 
 //     Returns:
 ///@returns         void
-    void set(char* groupChatId);
+    void set(const char* groupChatId);
 
 // Function: GroupchatInvite.addRecipientId
 
 //     Add the recipientId 
 
 //     Prototype:
-//         void addRecipientId(char* recipientId);
+//         void addRecipientId(const char* recipientId);
 
 //     Parameters:
 ///@param         recipientId - the json script of the dataComponent to invite
 
 //     Returns:
 ///@returns         void
-    void addRecipientId(char* recipientId);
+    void addRecipientId(const char* recipientId);
 
 // Function: GroupchatInvite.appendRecipientIds
 
@@ -85,6 +83,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GetGroupchatMessage.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatInvite.get
 

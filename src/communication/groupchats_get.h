@@ -6,8 +6,6 @@
 class GroupchatsGet
 {
 private:
-    #define headerSize 17
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -54,14 +52,14 @@ public:
 //     Add the recipientId 
 
 //     Prototype:
-//         void addRecipientId(char* recipientIds);
+//         void addRecipientId(const char* recipientIds);
 
 //     Parameters:
 ///@param         recipientId - the json script of the dataComponent to add
 
 //     Returns:
 ///@returns         void
-    void addRecipientId(char* recipientId);
+    void addRecipientId(const char* recipientId);
 
 // Function: GroupchatsGet.appendRecipientIds
 
@@ -88,6 +86,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatsGet.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatsGet.get
 

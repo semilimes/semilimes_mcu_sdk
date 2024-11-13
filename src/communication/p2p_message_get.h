@@ -6,7 +6,6 @@
 class P2pMessageGet
 {
 private:
-    #define headerSize 42
     SmeJson json_data;
     char* json = nullptr;
     
@@ -33,7 +32,7 @@ public:
 //     This endpoint returns a list of messages in the specified P2P chat
 
 //     Prototype:
-//         void set(bool owner,bool editor,bool subscriber);
+//         void set(const char* recipientId,const char* messageId,int limit);
 
 //     Parameters:
 ///@param         recipientId - Filters the p2p chats list by showing only the one occurring with the specified account id.
@@ -42,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* recipientId,char* messageId,int limit);
+    void set(const char* recipientId,const char* messageId,int limit);
 
 // Function: P2pMessageGet.getEPurl
 
@@ -56,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pMessageGet.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: P2pMessageGet.get
 

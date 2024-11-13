@@ -5,7 +5,7 @@
     This endpoint creates a new group chat with a specified name. It's also possible to directly invite other accounts to the chat upon creation by specifying their accountIds in the recipientIds array.
 
     Prototype:
-        void set(char* title);
+        void set(const char* title);
 
     Parameters:
         title - sets the group chat title
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void GroupchatCreate::set(char* title)
+void GroupchatCreate::set(const char* title)
 {
-    int size = headerSize+strlen(title)+1; //add '\0' for null-termination
+    int size = strlen("{\"title\":\"\"}")+strlen(title)+1; //add '\0' for null-termination
     json = new char[size];
 
     json_data.initJson(json);
@@ -27,7 +27,7 @@ void GroupchatCreate::set(char* title)
     Add the recipientId (the account Id to be added in the groupchat)
 
     Prototype:
-        void addRecipientIds(char* recipientIds);
+        void addRecipientIds(const char* recipientIds);
 
     Parameters:
         recipientIds - the json script of the dataComponent to add
@@ -35,9 +35,9 @@ void GroupchatCreate::set(char* title)
     Returns:
         void
 */
-void GroupchatCreate::addRecipientId(char* recipientIds)
+void GroupchatCreate::addRecipientId(const char* recipientIds)
 {   
-    int size = headerArraySize+strlen(recipientIds)+3; //add '\0' and \"\" 
+    int size = strlen("[]")+strlen(recipientIds)+3; //add '\0' and \"\" 
     
     if(!jsonArray)
     {
@@ -68,7 +68,7 @@ void GroupchatCreate::appendRecipientIds()
 {    
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+17;   //add ',"recipientIds":' and '\0'
+        int size =  strlen(",\"recipientIds\":")+strlen(json)+strlen(jsonArray)+17;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"recipientIds",jsonArray);
     }
@@ -89,6 +89,23 @@ void GroupchatCreate::appendRecipientIds()
 char* GroupchatCreate::getEPurl()
 {
     return httpsUrl communication_groupchat_create;
+}
+
+/* Function: GroupchatCreate.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatCreate::getWSEPurl()
+{
+    return communication_groupchat_create;        
 }
 
 /* Function: GroupchatCreate.get

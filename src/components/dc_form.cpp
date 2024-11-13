@@ -5,7 +5,7 @@
    A form message is a complex data component which can be arbitrarily structured using available form components
 
    Prototype:
-      void DcForm::set(bool submitEnabled, bool retainStatus, char* submitText, char* refName);
+      void DcForm::set(const char* recId, const char* recFeatureType, bool submitEnabled, bool retainStatus, const char* submitText, const char* refName, const char* align, bool authorizeSubmit, bool hideSubmissionMsg);
 
    Parameters:
         id - the receiver Id to add
@@ -20,16 +20,16 @@
    Returns:
       void
 */
-void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool retainStatus, char* submitText, char* refName, char* align, bool authorizeSubmit, bool hideSubmissionMsg)
+void DcForm::set(const char* recId, const char* recFeatureType, bool submitEnabled, bool retainStatus, const char* submitText, const char* refName, const char* align, bool authorizeSubmit, bool hideSubmissionMsg)
 {
-   int size = 27+strlen(recId)+strlen(recFeatureType)+1;//add '{"id":"","featureType":""}\0' with null-termination
+   int size = strlen("{\"id\":\"\",\"featureType\":\"\"}")+strlen(recId)+strlen(recFeatureType)+1;//add null-termination
    char* recjson = new char[size]; 
 
    json_data.initJson(recjson);
    json_data.addPair2JsonStr(recjson,"id",recId);
    json_data.addPair2JsonStr(recjson,"featureType",recFeatureType);
 
-   size += headerSize+json_data.boolStrSize(submitEnabled)+strlen(align)+json_data.boolStrSize(authorizeSubmit)+json_data.boolStrSize(retainStatus)+strlen(submitText)+json_data.boolStrSize(hideSubmissionMsg)+strlen(refName)+13; //add ',"receiver":' and '\0' for null-termination
+   size += strlen("{\"dataComponentType\":\"form\",\"submitEnabled\":,\"submitEnabled\":,\"align\":\"\",\"authorizeSubmit\":,\"retainStatus\":,\"submitText\":\"\",\"receiver\":,\"hideSubmissionMsg\":,\"refName\":\"\"}")+json_data.boolStrSize(submitEnabled)+strlen(align)+json_data.boolStrSize(authorizeSubmit)+json_data.boolStrSize(retainStatus)+strlen(submitText)+json_data.boolStrSize(hideSubmissionMsg)+strlen(refName)+13; //add ',"receiver":' and '\0' for null-termination
    json = new char[size]; 
 
    json_data.initJson(json);
@@ -49,7 +49,7 @@ void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool ret
    Add a Form Component to the array
 
    Prototype:
-      void DcForm::addFormComponents(char* component);
+      void DcForm::addFormComponents(const char* component);
 
    Parameters:
         component - the json of the form component
@@ -57,9 +57,9 @@ void DcForm::set(char* recId, char* recFeatureType, bool submitEnabled, bool ret
    Returns:
       void
 */
-void DcForm::addFormComponents(char* component)
+void DcForm::addFormComponents(const char* component)
 {    
-    int size = headerArraySize+strlen(component)+1;
+    int size = strlen("[]")+strlen(component)+1;
     
     if(!jsonArray)
     {

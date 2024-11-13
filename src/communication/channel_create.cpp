@@ -5,7 +5,7 @@
     This endpoint allows to create a new channel and set the initial editors. The role of the current accountId will be automatically set to editor.
 
     Prototype:
-        void set(char* title,char* avatar,bool visible,bool locked);
+        void set(const char* title,const char* avatar,bool visible,bool locked);
 
     Parameters:
         title - sets the channel title
@@ -16,9 +16,9 @@
     Returns:
         void
 */
-void ChannelCreate::set(char* title,char* avatar,bool visible,bool locked)
+void ChannelCreate::set(const char* title,const char* avatar,bool visible,bool locked)
 {
-    int size = headerSize+strlen(title)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+1;//add '\0' for null-termination
+    int size = strlen("{\"title\":\"\",\"avatar\":\"\",\"visible\":,\"locked\":}")+strlen(title)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -33,7 +33,7 @@ void ChannelCreate::set(char* title,char* avatar,bool visible,bool locked)
     Append the selected editorId
 
     Prototype:
-        void addEditorsId(char* data);
+        void addEditorsId(const char* data);
 
     Parameters:
         data - the id of the editor to add
@@ -41,9 +41,9 @@ void ChannelCreate::set(char* title,char* avatar,bool visible,bool locked)
     Returns:
         void
 */
-void ChannelCreate::addEditorsId(char* data)
+void ChannelCreate::addEditorsId(const char* data)
 {  
-    int size = headerArraySize+strlen(data)+3; //add '\0' and \"\" 
+    int size = strlen("[]")+strlen(data)+3; //add '\0' and \"\" 
     
     if(!jsonArray)
     {
@@ -95,6 +95,23 @@ void ChannelCreate::appendEditorsIds()
 char* ChannelCreate::getEPurl()
 {
     return httpsUrl communication_channel_create;
+}
+
+/* Function: ChannelCreate.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelCreate::getWSEPurl()
+{
+    return communication_channel_create;        
 }
 
 /* Function: ChannelCreate.get

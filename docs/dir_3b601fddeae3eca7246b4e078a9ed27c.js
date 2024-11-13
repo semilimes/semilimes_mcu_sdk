@@ -9,6 +9,7 @@ var dir_3b601fddeae3eca7246b4e078a9ed27c =
     [ "dc_html_text.h", "dc__html__text_8h_source.html", null ],
     [ "dc_location.h", "dc__location_8h_source.html", null ],
     [ "dc_simple_text.h", "dc__simple__text_8h_source.html", null ],
+    [ "dc_tile_view.h", "dc__tile__view_8h_source.html", null ],
     [ "dc_tunnel_reference.h", "dc__tunnel__reference_8h_source.html", null ],
     [ "dc_webview.h", "dc__webview_8h_source.html", null ],
     [ "fc_bucket_picker.h", "fc__bucket__picker_8h_source.html", null ],

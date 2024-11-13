@@ -5,7 +5,7 @@
     A value into the form which is not visible to the use
 
     Prototype:
-        void FcHiddenValue::set(char* refname,char* value);
+        void FcHiddenValue::set(const char* refname,const char* value);
 
     Parameters:
         refname - it is the reference name of the object
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void FcHiddenValue::set(char* refname,char* value)
+void FcHiddenValue::set(const char* refname,const char* value)
 {
-    int size = headerSize+strlen(refname)+strlen(value)+1;
+    int size = strlen("{\"formComponentType\":\"hiddenvalue\",\"refName\":\"\",\"value\":\"\"}")+strlen(refname)+strlen(value)+1;
     json = new char[size];
 
     json_data.initJson(json);

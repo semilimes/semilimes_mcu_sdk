@@ -6,7 +6,6 @@
 class BucketLike
 {
 private:
-    #define headerSize 15
     SmeJson json_data;
     char* json = nullptr;
     
@@ -34,14 +33,14 @@ public:
 //     This endpoint sets a like by the current account to any referenced bucket that allows likes.
 
 //     Prototype:
-//         void set(char* bucketId);
+//         void set(const char* bucketId);
 
 //     Parameters:
 ///@param         bucketId -  is the unique Id to reference an existing bucket
 
 //     Returns:
 ///@returns         void
-    void set(char* bucketId);
+    void set(const char* bucketId);
 
 // Function: BucketLike.getEPurl
 
@@ -55,7 +54,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
-    
+
+// Function: BucketLike.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();    
 
 // Function: BucketLike.get
 

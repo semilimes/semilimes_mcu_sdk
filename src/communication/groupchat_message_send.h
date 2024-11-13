@@ -6,8 +6,6 @@
 class GroupchatMessageSend
 {
 private:
-    #define headerSize 35
-    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
 
@@ -48,7 +46,7 @@ public:
 //     This endpoint allows to send a data component to a groupChat as a new message.
 
 //     Prototype:
-//         void set(char* groupChatId, char* dataComponent);
+//         void set(const char* groupChatId, const char* dataComponent, bool silent);
 
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
@@ -57,7 +55,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* groupChatId, char* dataComponent, bool silent);
+    void set(const char* groupChatId, const char* dataComponent, bool silent);
 
 // Function: GroupchatMessageSend.getEPurl
 
@@ -71,6 +69,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageSend.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatMessageSend.get
 

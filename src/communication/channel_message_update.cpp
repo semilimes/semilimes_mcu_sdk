@@ -5,7 +5,7 @@
     This endpoint allows to update a specific message published in a channel.
 
     Prototype:
-        void set(char* messageId, char* dataComponent);
+        void set(const char* messageId, const char* dataComponent, bool silent);
 
     Parameters:
         messageId - is the unique Id to reference an existing groupChat
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void ChannelMessageUpdate::set(char* messageId, char* dataComponent, bool silent)
+void ChannelMessageUpdate::set(const char* messageId, const char* dataComponent, bool silent)
 {
-    int size = headerSize+strlen(messageId)+strlen(dataComponent)+1;
+    int size = strlen("{\"messageId\":\"\",\"dataComponent\":}")+strlen(messageId)+strlen(dataComponent)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -41,11 +41,11 @@ void ChannelMessageUpdate::set(char* messageId, char* dataComponent, bool silent
 */
 void ChannelMessageUpdate::addOptions(bool silent)
 {
-    int size = optionsHeaderSize+json_data.boolStrSize(silent)+1;
+    int size = strlen("\"silent\":")+json_data.boolStrSize(silent)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonBool(optTemp, "silent", silent);
-    size += strlen(json)+12;   //add bytes for ',"options":' and '\0'
+    size += strlen(",\"options\":")+strlen(optTemp)+strlen(json)+1;   //add '\0'
     json_data.arrayResize(json,size);
 	json_data.add2JsonArray(json,"options",optTemp);
 }
@@ -65,6 +65,23 @@ void ChannelMessageUpdate::addOptions(bool silent)
 char* ChannelMessageUpdate::getEPurl()
 {
     return httpsUrl communication_channel_update;
+}
+
+/* Function: ChannelMessageUpdate.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelMessageUpdate::getWSEPurl()
+{
+    return communication_channel_update;        
 }
 
 /* Function: ChannelMessageUpdate.get

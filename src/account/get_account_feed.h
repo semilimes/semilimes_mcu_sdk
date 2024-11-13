@@ -6,7 +6,6 @@
 class GetAccountFeed
 {
 private:
-    #define headerSize 44
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     Gets the account feed's configuration and content. Each post can only contain a bucket component type.
 
 //     Prototype:
-//         void GetAccountFeed::set(char* accountId,int before,int after,int limit);
+//         void GetAccountFeed::set(const char* accountId,int before,int after,int limit);
 
 //     Parameters:
 ///@param         accountId - the account id of which show the feeds configuration and content
@@ -44,7 +43,7 @@ public:
 //     Returns:
 ///@returns         void      
 
-    void set(char* accountId,int before,int after,int limit);
+    void set(const char* accountId,int before,int after,int limit);
 
 // Function: GetAccountFeed.get
 

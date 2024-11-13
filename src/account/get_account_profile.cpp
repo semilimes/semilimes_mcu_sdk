@@ -5,7 +5,7 @@
     Gets the account profile's configuration and content.
 
     Prototype:
-        void GetAccountProfile::set(char* accountId);
+        void GetAccountProfile::set(const char* accountId);
 
     Parameters:
         accountId - the account id of which show configuration and content
@@ -13,9 +13,9 @@
     Returns:
       
 */
-void GetAccountProfile::set(char* accountId)
+void GetAccountProfile::set(const char* accountId)
 {
-    int size = headerSize+strlen(accountId)+1;
+    int size = strlen("{\"accountId\":\"\"}")+strlen(accountId)+1;
     json = new char[size];
     json_data.initJson(json);
     json_data.addPair2JsonStr(json, "accountId", accountId);

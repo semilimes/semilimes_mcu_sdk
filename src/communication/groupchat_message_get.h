@@ -6,7 +6,6 @@
 class GroupchatMessageGet
 {
 private:
-    #define headerSize 42
     SmeJson json_data;
     char* json = nullptr;
     
@@ -33,7 +32,7 @@ public:
 //     This endpoint returns a list of messages in the specified Group chat.
 
 //     Prototype:
-//         void set(char* groupChatId,char* messageId,int limit);
+//         void set(const char* groupChatId,const char* messageId,int limit);
 
 //     Parameters:
 ///@param         groupChatId - is the unique Id to reference an existing groupChat
@@ -42,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* groupChatId,char* messageId,int limit);
+    void set(const char* groupChatId,const char* messageId,int limit);
 
 // Function: GroupchatMessageGet.getEPurl
 
@@ -56,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageGet.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatMessageGet.get
 

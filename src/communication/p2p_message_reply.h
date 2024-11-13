@@ -33,7 +33,7 @@ public:
 //     This endpoint allows the account to reply to a specific message with a simple text.
 
 //     Prototype:
-//         void set(char* messageId, char* dataComponent);
+//         void set(const char* messageId, const char* dataComponent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing p2p chat
@@ -41,7 +41,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* messageId, char* dataComponent);
+    void set(const char* messageId, const char* dataComponent);
 
 // Function: P2pMessageReply.getEPurl
 
@@ -55,6 +55,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pMessageReply.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: P2pMessageReply.get
 

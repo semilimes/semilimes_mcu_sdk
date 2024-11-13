@@ -5,7 +5,7 @@
 //     A location message containing coordinates
 
 //     Prototype:
-//         void DcLocation::set(char* locationName,float latitude, float longitude);
+//         void DcLocation::set(const char* locationName,float latitude, float longitude);
 
 //     Parameters:
 ///@param         locationName - the name of the location 
@@ -14,10 +14,10 @@
 
 //     Returns:
 ///@return         void
-void DcLocation::set(char* locationName,float latitude, float longitude)
+void DcLocation::set(const char* locationName,float latitude, float longitude)
 {
     int ndigits = 6;
-    int size = headerSize+strlen(locationName)+json_data.floatStrSize(longitude, ndigits)+json_data.floatStrSize(latitude, ndigits)+1;
+    int size = strlen("{\"dataComponentType\":\"location\",\"locationName\":\"\",\"latitude\":,\"longitude\":}")+strlen(locationName)+json_data.floatStrSize(longitude, ndigits)+json_data.floatStrSize(latitude, ndigits)+1;
     json = new char[size];
 
     json_data.initJson(json);

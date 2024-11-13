@@ -6,7 +6,6 @@
 class ChannelGet
 {
 private:
-    #define headerSize 54
     SmeJson json_data;
     char* json = nullptr;
     
@@ -34,7 +33,7 @@ public:
 //     This endpoint finds channels based on specified parameters
 
 //     Prototype:
-//         void set(char* ownerId,char* editorId,char* channelId,char* title);
+//         void set(const char* ownerId,const char* editorId,const char* channelId,const char* title);
 
 //     Parameters:
 ///@param     ownerId - Returns channels owned by the specified account Id
@@ -45,7 +44,7 @@ public:
 
 //     Returns:
 ///@returns        void
-    void set(char* ownerId,char* editorId,char* channelId,char* title);
+    void set(const char* ownerId,const char* editorId,const char* channelId,const char* title);
 
 // Function: ChannelGet.getEPurl
 
@@ -59,6 +58,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelGet.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: ChannelGet.get
 

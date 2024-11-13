@@ -6,7 +6,6 @@
 class DcTunnelReference
 {
 private:
-    #define headerSize 44
     SmeJson json_data;
     char* json = nullptr;
 
@@ -33,14 +32,14 @@ public:
 //     A message referencing an existing Tunnel
 
 //     Prototype:
-//         void DcTunnelReference::set(char* tunnelId);
+//         void DcTunnelReference::set(const char* tunnelId);
 
 //     Parameters:
 ///@param         tunnelId - the id of the referenced tunnel
         
 //     Returns:
 ///@return         void
-    void set(char* tunnelId);
+    void set(const char* tunnelId);
     
 // Function: DcTunnelReference.get
 

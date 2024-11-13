@@ -19,9 +19,9 @@
     Returns:
         void
 */
-void BucketUpdate::set(char* bucketId, char* title, char* description, char* avatar, bool visible, bool locked, bool enReactions)
+void BucketUpdate::set(const char* bucketId, const char* title, const char* description, const char* avatar, bool visible, bool locked, bool enReactions)
 {
-    int size = headerSize+strlen(bucketId)+strlen(title)+strlen(description)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+json_data.boolStrSize(enReactions)+1;//add '\0' for null-termination
+    int size = strlen("{\"dataComponentType\":\"bucket\",\"bucketId\":\"\",\"title\":\"\",\"description\":\"\",\"avatar\":\"\",\"visible\":\"\",\"locked\":,\"enReactions\":}")+strlen(bucketId)+strlen(title)+strlen(description)+strlen(avatar)+json_data.boolStrSize(visible)+json_data.boolStrSize(locked)+json_data.boolStrSize(enReactions)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -48,9 +48,9 @@ void BucketUpdate::set(char* bucketId, char* title, char* description, char* ava
     Returns:
         void
 */
-void BucketUpdate::addDataComponents(char* component)
+void BucketUpdate::addDataComponents(const char* component)
 {        
-    int size = headerArraySize+strlen(component)+1;
+    int size = strlen("[]")+strlen(component)+1;
     
     if(!jsonArray)
     {
@@ -81,7 +81,7 @@ void BucketUpdate::appendDataComponents()
 {    
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+19;   //add ',"dataComponents":' and '\0'
+        int size = strlen(",\"dataComponents\":")+strlen(json)+strlen(jsonArray)+1;   //add '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"dataComponents",jsonArray);
     }
@@ -102,6 +102,23 @@ void BucketUpdate::appendDataComponents()
 char* BucketUpdate::getEPurl()
 {
     return httpsUrl communication_bucket_update;
+}
+
+/* Function: BucketUpdate.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* BucketUpdate::getWSEPurl()
+{
+    return communication_bucket_update;        
 }
 
 /* Function: BucketUpdate.get

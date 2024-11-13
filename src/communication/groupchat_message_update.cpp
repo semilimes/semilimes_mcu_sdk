@@ -5,7 +5,7 @@
     This endpoint allows to update a specific message published in a group Chat
 
     Prototype:
-        void set(char* messageId, char* dataComponent);
+        void set(const char* messageId, const char* dataComponent);
 
     Parameters:
         channelId - is the unique Id to reference an existing channel
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void GroupchatMessageUpdate::set(char* messageId, char* dataComponent, bool silent)
+void GroupchatMessageUpdate::set(const char* messageId, const char* dataComponent, bool silent)
 {
-    int size = headerSize+strlen(messageId)+strlen(dataComponent)+1;
+    int size = strlen("{\"messageId\":\"\",\"dataComponent\":}")+strlen(messageId)+strlen(dataComponent)+1;
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -31,7 +31,7 @@ void GroupchatMessageUpdate::set(char* messageId, char* dataComponent, bool sile
     add a list of options 
 
     Prototype:
-        void GroupchatMessageUpdate::addOptions(char* name,char* value);
+        void GroupchatMessageUpdate::addOptions(bool silent);
 
     Parameters:
         silent - is a boolean to allow sending the message without any in-app notification
@@ -41,11 +41,11 @@ void GroupchatMessageUpdate::set(char* messageId, char* dataComponent, bool sile
 */
 void GroupchatMessageUpdate::addOptions(bool silent)
 {
-    int size = optionsHeaderSize+json_data.boolStrSize(silent)+1;
+    int size = strlen("\"silent\":")+json_data.boolStrSize(silent)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonBool(optTemp, "silent", silent);
-    size += strlen(json)+12;   //add bytes for ',"options":' and '\0'
+    size += strlen(",\"options\":")+strlen(optTemp)+strlen(json)+12;   //add '\0'
     json_data.arrayResize(json,size);
 	json_data.add2JsonArray(json,"options",optTemp);
 }
@@ -65,6 +65,23 @@ void GroupchatMessageUpdate::addOptions(bool silent)
 char* GroupchatMessageUpdate::getEPurl()
 {
     return httpsUrl communication_groupchat_message_update;
+}
+
+/* Function: GroupchatMessageUpdate.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatMessageUpdate::getWSEPurl()
+{
+    return communication_groupchat_message_update;        
 }
 
 /* Function: GroupchatMessageUpdate.get

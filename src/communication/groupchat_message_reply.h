@@ -6,7 +6,6 @@
 class GroupchatMessageReply
 {
 private:
-    #define headerSize 33
     SmeJson json_data;
     char* json = nullptr;
 
@@ -33,7 +32,7 @@ public:
 //     This endpoint allows the account to reply to a specific message with a simple text.
 
 //     Prototype:
-//         void set(char* messageId, char* dataComponent);
+//         void set(const char* messageId, const char* dataComponent);
 
 //     Parameters:
 ///@param         messageId - is the unique Id to reference an existing groupChat
@@ -41,7 +40,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* messageId, char* dataComponent);
+    void set(const char* messageId, const char* dataComponent);
 
 // Function: GroupchatMessageReply.getEPurl
 
@@ -55,6 +54,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageReply.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatMessageReply.get
 

@@ -5,7 +5,7 @@
     This endpoint sets a like by the current account to any referenced bucket that allows likes.
 
     Prototype:
-        void set(char* bucketId);
+        void set(const char* bucketId);
 
     Parameters:
         bucketId -  is the unique Id to reference an existing bucket
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void BucketLike::set(char* bucketId)
+void BucketLike::set(const char* bucketId)
 {
-    int size = headerSize+strlen(bucketId)+1;
+    int size = strlen("{\"bucketId\":\"\"}")+strlen(bucketId)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -37,6 +37,23 @@ void BucketLike::set(char* bucketId)
 char* BucketLike::getEPurl()
 {
     return httpsUrl communication_bucket_like;        
+}
+
+/* Function: BucketLike.getWSEPurl
+
+    provides this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* httpsUrl + endpoint
+*/
+char* BucketLike::getWSEPurl()
+{
+    return communication_bucket_like;        
 }
 
 /* Function: BucketLike.get

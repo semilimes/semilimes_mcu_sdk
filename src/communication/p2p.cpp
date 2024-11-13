@@ -16,3 +16,20 @@ char* P2p::getEPurl()
 {
     return httpsUrl communication_p2p;        
 }
+
+/* Function: P2p.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* P2p::getWSEPurl()
+{
+    return communication_p2p;        
+}

@@ -5,7 +5,7 @@
     A message referencing an existing Tunnel
 
     Prototype:
-        void DcTunnelReference::set(char* tunnelId);
+        void DcTunnelReference::set(const char* tunnelId);
 
     Parameters:
         tunnelId - the id of the referenced tunnel
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void DcTunnelReference::set(char* tunnelId)
+void DcTunnelReference::set(const char* tunnelId)
 {
-    int size = headerSize+strlen(tunnelId)+1;
+    int size = strlen("{\"dataComponentType\":\"tunnel\",\"tunnelId\":\"\"}")+strlen(tunnelId)+1;
     json = new char[size];
 
     json_data.initJson(json);

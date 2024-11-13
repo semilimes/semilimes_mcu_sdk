@@ -40,6 +40,23 @@ char* GroupchatSignalTyping::getEPurl()
     return httpsUrl communication_groupchat_signal_typing;        
 }
 
+/* Function: GroupchatSignalTyping.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GroupchatSignalTyping::getWSEPurl()
+{
+    return communication_groupchat_signal_typing;        
+}
+
 /* Function: GroupchatSignalTyping.get
 
     return the json script

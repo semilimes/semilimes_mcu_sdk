@@ -6,7 +6,6 @@
 class FcNfcReader
 {
 private:
-    #define headerSize 112
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     A scanner button allowing to read NFC tags
 
 //     Prototype:
-//         void FcNfcReader::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+//         void FcNfcReader::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -44,7 +43,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+    void set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle);
 
 // Function: FcNfcReader.get
 

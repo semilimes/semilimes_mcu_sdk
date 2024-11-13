@@ -5,7 +5,7 @@
     A simple read-only label
 
     Prototype:
-        void FcLabel::set(char* refname,char* title);
+        void FcLabel::set(const char* refname,const char* title);
 
     Parameters:
         refname - it is the reference name of the object
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void FcLabel::set(char* refname,char* title)
+void FcLabel::set(const char* refname,const char* title)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+1;
+    int size = strlen("{\"formComponentType\":\"label\",\"refName\":\"\",\"title\":\"\"}")+strlen(refname)+strlen(title)+1;
     json = new char[size];
     json_data.initJson(json);
     json_data.addPair2JsonStr(json,"formComponentType","label");

@@ -1,13 +1,11 @@
-#ifndef _fc_gauge_
-#define _fc_gauge_
+#ifndef _dc_gauge_
+#define _dc_gauge_
 
 #include "../defines.h"
 
 class DcGauge
 {
 private:
-    #define headerSize 184
-    #define headerArraySize 27
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -45,7 +43,7 @@ public:
 //     A gauge to show numerical data with a configurable ranges and colors
 
 //     Prototype:
-//         void DcGauge::set(char* refname,char* title,bool reqSel, char* value);
+//         void DcGauge::set(const char* title,int thickness,int degrees,int spacing,int fontSize,int value,const char* displayValue,const char* pointer,const char* pointerColor,const char* progressBar,const char* progressBarColor);
 
 //     Parameters:
 ///@param         title - is the global label displayed at the beginning of the component
@@ -62,14 +60,14 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* title,int thickness,int degrees,int spacing,int fontSize,int value,char* displayValue,char* pointer,char* pointerColor,char* progressBar,char* progressBarColor);
+    void set(const char* title,int thickness,int degrees,int spacing,int fontSize,int value,const char* displayValue,const char* pointer,const char* pointerColor,const char* progressBar,const char* progressBarColor);
 
 // Function: DcGauge.addSegment
 
 //    is an array of the graphical segments composing the gauge.
 
 //     Prototype:
-//         void DcGauge::addSegment(int from,int to,char* color);
+//         void DcGauge::addSegment(int from,int to,const char* color);
 
 //    Parameters:
 ///@param         from - between the 0-99 range
@@ -79,7 +77,7 @@ public:
 //    Returns:
 ///@return       void
 
-    void addSegment(int from,int to,char* color);
+    void addSegment(int from,int to,const char* color);
 
 // Function: DcGauge.appendSegments
 

@@ -10,16 +10,16 @@ private:
 public:
 	void initJson(char* json);
 	void initJsonArray(char* json);
-	char* concatJson(char* json1, char* json2);
-	void add2Json(char* json, char* data);
-	void add2JsonStr(char* json, char* data);
-	void add2JsonArray(char* json, char* property, char* data);
-	void addPair2Json(char* json, char* property, char* data);
-	void addPair2JsonStr(char* json, char* property, char* data);
-	void addPair2JsonInt(char* json, char* property, int data);
-	void addPair2JsonFloat(char* json, char* property, float data, int ndec=2);
-	void addPair2JsonBool(char* json, char* property, bool data);
-	void substr(int pos, int len, char* strIn, char* strOut);
+	char* concatJson(const char* json1, const char* json2);
+	void add2Json(char* json, const char* data);
+	void add2JsonStr(char* json, const char* data);
+	void add2JsonArray(char* json, const char* property, const char* data);
+	void addPair2Json(char* json, const char* property, const char* data);
+	void addPair2JsonStr(char* json, const char* property, const char* data);
+	void addPair2JsonInt(char* json, const char* property, int data);
+	void addPair2JsonFloat(char* json, const char* property, float data, int ndec=2);
+	void addPair2JsonBool(char* json, const char* property, bool data);
+	void substr(int pos, int len, const char* strIn, char* strOut);
 	int boolStrSize(bool data);
 	int intStrSize(int data);
 	int floatStrSize(float data, int ndigits);

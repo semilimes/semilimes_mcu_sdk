@@ -5,7 +5,7 @@
     This endpoint allows to send a data component to a Channel as a new message.
 
     Prototype:
-        void set(char* recipientId, char* dataComponent);
+        void set(const char* recipientId, const char* dataComponent, bool silent);
 
     Parameters:
         recipientId - is the unique Id to reference an existing p2p chat
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void P2pMessageSend::set(char* recipientId, char* dataComponent, bool silent)
+void P2pMessageSend::set(const char* recipientId, const char* dataComponent, bool silent)
 {
-    int size = headerSize+strlen(recipientId)+strlen(dataComponent)+1;
+    int size = strlen("{\"recipientId\":\"\",\"dataComponent\":}")+strlen(recipientId)+strlen(dataComponent)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -41,11 +41,11 @@ void P2pMessageSend::set(char* recipientId, char* dataComponent, bool silent)
 */
 void P2pMessageSend::addOptions(bool silent)
 {
-    int size = optionsHeaderSize+json_data.boolStrSize(silent)+1;
+    int size = strlen("{\"silent\":}")+json_data.boolStrSize(silent)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonBool(optTemp, "silent", silent);
-    size += strlen(json)+12;   //add bytes for ',"options":' and '\0'
+    size += strlen(",\"options\":")+strlen(json)+1;   //add '\0'
     json_data.arrayResize(json,size);
 	json_data.add2JsonArray(json,"options",optTemp);
 }
@@ -65,6 +65,23 @@ void P2pMessageSend::addOptions(bool silent)
 char* P2pMessageSend::getEPurl()
 {
     return httpsUrl communication_p2p_message_send;
+}
+
+/* Function: P2pMessageSend.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* P2pMessageSend::getWSEPurl()
+{
+    return communication_p2p_message_send;        
 }
 
 /* Function: P2pMessageSend.get

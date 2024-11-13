@@ -6,8 +6,6 @@
 class DcAppointment
 {
 private:
-    #define headerSize 89
-    #define headerLocationSize 26
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -52,7 +50,7 @@ public:
 //    An appointment message for defining a calendar event, complete with title, description, dates and location
 
 //    Prototype:
-//       void DcAppointment::set(char* title, char* description, int start, int end, bool allDay, float latitude, float longitude);
+//       void DcAppointment::set(const char* title, const char* description, int start, int end, bool allDay, float latitude, float longitude);
 
 //    Parameters:
 ///@param         title - is for assigning the main title to the appointment. This parameter is required
@@ -64,7 +62,7 @@ public:
 ///@param         longitude - define the longitude of a specific location where to attend the appointment
 //    Returns:
 ///@return       void
-    void set(char* title, char* description, int start, int end, bool allDay, float latitude, float longitude);
+    void set(const char* title, const char* description, int start, int end, bool allDay, float latitude, float longitude);
     
 
 // Function: DcAppointment.get

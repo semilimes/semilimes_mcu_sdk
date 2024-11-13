@@ -6,8 +6,6 @@
 class FcGauge
 {
 private:
-    #define headerSize 197
-    #define headerArraySize 27
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -45,7 +43,7 @@ public:
 //     A gauge to show numerical data with a configurable ranges and colors
 
 //     Prototype:
-//         void FcGauge::set(char* refname,char* title,bool reqSel, char* value);
+//         void FcGauge::set(const char* refname,const char* title,int thickness,int degrees,int spacing,int fontSize,int value,const char* displayValue,const char* pointer,const char* pointerColor,const char* progressBar,const char* progressBarColor);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -63,14 +61,14 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,int thickness,int degrees,int spacing,int fontSize,int value,char* displayValue,char* pointer,char* pointerColor,char* progressBar,char* progressBarColor);
+    void set(const char* refname,const char* title,int thickness,int degrees,int spacing,int fontSize,int value,const char* displayValue,const char* pointer,const char* pointerColor,const char* progressBar,const char* progressBarColor);
 
 // Function: FcGauge.addSegment
 
 //    is an array of the graphical segments composing the gauge.
 
 //     Prototype:
-//         void FcGauge::addSegment(int from,int to,char* color);
+//         void FcGauge::addSegment(int from,int to,const char* color);
 
 //    Parameters:
 ///@param         from - between the 0-99 range
@@ -80,7 +78,7 @@ public:
 //    Returns:
 ///@return       void
 
-    void addSegment(int from,int to,char* color);
+    void addSegment(int from,int to,const char* color);
 
 // Function: FcGauge.appendSegments
 

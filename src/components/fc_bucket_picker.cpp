@@ -5,7 +5,7 @@
     A picker allowing to select and reference buckets
 
     Prototype:
-        void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
+        void FcBucketPicker::set(const char* refname,const char* title,bool reqSel, const char* filter,const char* actBtnTitle,bool multiSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,9 +18,9 @@
     Returns:
         void
 */
-void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel)
+void FcBucketPicker::set(const char* refname,const char* title,bool reqSel, const char* filter,const char* actBtnTitle,bool multiSel)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(filter)+strlen(actBtnTitle)+json_data.boolStrSize(multiSel)+1;//add '\0' for null-termination
+    int size = strlen("{\"formComponentType\":\"bucketpicker\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"filter\":\"\",\"actionButtonTitle\":\"\",\"multiSelection\":}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(filter)+strlen(actBtnTitle)+json_data.boolStrSize(multiSel)+1;//add '\0' for null-termination
     json = new char[size]; 
 
     json_data.initJson(json);
@@ -38,7 +38,7 @@ void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,cha
     add a selected bucket id upon form submission. It can be of the following types: char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"};
 
     Prototype:
-        void FcBucketPicker::addValue(char* value);
+        void FcBucketPicker::addValue(char* value, const char* featuretype);
 
     Parameters:
         filter - It can be of the following types: 
@@ -46,9 +46,9 @@ void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,cha
     Returns:
         void
 */
-void FcBucketPicker::addValue(char* id, char* featuretype)
+void FcBucketPicker::addValue(const char* id, const char* featuretype)
 {
-    int size = headerArraySize+strlen(id)+strlen(featuretype)+1;
+    int size = strlen("[{\"id\":\"\",\"featureType\":\"\"}]")+strlen(id)+strlen(featuretype)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonStr(optTemp, "id", id);
@@ -83,7 +83,7 @@ void FcBucketPicker::appendValue()
 {    
     if(jsonArray!=nullptr)
     {
-        int size = strlen(json)+strlen(jsonArray)+10;   //add ',"value":' and '\0'
+        int size = strlen(",\"value\":")+strlen(json)+strlen(jsonArray)+1;   //add byte '\0'
         json_data.arrayResize(json,size);
         json_data.add2JsonArray(json,"value",jsonArray);
     }

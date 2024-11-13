@@ -5,7 +5,7 @@
     This endpoint returns a list of messages in the specified P2P chat
 
     Prototype:
-        void set(bool owner,bool editor,bool subscriber);
+        void set(const char* recipientId,const char* messageId,int limit);
 
     Parameters:
         recipientId - Filters the p2p chats list by showing only the one occurring with the specified account id.
@@ -15,9 +15,9 @@
     Returns:
         void
 */
-void P2pMessageGet::set(char* recipientId,char* messageId,int limit)
+void P2pMessageGet::set(const char* recipientId,const char* messageId,int limit)
 {
-    int size = headerSize+strlen(recipientId)+strlen(messageId)+json_data.intStrSize(limit)+1;
+    int size = strlen("{\"recipientId\":\"\",\"messageId\":\"\",\"limit\":}")+strlen(recipientId)+strlen(messageId)+json_data.intStrSize(limit)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -41,6 +41,23 @@ void P2pMessageGet::set(char* recipientId,char* messageId,int limit)
 char* P2pMessageGet::getEPurl()
 {
     return httpsUrl communication_p2p_message;
+}
+
+/* Function: P2pMessageGet.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* P2pMessageGet::getWSEPurl()
+{
+    return communication_p2p_message;        
 }
 
 /* Function: P2pMessageGet.get

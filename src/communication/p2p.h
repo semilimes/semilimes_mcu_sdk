@@ -20,6 +20,19 @@ public:
 ///@returns         void
 
     char* getEPurl();
+    
+// Function: P2p.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
 };
 
 #endif

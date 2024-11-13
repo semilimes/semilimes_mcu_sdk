@@ -6,7 +6,6 @@
 class FcColorPicker
 {
 private:
-    #define headerSize 114
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     A graphical color-picker to select a color from a palette and return its RGB value
 
 //     Prototype:
-//         void FcColorPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+//         void FcColorPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -44,7 +43,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+    void set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle);
 
 // Function: FcColorPicker.get
 

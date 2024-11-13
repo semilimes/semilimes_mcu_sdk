@@ -6,7 +6,6 @@
 class ChannelUnsubscribe
 {
 private:
-    #define headerSize 16
     SmeJson json_data;
     char* json = nullptr;
     
@@ -34,14 +33,14 @@ public:
 //     This endpoint makes the calling account to unsubscribe from an existing channel.
 
 //     Prototype:
-//         void set(char* channelId);
+//         void set(const char* channelId);
 
 //     Parameters:
 ///@param          channelId - is the unique Id to reference an existing channel
 
 //     Returns:
 ///@returns         void
-    void set(char* channelId);
+    void set(const char* channelId);
 
 // Function: ChannelUnsubscribe.getEPurl
 
@@ -55,6 +54,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelUnsubscribe.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: ChannelUnsubscribe.get
 

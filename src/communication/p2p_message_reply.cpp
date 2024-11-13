@@ -5,7 +5,7 @@
     This endpoint allows the account to reply to a specific message with a simple text.
 
     Prototype:
-        void set(char* messageId, char* dataComponent);
+        void set(const char* messageId, const char* dataComponent);
 
     Parameters:
         messageId - is the unique Id to reference an existing p2p chat
@@ -14,9 +14,9 @@
     Returns:
         void
 */
-void P2pMessageReply::set(char* messageId, char* dataComponent)
+void P2pMessageReply::set(const char* messageId, const char* dataComponent)
 {
-    int size = headerSize+strlen(messageId)+strlen(dataComponent)+1;
+    int size = strlen("{\"messageId\":\"\",\"dataComponent\":}")+strlen(messageId)+strlen(dataComponent)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -39,6 +39,23 @@ void P2pMessageReply::set(char* messageId, char* dataComponent)
 char* P2pMessageReply::getEPurl()
 {
     return httpsUrl communication_p2p_message_reply;
+}
+
+/* Function: P2pMessageReply.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* P2pMessageReply::getWSEPurl()
+{
+    return communication_p2p_message_reply;        
 }
 
 /* Function: P2pMessageReply.get

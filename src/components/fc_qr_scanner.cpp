@@ -5,7 +5,7 @@
     A scanner button allowing to scan and read QR Codes
 
     Prototype:
-        void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle);
+        void FcQrScanner::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle, const char* mode);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,9 +18,9 @@
     Returns:
         void
 */
-void FcQrScanner::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle, char* mode)
+void FcQrScanner::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle, const char* mode)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+strlen(mode)+1;
+    int size = strlen("{\"formComponentType\":\"qrcodescanner\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"mode\":\"\",\"value\":\"\",\"actionButtonTitle\":\"\"}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+strlen(mode)+1;
     json = new char[size];
 
     json_data.initJson(json);

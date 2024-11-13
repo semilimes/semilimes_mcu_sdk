@@ -6,7 +6,6 @@
 class FcLabel
 {
 private:
-    #define headerSize 53
     SmeJson json_data;
     char* json = nullptr; 
 
@@ -33,7 +32,7 @@ public:
 //     A simple read-only label
 
 //     Prototype:
-//         void FcLabel::set(char* refname,char* title);
+//         void FcLabel::set(const char* refname,const char* title);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -41,7 +40,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title);
+    void set(const char* refname,const char* title);
 
 // Function: FcLabel.get
 

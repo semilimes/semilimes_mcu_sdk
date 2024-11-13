@@ -5,7 +5,7 @@
     An appointment message for defining a calendar event, complete with title, description, dates and location
 
     Prototype:
-       void DcAppointment::set(char* title, char* description, int start, int end, bool allDay, float latitude, float longitude);
+       void DcAppointment::set(const char* title, const char* description, int start, int end, bool allDay, float latitude, float longitude);
 
     Parameters:
         title - is for assigning the main title to the appointment. This parameter is required
@@ -18,9 +18,9 @@
     Returns:
         void
 */
-void DcAppointment::set(char* title, char* description, int start, int end, bool allDay, float latitude, float longitude)
+void DcAppointment::set(const char* title, const char* description, int start, int end, bool allDay, float latitude, float longitude)
 {
-    int size = headerSize+strlen(title)+strlen(description)+json_data.intStrSize(start)+json_data.intStrSize(end)+json_data.boolStrSize(allDay)+1;
+    int size = strlen("{\"dataComponentType\":\"appointment\",\"title\":,\"title\":,\"description\":,\"start\":,\"end\":,\"allDay\":}")+strlen(title)+strlen(description)+json_data.intStrSize(start)+json_data.intStrSize(end)+json_data.boolStrSize(allDay)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -50,7 +50,7 @@ void DcAppointment::set(char* title, char* description, int start, int end, bool
 void DcAppointment::addLocation(float latitude, float longitude)
 {
     int ndigits = 6;
-    int size = headerLocationSize+json_data.floatStrSize(latitude,ndigits)+json_data.floatStrSize(longitude,ndigits)+1;
+    int size = strlen("{\"latitude\":,\"longitude\":}")+json_data.floatStrSize(latitude,ndigits)+json_data.floatStrSize(longitude,ndigits)+1;
     char* optTemp = new char[size];
     json_data.initJson(optTemp);
     json_data.addPair2JsonFloat(optTemp, "latitude", latitude);

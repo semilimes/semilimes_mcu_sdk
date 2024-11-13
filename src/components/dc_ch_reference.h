@@ -6,7 +6,6 @@
 class DcChReference
 {
 private:
-    #define headerSize 46
     SmeJson json_data;
     char* json = nullptr;
 
@@ -33,7 +32,7 @@ public:
 //     A message referencing an existing Channel
 
 //     Prototype:
-//         void DcChReference::set(char* channelId);
+//         void DcChReference::set(const char* channelId);
 
 //     Parameters:
 ///@param         channelId - the id of the referenced channel
@@ -41,7 +40,7 @@ public:
 //     Returns:
 ///@return         void
 
-    void set(char* channelId);
+    void set(const char* channelId);
     
 // Function: DcChReference.get
 

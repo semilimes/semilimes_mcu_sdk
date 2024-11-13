@@ -6,7 +6,6 @@
 class FcLocationPicker
 {
 private:
-    #define headerSize 140
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     A picker showing a map where to choose a location or address
 
 //     Prototype:
-//         void FcLocationPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+//         void FcLocationPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool currLocOnly);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -45,7 +44,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool currLocOnly);
+    void set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool currLocOnly);
 // Function: FcLocationPicker.get
 
 //     return the json script

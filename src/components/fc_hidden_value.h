@@ -6,7 +6,6 @@
 class FcHiddenValue
 {
 private:
-    #define headerSize 59
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     A value into the form which is not visible to the use
 
 //     Prototype:
-//         void FcHiddenValue::set(char* refname,char* value);
+//         void FcHiddenValue::set(const char* refname,const char* value);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -41,7 +40,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* value);
+    void set(const char* refname,const char* value);
 
 // Function: FcHiddenValue.get
 

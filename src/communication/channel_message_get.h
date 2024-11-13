@@ -6,7 +6,6 @@
 class ChannelMessageGet
 {
 private:
-    #define headerSize 40
     SmeJson json_data;
     char* json = nullptr;
     
@@ -34,7 +33,7 @@ public:
 //     This endpoint returns a list of messages in the specified Channel.
 
 //     Prototype:
-//         void set(char* channelId,char* messageId,int limit);
+//         void set(const char* channelId,const char* messageId,int limit);
 
 //     Parameters:
 ///@param         channelId - is the unique Id to reference an existing channel
@@ -43,7 +42,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* channelId,char* messageId,int limit);
+    void set(const char* channelId,const char* messageId,int limit);
 
 // Function: ChannelMessageGet.getEPurl
 
@@ -57,6 +56,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelMessageGet.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: ChannelMessageGet.get
 

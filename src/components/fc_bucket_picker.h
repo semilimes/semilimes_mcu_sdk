@@ -6,8 +6,6 @@
 class FcBucketPicker
 {
 private:
-    #define headerSize 134
-    #define headerArraySize 28
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -42,7 +40,7 @@ public:
 //     A picker allowing to select and reference buckets
 
 //     Prototype:
-//         void FcBucketPicker::set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
+//         void FcBucketPicker::set(const char* refname,const char* title,bool reqSel, const char* filter,const char* actBtnTitle,bool multiSel);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -54,14 +52,14 @@ public:
 
 //     Returns:
 ///@return         void
-    void set(char* refname,char* title,bool reqSel, char* filter,char* actBtnTitle,bool multiSel);
+    void set(const char* refname,const char* title,bool reqSel, const char* filter,const char* actBtnTitle,bool multiSel);
 
 // Function: FcBucketPicker.addValue
 
 //     add a selected bucket id upon form submission. It can be of the following types: char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"};
 
 //     Prototype:
-//         void FcBucketPicker::addValue(char* value);
+//         void FcBucketPicker::addValue(const char* value, const char* featuretype);
 
 //     Parameters:
 ///@param         id - it is the id of the bucket
@@ -69,7 +67,7 @@ public:
 
 //     Returns:
 ///@return         void
-    void addValue(char* id, char* featuretype);
+    void addValue(const char* id, const char* featuretype);
 
 // Function: FcBucketPicker.appendValue
 

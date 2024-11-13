@@ -14,7 +14,8 @@ This project is licensed under the MIT License.
  ****************************************************/
 
 #include <Arduino.h>
-#include <semilimes.h>
+//#include <./src/semilimes.h>
+#include <src/semilimes.h>
       
 void smeJsonTest()
 {
@@ -51,12 +52,7 @@ void smeJsonTest()
     Serial.println(provisioning.getDeviceClaimStatusURL());
         
     Serial.println("\r************** form components ******************");
-    
-    Serial.println("\rinit FcLabel");
-    FcLabel fclabel;
-    fclabel.set("Label","Example Form on a newly created Channel");
-    Serial.println(fclabel.get());
-    
+        
     Serial.println("\rinit FcBucketPicker");
     FcBucketPicker fcbucketpicker;
     fcbucketpicker.set("refname","title",true,"profile","actbuttontitle",true);
@@ -65,8 +61,31 @@ void smeJsonTest()
     fcbucketpicker.addValue("id3",fcbucketpicker.featureTypes[0]);
     fcbucketpicker.addValue("id4",fcbucketpicker.featureTypes[3]);
     fcbucketpicker.appendValue();
-    String temp = fcbucketpicker.get();
-    Serial.println(temp);
+    Serial.println(fcbucketpicker.get());
+    
+    Serial.println("\rinit FcButtonList");
+    FcButtonList fcbuttonlist;
+    fcbuttonlist.set("myButtonList","Button List",false,"buttonName",true,fcbuttonlist.lineSize[0]);
+    fcbuttonlist.addOptions("button1","choice1","icon1Name"); //add the first button (name, value, iconName)  
+    fcbuttonlist.addOptions("button2","choice2","icon2Name"); //add the first button (name, value, iconName)  
+    fcbuttonlist.addOptions("button3","choice3","icon3Name"); //add the first button (name, value, iconName)  
+    fcbuttonlist.appendOptions(); //append the buttons to the "fcbuttonlist"
+    Serial.println(fcbuttonlist.get());
+    
+    Serial.println("\rinit FcColorPicker");
+    FcColorPicker fccolorpicker;
+    fccolorpicker.set("refname","title",true,"value","Select Color");
+    Serial.println(fccolorpicker.get());
+    
+    Serial.println("\rinit FcContactPicker");
+    FcContactPicker fccontactpicker;
+    fccontactpicker.set("refname","title",true,"value","actBtnTitle",true);
+    Serial.println(fccontactpicker.get());
+    
+    Serial.println("\rinit FcLabel");
+    FcLabel fclabel;
+    fclabel.set("Label","Example Form on a newly created Channel");
+    Serial.println(fclabel.get());    
     
     Serial.println("\rinit FcTextBox");
     FcTextBox fctextbox;
@@ -98,11 +117,6 @@ void smeJsonTest()
     fclocationpicker.set("refname","title",true,"value","actBtnTitle",true);
     Serial.println(fclocationpicker.get());
     
-    Serial.println("\rinit FcContactPicker");
-    FcContactPicker fccontactpicker;
-    fccontactpicker.set("refname","title",true,"value","actBtnTitle",true);
-    Serial.println(fccontactpicker.get());
-    
     Serial.println("\rinit FcHiddenValue");
     FcHiddenValue fchiddenvalue;
     fchiddenvalue.set("refname","value");
@@ -118,18 +132,9 @@ void smeJsonTest()
     fcqrscanner.set("refname","title",true,"value","actBtnTitle",fcqrscanner.mode[2]);
     Serial.println(fcqrscanner.get());
     
-    Serial.println("\rinit FcButtonList");
-    FcButtonList fcbuttonlist;
-    fcbuttonlist.set("myButtonList","Button List",false,"buttonName",true,fcbuttonlist.lineSize[0]);
-    fcbuttonlist.addOptions("button1","choice1","icon1Name"); //add the first button (name, value, iconName)  
-    fcbuttonlist.addOptions("button2","choice2","icon2Name"); //add the first button (name, value, iconName)  
-    fcbuttonlist.addOptions("button3","choice3","icon3Name"); //add the first button (name, value, iconName)  
-    fcbuttonlist.appendOptions(); //append the buttons to the "fcbuttonlist"
-    Serial.println(fcbuttonlist.get());
-    
     Serial.println("\rinit FcSingleChoice");
     FcSingleChoice fcsinglechoice;
-    fcsinglechoice.set("myButtonList","Button List",false,"value");
+    fcsinglechoice.set("FcSingleChoice","FcSingle Choice",false,fcsinglechoice.mode[1],"value");
     fcsinglechoice.addOptions("button1","choice1"); //add the first button (name, value)  
     fcsinglechoice.addOptions("button2","choice2"); //add the first button (name, value)  
     fcsinglechoice.addOptions("button3","choice3"); //add the first button (name, value)  
@@ -138,7 +143,7 @@ void smeJsonTest()
     
     Serial.println("\rinit FcMultipleChoice");
     FcMultipleChoice fcmultiplechoice;
-    fcmultiplechoice.set("myButtonList","Button List",false);
+    fcmultiplechoice.set("FcMultipleChoice","FcMultipleChoice",false);
     fcmultiplechoice.addOptions("button1","choice1"); //add the first button (name, value)  
     fcmultiplechoice.addOptions("button2","choice2"); //add the first button (name, value)  
     fcmultiplechoice.addOptions("button3","choice3"); //add the first button (name, value)  
@@ -148,32 +153,41 @@ void smeJsonTest()
     fcmultiplechoice.addValue("choice3");
     fcmultiplechoice.appendValues(); //append the buttons to the "fcmultiplechoice" 
     Serial.println(fcmultiplechoice.get());
+   
+    Serial.println("\rinit FcEventPicker");
+    FcEventPicker fceventpicker;
+    fceventpicker.set("refname","title",true,false,fceventpicker.eventsDisplayMode[1]);
+    fceventpicker.addEvent("id",123456213,"title","description","referenceBucketId","{add Infos}");
+    fceventpicker.addEvent("id2",223456213,"title2","description2","referenceBucketId2","{add Infos2}");
+    fceventpicker.addEvent("id3",323456213,"title3","description3","referenceBucketId3","{add Infos3}");
+    fceventpicker.appendEvents();
+    fceventpicker.addValue("{\"id3\",323456213,\"title3\",\"description3\",\"referenceBucketId3\",\"add Infos3\"}");
+    fceventpicker.addValue("{\"id7\",723456213,\"title7\",\"description7\",\"referenceBucketId7\",\"add Infos7\"}");
+    fceventpicker.appendValues();
+    Serial.println(fceventpicker.get());
+
+    Serial.println("\rinit FcGauge");
+    FcGauge fcgauge;
+    fcgauge.set("refname","title",1,360,2,10,150,"km/h",fcgauge.pointer[1],"#ABABAB",fcgauge.progressBar[0],"#ABABAB");
+    fcgauge.addSegment(0,50,"#CCDD11");
+    fcgauge.addSegment(0,150,"#CDDD11");
+    fcgauge.addSegment(0,250,"#CEDD11");
+    fcgauge.addSegment(0,360,"#CFDD11");
+    fcgauge.appendSegments();
+    Serial.println(fcgauge.get());
+    
+    Serial.println("\r************** data components ******************");
     
     Serial.println("\rinit DcAppointment");
     DcAppointment dcappointment;
     dcappointment.set("title","description",12346,987645,false,12.3456,12.3456);
     Serial.println(dcappointment.get());
-
-    DcGauge dcgauge;
-    dcgauge.set("title",1,360,2,10,150,"km/h",dcgauge.pointer[1],"#ABABAB",dcgauge.progressBar[0],"#ABABAB");
-    dcgauge.addSegment(0,50,"#CCDD11");
-    dcgauge.addSegment(0,150,"#CDDD11");
-    dcgauge.addSegment(0,250,"#CEDD11");
-    dcgauge.addSegment(0,360,"#CFDD11");
-    dcgauge.appendSegments();
-    Serial.println(dcgauge.get());
     
-    Serial.println("\r************** data components ******************");
-    
-    Serial.println("\rinit DcSimpleText");
-    DcSimpleText dcsimpletext;
-    dcsimpletext.set("text");
-    Serial.println(dcsimpletext.get());
-    
-    DcHtmlText dchtmltext;
-    dchtmltext.set("html text");
-    Serial.println(dchtmltext.get());
-    
+    Serial.println("\rinit DcChReference");
+    DcChReference dcchreference;
+    dcchreference.set("channelId");
+    Serial.println(dcchreference.get());
+        
     Serial.println("\rinit DcContact");
     DcContact dccontact;
     dccontact.addContactIds("123");
@@ -190,26 +204,7 @@ void smeJsonTest()
     dcfile.appendFileIds();
     Serial.println(dcfile.get());
     
-    Serial.println("\rinit DcTunnelReference");
-    DcTunnelReference dctunnelreference;
-    dctunnelreference.set("tunnelid");
-    Serial.println(dctunnelreference.get());
-    
-    Serial.println("\rinit DcLocation");
-    DcLocation dclocation;
-    dclocation.set("loc name",44.405650,8.946256);
-    Serial.println(dclocation.get());
-    
-    Serial.println("\rinit DcWebview");
-    DcWebview dcwebview;
-    dcwebview.set("dcwebview",true,dcwebview.viewSizeTypes[0],dcwebview.displayMode[1],"linkDisplayName");
-    Serial.println(dcwebview.get());
-   
-    Serial.println("\rinit DcChReference");
-    DcChReference dcchreference;
-    dcchreference.set("channelId");
-    Serial.println(dcchreference.get());
-    
+    Serial.println("\rinit DcForm");
     DcForm dcform;
     dcform.set("recId",dcform.featureType[0],true,true,"submit","form1",dcform.align[1],false, true);
     dcform.addFormComponents(fclocationpicker.get());
@@ -217,40 +212,64 @@ void smeJsonTest()
     dcform.addFormComponents(fcswitch.get());
     dcform.appendFormComponents(); //append Form Components
     Serial.println(dcform.get());
+        
+    Serial.println("\rinit DcGauge");  
+    DcGauge dcgauge;
+    dcgauge.set("title",1,360,2,10,150,"km/h",dcgauge.pointer[1],"#ABABAB",dcgauge.progressBar[0],"#ABABAB");
+    dcgauge.addSegment(0,50,"#CCDD11");
+    dcgauge.addSegment(0,150,"#CDDD11");
+    dcgauge.addSegment(0,250,"#CEDD11");
+    dcgauge.addSegment(0,360,"#CFDD11");
+    dcgauge.appendSegments();
+    Serial.println(dcgauge.get());
     
-    FcEventPicker fceventpicker;
-    fceventpicker.set("refname","title",true,false,fceventpicker.eventsDisplayMode[1]);
-    fceventpicker.addEvent("id",123456213,"title","description","referenceBucketId","add Infos");
-    fceventpicker.addEvent("id2",223456213,"title2","description2","referenceBucketId2","add Infos2");
-    fceventpicker.addEvent("id3",323456213,"title3","description3","referenceBucketId3","add Infos3");
-    fceventpicker.appendEvents();
-    fceventpicker.addValue("{\"id3\",323456213,\"title3\",\"description3\",\"referenceBucketId3\",\"add Infos3\"}");
-    fceventpicker.addValue("{\"id7\",723456213,\"title7\",\"description7\",\"referenceBucketId7\",\"add Infos7\"}");
-    fceventpicker.appendValues();
-    Serial.println(fceventpicker.get());
-
-    Serial.println("\rinit FcColorPicker");
-    FcColorPicker fccolorpicker;
-    fccolorpicker.set("refname","title",true,"value","Select Color");
-    Serial.println(fccolorpicker.get());
-
-    FcGauge fcgauge;
-    fcgauge.set("refname","title",1,360,2,10,150,"km/h",fcgauge.pointer[1],"#ABABAB",fcgauge.progressBar[0],"#ABABAB");
-    fcgauge.addSegment(0,50,"#CCDD11");
-    fcgauge.addSegment(0,150,"#CDDD11");
-    fcgauge.addSegment(0,250,"#CEDD11");
-    fcgauge.addSegment(0,360,"#CFDD11");
-    fcgauge.appendSegments();
-    Serial.println(fcgauge.get());
+    Serial.println("\rinit DcHtmlText");
+    DcHtmlText dchtmltext;
+    dchtmltext.set("html text");
+    Serial.println(dchtmltext.get());
     
-   Serial.println("\r************** communication ******************");
+    Serial.println("\rinit DcSimpleText");
+    DcSimpleText dcsimpletext;
+    dcsimpletext.set("text");
+    Serial.println(dcsimpletext.get());
+    
+    Serial.println("\rinit DcLocation");
+    DcLocation dclocation;
+    dclocation.set("loc name",44.405650,8.946256);
+    Serial.println(dclocation.get());
+    
+    Serial.println("\rinit DcTunnelReference");
+    DcTunnelReference dctunnelreference;
+    dctunnelreference.set("tunnelid");
+    Serial.println(dctunnelreference.get());
 
+    Serial.println("\rinit DcWebview");
+    DcWebview dcwebview;
+    dcwebview.set("dcwebview",true,dcwebview.viewSizeTypes[0],dcwebview.displayMode[1],"linkDisplayName");
+    Serial.println(dcwebview.get());
+    
+    Serial.println("\rinit DcTileView");
+    DcTileView dctileview;
+    dctileview.set(3);
+    dctileview.addColorTile("colortile","title",0,1,0,1,"color_rgb", dctileview.actionType[0],"dataComponents");
+    dctileview.addIconTile("icontile","title",0,1,1,1,"iconName","iconColor","icon backgroundColor",dctileview.actionType[1],"webUrl");
+    dctileview.addPhotoTile("phototile","title",0,1,2,1,"uuid",dctileview.actionType[2],"bucketId");
+    dctileview.addPhotoUrlTile("photoUrltile","title",0,1,3,1,"url",dctileview.actionType[3],"resourceId","subPath");
+    dctileview.addWebUrlTile("WebUrltile","title",1,1,0,1,"web url",dctileview.actionType[4],"responseTemplateId","receiverId",true);
+    dctileview.addLiveWebUrlTile("LiveWebUrltile","title",1,1,1,1,"liveweb url",dctileview.actionType[3],"resourceId2","subPath2");
+    dctileview.addResourceTile("resourcetile","title",1,1,2,1,"resourceId","subPath",dctileview.actionType[2],"bucketId2");
+    dctileview.addSlideshowTile("slideShowtile","title",1,1,3,1,dctileview.actionType[1],"webUrl2");
+    dctileview.addFormTile("formtile","title",2,1,0,1,"{\"form\":\"form.....\"}",dctileview.actionType[0],"dataComponents2");
+    dctileview.appendTiles();
+    Serial.println(dctileview.get());    
+    
+    Serial.println("\r************** communication ******************");
     Serial.println("\rinit BucketLike");
     BucketLike bucketlike;
     bucketlike.set("bucketID");
     Serial.println(bucketlike.getEPurl());
     Serial.println(bucketlike.get());
-    
+
     Serial.println("\rinit BucketOpen");
     BucketOpen bucketopen;
     bucketopen.set("bucketID");
@@ -283,7 +302,7 @@ void smeJsonTest()
     channelcreate.appendEditorsIds();
     Serial.println(channelcreate.getEPurl());
     Serial.println(channelcreate.get());
-    
+   
     Serial.println("\rinit ChannelGet");
     ChannelGet channelget;
     channelget.set("ownerId","editorId","channelId","title");
@@ -301,19 +320,19 @@ void smeJsonTest()
     channelmessagesend.set("channelId",dcsimpletext.get(), true);
     Serial.println(channelmessagesend.getEPurl());
     Serial.println(channelmessagesend.get());
-    
+
     Serial.println("\rinit ChannelMessageUpdate");
     ChannelMessageUpdate channelmessageupdate;
     channelmessageupdate.set("channelId",dcsimpletext.get(),true);
     Serial.println(channelmessageupdate.getEPurl());
     Serial.println(channelmessageupdate.get());
-    
+   
     Serial.println("\rinit ChannelSubscribe");
     ChannelSubscribe channelmessagesubscribe;
     channelmessagesubscribe.set("channelId");
     Serial.println(channelmessagesubscribe.getEPurl());
     Serial.println(channelmessagesubscribe.get());
-    
+   
     Serial.println("\rinit ChannelUnsubscribe");
     ChannelUnsubscribe channelmessageunsubscribe;
     channelmessageunsubscribe.set("channelId");
@@ -383,7 +402,7 @@ void smeJsonTest()
     groupchatreactionsend.set("messageId","reaction");
     Serial.println(groupchatreactionsend.getEPurl());
     Serial.println(groupchatreactionsend.get());
-    
+   
     Serial.println("\rinit GroupchatsGet");
     GroupchatsGet groupchatget;
     groupchatget.addRecipientId("RecipientId1");
@@ -440,8 +459,7 @@ void smeJsonTest()
     P2pSignalTyping p2psignaltyping;
     p2psignaltyping.set("recipientId");
     Serial.println(p2psignaltyping.getEPurl());
-    Serial.println(p2psignaltyping.get());
-    
+    Serial.println(p2psignaltyping.get());    
 }
 
 void setup() 

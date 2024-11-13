@@ -18,7 +18,7 @@
 */
 void GetMyAccount::set(bool main,bool sub,bool shared,bool details)
 {
-    int size = headerSize+json_data.boolStrSize(main)+json_data.boolStrSize(sub)+json_data.boolStrSize(shared)+json_data.boolStrSize(details)+1;
+    int size = strlen("{\"main\":,\"sub\":,\"shared\":,\"details\":}")+json_data.boolStrSize(main)+json_data.boolStrSize(sub)+json_data.boolStrSize(shared)+json_data.boolStrSize(details)+1;
     json = new char[size];
     json_data.initJson(json);
     json_data.addPair2JsonBool(json, "main", main);

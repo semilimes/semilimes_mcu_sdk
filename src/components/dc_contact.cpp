@@ -5,7 +5,7 @@
    Add a contact Id to the array
 
    Prototype:
-      void DcContact::addContactIds(char* contactIds);
+      void DcContact::addContactIds(const char* contactIds);
 
    Parameters:
       contactIds - the Contact Id to add
@@ -13,9 +13,9 @@
    Returns:
       void
 */
-void DcContact::addContactIds(char* contactIds)
+void DcContact::addContactIds(const char* contactIds)
 {       
-    int size = headerArraySize+strlen(contactIds)+1;
+    int size = strlen("[]")+strlen(contactIds)+1;
     
     if(!jsonArray)
     {

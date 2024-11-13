@@ -5,7 +5,7 @@
     A picker allowing to select and reference contacts
 
     Prototype:
-        void FcContactPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel);
+        void FcContactPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool multiSel);
 
     Parameters:
         refname - it is the reference name of the object
@@ -18,9 +18,9 @@
     Returns:
         void
 */
-void FcContactPicker::set(char* refname,char* title,bool reqSel, char* value,char* actBtnTitle,bool multiSel)
+void FcContactPicker::set(const char* refname,const char* title,bool reqSel, const char* value,const char* actBtnTitle,bool multiSel)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+json_data.boolStrSize(multiSel)+1;
+    int size = strlen("{\"formComponentType\":\"contactpicker\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":\"\",\"actionButtonTitle\":\"\",\"multiSelection\":}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+strlen(value)+strlen(actBtnTitle)+json_data.boolStrSize(multiSel)+1;
     json = new char[size];
 
     json_data.initJson(json);

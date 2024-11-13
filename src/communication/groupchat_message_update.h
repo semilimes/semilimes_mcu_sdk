@@ -6,8 +6,6 @@
 class GroupchatMessageUpdate
 {
 private:
-    #define headerSize 33
-    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
 
@@ -48,7 +46,7 @@ public:
 //     This endpoint allows to update a specific message published in a group Chat
 
 //     Prototype:
-//         void set(char* messageId, char* dataComponent);
+//         void set(const char* messageId, const char* dataComponent, bool silent);
 
 //     Parameters:
 ///@param         channelId - is the unique Id to reference an existing channel
@@ -57,7 +55,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* recipientId, char* dataComponent, bool silent);
+    void set(const char* recipientId, const char* dataComponent, bool silent);
 
 // Function: GroupchatMessageUpdate.getEPurl
 
@@ -71,6 +69,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: GroupchatMessageUpdate.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: GroupchatMessageUpdate.get
 

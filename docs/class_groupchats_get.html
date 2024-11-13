@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -111,12 +111,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaf5dd78fb6387817ec2facec398d96cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4770d272244cce04b413379a3711401f" id="r_a4770d272244cce04b413379a3711401f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4770d272244cce04b413379a3711401f">~GroupchatsGet</a> ()</td></tr>
 <tr class="separator:a4770d272244cce04b413379a3711401f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37916c519b4f298044fcede172f1e7fa" id="r_a37916c519b4f298044fcede172f1e7fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37916c519b4f298044fcede172f1e7fa">addRecipientId</a> (char *recipientId)</td></tr>
-<tr class="separator:a37916c519b4f298044fcede172f1e7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c07644d75bc4382334898bf41b138f1" id="r_a1c07644d75bc4382334898bf41b138f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c07644d75bc4382334898bf41b138f1">addRecipientId</a> (const char *recipientId)</td></tr>
+<tr class="separator:a1c07644d75bc4382334898bf41b138f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87f6f9fbb878764397d9112b063ef2b9" id="r_a87f6f9fbb878764397d9112b063ef2b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87f6f9fbb878764397d9112b063ef2b9">appendRecipientIds</a> ()</td></tr>
 <tr class="separator:a87f6f9fbb878764397d9112b063ef2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a922ce1f8dc286c813155b47f37461308" id="r_a922ce1f8dc286c813155b47f37461308"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a922ce1f8dc286c813155b47f37461308">getEPurl</a> ()</td></tr>
 <tr class="separator:a922ce1f8dc286c813155b47f37461308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced802a0d2bf4a3cc2851b1fcac67886" id="r_aced802a0d2bf4a3cc2851b1fcac67886"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aced802a0d2bf4a3cc2851b1fcac67886">getWSEPurl</a> ()</td></tr>
+<tr class="separator:aced802a0d2bf4a3cc2851b1fcac67886"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05984c2bd68dccca6af072dd4e0f9f38" id="r_a05984c2bd68dccca6af072dd4e0f9f38"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05984c2bd68dccca6af072dd4e0f9f38">get</a> ()</td></tr>
 <tr class="separator:a05984c2bd68dccca6af072dd4e0f9f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -174,8 +176,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a37916c519b4f298044fcede172f1e7fa" name="a37916c519b4f298044fcede172f1e7fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37916c519b4f298044fcede172f1e7fa">&#9670;&#160;</a></span>addRecipientId()</h2>
+<a id="a1c07644d75bc4382334898bf41b138f1" name="a1c07644d75bc4382334898bf41b138f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c07644d75bc4382334898bf41b138f1">&#9670;&#160;</a></span>addRecipientId()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +185,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void GroupchatsGet::addRecipientId </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>recipientId</em></span></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>recipientId</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -249,6 +251,24 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>char* httpsUrl + endpoint </dd></dl>
+
+</div>
+</div>
+<a id="aced802a0d2bf4a3cc2851b1fcac67886" name="aced802a0d2bf4a3cc2851b1fcac67886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced802a0d2bf4a3cc2851b1fcac67886">&#9670;&#160;</a></span>getWSEPurl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * GroupchatsGet::getWSEPurl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>char* endpoint </dd></dl>
 
 </div>
 </div>

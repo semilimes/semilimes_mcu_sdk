@@ -6,8 +6,6 @@
 class ChannelCreate
 {
 private:
-    #define headerSize 45
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -37,7 +35,7 @@ public:
 //     This endpoint allows to create a new channel and set the initial editors. The role of the current accountId will be automatically set to editor.
 
 //     Prototype:
-//         void set(char* title,char* avatar,bool visible,bool locked);
+//         void set(const char* title,const char* avatar,bool visible,bool locked);
 
 //     Parameters:
 ///@param         title - sets the channel title
@@ -47,12 +45,12 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* title,char* avatar,bool visible,bool locked);
+    void set(const char* title,const char* avatar,bool visible,bool locked);
 
 // Function: ChannelCreate.addEditorsId
 
 //     Prototype:
-//         void addEditorsId(char* data);
+//         void addEditorsId(const char* data);
 
 //     Append the selected editorId
 
@@ -61,7 +59,7 @@ public:
 
 //     Returns:
 ///@returns        void
-    void addEditorsId(char* data);
+    void addEditorsId(const char* data);
 
 // Function: ChannelCreate.appendEditorsIds
 
@@ -88,6 +86,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelCreate.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
 
 // Function: ChannelCreate.get
 

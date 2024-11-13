@@ -6,8 +6,6 @@
 class ChannelMessageSend
 {
 private:
-    #define headerSize 33
-    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
 
@@ -51,7 +49,7 @@ public:
 //     This endpoint allows to send a data component to a Channel as a new message.
 
 //     Prototype:
-//         void set(char* messageId, char* dataComponent);
+//         void set(const char* channelId, const char* dataComponent, bool silent);
 
 //     Parameters:
 ///@param         channelId - is the unique Id to reference an existing channel
@@ -60,7 +58,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* channelId, char* dataComponent, bool silent);
+    void set(const char* channelId, const char* dataComponent, bool silent);
 
 // Function: ChannelMessageSend.getEPurl
 
@@ -74,6 +72,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: ChannelMessageSend.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: ChannelMessageSend.get
 

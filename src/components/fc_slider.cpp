@@ -5,7 +5,7 @@
     A slider to let the user select a value by dragging its handle
 
     Prototype:
-        void FcSlider::set(char* refname,char* title,bool reqSel,int value,int min,int max,int step);
+        void FcSlider::set(const char* refname,const char* title,bool reqSel,int value,int min,int max,int step);
 
     Parameters:
         refname - it is the reference name of the object
@@ -19,9 +19,9 @@
     Returns:
         void
 */
-void FcSlider::set(char* refname,char* title,bool reqSel,int value,int min,int max,int step)
+void FcSlider::set(const char* refname,const char* title,bool reqSel,int value,int min,int max,int step)
 {
-    int size = headerSize+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+json_data.intStrSize(value)+json_data.intStrSize(min)+json_data.intStrSize(max)+json_data.intStrSize(step)+1;
+    int size = strlen("{\"formComponentType\":\"slider\",\"refName\":\"\",\"title\":\"\",\"requiredSelection\":,\"value\":,\"min\":,\"max\":,\"step\":}")+strlen(refname)+strlen(title)+json_data.boolStrSize(reqSel)+json_data.intStrSize(value)+json_data.intStrSize(min)+json_data.intStrSize(max)+json_data.intStrSize(step)+1;
     json = new char[size];
 
     json_data.initJson(json);

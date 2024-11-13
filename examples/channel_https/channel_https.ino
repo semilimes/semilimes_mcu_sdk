@@ -5,8 +5,9 @@ of the semilimes SDK and establish communication with a server via https.
 This example firmware, once connected to a Wi-Fi network and thereby to the 
 internet, establishes an https connection to a server. 
 
-Upon establishing the connection, the firmware creates a new channel in the 
-subaccount associated with the provided API key. 
+Upon establishing the connection, the firmware check if the channelname already 
+exists and eventually creates a new channel in the subaccount associated with 
+the provided API key. 
 Once the channel is successfully created, it sends a form containing two form 
 components: a label and a button list. 
 
@@ -39,18 +40,49 @@ WiFiMulti WiFiMulti;
 const uint32_t connectTimeoutMs = 5000;
 HTTPClient http;
 
-char channelId[37];
-bool msgReceivedChId = false;
-void JSON_decode(String payload)
+String channelId;
+
+String httpsPost(String ep_url, String json)
 {
-  //Serial.println(payload);  
+  http.begin(ep_url);
+  http.addHeader("accept",header.getAccept());
+  http.addHeader("Content-Type",header.getContentType());
+  http.addHeader("Authorization",header.getAuthorization());
+  http.POST(json);  
+  String response = http.getString();
+  http.end();    
+  return response;
+}
+
+void createChannelIfNew(String chName)
+{        
+  bool chNew = true;
   JsonDocument doc;
-  deserializeJson(doc, payload);
-  //check if is the "createdChannel" response 
-  if(doc["data"]["createdChannel"]["channelId"])
+
+  //check if chName already exists
+  ChannelsMyGet channelsmyget;
+  channelsmyget.set(true,true,true);
+  deserializeJson(doc, httpsPost(channelsmyget.getEPurl(),channelsmyget.get()));
+  for(int i=0; i<doc["data"].size(); i++)
   {
-    msgReceivedChId = true;
-    strcpy(channelId,doc["data"]["createdChannel"]["channelId"]);
+    if(doc["data"][i]["title"].as<String>() == chName) 
+    {
+      chNew=false;
+      Serial.println("Channel already exists!!");      
+      channelId = doc["data"][i]["channelId"].as<String>();
+      break;
+    }
+  }  
+  if(chNew)
+  {
+    //create a new channel
+    ChannelCreate channelcreate; //create a new "CreateChannel" 
+    channelcreate.set(chName.c_str(),"",false,true); //name="New Channel", avatar="", visible=false, locked=true
+    deserializeJson(doc, httpsPost(channelcreate.getEPurl(),channelcreate.get()));
+    if(doc["data"]["createdChannel"]["channelId"])
+    {
+      channelId = doc["data"]["createdChannel"]["channelId"].as<String>();
+    }
   }
 }
 
@@ -77,71 +109,45 @@ void setup()
 
     if(WiFiConnected==true)
     {      
-      header.setAuthorization("********** ApiKey **********");
-    }
-        
-    //create a new channel
-    ChannelCreate channelcreate; //create a new "CreateChannel" 
-    channelcreate.set("New Channel from https","",false,true); //name="New Channel", avatar="", visible=false, locked=true
-    http.begin(channelcreate.getEPurl());
-    http.addHeader("accept",header.getAccept());
-    http.addHeader("Content-Type",header.getContentType());
-    http.addHeader("Authorization",header.getAuthorization());
-    http.POST(channelcreate.get());  
-    String response = http.getString();
-    //Serial.print(response);
-    JSON_decode(response);
-    Serial.print("channelID: ");
-    Serial.println(channelId);
-    http.end();
-    
-    //check if the channel as been created and the new ChannelId received
-    if(msgReceivedChId==true)
-    {
-      msgReceivedChId = false;
-      Serial.print("New Channel Id: ");
-      Serial.println(channelId);
+      header.setAuthorization("*********************************************************************************");
+    }    
+    createChannelIfNew("New Channel from https");
 
-      //**********************************************
-      //send a message to the newly created channel
-      //**********************************************
-      
-      //create a new Form    
-      DcForm form; //create a new "DcForm" object and feed it with the pointers to the char-arrays that will contain the json 
-      form.set(channelId,form.featureType[2],false,false,"","refname"); //(channelId, featureType="channel",submitEnabled=false, retainStatus=false, "", refName)
-      
-      //create Label Form Component
-      FcLabel fclabel; //create a new "FcLabel" object and feed it with the pointers to the char-arrays that will contain the json
-      fclabel.set("Label","Example Form on a newly created Channel"); //(refname,title)
-      //Serial.println(fclabel.get());
-      form.addFormComponents(fclabel.get()); //add the "fclabel" to the FormComponents of "form"
-      
-      //create a button list Form Component
-      FcButtonList fcbuttonlist; //create a new "FcButtonList" object and feed it with the pointers to the char-arrays that will contain the json
-      fcbuttonlist.set("myButtonList","Button List",false,"buttonName",true); //(refname, title, required selection, value, vertList)
-      fcbuttonlist.addOptions("button1","choice1"); //add the first button (name, value)  
-      fcbuttonlist.addOptions("button2","choice2"); //add the second button (name, value)
-      fcbuttonlist.appendOptions(); //append the buttons to the "fcbuttonlist"
-      //Serial.println(fcbuttonlist.get());
-      form.addFormComponents(fcbuttonlist.get()); //add the "fcbuttonlist" to the FormComponents of "form"
-      
-      form.appendFormComponents(); //append the "added" Form Components (fclabel and fcbuttonlist) to the "form"
-      //Serial.println(form.get());
-      
-      //send message to channel
-      ChannelMessageSend channelmessagesend; //create a new "ChannelMessageSend" object and feed it with the pointers to the char-array that will contain the json
-      channelmessagesend.set(channelId,form.get()); //(channelId, dataComponent)
-      //Serial.println(channelmessagesend.get());
-      //Serial.println(channelmessagesend.getEPurl());
-          
-      http.begin(channelmessagesend.getEPurl());
-      http.addHeader("accept",header.getAccept());
-      http.addHeader("Content-Type",header.getContentType());
-      http.addHeader("Authorization",header.getAuthorization());
-      http.POST(channelmessagesend.get());  
-      Serial.println(http.getString()); 
-      http.end();
-    }
+    Serial.print("New Channel Id: ");
+    Serial.println(channelId);
+
+    //**********************************************
+    //send a message to the channel
+    //**********************************************
+    
+    //create a new Form    
+    DcForm form; //create a new "DcForm" object and feed it with the pointers to the char-arrays that will contain the json 
+    form.set(channelId.c_str(),form.featureType[2],false,false,"","refname",form.align[0],false,true); //(channelId, featureType="channel",submitEnabled=false, retainStatus=false, "", refName,align, authorizeSubmit, hideSubmissionMsg)
+    
+    //create Label Form Component
+    FcLabel fclabel; //create a new "FcLabel" object and feed it with the pointers to the char-arrays that will contain the json
+    fclabel.set("Label","Example Form on a newly created Channel"); //(refname,title)
+    //Serial.println(fclabel.get());
+    form.addFormComponents(fclabel.get()); //add the "fclabel" to the FormComponents of "form"
+    
+    //create a button list Form Component
+    FcButtonList fcbuttonlist; //create a new "FcButtonList" object and feed it with the pointers to the char-arrays that will contain the json
+    fcbuttonlist.set("myButtonList","Button List",false,"buttonName",true,fcbuttonlist.lineSize[1]); //(refname, title, required selection, value, vertList, lineSize)
+    fcbuttonlist.addOptions("button1","choice1",""); //add the first button (name, value, iconName)  
+    fcbuttonlist.addOptions("button2","choice2",""); //add the second button (name, value, iconName)
+    fcbuttonlist.appendOptions(); //append the buttons to the "fcbuttonlist"
+    //Serial.println(fcbuttonlist.get());
+    form.addFormComponents(fcbuttonlist.get()); //add the "fcbuttonlist" to the FormComponents of "form"
+    
+    form.appendFormComponents(); //append the "added" Form Components (fclabel and fcbuttonlist) to the "form"
+    //Serial.println(form.get());
+    
+    //send message to channel
+    ChannelMessageSend channelmessagesend; //create a new "ChannelMessageSend" object and feed it with the pointers to the char-array that will contain the json
+    channelmessagesend.set(channelId.c_str(),form.get(),false); //(channelId, dataComponent, silent)
+    //Serial.println(channelmessagesend.get());
+
+    httpsPost(channelmessagesend.getEPurl(),channelmessagesend.get());
 }
 
 void loop() 

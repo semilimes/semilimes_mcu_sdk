@@ -6,8 +6,6 @@
 class P2pMessageSend
 {
 private:
-    #define headerSize 37
-    #define optionsHeaderSize 11
     SmeJson json_data;
     char* json = nullptr;
 
@@ -48,7 +46,7 @@ public:
 //     This endpoint allows to send a data component to a Channel as a new message.
 
 //     Prototype:
-//         void set(char* recipientId, char* dataComponent);
+//         void set(const char* recipientId, const char* dataComponent, bool silent);
 
 //     Parameters:
 ///@param         recipientId - is the unique Id to reference an existing p2p chat
@@ -57,7 +55,7 @@ public:
 
 //     Returns:
 ///@returns         void
-    void set(char* recipientId, char* dataComponent, bool silent);
+    void set(const char* recipientId, const char* dataComponent, bool silent);
 
 // Function: P2pMessageSend.getEPurl
 
@@ -71,6 +69,19 @@ public:
 //     Returns:
 ///@returns         char* httpsUrl + endpoint
     char* getEPurl();
+    
+// Function: P2pMessageSend.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+//         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+    char* getWSEPurl();
     
 // Function: P2pMessageSend.get
 

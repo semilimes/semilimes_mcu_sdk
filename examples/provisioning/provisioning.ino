@@ -56,11 +56,11 @@ bool provisioning_device()
   {
     Serial.println("Device not yet claimed - no ApiKey saved in the non volatile memory of this device.");    
     //Register the device
-    provisioning.setObj(DeviceId, ProvisioningKey);
+    provisioning.set(DeviceId, ProvisioningKey);
     http.begin(provisioning.getRegisterDeviceURL());
     http.addHeader("Content-Type",header.getContentType());
     Serial.println("Registering the Device on semilimes server...");
-    http.POST(prov);
+    http.POST(provisioning.get());
     response = http.getString();
     http.end();
     deserializeJson(doc, response);
@@ -77,7 +77,7 @@ bool provisioning_device()
         //send the Claim status request
         http.begin(provisioning.getDeviceClaimStatusURL());
         http.addHeader("Content-Type",header.getContentType());
-        http.POST(prov);
+        http.POST(provisioning.get());
         response = http.getString();
         http.end(); 
         deserializeJson(doc, response);

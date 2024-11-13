@@ -6,7 +6,6 @@
 class GetMyAccount
 {
 private:
-    #define headerSize 37
     SmeJson json_data;
     char* json = nullptr; 
     

@@ -6,8 +6,6 @@
 class DcContact
 {
 private:
-    #define headerSize 31
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
@@ -27,7 +25,7 @@ public:
 */
     DcContact()
     {        
-        int size = headerSize+1;//add '\0' for null-termination
+        int size = strlen("{\"dataComponentType\":\"contact\"}")+1;//add '\0' for null-termination
         json = new char[size]; 
 
         json_data.initJson(json);
@@ -58,14 +56,14 @@ public:
 //    Add a contact Id to the array
 
 //    Prototype:
-//       void DcContact::addContactIds(char* contactIds);
+//       void DcContact::addContactIds(const char* contactIds);
 
 //    Parameters:
 ///@param       contactIds - the Contact Id to add
 
 //    Returns:
 ///@return       void
-    void addContactIds(char* data);
+    void addContactIds(const char* data);
 
 // Function: DcContact.appendContactIds
 

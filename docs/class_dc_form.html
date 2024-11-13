@@ -28,7 +28,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="semilimes_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.2</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -110,10 +110,10 @@ $(function(){initNavTree('class_dc_form.html',''); initResizable(true); });
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3f37ac999e856906c5d879d225305fe8" id="r_a3f37ac999e856906c5d879d225305fe8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f37ac999e856906c5d879d225305fe8">~DcForm</a> ()</td></tr>
 <tr class="separator:a3f37ac999e856906c5d879d225305fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34179c1cb47879cbd23ff39332f9497a" id="r_a34179c1cb47879cbd23ff39332f9497a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34179c1cb47879cbd23ff39332f9497a">set</a> (char *recId, char *recFeatureType, bool submitEnabled, bool retainStatus, char *submitText, char *refName, char *<a class="el" href="#a02c99eeec2ca8d9816ee6a9ad0c6dfba">align</a>, bool authorizeSubmit, bool hideSubmissionMsg)</td></tr>
-<tr class="separator:a34179c1cb47879cbd23ff39332f9497a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81625165ce8c66c859d7a79e31d225ed" id="r_a81625165ce8c66c859d7a79e31d225ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81625165ce8c66c859d7a79e31d225ed">addFormComponents</a> (char *component)</td></tr>
-<tr class="separator:a81625165ce8c66c859d7a79e31d225ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e350e545eebb967c755077f8eee60e9" id="r_a3e350e545eebb967c755077f8eee60e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e350e545eebb967c755077f8eee60e9">set</a> (const char *recId, const char *recFeatureType, bool submitEnabled, bool retainStatus, const char *submitText, const char *refName, const char *<a class="el" href="#a02c99eeec2ca8d9816ee6a9ad0c6dfba">align</a>, bool authorizeSubmit, bool hideSubmissionMsg)</td></tr>
+<tr class="separator:a3e350e545eebb967c755077f8eee60e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb075f20ae126e9a58ade5b00f778881" id="r_afb075f20ae126e9a58ade5b00f778881"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb075f20ae126e9a58ade5b00f778881">addFormComponents</a> (const char *component)</td></tr>
+<tr class="separator:afb075f20ae126e9a58ade5b00f778881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a730937f8b737f386fe0556d239dc1800" id="r_a730937f8b737f386fe0556d239dc1800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a730937f8b737f386fe0556d239dc1800">appendFormComponents</a> ()</td></tr>
 <tr class="separator:a730937f8b737f386fe0556d239dc1800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4295186ae7b3534a2ad325e52531aa80" id="r_a4295186ae7b3534a2ad325e52531aa80"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4295186ae7b3534a2ad325e52531aa80">get</a> ()</td></tr>
@@ -154,8 +154,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a81625165ce8c66c859d7a79e31d225ed" name="a81625165ce8c66c859d7a79e31d225ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81625165ce8c66c859d7a79e31d225ed">&#9670;&#160;</a></span>addFormComponents()</h2>
+<a id="afb075f20ae126e9a58ade5b00f778881" name="afb075f20ae126e9a58ade5b00f778881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb075f20ae126e9a58ade5b00f778881">&#9670;&#160;</a></span>addFormComponents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +163,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void DcForm::addFormComponents </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>component</em></span></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>component</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -214,8 +214,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a34179c1cb47879cbd23ff39332f9497a" name="a34179c1cb47879cbd23ff39332f9497a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34179c1cb47879cbd23ff39332f9497a">&#9670;&#160;</a></span>set()</h2>
+<a id="a3e350e545eebb967c755077f8eee60e9" name="a3e350e545eebb967c755077f8eee60e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e350e545eebb967c755077f8eee60e9">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,12 +223,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void DcForm::set </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>recId</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>recId</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>recFeatureType</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>recFeatureType</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -243,17 +243,17 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>submitText</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>submitText</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>refName</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>refName</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>align</em></span>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>align</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

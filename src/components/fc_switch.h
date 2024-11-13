@@ -6,7 +6,6 @@
 class FcSwitch
 {
 private:
-    #define headerSize 63
     SmeJson json_data;
     char* json = nullptr; 
     
@@ -33,7 +32,7 @@ public:
 //     An on/off switch
 
 //     Prototype:
-//         void FcSwitch::set(char* refname,char* title,bool value);
+//         void FcSwitch::set(const char* refname,const char* title,bool value);
 
 //     Parameters:
 ///@param         refname - it is the reference name of the object
@@ -43,7 +42,7 @@ public:
 //     Returns:
 ///@return         void
 
-    void set(char* refname,char* title,bool value);
+    void set(const char* refname,const char* title,bool value);
 
 // Function: FcSwitch.get
 

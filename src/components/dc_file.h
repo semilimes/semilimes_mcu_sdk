@@ -6,28 +6,25 @@
 class DcFile
 {
 private:
-    #define headerSize 28
-    #define headerArraySize 2
     SmeJson json_data;
     char* json = nullptr; 
     char* jsonArray = nullptr;
 
 public:
-/* Function: DcFile.set
-
-   A file object containing one or more files to open or download
-
-   Prototype:
-      void DcFile::set();
-
-   Parameters:
-
-   Returns:
-      void
-*/
+// Function: DcFile.set
+//
+//   A file object containing one or more files to open or download
+//
+//   Prototype:
+//      void DcFile::set();
+//
+//   Parameters:
+//
+//   Returns:
+///@return         void
     DcFile()
     {
-        int size = headerSize+1;//add '\0' for null-termination
+        int size = strlen("{\"dataComponentType\":\"file\"}")+1;//add '\0' for null-termination
         json = new char[size]; 
 
         json_data.initJson(json);
@@ -56,17 +53,16 @@ public:
 // Function: DcFile.addFileIds
 
 //    Add a File Id to the array
-//       void DcFile::addFileIds(char* fileIds);
-
+//
 //    Prototype:
-//       void DcFile::addFileIds(char* fileIds);
+//       void DcFile::addFileIds(const char* fileIds);
 
 //    Parameters:
 ///@param       fileIds - the File Id to add
 
 //    Returns:
 ///@return       void
-    void addFileId(char* fileIds);
+    void addFileId(const char* fileIds);
 
 // Function: DcFile.appendFileIds
 

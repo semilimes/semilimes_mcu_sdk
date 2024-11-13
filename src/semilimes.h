@@ -53,6 +53,7 @@
 #include "components/dc_form.h"
 #include "components/dc_appointment.h"
 #include "components/dc_gauge.h"
+#include "components/dc_tile_view.h"
 
 #include "components/fc_label.h"
 #include "components/fc_text_box.h"
@@ -72,5 +73,7 @@
 #include "components/fc_event_picker.h"
 #include "components/fc_color_picker.h"
 #include "components/fc_gauge.h"
+
+#include "device/device.h"
 
 #endif;

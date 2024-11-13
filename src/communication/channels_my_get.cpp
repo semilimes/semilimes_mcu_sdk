@@ -17,7 +17,7 @@
 */
 void ChannelsMyGet::set(bool owner,bool editor,bool subscriber)
 {
-    int size = headerSize+json_data.boolStrSize(owner)+json_data.boolStrSize(editor)+json_data.boolStrSize(subscriber)+1;
+    int size = strlen("{\"owner\":,\"editor\":,\"subscriber\":}")+json_data.boolStrSize(owner)+json_data.boolStrSize(editor)+json_data.boolStrSize(subscriber)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -41,6 +41,23 @@ void ChannelsMyGet::set(bool owner,bool editor,bool subscriber)
 char* ChannelsMyGet::getEPurl()
 {
     return httpsUrl communication_channel_my;
+}
+
+/* Function: ChannelsMyGet.getWSEPurl
+
+    provides this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* ChannelsMyGet::getWSEPurl()
+{
+    return communication_channel_my;
 }
 
 /* Function: ChannelsMyGet.get

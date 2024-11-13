@@ -5,7 +5,7 @@
     This endpoint unsets a like by the current account to any referenced bucket that allows likes.
 
     Prototype:
-        void setObj(char* bucketId);
+        void setObj(const char* bucketId);
 
     Parameters:
         bucketId -  is the unique Id to reference an existing bucket
@@ -13,9 +13,9 @@
     Returns:
         void
 */
-void BucketUnlike::set(char* bucketId)
+void BucketUnlike::set(const char* bucketId)
 {
-    int size = headerSize+strlen(bucketId)+1;
+    int size = strlen("{\"bucketId\":\"\"}")+strlen(bucketId)+1;
     json = new char[size];
 
     json_data.initJson(json);
@@ -37,6 +37,23 @@ void BucketUnlike::set(char* bucketId)
 char* BucketUnlike::getEPurl()
 {
     return httpsUrl communication_bucket_unlike;        
+}
+
+/* Function: BucketUnlike.getWSEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* BucketUnlike::getWSEPurl()
+{
+    return communication_bucket_unlike;        
 }
 
 /* Function: BucketUnlike.get
