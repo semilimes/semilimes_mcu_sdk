@@ -90,11 +90,11 @@ void ChannelCreate::appendEditorsIds()
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* ChannelCreate::getEPurl()
 {
-    return httpsUrl communication_channel_create;
+    return sme_httpsUrl sme_communication_channel_create;
 }
 
 /* Function: ChannelCreate.getWSEPurl
@@ -111,7 +111,7 @@ char* ChannelCreate::getEPurl()
 */
 char* ChannelCreate::getWSEPurl()
 {
-    return communication_channel_create;        
+    return sme_communication_channel_create;        
 }
 
 /* Function: ChannelCreate.get

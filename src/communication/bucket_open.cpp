@@ -32,11 +32,11 @@ void BucketOpen::set(const char* bucketId)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* BucketOpen::getEPurl()
 {
-    return httpsUrl communication_bucket;        
+    return sme_httpsUrl sme_communication_bucket;        
 }
 
 /* Function: BucketOpen.getWSEPurl
@@ -53,7 +53,7 @@ char* BucketOpen::getEPurl()
 */
 char* BucketOpen::getWSEPurl()
 {
-    return communication_bucket;
+    return sme_communication_bucket;
 }
 
 /* Function: BucketOpen.get

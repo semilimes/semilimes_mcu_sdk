@@ -60,11 +60,11 @@ void GroupchatMessageSend::addOptions(bool silent)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatMessageSend::getEPurl()
 {
-    return httpsUrl communication_groupchat_message_send;
+    return sme_httpsUrl sme_communication_groupchat_message_send;
 }
 
 /* Function: GroupchatMessageSend.getWSEPurl
@@ -81,7 +81,7 @@ char* GroupchatMessageSend::getEPurl()
 */
 char* GroupchatMessageSend::getWSEPurl()
 {
-    return communication_groupchat_message_send;        
+    return sme_communication_groupchat_message_send;        
 }
 
 /* Function: GroupchatMessageSend.get

@@ -54,7 +54,7 @@ char* Provisioning::get()
 */
 char* Provisioning::getRegisterDeviceURL()
 {
-    return httpsUrl registerDevice;
+    return sme_httpsUrl sme_registerDevice;
 }
 
 /* Function: Provisioning.getDeviceClaimStatusURL
@@ -71,5 +71,5 @@ char* Provisioning::getRegisterDeviceURL()
 */
 char* Provisioning::getDeviceClaimStatusURL()
 {
-    return httpsUrl deviceClaimStatus;
+    return sme_httpsUrl sme_deviceClaimStatus;
 }

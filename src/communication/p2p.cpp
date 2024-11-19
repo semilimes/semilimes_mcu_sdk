@@ -14,7 +14,7 @@
 */
 char* P2p::getEPurl()
 {
-    return httpsUrl communication_p2p;        
+    return sme_httpsUrl sme_communication_p2p;        
 }
 
 /* Function: P2p.getWSEPurl
@@ -31,5 +31,5 @@ char* P2p::getEPurl()
 */
 char* P2p::getWSEPurl()
 {
-    return communication_p2p;        
+    return sme_communication_p2p;        
 }

@@ -53,7 +53,7 @@ public:
 //     Parameters:
        
 //     Returns:
-///@returns         char* httpsUrl + endpoint
+///@returns         char* sme_httpsUrl + endpoint
     char* getEPurl();
     
 // Function: ChannelsMyGet.getWSEPurl

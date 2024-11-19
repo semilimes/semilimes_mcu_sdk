@@ -34,11 +34,11 @@ void P2pReactionSend::set(const char* messageId, const char* reaction)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* P2pReactionSend::getEPurl()
 {
-    return httpsUrl communication_p2p_message_reaction_send;
+    return sme_httpsUrl sme_communication_p2p_message_reaction_send;
 }
 
 /* Function: P2pReactionSend.getWSEPurl
@@ -55,7 +55,7 @@ char* P2pReactionSend::getEPurl()
 */
 char* P2pReactionSend::getWSEPurl()
 {
-    return communication_p2p_message_reaction_send;        
+    return sme_communication_p2p_message_reaction_send;        
 }
 
 /* Function: P2pReactionSend.get

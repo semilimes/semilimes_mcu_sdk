@@ -6,7 +6,7 @@
 class GroupchatSignalTyping
 {
 private:
-    #define headerSize 18
+    static const int headerSize = 18;
     SmeJson json_data;
     char* json = nullptr;
     
@@ -54,7 +54,7 @@ public:
 //     Parameters:
        
 //     Returns:
-///@returns         char* httpsUrl + endpoint
+///@returns         char* sme_httpsUrl + endpoint
     char* getEPurl();
     
 // Function: GroupchatSignalTyping.getWSEPurl

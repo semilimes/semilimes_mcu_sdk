@@ -74,6 +74,4 @@
 #include "components/fc_color_picker.h"
 #include "components/fc_gauge.h"
 
-#include "device/device.h"
-
 #endif;

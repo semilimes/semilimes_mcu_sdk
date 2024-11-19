@@ -97,11 +97,11 @@ void BucketUpdate::appendDataComponents()
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* BucketUpdate::getEPurl()
 {
-    return httpsUrl communication_bucket_update;
+    return sme_httpsUrl sme_communication_bucket_update;
 }
 
 /* Function: BucketUpdate.getWSEPurl
@@ -118,7 +118,7 @@ char* BucketUpdate::getEPurl()
 */
 char* BucketUpdate::getWSEPurl()
 {
-    return communication_bucket_update;        
+    return sme_communication_bucket_update;        
 }
 
 /* Function: BucketUpdate.get

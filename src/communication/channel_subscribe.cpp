@@ -32,11 +32,11 @@ void ChannelSubscribe::set(const char* channelId)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* ChannelSubscribe::getEPurl()
 {
-    return httpsUrl communication_channel_subscribe;
+    return sme_httpsUrl sme_communication_channel_subscribe;
 }
 
 /* Function: ChannelSubscribe.getWSEPurl
@@ -53,7 +53,7 @@ char* ChannelSubscribe::getEPurl()
 */
 char* ChannelSubscribe::getWSEPurl()
 {
-    return communication_channel_subscribe;        
+    return sme_communication_channel_subscribe;        
 }
 
 /* Function: ChannelSubscribe.get

@@ -36,11 +36,11 @@ void ChannelMessageGet::set(const char* channelId,const char* messageId,int limi
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* ChannelMessageGet::getEPurl()
 {
-    return httpsUrl communication_channel_message;
+    return sme_httpsUrl sme_communication_channel_message;
 }
 
 /* Function: ChannelMessageGet.getWSEPurl
@@ -57,7 +57,7 @@ char* ChannelMessageGet::getEPurl()
 */
 char* ChannelMessageGet::getWSEPurl()
 {
-    return communication_channel_message;        
+    return sme_communication_channel_message;        
 }
 
 /* Function: ChannelMessageGet.get

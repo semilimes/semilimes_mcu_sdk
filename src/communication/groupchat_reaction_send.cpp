@@ -34,11 +34,11 @@ void GroupchatReactionSend::set(const char* messageId, const char* reaction)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatReactionSend::getEPurl()
 {
-    return httpsUrl communication_groupchat_message_reaction_send;
+    return sme_httpsUrl sme_communication_groupchat_message_reaction_send;
 }
 
 /* Function: GroupchatReactionSend.getWSEPurl
@@ -55,7 +55,7 @@ char* GroupchatReactionSend::getEPurl()
 */
 char* GroupchatReactionSend::getWSEPurl()
 {
-    return communication_groupchat_message_reaction_send;        
+    return sme_communication_groupchat_message_reaction_send;        
 }
 
 /* Function: GroupchatReactionSend.get

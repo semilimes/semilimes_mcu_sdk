@@ -36,11 +36,11 @@ void P2pMessageGet::set(const char* recipientId,const char* messageId,int limit)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* P2pMessageGet::getEPurl()
 {
-    return httpsUrl communication_p2p_message;
+    return sme_httpsUrl sme_communication_p2p_message;
 }
 
 /* Function: P2pMessageGet.getWSEPurl
@@ -57,7 +57,7 @@ char* P2pMessageGet::getEPurl()
 */
 char* P2pMessageGet::getWSEPurl()
 {
-    return communication_p2p_message;        
+    return sme_communication_p2p_message;        
 }
 
 /* Function: P2pMessageGet.get

@@ -60,11 +60,11 @@ void P2pMessageSend::addOptions(bool silent)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* P2pMessageSend::getEPurl()
 {
-    return httpsUrl communication_p2p_message_send;
+    return sme_httpsUrl sme_communication_p2p_message_send;
 }
 
 /* Function: P2pMessageSend.getWSEPurl
@@ -81,7 +81,7 @@ char* P2pMessageSend::getEPurl()
 */
 char* P2pMessageSend::getWSEPurl()
 {
-    return communication_p2p_message_send;        
+    return sme_communication_p2p_message_send;        
 }
 
 /* Function: P2pMessageSend.get

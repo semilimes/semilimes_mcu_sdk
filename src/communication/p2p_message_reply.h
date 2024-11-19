@@ -6,7 +6,7 @@
 class P2pMessageReply
 {
 private:
-    #define headerSize 33
+    static const int headerSize = 33;
     SmeJson json_data;
     char* json = nullptr;
 
@@ -53,7 +53,7 @@ public:
 //     Parameters:
        
 //     Returns:
-///@returns         char* httpsUrl + endpoint
+///@returns         char* sme_httpsUrl + endpoint
     char* getEPurl();
     
 // Function: P2pMessageReply.getWSEPurl

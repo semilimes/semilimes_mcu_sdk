@@ -60,11 +60,11 @@ void ChannelMessageUpdate::addOptions(bool silent)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* ChannelMessageUpdate::getEPurl()
 {
-    return httpsUrl communication_channel_update;
+    return sme_httpsUrl sme_communication_channel_update;
 }
 
 /* Function: ChannelMessageUpdate.getWSEPurl
@@ -81,7 +81,7 @@ char* ChannelMessageUpdate::getEPurl()
 */
 char* ChannelMessageUpdate::getWSEPurl()
 {
-    return communication_channel_update;        
+    return sme_communication_channel_update;        
 }
 
 /* Function: ChannelMessageUpdate.get

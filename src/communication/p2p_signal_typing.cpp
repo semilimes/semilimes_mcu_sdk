@@ -33,11 +33,11 @@ void P2pSignalTyping::set(const char* recipientId)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* P2pSignalTyping::getEPurl()
 {
-    return httpsUrl communication_p2p_signal_typing;        
+    return sme_httpsUrl sme_communication_p2p_signal_typing;        
 }
 
 /* Function: P2pSignalTyping.getWSEPurl
@@ -54,7 +54,7 @@ char* P2pSignalTyping::getEPurl()
 */
 char* P2pSignalTyping::getWSEPurl()
 {
-    return communication_p2p_signal_typing;        
+    return sme_communication_p2p_signal_typing;        
 }
 
 /* Function: P2pSignalTyping.get

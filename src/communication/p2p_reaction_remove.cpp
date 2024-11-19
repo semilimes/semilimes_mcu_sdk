@@ -34,11 +34,11 @@ void P2pReactionRemove::set(const char* messageId, const char* reaction)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* P2pReactionRemove::getEPurl()
 {
-    return httpsUrl communication_p2p_message_reaction_remove;
+    return sme_httpsUrl sme_communication_p2p_message_reaction_remove;
 }
 
 /* Function: P2pReactionRemove.getWSEPurl
@@ -55,7 +55,7 @@ char* P2pReactionRemove::getEPurl()
 */
 char* P2pReactionRemove::getWSEPurl()
 {
-    return communication_p2p_message_reaction_remove;        
+    return sme_communication_p2p_message_reaction_remove;        
 }
 
 /* Function: P2pReactionRemove.get

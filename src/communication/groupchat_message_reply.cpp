@@ -34,11 +34,11 @@ void GroupchatMessageReply::set(const char* messageId, const char* dataComponent
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatMessageReply::getEPurl()
 {
-    return httpsUrl communication_groupchat_message_reply;
+    return sme_httpsUrl sme_communication_groupchat_message_reply;
 }
 
 /* Function: GroupchatMessageReply.getWSEPurl
@@ -55,7 +55,7 @@ char* GroupchatMessageReply::getEPurl()
 */
 char* GroupchatMessageReply::getWSEPurl()
 {
-    return communication_groupchat_message_reply;        
+    return sme_communication_groupchat_message_reply;        
 }
 
 /* Function: GroupchatMessageReply.get

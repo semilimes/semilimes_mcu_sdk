@@ -15,7 +15,7 @@
 */
 void Header::setAuthorization(const char* apikey)
 {
-    strcpy(auth,authType);
+    strcpy(auth,sme_authType);
     strncat(auth,apikey,strlen(apikey));
 }
 
@@ -29,11 +29,11 @@ void Header::setAuthorization(const char* apikey)
     Parameters:
 
     Returns:
-        char* httpsUrl
+        char* sme_httpsUrl
 */
 char* Header::getHttpsUrl()
 {
-    return httpsUrl;
+    return sme_httpsUrl;
 }
 
 /* Function: Header.getWsEP
@@ -46,11 +46,11 @@ char* Header::getHttpsUrl()
     Parameters:
 
     Returns:
-        char* wsEP
+        char* sme_wsEP
 */
 char* Header::getWsEP()
 {
-    return wsEP;
+    return sme_wsEP;
 }
 
 /* Function: Header.getwsClientEP
@@ -63,11 +63,11 @@ char* Header::getWsEP()
     Parameters:
 
     Returns:
-        char* wsClientEP
+        char* sme_wsClientEP
 */
 char* Header::getWsClientEP()
 {
-    return wsClientEP;
+    return sme_wsClientEP;
 }
 
 /* Function: Header.getWsHost
@@ -80,11 +80,11 @@ char* Header::getWsClientEP()
     Parameters:
 
     Returns:
-        char* wsHost
+        char* sme_wsHost
 */
 char* Header::getWsHost()
 {
-    return wsHost;
+    return sme_wsHost;
 }
 
 /* Function: Header.getWsPort
@@ -97,11 +97,11 @@ char* Header::getWsHost()
     Parameters:
 
     Returns:
-        int  wsPort
+        int  sme_wsPort
 */
 int Header::getWsPort()
 {
-    return wsPort;
+    return sme_wsPort;
 }
 
 /* Function: Header.getWsHeader
@@ -120,8 +120,8 @@ char* Header::getWsHeader()
 {	
 	strncpy(wsheader, "Authorization: " , 16);
 	strncat(wsheader, auth, strlen(auth));
-	strncat(wsheader, " \r\n accept: " accept, 12+sizeof(accept));
-	strncat(wsheader, " \r\n Content-Type: " contentType, 19+sizeof(contentType));	
+	strncat(wsheader, " \r\n accept: " sme_accept, 12+sizeof(sme_accept));
+	strncat(wsheader, " \r\n Content-Type: " sme_contentType, 19+sizeof(sme_contentType));	
 	strncat(wsheader, " \r\n", 3);
     return wsheader;
 }
@@ -140,7 +140,7 @@ char* Header::getWsHeader()
 */
 char* Header::getContentType()
 {
-    return contentType;
+    return sme_contentType;
 }
 
 /* Function: Header.getAuthorization
@@ -174,5 +174,5 @@ char* Header::getAuthorization()
 */
 char* Header::getAccept()
 {
-    return accept;
+    return sme_accept;
 }

@@ -1,5 +1,5 @@
-#ifndef _bucket_update
-#define _bucket_update
+#ifndef _bucket_update_
+#define _bucket_update_
 
 #include "../defines.h"
 
@@ -87,7 +87,7 @@ public:
 //     Parameters:
        
 //     Returns:
-///@returns        char* httpsUrl + endpoint
+///@returns        char* sme_httpsUrl + endpoint
     char* getEPurl();
     
 // Function: BucketUpdate.getWSEPurl

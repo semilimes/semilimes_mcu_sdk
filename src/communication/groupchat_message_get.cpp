@@ -36,11 +36,11 @@ void GroupchatMessageGet::set(const char* groupChatId,const char* messageId,int 
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatMessageGet::getEPurl()
 {
-    return httpsUrl communication_groupchat_message;
+    return sme_httpsUrl sme_communication_groupchat_message;
 }
 
 /* Function: GroupchatMessageGet.getWSEPurl
@@ -57,7 +57,7 @@ char* GroupchatMessageGet::getEPurl()
 */
 char* GroupchatMessageGet::getWSEPurl()
 {
-    return communication_groupchat_message;        
+    return sme_communication_groupchat_message;        
 }
 
 /* Function: GroupchatMessageGet.get

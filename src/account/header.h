@@ -36,7 +36,7 @@ public:
 //     Parameters:
 
 //     Returns:
-///@returns         char* httpsUrl
+///@returns         char* sme_httpsUrl
 
     char* getHttpsUrl();
 
@@ -50,7 +50,7 @@ public:
 //     Parameters:
 
 //     Returns:
-///@returns         char* wsEP
+///@returns         char* sme_wsEP
 
     char* getWsEP();
 
@@ -64,7 +64,7 @@ public:
 //     Parameters:
 
 //     Returns:
-///@returns         char* wsClientEP
+///@returns         char* sme_wsClientEP
 
     char* getWsClientEP();
 
@@ -78,7 +78,7 @@ public:
 //     Parameters:
 
 //     Returns:
-///@returns         char* wsHost
+///@returns         char* sme_wsHost
 
     char* getWsHost();
 
@@ -92,7 +92,7 @@ public:
 //     Parameters:
 
 //     Returns:
-///@returns         int  wsPort
+///@returns         int  sme_wsPort
 
     int getWsPort();
 

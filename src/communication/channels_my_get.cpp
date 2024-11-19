@@ -36,11 +36,11 @@ void ChannelsMyGet::set(bool owner,bool editor,bool subscriber)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* ChannelsMyGet::getEPurl()
 {
-    return httpsUrl communication_channel_my;
+    return sme_httpsUrl sme_communication_channel_my;
 }
 
 /* Function: ChannelsMyGet.getWSEPurl
@@ -57,7 +57,7 @@ char* ChannelsMyGet::getEPurl()
 */
 char* ChannelsMyGet::getWSEPurl()
 {
-    return communication_channel_my;
+    return sme_communication_channel_my;
 }
 
 /* Function: ChannelsMyGet.get

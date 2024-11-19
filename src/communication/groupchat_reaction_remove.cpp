@@ -34,11 +34,11 @@ void GroupchatReactionRemove::set(const char* messageId, const char* reaction)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatReactionRemove::getEPurl()
 {
-    return httpsUrl communication_groupchat_message_reaction_remove;
+    return sme_httpsUrl sme_communication_groupchat_message_reaction_remove;
 }
 
 /* Function: GroupchatReactionRemove.getWSEPurl
@@ -55,7 +55,7 @@ char* GroupchatReactionRemove::getEPurl()
 */
 char* GroupchatReactionRemove::getWSEPurl()
 {
-    return communication_groupchat_message_reaction_remove;        
+    return sme_communication_groupchat_message_reaction_remove;        
 }
 
 /* Function: GroupchatReactionRemove.get

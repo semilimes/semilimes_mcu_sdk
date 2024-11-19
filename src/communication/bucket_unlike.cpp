@@ -32,11 +32,11 @@ void BucketUnlike::set(const char* bucketId)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* BucketUnlike::getEPurl()
 {
-    return httpsUrl communication_bucket_unlike;        
+    return sme_httpsUrl sme_communication_bucket_unlike;        
 }
 
 /* Function: BucketUnlike.getWSEPurl
@@ -53,7 +53,7 @@ char* BucketUnlike::getEPurl()
 */
 char* BucketUnlike::getWSEPurl()
 {
-    return communication_bucket_unlike;        
+    return sme_communication_bucket_unlike;        
 }
 
 /* Function: BucketUnlike.get

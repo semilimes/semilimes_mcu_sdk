@@ -62,11 +62,11 @@ void GroupchatsGet::appendRecipientIds()
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatsGet::getEPurl()
 {
-    return httpsUrl communication_groupchat;
+    return sme_httpsUrl sme_communication_groupchat;
 }
 
 /* Function: GroupchatsGet.getWSEPurl
@@ -83,7 +83,7 @@ char* GroupchatsGet::getEPurl()
 */
 char* GroupchatsGet::getWSEPurl()
 {
-    return communication_groupchat;        
+    return sme_communication_groupchat;        
 }
 
 /* Function: GroupchatsGet.get

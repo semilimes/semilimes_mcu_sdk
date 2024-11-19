@@ -33,11 +33,11 @@ void GroupchatSignalTyping::set(char* groupChatId)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* GroupchatSignalTyping::getEPurl()
 {
-    return httpsUrl communication_groupchat_signal_typing;        
+    return sme_httpsUrl sme_communication_groupchat_signal_typing;        
 }
 
 /* Function: GroupchatSignalTyping.getWSEPurl
@@ -54,7 +54,7 @@ char* GroupchatSignalTyping::getEPurl()
 */
 char* GroupchatSignalTyping::getWSEPurl()
 {
-    return communication_groupchat_signal_typing;        
+    return sme_communication_groupchat_signal_typing;        
 }
 
 /* Function: GroupchatSignalTyping.get

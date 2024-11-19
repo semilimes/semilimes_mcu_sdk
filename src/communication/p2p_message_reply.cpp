@@ -34,11 +34,11 @@ void P2pMessageReply::set(const char* messageId, const char* dataComponent)
     Parameters:
        
     Returns:
-        char* httpsUrl + endpoint
+        char* sme_httpsUrl + endpoint
 */
 char* P2pMessageReply::getEPurl()
 {
-    return httpsUrl communication_p2p_message_reply;
+    return sme_httpsUrl sme_communication_p2p_message_reply;
 }
 
 /* Function: P2pMessageReply.getWSEPurl
@@ -55,7 +55,7 @@ char* P2pMessageReply::getEPurl()
 */
 char* P2pMessageReply::getWSEPurl()
 {
-    return communication_p2p_message_reply;        
+    return sme_communication_p2p_message_reply;        
 }
 
 /* Function: P2pMessageReply.get

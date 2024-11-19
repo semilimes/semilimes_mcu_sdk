@@ -6,8 +6,8 @@
 class ChannelMessageUpdate
 {
 private:
-    #define headerSize 33
-    #define optionsHeaderSize 11
+    static const int headerSize = 33;
+    static const int optionsHeaderSize  = 11;
     SmeJson json_data;
     char* json = nullptr;
 
@@ -70,7 +70,7 @@ public:
 //     Parameters:
        
 //     Returns:
-///@returns         char* httpsUrl + endpoint
+///@returns         char* sme_httpsUrl + endpoint
     char* getEPurl();
     
 // Function: ChannelMessageUpdate.getWSEPurl
