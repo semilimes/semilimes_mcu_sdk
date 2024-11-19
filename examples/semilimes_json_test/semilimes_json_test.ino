@@ -11,6 +11,9 @@ The primary goal was to ensure that the generated scripts are correctly
 formatted and ready for future integration with the semilimes platform.
 
 This project is licensed under the MIT License.
+
+Dependencies:
+	semilimes by semilimes
  ****************************************************/
 
 #include <Arduino.h>

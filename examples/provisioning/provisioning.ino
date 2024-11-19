@@ -12,6 +12,11 @@ memory for future connections. This firmware ensures the correct execution of th
 and provisioning process, while securely saving the ApiKey for ongoing connectivity.
 
 This project is licensed under the MIT License.
+
+Dependencies:
+	ArduinoJson by Benoit Blanchon 
+	Preferences by Volodymyr Shymanskyy
+	semilimes by semilimes
  ****************************************************/
 #include <WiFi.h>
 #include <WiFiMulti.h>

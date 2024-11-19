@@ -22,6 +22,10 @@ secure and the device is correctly assigned to the user or account during the
 provisioning phase.
 
 This project is licensed under the MIT License.
+
+Dependencies:
+	ArduinoJson by Benoit Blanchon 
+	semilimes by semilimes
  ****************************************************/
 #include <WiFi.h>
 #include <WiFiMulti.h>
