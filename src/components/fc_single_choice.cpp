@@ -36,7 +36,7 @@ void FcSingleChoice::set(const char* refname,const char* title,bool reqSel, cons
    add an array of options where name is the option identifier and value is the text displayed to the user
 
     Prototype:
-        void FcSingleChoice::addOptions(char* data);
+        void FcSingleChoice::addOptions(const char* name,const char* value);
 
    Parameters:
         name - is the option identifier

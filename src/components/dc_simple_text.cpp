@@ -5,7 +5,7 @@
     A simple text message
 
     Prototype:
-        void DcSimpleText::set(char* text);
+        void DcSimpleText::set(const char* text);
 
     Parameters:
         text - the content of the text message
@@ -13,7 +13,7 @@
     Returns:
         void
 */
-void DcSimpleText::set(char* text)
+void DcSimpleText::set(const char* text)
 {
     int size = headerSize+strlen(text)+1;
     json = new char[size];

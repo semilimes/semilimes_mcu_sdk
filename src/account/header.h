@@ -16,7 +16,7 @@ public:
 //     set the api-key
 
 //     Prototype:
-//         void Header::setAuthorization(char* apikey);
+//         void Header::setAuthorization(cost char* apikey);
 
 //     Parameters:
 ///@param          apikey - apikey received during the provisioning phase, needed to create the authorization string

@@ -8,6 +8,7 @@ class Provisioning
 private:
     SmeJson json_data;
     char* json = nullptr; 
+    char* json_reset = nullptr; 
 
 public:
 // Function: ~Provisioning
@@ -25,6 +26,8 @@ public:
     {
         delete[] json;
         json = nullptr;
+        delete[] json_reset;
+        json_reset = nullptr;
     }
 
 // Function: Provisioning.set
@@ -80,6 +83,32 @@ public:
 //     Returns:
 ///@returns         char*
     char* getDeviceClaimStatusURL();
+
+// Function: Provisioning.getResetDeviceURL
+
+//     provide the url to reset the device
+
+//     Prototype:
+//         char* Provisioning::getResetDeviceURL();
+
+//     Parameters:
+
+//     Returns:
+///@returns         char*
+    char* getResetDeviceURL();
+
+// Function: Provisioning.getReset
+
+//     return the json script to reset the device
+
+//     Prototype:
+//         void Provisioning::getReset();
+
+//     Parameters:
+
+//     Returns:
+///@return         char*
+    char* getReset();
 };
 
 #endif

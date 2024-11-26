@@ -49,13 +49,13 @@ public:
 //         void set(const char* messageId, const char* dataComponent, bool silent);
 
 //     Parameters:
-///@param         channelId - is the unique Id to reference an existing channel
+///@param         messageId - is the unique Id to reference an existing channel
 ///@param         dataComponent - the json description of the data component
 ///@param         silent - is a boolean to allow sending the message without any in-app notification
 
 //     Returns:
 ///@returns         void
-    void set(const char* recipientId, const char* dataComponent, bool silent);
+    void set(const char* messageId, const char* dataComponent, bool silent);
 
 // Function: GroupchatMessageUpdate.getEPurl
 

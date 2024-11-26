@@ -36,7 +36,7 @@ void AddAccountFeed::set(const char* title,const char* description,const char* a
     Add a data component to the array
 
     Prototype:
-        void AddAccountFeed::addDataComponents(char* data);
+        void AddAccountFeed::addDataComponents(cost char* data);
 
     Parameters:
         data - the json description of the data component
@@ -44,7 +44,7 @@ void AddAccountFeed::set(const char* title,const char* description,const char* a
     Returns:
         void
 */
-void AddAccountFeed::addDataComponents(char* data)
+void AddAccountFeed::addDataComponents(const char* data)
 {       
     int size = strlen("{}")+strlen(data)+1;
     

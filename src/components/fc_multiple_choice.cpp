@@ -32,7 +32,7 @@ void FcMultipleChoice::set(const char* refname,const char* title,bool reqSel)
     add an array of options where name is the option identifier and value is the text displayed to the user
 
     Prototype:
-        void FcMultipleChoice::addOptions(char* name,char* value);
+        void FcMultipleChoice::addOptions(const char* name,const char* value);
 
     Parameters:
         name - is the option identifier
@@ -89,7 +89,7 @@ void FcMultipleChoice::appendOptions()
     add an array of the names of the choices 
 
     Prototype:
-        void FcMultipleChoice::addValue(char* value);
+        void FcMultipleChoice::addValue(const char* value);
 
     Parameters:
         value - is an array containing the names of the choices that are selected on submission
@@ -101,7 +101,7 @@ void FcMultipleChoice::appendOptions()
     Returns:
         void
 */
-void FcMultipleChoice::addValue(char* value)
+void FcMultipleChoice::addValue(const char* value)
 {    
     int size =  strlen("[\"\"]")+strlen(value)+1; //add '\0'
     

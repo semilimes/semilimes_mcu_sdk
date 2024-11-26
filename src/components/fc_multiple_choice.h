@@ -82,14 +82,14 @@ public:
 //     add an array of the names of the choices 
 
 //     Prototype:
-//         void FcMultipleChoice::addValue(char* value);
+//         void FcMultipleChoice::addValue(const char* value);
 
 //     Parameters:
 ///@param         value - is an array containing the names of the choices that are selected on submission: {"name" : "choice1","value": "Choice 1"}
 
 //     Returns:
 ///@return         void
-    void addValue(char* value);
+    void addValue(const char* value);
 
 
 // Function: FcMultipleChoice.appendValues

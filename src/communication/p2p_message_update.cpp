@@ -31,7 +31,7 @@ void P2pMessageUpdate::set(const char* messageId, const char* dataComponent, boo
     add a list of options 
 
     Prototype:
-        void P2pMessageUpdate::addOptions(char* name,char* value);
+        void P2pMessageUpdate::addOptions(bool silent);
 
     Parameters:
         silent - is a boolean to allow sending the message without any in-app notification

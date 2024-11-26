@@ -5,7 +5,7 @@
     This endpoint allows the user to update the content of a specific bucket.
 
     Prototype:
-        void set(char* bucketId);
+        void set(cost char* bucketId);
 
     Parameters:
         bucketId -  is the unique Id to reference an existing bucket
@@ -40,7 +40,7 @@ void BucketUpdate::set(const char* bucketId, const char* title, const char* desc
     Append the selected components
 
     Prototype:
-        void addDataComponents(char* component);
+        void addDataComponents(cost char* component);
 
     Parameters:
         component - the json script of the dataComponent to add

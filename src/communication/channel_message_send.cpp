@@ -31,7 +31,7 @@ void ChannelMessageSend::set(const char* channelId, const char* dataComponent, b
     add a list of options 
 
     Prototype:
-        void ChannelMessageSend::addOptions(char* name,char* value);
+        void ChannelMessageSend::addOptions(bool silent);
 
     Parameters:
         silent - is a boolean to allow sending the message without any in-app notification

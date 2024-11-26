@@ -55,7 +55,7 @@ public:
 //     Add a data component to the array
 
 //     Prototype:
-//         void AddAccountFeed::addDataComponents(char* data);
+//         void AddAccountFeed::addDataComponents(cost char* data);
 
 //     Parameters:
 ///@param         data - the json description of the data component
@@ -63,7 +63,7 @@ public:
 //     Returns:
 ///@returns         void      
 
-    void addDataComponents(char* data);
+    void addDataComponents(const char* data);
 
 // Function: AddAccountFeed.appendDataComponents
 

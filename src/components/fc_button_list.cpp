@@ -38,7 +38,7 @@ void FcButtonList::set(const char* refname,const char* title,bool reqSel,const c
     add a list of options 
 
     Prototype:
-        void FcButtonList::addOptions(char* name,char* value);
+        void FcButtonList::addOptions(char*& optTemp, int optSize, const char* iconName);
 
     Parameters:
         optTemp - options json

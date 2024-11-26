@@ -38,7 +38,7 @@ void FcBucketPicker::set(const char* refname,const char* title,bool reqSel, cons
     add a selected bucket id upon form submission. It can be of the following types: char featureTypes[4][10] = {"post", "profile", "groupchat", "channel"};
 
     Prototype:
-        void FcBucketPicker::addValue(char* value, const char* featuretype);
+        void FcBucketPicker::addValue(const char* value, const char* featuretype);
 
     Parameters:
         filter - It can be of the following types: 

@@ -35,14 +35,14 @@ public:
 //    This is particularly useful when having automated bots which need some time to elaborate the message to be sent.
 
 //     Prototype:
-//         void set(char* groupChatId);
+//         void set(const char* groupChatId);
 
 //     Parameters:
 ///@param         groupChatId -  is the unique Id to reference an existing groupChat
 
 //     Returns:
 ///@returns         void
-    void set(char* groupChatId);
+    void set(const char* groupChatId);
 
 // Function: GroupchatSignalTyping.getEPurl
 

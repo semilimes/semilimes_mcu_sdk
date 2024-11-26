@@ -15,7 +15,7 @@ private:
 //     add an list of options
 
 //     Prototype:
-//         int addIconOptions(const char*& optTemp, int optSize, char* iconName);
+//         int addIconOptions(char*& optTemp, int optSize, const char* iconName);
 
 //     Parameters:
 ///@param         optTemp - options json

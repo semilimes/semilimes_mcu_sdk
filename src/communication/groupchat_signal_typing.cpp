@@ -6,7 +6,7 @@
     This is particularly useful when having automated bots which need some time to elaborate the message to be sent.
 
     Prototype:
-        void set(char* groupChatId);
+        void set(const char* groupChatId);
 
     Parameters:
         groupChatId -  is the unique Id to reference an existing groupChat
@@ -14,7 +14,7 @@
     Returns:
         void
 */
-void GroupchatSignalTyping::set(char* groupChatId)
+void GroupchatSignalTyping::set(const char* groupChatId)
 {
     int size = headerSize+strlen(groupChatId)+1;
     json = new char[size];

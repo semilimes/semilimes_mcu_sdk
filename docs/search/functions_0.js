@@ -2,7 +2,7 @@ var searchData=
 [
   ['addcolortile_0',['addColorTile',['../class_dc_tile_view.html#a4bec5ed198114bff2467704c844db4b2',1,'DcTileView']]],
   ['addcontactids_1',['addContactIds',['../class_dc_contact.html#adbaa862dad0a9651c53da85398322354',1,'DcContact']]],
-  ['adddatacomponents_2',['addDataComponents',['../class_add_account_feed.html#acaf95741b45d67a9a179f7a2bac59098',1,'AddAccountFeed::addDataComponents()'],['../class_bucket_update.html#a39eb358254efdddd45b4dc891fd7b102',1,'BucketUpdate::addDataComponents()']]],
+  ['adddatacomponents_2',['addDataComponents',['../class_add_account_feed.html#a55b750fd4a92e184de6d6ee17b845cf0',1,'AddAccountFeed::addDataComponents()'],['../class_bucket_update.html#a39eb358254efdddd45b4dc891fd7b102',1,'BucketUpdate::addDataComponents()']]],
   ['addeditorsid_3',['addEditorsId',['../class_channel_create.html#ad9727c57a3fe960eeb391a131880481e',1,'ChannelCreate']]],
   ['addevent_4',['addEvent',['../class_fc_event_picker.html#a54749746bd786ff996ac52eb1472904a',1,'FcEventPicker']]],
   ['addfileid_5',['addFileId',['../class_dc_file.html#af2e9d4e559b8392602cb3709fe19b1d0',1,'DcFile']]],
@@ -17,7 +17,7 @@ var searchData=
   ['addresourcetile_14',['addResourceTile',['../class_dc_tile_view.html#a39e6842fb4979ecd10a02360cf290ab4',1,'DcTileView']]],
   ['addsegment_15',['addSegment',['../class_dc_gauge.html#aecc787a26a72a455e1f47695b1faf953',1,'DcGauge::addSegment()'],['../class_fc_gauge.html#a3e73321eb0880c83d80bf9494b48a6bb',1,'FcGauge::addSegment()']]],
   ['addslideshowtile_16',['addSlideshowTile',['../class_dc_tile_view.html#a5300485571bbc60f1f705d893ddcf78d',1,'DcTileView']]],
-  ['addvalue_17',['addValue',['../class_fc_bucket_picker.html#a119af3f9dedf5c49340d3512b9ae9840',1,'FcBucketPicker::addValue()'],['../class_fc_event_picker.html#a57591ee0e70ca9762a908220a6609927',1,'FcEventPicker::addValue()'],['../class_fc_multiple_choice.html#a07c30ec36c3162cf0676400f4a9fc12a',1,'FcMultipleChoice::addValue()']]],
+  ['addvalue_17',['addValue',['../class_fc_bucket_picker.html#a119af3f9dedf5c49340d3512b9ae9840',1,'FcBucketPicker::addValue()'],['../class_fc_event_picker.html#a57591ee0e70ca9762a908220a6609927',1,'FcEventPicker::addValue()'],['../class_fc_multiple_choice.html#a9cb72493a8646a037dbe7c0bcaf0bdac',1,'FcMultipleChoice::addValue()']]],
   ['addweburltile_18',['addWebUrlTile',['../class_dc_tile_view.html#a9ee43eaa11440c65a5082da7d6d4c770',1,'DcTileView']]],
   ['appendcontactids_19',['appendContactIds',['../class_dc_contact.html#a816e9fc72f2a972ecb696436abac3dd7',1,'DcContact']]],
   ['appenddatacomponents_20',['appendDataComponents',['../class_add_account_feed.html#aab49ea32a314f7e03f7cd5afa39b907d',1,'AddAccountFeed::appendDataComponents()'],['../class_bucket_update.html#a0ef634e58ffdfc393deb765a677c74ca',1,'BucketUpdate::appendDataComponents()']]],

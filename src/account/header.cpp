@@ -5,7 +5,7 @@
     set the api-key
 
     Prototype:
-        void Header::setAuthorization(char* apikey);
+        void Header::setAuthorization(cost char* apikey);
 
     Parameters:
         apikey - the api key received during the provisioning phase 

@@ -16,6 +16,7 @@
 #define sme_httpsUrl "https://api.semilimes.net"
 #define sme_registerDevice "/registerDevice"
 #define sme_deviceClaimStatus "/deviceClaimStatus"
+#define sme_resetDevice "/resetDevice"
 #define sme_communication_channel_my "/communication/channel/my"
 #define sme_communication_channel "/communication/channel"
 #define sme_communication_channel_create "/communication/channel/create"

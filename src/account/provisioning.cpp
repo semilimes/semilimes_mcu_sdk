@@ -21,6 +21,11 @@ void Provisioning::set(const char* devId, const char* provKey)
     json_data.initJson(json);
     json_data.addPair2JsonStr(json, "deviceId", devId);
     json_data.addPair2JsonStr(json, "provisioningKey",provKey);
+
+    size = strlen("{\"deviceId\":\"\"}")+strlen(devId)+1;
+    json_reset = new char[size];
+    json_data.initJson(json_reset);
+    json_data.addPair2JsonStr(json_reset, "deviceId", devId);    
 }
 
 /* Function: Provisioning.get
@@ -72,4 +77,38 @@ char* Provisioning::getRegisterDeviceURL()
 char* Provisioning::getDeviceClaimStatusURL()
 {
     return sme_httpsUrl sme_deviceClaimStatus;
+}
+
+/* Function: Provisioning.getResetDeviceURL
+
+    provide the url to reset the device
+
+    Prototype:
+        char* Provisioning::getResetDeviceURL();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* Provisioning::getResetDeviceURL()
+{
+    return sme_httpsUrl sme_resetDevice;
+}
+
+/* Function: Provisioning.getReset
+
+    return the json script to reset the device
+    
+    Prototype:
+        void Provisioning::getReset();
+
+    Parameters:
+
+    Returns:
+        char*
+*/
+char* Provisioning::getReset()
+{
+    return json_reset;
 }

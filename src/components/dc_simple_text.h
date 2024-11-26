@@ -33,14 +33,14 @@ public:
 //     A simple text message
 
 //     Prototype:
-//         void DcSimpleText::set(char* text);
+//         void DcSimpleText::set(const char* text);
 
 //     Parameters:
 ///@param         text - the content of the text message
 
 //     Returns:
 ///@return         void
-    void set(char* text);
+    void set(const char* text);
     
 // Function: DcSimpleText.get
 

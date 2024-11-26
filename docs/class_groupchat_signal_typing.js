@@ -4,5 +4,5 @@ var class_groupchat_signal_typing =
     [ "get", "class_groupchat_signal_typing.html#aefabfa05fd82bb8df25617e17aedd510", null ],
     [ "getEPurl", "class_groupchat_signal_typing.html#af26106e77097f9528fc214203fbaaccc", null ],
     [ "getWSEPurl", "class_groupchat_signal_typing.html#aeaf4408161bb5add38c23fdd0ec32966", null ],
-    [ "set", "class_groupchat_signal_typing.html#ad610f7333f2c364d16dd151630bcac1d", null ]
+    [ "set", "class_groupchat_signal_typing.html#a2d26d27e4441724be712a1f015ff6807", null ]
 ];

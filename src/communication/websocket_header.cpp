@@ -5,7 +5,7 @@
     This endpoint create the websocket header json message on which the api call is to be embedded 
 
     Prototype:
-        void getRequest(char* requestId, char* requestType, char* body);
+        void getRequest(const char* requestId, const char* requestType, const char* body);
 
     Parameters:
         requestId - it is the unique Id to reference a specific call. It is responsability of the developer to generate an unique key that he can reuse to correlate the asynchronous response of the websocket
@@ -15,7 +15,7 @@
     Returns:
         void
 */
-char* WebsocketHeader::getRequest(char* requestId, char* requestType, char* body)
+char* WebsocketHeader::getRequest(const char* requestId, const char* requestType, const char* body)
 {
     int size = headerSize+strlen(requestId)+strlen(requestType)+strlen(body)+1;
     json = new char[size];
