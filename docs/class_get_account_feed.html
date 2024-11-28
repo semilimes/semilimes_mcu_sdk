@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.4</span>
+   <div id="projectname">semilimes mcu sdk<span id="projectnumber">&#160;1.1.5</span>
    </div>
    <div id="projectbrief">semilimes Software Development Kit for microcontrollers</div>
   </td>
@@ -110,6 +110,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acec2e620c8c66f5a0e072fa2678d3920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5245a7bdab659bf8c6211b407a1e60f" id="r_ae5245a7bdab659bf8c6211b407a1e60f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5245a7bdab659bf8c6211b407a1e60f">set</a> (const char *accountId, int before, int after, int limit)</td></tr>
 <tr class="separator:ae5245a7bdab659bf8c6211b407a1e60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85b2e7fd6fb396ce8a72e88ce1ff3f56" id="r_a85b2e7fd6fb396ce8a72e88ce1ff3f56"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85b2e7fd6fb396ce8a72e88ce1ff3f56">getEPurl</a> ()</td></tr>
+<tr class="separator:a85b2e7fd6fb396ce8a72e88ce1ff3f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbfbc1c5964adbd946171b4bdc3ad6de" id="r_afbfbc1c5964adbd946171b4bdc3ad6de"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbfbc1c5964adbd946171b4bdc3ad6de">getWSEPurl</a> ()</td></tr>
+<tr class="separator:afbfbc1c5964adbd946171b4bdc3ad6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b84cde41355a16408bfa4c8203dc61a" id="r_a8b84cde41355a16408bfa4c8203dc61a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b84cde41355a16408bfa4c8203dc61a">get</a> ()</td></tr>
 <tr class="separator:a8b84cde41355a16408bfa4c8203dc61a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -156,6 +160,54 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+</div>
+</div>
+<a id="a85b2e7fd6fb396ce8a72e88ce1ff3f56" name="a85b2e7fd6fb396ce8a72e88ce1ff3f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85b2e7fd6fb396ce8a72e88ce1ff3f56">&#9670;&#160;</a></span>getEPurl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * GetAccountFeed::getEPurl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td><a class="el" href="#a85b2e7fd6fb396ce8a72e88ce1ff3f56">getEPurl()</a>;</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* sme_httpsUrl + endpoint </dd></dl>
+
+</div>
+</div>
+<a id="afbfbc1c5964adbd946171b4bdc3ad6de" name="afbfbc1c5964adbd946171b4bdc3ad6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbfbc1c5964adbd946171b4bdc3ad6de">&#9670;&#160;</a></span>getWSEPurl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * GetAccountFeed::getWSEPurl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td><a class="el" href="#afbfbc1c5964adbd946171b4bdc3ad6de">getWSEPurl()</a>;</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* endpoint </dd></dl>
 
 </div>
 </div>

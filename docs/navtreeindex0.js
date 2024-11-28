@@ -15,9 +15,11 @@ var NAVTREEINDEX0 =
 "channel__unsubscribe_8h_source.html":[1,0,0,0,0,1,10],
 "channels__my__get_8h_source.html":[1,0,0,0,0,1,11],
 "class_add_account_feed.html":[0,0,0],
+"class_add_account_feed.html#a17fa57adbf4f70e28efc9fb80c8d41fe":[0,0,0,5],
+"class_add_account_feed.html#a47ca6b5aeede6135773db26c6b2cd2ed":[0,0,0,4],
 "class_add_account_feed.html#a55b750fd4a92e184de6d6ee17b845cf0":[0,0,0,1],
 "class_add_account_feed.html#a5b07316a5a14369587d8df4821c5b04c":[0,0,0,0],
-"class_add_account_feed.html#a8dac45d03dfd14b7b3e126a36c42183c":[0,0,0,4],
+"class_add_account_feed.html#a8dac45d03dfd14b7b3e126a36c42183c":[0,0,0,6],
 "class_add_account_feed.html#aab49ea32a314f7e03f7cd5afa39b907d":[0,0,0,2],
 "class_add_account_feed.html#abc4a1de9e7d7884a58d9f3d9130b277e":[0,0,0,3],
 "class_bucket_like.html":[0,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "class_fc_single_choice.html#a8104933029924d8de9090e7999b2f479":[0,0,38,0],
 "class_fc_single_choice.html#aa3de928a3d291298d0449a5ce4173305":[0,0,38,3],
 "class_fc_single_choice.html#ad0764a21b63c2c13c7e08495bfde13aa":[0,0,38,4],
-"class_fc_slider.html":[0,0,39],
-"class_fc_slider.html#a201872168c79f9bdd336196869bbf951":[0,0,39,0],
-"class_fc_slider.html#a8df28a898475c70e5117feddf1299005":[0,0,39,1]
+"class_fc_slider.html":[0,0,39]
 };
