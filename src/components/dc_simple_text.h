@@ -6,7 +6,6 @@
 class DcSimpleText
 {
 private:
-    static const int headerSize = 38;
     SmeJson json_data;
     char* json = nullptr;
 

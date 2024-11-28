@@ -83,6 +83,40 @@ void AddAccountFeed::appendDataComponents()
     }
 }
 
+/* Function: AddAccountFeed.getEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* sme_httpsUrl + endpoint
+*/
+char* AddAccountFeed::getEPurl()
+{
+    return sme_httpsUrl sme_account_feed_post_add;        
+}
+
+/* Function: AddAccountFeed.getWSEPurl
+
+    provides this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* AddAccountFeed::getWSEPurl()
+{
+    return sme_account_feed_post_add;
+}
+
 /* Function: AddAccountFeed.get
 
     return the json script

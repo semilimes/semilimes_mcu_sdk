@@ -6,7 +6,6 @@
 class P2pMessageReply
 {
 private:
-    static const int headerSize = 33;
     SmeJson json_data;
     char* json = nullptr;
 

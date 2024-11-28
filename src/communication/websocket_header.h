@@ -6,7 +6,6 @@
 class WebsocketHeader
 {
 private:
-    static const int headerSize = 100;
     SmeJson json_data;
     char* json = nullptr;
     

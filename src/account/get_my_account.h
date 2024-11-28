@@ -46,6 +46,30 @@ public:
 
     void set(bool main,bool sub,bool shared,bool details);
 
+//     Prototype:
+///@param         char* getEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* sme_httpsUrl + endpoint
+
+    char* getEPurl();
+
+// Function: BucketOpen.getWSEPurl
+
+//     provides this endpoint
+
+//     Prototype:
+///@param         char* getWSEPurl();
+
+//     Parameters:
+       
+//     Returns:
+///@returns         char* endpoint
+
+    char* getWSEPurl();
+    
 // Function: GetMyAccount.get
 
 //     return the json script

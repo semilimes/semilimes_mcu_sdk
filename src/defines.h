@@ -14,9 +14,19 @@
 #define sme_wsPort 443
 
 #define sme_httpsUrl "https://api.semilimes.net"
+
 #define sme_registerDevice "/registerDevice"
 #define sme_deviceClaimStatus "/deviceClaimStatus"
 #define sme_resetDevice "/resetDevice"
+
+#define sme_account_my "/account/my"
+#define sme_account_profile "/account/profile"
+#define sme_account_profile_update "/account/profile/update"
+#define sme_account_feed "/account/feed"
+#define sme_account_feed_post_add "/account/feed/post/add"
+#define sme_account_feed_post_update "/account/feed/post/update"
+#define sme_account_contacts "/account/contacts"
+
 #define sme_communication_channel_my "/communication/channel/my"
 #define sme_communication_channel "/communication/channel"
 #define sme_communication_channel_create "/communication/channel/create"

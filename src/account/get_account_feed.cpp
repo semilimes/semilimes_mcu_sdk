@@ -27,6 +27,40 @@ void GetAccountFeed::set(const char* accountId,int before,int after,int limit)
     json_data.addPair2JsonInt(json, "limit", limit);
 }
 
+/* Function: GetAccountFeed.getEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* sme_httpsUrl + endpoint
+*/
+char* GetAccountFeed::getEPurl()
+{
+    return sme_httpsUrl sme_account_feed;        
+}
+
+/* Function: GetAccountFeed.getWSEPurl
+
+    provides this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GetAccountFeed::getWSEPurl()
+{
+    return sme_account_feed;
+}
+
 /* Function: GetAccountFeed.get
 
     return the json script

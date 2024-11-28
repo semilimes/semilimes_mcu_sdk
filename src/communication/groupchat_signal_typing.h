@@ -6,7 +6,6 @@
 class GroupchatSignalTyping
 {
 private:
-    static const int headerSize = 18;
     SmeJson json_data;
     char* json = nullptr;
     

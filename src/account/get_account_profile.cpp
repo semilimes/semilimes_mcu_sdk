@@ -21,6 +21,40 @@ void GetAccountProfile::set(const char* accountId)
     json_data.addPair2JsonStr(json, "accountId", accountId);
 }
 
+/* Function: GetAccountFeed.getEPurl
+
+    provides the full url for this endpoint
+
+    Prototype:
+        char* getEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* sme_httpsUrl + endpoint
+*/
+char* GetAccountProfile::getEPurl()
+{
+    return sme_httpsUrl sme_account_profile;        
+}
+
+/* Function: GetAccountFeed.getWSEPurl
+
+    provides this endpoint
+
+    Prototype:
+        char* getWSEPurl();
+
+    Parameters:
+       
+    Returns:
+        char* endpoint
+*/
+char* GetAccountProfile::getWSEPurl()
+{
+    return sme_account_profile;
+}
+
 /* Function: GetAccountProfile.get
 
     return the json script

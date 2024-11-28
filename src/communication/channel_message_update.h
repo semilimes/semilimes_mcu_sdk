@@ -6,8 +6,6 @@
 class ChannelMessageUpdate
 {
 private:
-    static const int headerSize = 33;
-    static const int optionsHeaderSize  = 11;
     SmeJson json_data;
     char* json = nullptr;
 

@@ -17,7 +17,7 @@
 */
 char* WebsocketHeader::getRequest(const char* requestId, const char* requestType, const char* body)
 {
-    int size = headerSize+strlen(requestId)+strlen(requestType)+strlen(body)+1;
+    int size = strlen("{\"requestId\":\"\",\"requestType\":\"\",\"version\":\"2\",\"body\":}")+strlen(requestId)+strlen(requestType)+strlen(body)+1;
     json = new char[size];
 
     json_data.initJson(json);

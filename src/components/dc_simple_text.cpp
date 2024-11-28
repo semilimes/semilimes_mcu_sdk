@@ -15,7 +15,7 @@
 */
 void DcSimpleText::set(const char* text)
 {
-    int size = headerSize+strlen(text)+1;
+    int size = strlen("{\"dataComponentType\":\"text\",\"text\":\"\"}")+strlen(text)+1;
     json = new char[size];
 
     json_data.initJson(json);

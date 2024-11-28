@@ -16,7 +16,7 @@
 */
 void GroupchatSignalTyping::set(const char* groupChatId)
 {
-    int size = headerSize+strlen(groupChatId)+1;
+    int size = strlen("{\"groupChatId\":\"\"}")+strlen(groupChatId)+1;
     json = new char[size];
 
     json_data.initJson(json);
